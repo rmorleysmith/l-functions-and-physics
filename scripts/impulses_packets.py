@@ -36,6 +36,7 @@ import matplotlib.pyplot as plt
 import mpmath as mp
 import numpy as np
 
+import lfunctions as lf
 from common import AQUA, BLUE, GRID, INK, INK_2, ORANGE, check, save
 
 mp.mp.dps = 15
@@ -110,17 +111,11 @@ print("D4 the explicit formula: packets rebuilt from zeros")
 
 
 def zeros_of(vals, a, q, T, step=0.02):
-    def Z(t):
-        s = mp.mpc(0.5, t)
-        th = mp.im((s + a) / 2 * mp.log(mp.mpf(q) / mp.pi) + mp.loggamma((s + a) / 2))
-        return mp.re(mp.dirichlet(s, vals) * mp.exp(1j * th))
-    ts = np.arange(0.05, T, step)
-    zs = [float(Z(t)) for t in ts]
-    out = []
-    for i in range(len(ts) - 1):
-        if zs[i] * zs[i + 1] < 0:
-            out.append(float(mp.findroot(Z, (ts[i], ts[i + 1]), solver="anderson")))
-    return out
+    """Zeros of L(s, chi) on the critical line below height T: sign changes of Hardy's Z (lfunctions.py)."""
+    found = lf.find_zeros(lambda t: lf.hardy_Z(t, q, vals, a), 0.05, T, step)
+    for z in found[:3]:                                    # the fast evaluator against mpmath
+        assert abs(mp.dirichlet(mp.mpc(0.5, float(z)), vals)) < 1e-9
+    return [float(z) for z in found]
 
 
 TMAX = 150
@@ -192,7 +187,9 @@ check(errs[TMAX] < errs[50] and errs[TMAX] < 0.6, "the error falls as more zeros
 # ---------------------------------------------------------------------------------------------------
 print("D5 the spectrum of the zeros (Landau's formula)")
 NZ = 600
-gam = np.array([float(mp.zetazero(k).imag) for k in range(1, NZ + 1)])
+gam = lf.find_zeros(lambda t: lf.hardy_Z(t, 1, [1], 0), 0.05, 945.0, 0.02)[:NZ]
+check(len(gam) == NZ and all(abs(gam[k - 1] - float(mp.zetazero(k).imag)) < 1e-8 for k in (1, 300, 600)),
+      "the first 600 zeros of zeta from the fast evaluator; numbers 1, 300 and 600 agree with mpmath")
 T = gam[-1]
 print(f"     the 600th zero is at height {T:.2f}")
 for n_, lab in ((2, "2"), (3, "3"), (4, "4"), (5, "5"), (7, "7")):

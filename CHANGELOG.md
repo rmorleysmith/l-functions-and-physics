@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0 (2026-11-20)
+
+- Note 09, the zeros as energy levels (Derivations 9.1–9.6): all 9511 zeros of ζ in a window near t = 10⁶; the
+  explicit formula as a trace formula, verified to 2 × 10⁻¹⁰; random-matrix statistics at short range and
+  Berry's sum over prime powers at long range; the primes as a Poisson process; the four L-functions of
+  ℚ(ζ₁₂) have independent spectra.
+- scripts/lfunctions.py: a vectorised evaluator for zeta and Dirichlet L-functions on the critical line
+  (Hurwitz zeta by Euler–Maclaurin), checked against mpmath.
+
 ## 0.3.0 (2026-11-20)
 
 - Note 07, impulses, packets and spectra (Derivations 7.1–7.5).

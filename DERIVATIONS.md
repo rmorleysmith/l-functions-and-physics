@@ -25,6 +25,17 @@ proposition in the note. Every script asserts the numbers it prints (`make check
 | 8.5 | `h(D) = (w√\|D\|/2π) L(1, χ_D)` counts the `SL(2, ℤ)`-orbits of primitive integer forms on the future mass shell of discriminant `D`. | The number of essentially different integer particles of a given mass is an L-value. |
 | 8.6 | `X ↦ AXA*` on Hermitian matrices preserves `t² − x² − y² − z²`; on light rays `vv*` it is a Möbius map of the sky. | Lorentz boosts move the stars by Möbius maps; `SL(2, ℤ[i])` is a lattice of boosts. |
 
+## The zeros as energy levels (note 09, [`scripts/zeros_statistics.py`](scripts/zeros_statistics.py))
+
+| | Statement | In physical terms |
+|---|---|---|
+| 9.1 | Riemann–Siegel: `Z(t) = 2 Σ_{n≤N} cos(θ(t) − t log n)/√n + (−1)^{N−1}(t/2π)^{−1/4}[C₀(p) + C₁(p)(t/2π)^{−1/2}] + O(t^{−5/4})`, `N = ⌊√(t/2π)⌋`. | At height `t`, `Z` is a chord of `√(t/2π)` pure tones. |
+| 9.2 | Riemann–von Mangoldt: `N(T) = θ(T)/π + 1 + S(T)`; mean density `log(t/2π)/2π`. | A Weyl term: states counted by phase-space volume (Berry–Keating's `H = xp`). |
+| 9.3 | Explicit formula with a Gaussian: `Σ_γ g_σ(γ − E) = d̄(E) − (1/π) Σ_n Λ(n) n^{−1/2} e^{−σ²(log n)²/2} cos(E log n) + ε`. | A trace formula: the level density is a mean term plus one oscillation per periodic orbit; the orbits are the prime powers. |
+| 9.4 | Montgomery: pair correlation `1 − (sin πu/πu)²`, that of the Gaussian unitary ensemble. | Levels repel; the unitary class is that of systems without time-reversal symmetry. |
+| 9.5 | Berry: `Σ²(L) = (2/π²)[Σ_{p^k<E/2π} sin²(πLk log p/log(E/2π))/(k²p^k) + ∫₁^∞ sin²(πLτ)/τ² dτ]`. | Universal statistics at short range; at long range the shortest orbits, `log 2`, `log 3`, …, set the rigidity. |
+| 9.6 | Independent spectra with relative densities `f_i` superpose with gap probability `E(s) = Π E_i(f_i s)`; spacing distribution `1 + E′(s)`. | Levels with different quantum numbers do not repel; the four characters mod 12 label four sectors. |
+
 ## Earlier notes
 
 | Where | Statement | In physical terms | Checked by |
