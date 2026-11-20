@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+# LaTeX build files (the PDFs that are published live in pdf/)
+notes/**/*.aux
+notes/**/*.log
+notes/**/*.out
+notes/**/*.fls
+notes/**/*.fdb_latexmk
+notes/**/*.synctex.gz
+notes/**/*.pdf

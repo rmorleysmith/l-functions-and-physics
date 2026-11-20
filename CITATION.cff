@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use these notes or scripts, cite them as below."
+title: "L-functions and physics: notes on Dirichlet L-functions, the zeta function and physical models"
+authors:
+  - family-names: Morley-Smith
+    given-names: Richard
+date-released: 2026-11-20
+version: 0.1.0
+repository-code: https://github.com/rmorleysmith/l-functions-and-physics
+license: CC-BY-4.0
+keywords:
+  - Dirichlet L-functions
+  - Riemann zeta function
+  - modular group
+  - Gauss sums
+  - lattice sums
+  - Talbot effect
+  - mathematical physics

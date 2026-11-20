@@ -1,0 +1,63 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  numerics:
+    name: scripts (every number asserted)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: make check PY=python
+      - uses: actions/upload-artifact@v4
+        with:
+          name: figures
+          path: figures/
+
+  notes:
+    name: notes (LaTeX)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            notes/01-twelve-tones/twelve-tones.tex
+            notes/02-characters-and-waves/characters-and-waves.tex
+            notes/03-light/light.tex
+          work_in_root_file_dir: true
+      - name: Collect the PDFs
+        run: |
+          mkdir -p out
+          cp notes/01-twelve-tones/twelve-tones.pdf notes/02-characters-and-waves/characters-and-waves.pdf notes/03-light/light.pdf out/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: notes-pdf
+          path: out/
+
+  release:
+    name: attach the PDFs to a release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [numerics, notes]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: notes-pdf
+          path: out/
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: out/*.pdf

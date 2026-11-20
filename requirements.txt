@@ -1,0 +1,4 @@
+# Pinned for reproducibility. Python 3.14.
+matplotlib==3.11.2
+mpmath==1.4.1
+numpy==2.5.5
