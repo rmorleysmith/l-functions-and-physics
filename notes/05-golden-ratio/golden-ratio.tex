@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \input{../preamble}
+\renewcommand{\notenumber}{5}
 
 \title{The golden ratio in the modular world and in physics}
 \author{Richard Morley-Smith}
@@ -10,45 +11,42 @@
 
 \begin{abstract}
 \noindent
-The symmetry group of the twelve-tone circle is the Klein four-group $\{1,5,7,11\}$ of note~01.
-The golden ratio $\varphi = (1+\sqrt5)/2$ sits at the other extreme of arithmetic.
-Twelve-tone music exists because $\log_2(3/2)$ is unusually close to the fraction $7/12$, while $\varphi$ is the number worst approximated by fractions.
-That extremal property is why plants use it: it avoids periodic arrangements.
-The golden ratio appears precisely in the modular world and in physics:
-\begin{itemize}
-\item the shortest closed geodesic on the modular surface has length $4\log\varphi$;
-\item the modular curve $X(5)$ is an icosahedron, whose twelve vertices, the cusps, have coordinates in $\Q(\sqrt5)$;
-\item the Ising chain in a magnetic field has a particle mass ratio $m_2/m_1 = \varphi$, predicted from $E_8$ and observed by neutron scattering.
-\end{itemize}
-Each statement is checked numerically.
+The golden ratio $\varphi = (1+\sqrt5)/2$ is the number that fractions approximate least well.
+It stands at the opposite extreme from the musical fifth, whose logarithm $\log_2(3/2)$ lies unusually close to the fraction $7/12$ (note~01).
+That extremal property accounts for its best-known appearance in nature, the phyllotaxis of plants.
+The golden ratio also appears exactly in the modular world and in physics.
+The shortest closed geodesic on the modular surface has length $4\log\varphi$.
+The modular curve $X(5)$ is an icosahedron whose twelve vertices, the cusps, have coordinates in $\Q(\sqrt5)$.
+The Ising chain in a magnetic field has the particle mass ratio $m_2/m_1 = \varphi$, predicted from $E_8$ and observed by neutron scattering.
+We check each statement numerically, and conjecture that these instances are cases of one rule.
 \end{abstract}
 
 \section{Two kinds of number}
 
 Every irrational $x$ has a continued fraction $[a_0;a_1,a_2,\dots]$.
 Its convergents $p/q$ are its best rational approximations, and large partial quotients mean very good ones.
-Hurwitz's theorem says that $q\,|qx-p| < 1/\sqrt5$ infinitely often for every irrational $x$, and that $\sqrt5$ is the best possible constant.
+Hurwitz's theorem states that $q\,|qx-p| < 1/\sqrt5$ infinitely often for every irrational $x$, and that $\sqrt5$ is the best possible constant \cite{HardyWright}.
 The extreme case is $\varphi = [1;1,1,1,\dots]$, where $q\,|q\varphi - p|\to 1/\sqrt5 = 0.447$ at the convergents.
-By contrast, $\log_2\frac32 = [0;1,1,2,2,3,1,5,2,23,\dots]$ gives $0.235$ already at $q=12$.
+By comparison, $\log_2\frac32 = [0;1,1,2,2,3,1,5,2,23,\dots]$ gives $0.235$ already at $q=12$.
 The script \script{golden\_ratio.py} checks both.
 
-So the two numbers do opposite jobs.
+The two numbers do opposite jobs.
 Twelve-tone equal temperament works because one fraction, $7/12$, approximates the fifth well (note~01).
 The golden ratio is the number that fractions approximate least well.
 
 \section{Phyllotaxis}
 
-Place seeds one by one at a fixed angle $\alpha$ of a turn and at radius $\sqrt n$ (Vogel's model).
+Place seeds one by one at a fixed angle $\alpha$ of a turn and at radius $\sqrt n$ (Vogel's model \cite{Vogel}).
 \begin{itemize}
 \item With $\alpha = 7/12$ the seeds fall on exactly twelve rays.
 \item With the pure fifth $\alpha=\log_2\frac32$ they form twelve slowly curving arms.
 \item With the golden angle $\alpha = 1/\varphi^2$ ($137.508^\circ$) they fill the disc evenly (Figure~\ref{fig:phyllo}).
 \end{itemize}
-By the three-gap theorem, the first $n$ points of any rotation divide the circle into gaps of at most three lengths.
-For the golden angle, the ratio of the largest gap to the smallest never exceeds $\varphi^2 = 2.618$ for $20\le n\le 800$.
-For the fifth it reaches $24.4$.
+By the three-gap theorem, the first $n$ points of any rotation divide the circle into gaps of at most three lengths \cite{Sos}.
+For the golden angle the ratio of the largest gap to the smallest stays at or below $\varphi^2 = 2.618$ for $20\le n\le 800$; for the fifth it reaches $24.4$.
+\physical
+A plant that places each new seed as far as possible from the earlier ones avoids every periodic arrangement, and the rotation that avoids them best is the golden one.
 Douady and Couder reproduced the golden angle in a physical experiment with magnetised drops \cite{DouadyCouder}.
-It emerges when each new element is placed as far as possible from the previous ones, a system that avoids periodic order.
 This is the best-established case of $\varphi$ in nature.
 
 \begin{figure}[ht]
@@ -60,48 +58,48 @@ This is the best-established case of $\varphi$ in nature.
 
 \section{The shortest closed geodesic on the modular surface}
 
-A hyperbolic element $\gamma\in\SL(2,\Z)$, one with $|\mathrm{tr}\,\gamma|>2$, has an axis in $\HH$.
-That axis projects to a closed geodesic on the modular surface $\SL(2,\Z)\backslash\HH$ of length $2\,\mathrm{arccosh}(|\mathrm{tr}\,\gamma|/2)$.
-The smallest such trace is 3, attained by $\gamma = \left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)$.
-Its axis joins its fixed points $-1/\varphi$ and $\varphi$, the roots of $z^2 - z - 1$.
-The length is
+A hyperbolic element $\gamma\in\SL(2,\Z)$, one with $|\mathrm{tr}\,\gamma|>2$, has an axis in $\HH$, along which it translates by $2\,\mathrm{arccosh}(|\mathrm{tr}\,\gamma|/2)$.
+The axis projects to a closed geodesic of that length on the modular surface $\SL(2,\Z)\backslash\HH$.
+The smallest such trace is 3, attained by $\gamma = \left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)$, whose axis joins its fixed points $-1/\varphi$ and $\varphi$, the roots of $z^2 - z - 1$.
+Its length is
 \[
   2\,\mathrm{arccosh}\tfrac32 = 2\log\varphi^2 = 4\log\varphi = 1.9248\ldots
 \]
 So the shortest closed geodesic belongs to the golden ratio (Figure~\ref{fig:geodesic}).
+This geodesic is reciprocal: $S$ conjugates $\gamma$ to $\gamma^{-1}$, so the axis passes through the elliptic point $i$, where the geodesic turns back on itself.
+Its image on the surface is a loop through $i$ of length $2\log\varphi$, traversed once in each direction.
+
 In general the trace $t$ gives length $2\log\varepsilon_t$, where $\varepsilon_t = (t+\sqrt{t^2-4})/2$ is a unit of $\Q(\sqrt{t^2-4})$.
 Traces $3,4,5,6$ give the fields $\Q(\sqrt5)$, $\Q(\sqrt3)$, $\Q(\sqrt{21})$ and $\Q(\sqrt2)$.
-In Selberg's theory the closed geodesics play the role of the primes.
-Their lengths enter the Selberg zeta function as the $\log p$ enter $\zeta$ (note~04), and they obey a prime geodesic theorem \cite{Iwaniec}.
+In Selberg's theory the closed geodesics play the role of the primes: their lengths enter the Selberg zeta function as the $\log p$ enter $\zeta$ (note~04), and they obey a prime geodesic theorem \cite{Iwaniec}.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.8\textwidth]{golden-geodesic}
-  \caption{The axis of $\left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)$ (dashed), and the same geodesic folded into the fundamental domain (solid): a closed loop through $i$ of length $4\log\varphi$.}
+  \caption{The axis of $\left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)$ (dashed), and the same geodesic folded into the fundamental domain (solid): a loop through $i$ of length $2\log\varphi$, traversed in both directions by the closed geodesic of length $4\log\varphi$.}
   \label{fig:geodesic}
 \end{figure}
 
 \section{Level five: the icosahedron}
 
-Reducing $\SL(2,\Z)$ modulo 5 gives $\mathrm{PSL}(2,\Z/5)$, a group of order 60.
+Reduction modulo 5 maps $\SL(2,\Z)$ onto $\SL(2,\Z/5)$, and the quotient $\mathrm{PSL}(2,\Z/5)$ has order 60.
 Its elements have orders 1, 2, 3 and 5, in the numbers 1, 15, 20 and 24.
-Those are the order statistics of $A_5$, the rotation group of the icosahedron.
+Those are the order statistics of $A_5$, the rotation group of the icosahedron, to which it is isomorphic \cite{Klein}.
 The quotient $X(5) = \Gamma(5)\backslash\HH^*$ has 12 cusps, 30 images of $i$ and 20 images of $\rho$.
 Since $12 - 30 + 20 = 2$, it is a sphere tiled as an icosahedron: the cusps are the vertices, the images of $i$ the edge midpoints, and the images of $\rho$ the face centres.
 This is Klein's picture \cite{Klein}.
-The vertices of a regular icosahedron can be taken to be the cyclic permutations of $(0,\pm1,\pm\varphi)$.
-They lie on three golden rectangles (Figure~\ref{fig:ico}, left).
+The vertices of a regular icosahedron can be taken to be the cyclic permutations of $(0,\pm1,\pm\varphi)$, which lie on three golden rectangles (Figure~\ref{fig:ico}, left).
 Here a twelve and the golden ratio meet: the $60/5 = 12$ cusps of $\Gamma(5)$ are the vertices of a golden figure.
 
 \section{The golden ratio as a mass ratio}
 
 Zamolodchikov showed that the Ising field theory in a magnetic field, at the critical temperature, has eight stable particles \cite{Zamolodchikov}.
-Their masses are proportional to the Perron--Frobenius eigenvector of the $E_8$ Dynkin diagram.
+Their masses are proportional to the entries of the Perron--Frobenius eigenvector of the $E_8$ Dynkin diagram.
 The script computes that eigenvector (eigenvalue $2\cos\frac{\pi}{30}$, from the Coxeter number 30) and confirms all eight closed forms.
 The first ratio is $m_2/m_1 = 2\cos\frac\pi5 = \varphi$.
-Coldea and collaborators observed the two lowest modes in the quasi-one-dimensional Ising magnet CoNb$_2$O$_6$ by neutron scattering \cite{Coldea}.
-Their ratio approaches $\varphi$ near the critical field (Figure~\ref{fig:ico}, right).
-This is the clearest case of a number field, here $\Q(\sqrt5)$, setting a measured ratio of particle masses.
+Coldea and collaborators observed the two lowest modes in the quasi-one-dimensional Ising magnet CoNb$_2$O$_6$ by neutron scattering \cite{Coldea}; their ratio approaches $\varphi$ near the critical field (Figure~\ref{fig:ico}, right).
+\physical
+Here a number field, $\Q(\sqrt5)$, sets a measured ratio of particle masses.
 
 \begin{figure}[ht]
   \centering
@@ -110,18 +108,19 @@ This is the clearest case of a number field, here $\Q(\sqrt5)$, setting a measur
   \label{fig:ico}
 \end{figure}
 
-\section{A conjecture, and questions}
+\section{A conjecture, and a question}
 
-The established instances share five-fold or $E_8$ structure: phyllotaxis, icosahedral quasicrystals and the $E_8$ Ising chain, together with the shortest geodesic and level five in the modular world.
-The author proposes a wider statement.
+In each case above the golden ratio is an extremal value: the least approximable rotation in phyllotaxis, the shortest closed orbit on the modular surface, the lowest mass ratio in the $E_8$ spectrum.
+It also organises the icosahedral quasicrystals, whose diffraction patterns have five-fold axes and scale by powers of $\varphi$ \cite{Shechtman}.
+We conjecture that this is a general rule.
 
-\begin{conjecture}
-The golden ratio governs propagation in nature generally, including the propagation of matter.
+\begin{conjecture}\label{conj:golden}
+The golden ratio governs propagation in nature, matter included: in a physical system whose propagation is organised by an arithmetic lattice, $\varphi$ occurs as an extremal value of a frequency ratio, an orbit length or a mass ratio.
 \end{conjecture}
 
 \begin{question}
 Is there a physical system whose spectrum is the length spectrum of closed geodesics on the modular surface, so that its lowest mode is $4\log\varphi$?
-Does the level-five structure, the icosahedron $X(5)$, have a physical realisation tied to its modular forms, beyond its symmetry group?
+Does the icosahedron $X(5)$ have a physical realisation tied to its modular forms, beyond its symmetry group?
 \end{question}
 
 \section*{Status of the statements}
@@ -132,23 +131,26 @@ Does the level-five structure, the icosahedron $X(5)$, have a physical realisati
 \toprule
 Statement & Grade\\
 \midrule
-The twelve-tone symmetry is the Klein four-group & \gradeLean{} (note 01)\\
 Hurwitz; continued fractions of $\varphi$ and $\log_2\frac32$ & \gradeClassical, \gradeComputed\\
 Golden angle and gap ratios in Vogel's model & \gradeComputed; physics \gradeClassical{} \cite{DouadyCouder}\\
-Shortest closed geodesic $4\log\varphi$; minimal hyperbolic trace 3 & \gradeClassical, \gradeComputed\\
+Shortest closed geodesic $4\log\varphi$; minimal hyperbolic trace 3; the loop through $i$ & \gradeClassical, \gradeComputed\\
 $\mathrm{PSL}(2,\Z/5)$ and $A_5$ order statistics; $X(5)$ an icosahedron & \gradeClassical, \gradeComputed\\
 $E_8$ masses, $m_2/m_1=\varphi$; observed in CoNb$_2$O$_6$ & \gradeClassical, \gradeComputed\\
-The conjecture of Section~6 & \gradeOpen\\
-The questions of Section~6 & \gradeOpen\\
+Conjecture~\ref{conj:golden}; Question 1 & \gradeOpen\\
 \bottomrule
 \end{tabular}
 \end{center}
+\gradelegend
 
 \begin{thebibliography}{9}
 \bibitem{Coldea} R.~Coldea et al., Quantum criticality in an Ising chain: experimental evidence for emergent $E_8$ symmetry, \emph{Science} 327 (2010), 177--180.
 \bibitem{DouadyCouder} S.~Douady and Y.~Couder, Phyllotaxis as a physical self-organized growth process, \emph{Phys. Rev. Lett.} 68 (1992), 2098--2101.
+\bibitem{HardyWright} G.~H. Hardy and E.~M. Wright, \emph{An Introduction to the Theory of Numbers}, 6th ed., Oxford University Press, 2008.
 \bibitem{Iwaniec} H.~Iwaniec, \emph{Spectral Methods of Automorphic Forms}, 2nd ed., American Mathematical Society, 2002.
 \bibitem{Klein} F.~Klein, \emph{Vorlesungen \"uber das Ikosaeder}, Teubner, 1884.
+\bibitem{Shechtman} D.~Shechtman, I.~Blech, D.~Gratias and J.~W. Cahn, Metallic phase with long-range orientational order and no translational symmetry, \emph{Phys. Rev. Lett.} 53 (1984), 1951--1953.
+\bibitem{Sos} V.~T. S\'os, On the distribution mod 1 of the sequence $n\alpha$, \emph{Ann. Univ. Sci. Budapest. E\"otv\"os Sect. Math.} 1 (1958), 127--134.
+\bibitem{Vogel} H.~Vogel, A better way to construct the sunflower head, \emph{Math. Biosci.} 44 (1979), 179--189.
 \bibitem{Zamolodchikov} A.~B. Zamolodchikov, Integrals of motion and $S$-matrix of the (scaled) $T=T_c$ Ising model with magnetic field, \emph{Int. J. Mod. Phys. A} 4 (1989), 4235.
 \end{thebibliography}
 

@@ -2,9 +2,9 @@
 the continuous spectrum.
 
 What it computes
-  D1 (impulses and waves). Poisson summation for the Gaussian: theta(1/t) = sqrt(t) theta(t), where
-     theta(t) = sum_n exp(-pi n^2 t). A comb of unit impulses, blurred by heat for a time t, looks like its own
-     frequency comb blurred for time 1/t.
+  D1 (impulses and waves). Poisson summation. A comb of unit impulses diffused for a time t equals a sum of
+     waves, the k-th damped by exp(-4 pi^2 k^2 t); at x = 0 for the Gaussian this is theta(1/t) = sqrt(t) theta(t),
+     where theta(t) = sum_n exp(-pi n^2 t).
   D2 (orthogonal packets). The character table modulo 12 is a 4 x 4 Hadamard matrix (H H^T = 4 I). So the
      prime-power impulse train splits into four residue classes, and back, without loss:
      psi(x; 12, a) = (1/4) sum_chi chi(a) psi(x, chi), and the "energy" is preserved (Parseval):
@@ -64,6 +64,11 @@ print("D1 impulses and waves")
 theta = lambda t: mp.nsum(lambda n: mp.exp(-mp.pi * n * n * t), [-mp.inf, mp.inf])
 for t in (0.37, 1.9):
     check(abs(theta(1 / t) - mp.sqrt(t) * theta(t)) < 1e-12, f"theta(1/t) = sqrt(t) theta(t) at t = {t}")
+for x0, t0 in ((0.3, 0.01), (0.5, 0.05)):
+    comb = mp.nsum(lambda n: mp.exp(-(x0 - n) ** 2 / (4 * t0)) / mp.sqrt(4 * mp.pi * t0), [-mp.inf, mp.inf])
+    waves = mp.nsum(lambda k: mp.exp(-4 * mp.pi ** 2 * k * k * t0) * mp.cos(2 * mp.pi * k * x0), [-mp.inf, mp.inf])
+    check(abs(comb - waves) < 1e-12,
+          f"diffused comb = damped waves at x = {x0}, t = {t0}: {mp.nstr(comb, 10)}")
 
 # ---------------------------------------------------------------------------------------------------
 print("D2 orthogonal packets")

@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \input{../preamble}
+\renewcommand{\notenumber}{4}
 
 \title{What an $L$-function is, and what it looks like}
 \author{Richard Morley-Smith}
@@ -11,25 +12,24 @@
 \begin{abstract}
 \noindent
 An $L$-function is a sum of waves.
-Each prime $p$ contributes a pure tone in the variable $t$, with frequency $\log p$ and amplitude $p^{-\sigma}$.
-Summed over all primes, these tones make the function.
-On the critical line $\mathrm{Re}\,s = \frac12$, the value $L(\tfrac12+it)$ traces a curve that winds through the origin at every zero.
-The four $L$-functions of $\Q(\zeta_{12})$ ($\zeta$, $\chi_{-4}$, $\chi_{-3}$, $\chi_{12}$), drawn together against $t$, form a bundle of such curves.
-Hardy's $Z$-function makes each one real on the line, so its zeros can be seen as sign changes.
+Each prime $p$ contributes a pure tone in the variable $t$, with frequency $\log p$ and amplitude $p^{-\sigma}$, and the tones of all the primes together make the function.
+On the critical line $\mathrm{Re}\,s = \frac12$, the value $L(\tfrac12+it)$ traces a curve that passes through the origin at each zero.
+The four $L$-functions of $\Q(\zeta_{12})$, those of $\zeta$, $\chi_{-4}$, $\chi_{-3}$ and $\chi_{12}$, drawn together against $t$, form a bundle of such curves.
+Hardy's $Z$-function makes each one real on the line, so that its zeros appear as sign changes.
 We define the objects, draw them, and locate and check their first zeros.
 The parity of the character is the first rung of the chirality ladder of note~06.
 \end{abstract}
 
 \section{The definition}
 
-A Dirichlet character $\chi$ modulo $q$ is a function on the integers that is periodic modulo $q$ and completely multiplicative, with $\chi(n)=0$ when $n$ and $q$ share a factor.
+A Dirichlet character $\chi$ modulo $q$ is a function on the integers that is periodic modulo $q$ and completely multiplicative, with $\chi(n)=0$ exactly when $n$ and $q$ share a factor.
 Its $L$-function is
 \[
   L(s,\chi) = \sum_{n\ge1}\frac{\chi(n)}{n^s} = \prod_p \frac{1}{1-\chi(p)p^{-s}}\qquad(\mathrm{Re}\,s>1).
 \]
-The product over primes, Euler's, is equivalent to unique factorisation.
+The product over primes, Euler's, expresses unique factorisation.
 For $q=1$ the character is the constant~$1$, and $L(s,\chi) = \zeta(s)$ is Riemann's zeta function \cite{Edwards}.
-Each $L$-function extends to the whole complex plane, and $\zeta$ has a single pole at $s=1$.
+Each $L(s,\chi)$ continues analytically to the whole complex plane: $\zeta$ has a single pole, at $s=1$, and $L(s,\chi)$ is entire when $\chi$ is non-principal.
 The parity of the character is $a\in\{0,1\}$ with $\chi(-1) = (-1)^a$.
 For a primitive character, the completed function
 \[
@@ -38,7 +38,7 @@ For a primitive character, the completed function
 satisfies $\Lambda(1-s,\bar\chi) = \varepsilon(\chi)\Lambda(s,\chi)$, with $|\varepsilon(\chi)| = 1$ \cite{Davenport}.
 For the real characters here, $\varepsilon = 1$ (note~02).
 The non-trivial zeros lie in the critical strip $0<\mathrm{Re}\,s<1$, symmetric about the critical line $\mathrm{Re}\,s=\frac12$.
-That they all lie \emph{on} the line is the generalised Riemann hypothesis, which is open.
+The generalised Riemann hypothesis states that they all lie on the line.
 
 \section{Each prime is a tone}
 
@@ -46,10 +46,12 @@ Taking logarithms of the Euler product gives
 \[
   \log L(\sigma+it,\chi) = \sum_p\sum_{k\ge1}\frac{\chi(p)^k}{k\,p^{k\sigma}}\,e^{-ikt\log p}.
 \]
-As a function of $t$, the prime $p$ contributes waves of frequency $k\log p$ and amplitude $p^{-k\sigma}/k$.
+\physical
+As a function of $t$, the prime $p$ contributes waves of frequency $k\log p$ and amplitude $p^{-k\sigma}/k$: a fundamental tone and its overtones.
+The character changes only the phases of the tones, since $\chi(p)$ is a root of unity, and silences the primes that divide $q$.
+
 The script \script{lfunction\_picture.py} sums these tones over all primes below $10^4$ at $\sigma = 1.3$.
-It reproduces $\log|\zeta(1.3+it)|$ to within 1.3\% on $0\le t\le 40$ (Figure~\ref{fig:tones}).
-The character changes only the phases: $\chi(p)$ is a root of unity.
+The sum reproduces $\log|\zeta(1.3+it)|$ on $0\le t\le 40$ to within 1.3\% of its largest value (Figure~\ref{fig:tones}).
 
 \begin{figure}[ht]
   \centering
@@ -60,13 +62,12 @@ The character changes only the phases: $\chi(p)$ is a root of unity.
 
 \section{On the critical line: a winding curve, and a bundle}
 
-On $\mathrm{Re}\,s = \frac12$ the series no longer converges absolutely, but the function is still defined by continuation.
-Plot $L(\tfrac12+it)$ in the complex plane as $t$ increases, and it traces a curve that winds through the origin at every zero (Figure~\ref{fig:curve}).
+On $\mathrm{Re}\,s = \frac12$ the Euler product no longer converges, and the function is defined by its analytic continuation.
+Plot $L(\tfrac12+it)$ in the complex plane as $t$ increases: it traces a curve that passes through the origin at each zero on the line (Figure~\ref{fig:curve}).
 Draw the curves of the four $L$-functions of $\Q(\zeta_{12})$ together against $t$, and they form a bundle of curves winding along the $t$-axis (Figure~\ref{fig:bundle}).
 Their product is the Dedekind zeta function of $\Q(\zeta_{12})$ (note~01).
 The curves wind at different rates.
-The number of zeros up to height $T$ is about $\frac{T}{2\pi}\log\frac{qT}{2\pi e}$ (Riemann--von Mangoldt \cite{Davenport}).
-So the larger the modulus, the more zeros.
+The number of zeros with $0<\gamma\le T$ is about $\frac{T}{2\pi}\log\frac{qT}{2\pi e}$ (Riemann--von Mangoldt \cite{Davenport}), so a larger modulus means more zeros.
 Below $t = 30$ the counts are 3, 10, 8 and 14 for $q = 1, 4, 3, 12$, against main terms $3.6$, $9.3$, $7.9$ and $14.6$.
 
 \begin{figure}[ht]
@@ -86,14 +87,12 @@ Below $t = 30$ the counts are 3, 10, 8 and 14 for $q = 1, 4, 3, 12$, against mai
 \section{Hardy's $Z$-function: seeing the zeros}
 
 Let $\theta(t)$ be the argument of $(q/\pi)^{(s+a)/2}\Gamma(\frac{s+a}2)$ at $s=\frac12+it$.
-Then $Z(t) = e^{i\theta(t)}L(\tfrac12+it,\chi)$ is real when the root number is~1, because the functional equation makes $\Lambda(\tfrac12+it)$ real.
-A sign change of $Z$ is a zero of $L$ exactly on the critical line.
-This is how zeros on the line are found and certified \cite{Titchmarsh}.
+Then $Z(t) = e^{i\theta(t)}L(\tfrac12+it,\chi)$ is real when $\chi$ is real with root number~1, because the functional equation makes $\Lambda(\tfrac12+it)$ real.
+A sign change of $Z$ is a zero of $L$ exactly on the critical line, and this is how zeros on the line are found and certified \cite{Titchmarsh}.
 Figure~\ref{fig:hardy} shows the four $Z$-functions.
-The script finds every sign change below $t=30$, refines each root, and checks that $|L| < 10^{-12}$ there.
+The script locates the sign changes below $t=30$ on a fine grid, refines each root, and checks that $|L| < 10^{-12}$ there.
 The first zeros are $14.134725$ for $\zeta$, $6.020949$ for $\chi_{-4}$, $8.039737$ for $\chi_{-3}$ and $3.804628$ for $\chi_{12}$.
-Sign changes show that these zeros are on the line.
-Turing's method certifies that such a list is complete; here the counts agree with the Riemann--von Mangoldt main term of Section~3.
+Turing's method certifies that such a list is complete; here the counts agree with the Riemann--von Mangoldt main terms of Section~3.
 
 \begin{figure}[ht]
   \centering
@@ -106,11 +105,8 @@ Turing's method certifies that such a list is complete; here the counts agree wi
 
 The parity $a$ sets the gamma factor, $\Gamma(s/2)$ or $\Gamma((s+1)/2)$, and with it the shape of $\theta(t)$.
 For the character of a quadratic field, $\chi_D(-1)$ is the sign of $D$.
-\begin{itemize}
-\item The characters of imaginary fields are odd ($a=1$), like $\chi_{-4}$ and $\chi_{-3}$ for the Gaussian and Eisenstein fields.
-In these fields complex conjugation is a non-trivial symmetry.
-\item The characters of real fields are even ($a=0$), like $\chi_{12}$ for $\Q(\sqrt3)$, and so is $\zeta$.
-\end{itemize}
+The characters of imaginary fields are odd ($a=1$), like $\chi_{-4}$ and $\chi_{-3}$ for the Gaussian and Eisenstein fields; in these fields complex conjugation is a non-trivial symmetry.
+The characters of real fields are even ($a=0$), like $\chi_{12}$ for $\Q(\sqrt3)$, and so is $\zeta$.
 Note~06 proposes this parity as the first rung of a ladder of handedness that continues through modular forms to the Standard Model.
 
 \paragraph{Geodesics.}
@@ -132,6 +128,7 @@ All non-trivial zeros on the critical line (GRH) & \gradeOpen\\
 \bottomrule
 \end{tabular}
 \end{center}
+\gradelegend
 
 \begin{thebibliography}{9}
 \bibitem{Davenport} H.~Davenport, \emph{Multiplicative Number Theory}, 3rd ed., Springer, 2000.

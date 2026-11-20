@@ -8,7 +8,8 @@ What it computes
       evenly (largest-to-smallest gap ratio, by the three-gap theorem, stays the smallest of the three).
   (3) The shortest closed geodesic on the modular surface. The smallest |trace| of a hyperbolic element of
       SL(2, Z) is 3, attained by [[2, 1], [1, 1]], whose axis joins -1/phi to phi; its length is
-      2 arccosh(3/2) = 4 log phi. The next lengths, 2 log of the units (t + sqrt(t^2 - 4))/2, are listed.
+      2 arccosh(3/2) = 4 log phi. The geodesic is reciprocal: its image is a loop through i of length 2 log phi,
+      traversed in both directions. The next lengths, 2 log of the units (t + sqrt(t^2 - 4))/2, are listed.
   (4) Level 5 and the icosahedron. PSL(2, Z/5) has order 60 and the element orders of A5 (1, 15, 20, 24 of
       orders 1, 2, 3, 5). The modular curve X(5) has 12 cusps, 30 images of i and 20 of rho: 12 - 30 + 20 = 2,
       a sphere tiled as the icosahedron, whose 12 vertices are the cyclic permutations of (0, +-1, +-phi).
@@ -56,6 +57,14 @@ check(cf(PHI, 15) == [1] * 15, "phi = [1; 1, 1, 1, ...]")
 hp = [q * abs(q * PHI - p) for p, q in convergents([1] * 25)][3:]
 check(all(v > 0.38 for v in hp) and abs(hp[-1] - 1 / math.sqrt(5)) < 1e-6,
       f"phi: q |q phi - p| at the convergents tends to 1/sqrt 5 = {1 / math.sqrt(5):.4f} (Hurwitz's worst case)")
+import mpmath as mp
+mp.mp.dps = 40
+xq, cf_fifth = mp.log(1.5, 2), []
+for _ in range(10):
+    aq = int(mp.floor(xq))
+    cf_fifth.append(aq)
+    xq = 1 / (xq - aq)
+check(cf_fifth == [0, 1, 1, 2, 2, 3, 1, 5, 2, 23], "log2(3/2) = [0; 1, 1, 2, 2, 3, 1, 5, 2, 23, ...]")
 hl = {q: q * abs(q * L32 - p) for p, q in convergents([0, 1, 1, 2, 2, 3, 1, 5, 2])}
 print(f"     log2(3/2): q |q x - p| = {', '.join(f'{v:.3f} (q = {q})' for q, v in hl.items() if q > 1)}")
 check(abs(hl[12] - 0.2346) < 1e-3 and hl[12] < 1 / math.sqrt(5), "the fifth: 0.235 at q = 12, far better than phi")
@@ -94,6 +103,14 @@ check(min(traces) == 3, "the smallest |trace| of a hyperbolic element is 3 (entr
 check(abs(2 * math.acosh(1.5) - 4 * math.log(PHI)) < 1e-12, f"its length 2 arccosh(3/2) = 4 log phi = {4 * math.log(PHI):.6f}")
 check(abs(PHI ** 2 - PHI - 1) < 1e-12 and abs((-1 / PHI) ** 2 + 1 / PHI - 1) < 1e-12,
       "the axis of [[2, 1], [1, 1]] joins its fixed points -1/phi and phi (roots of z^2 - z - 1)")
+Sm, gm = np.array([[0, -1], [1, 0]]), np.array([[2, 1], [1, 1]])
+check((Sm @ gm @ np.linalg.inv(Sm)).round().astype(int).tolist() == [[1, -1], [-1, 2]],
+      "S gamma S^-1 = gamma^-1: the geodesic is reciprocal and passes through the elliptic point i")
+wall = complex(0.5, math.sqrt(5) / 2)
+arc = math.acosh(1 + abs(1j - wall) ** 2 / (2 * 1 * wall.imag))
+check(abs(arc - math.log(PHI)) < 1e-12 and abs(abs(1j - 0.5) - math.sqrt(5) / 2) < 1e-12,
+      "the axis passes through i; from i to the wall point 1/2 + i sqrt(5)/2 is log phi, so the image is a loop "
+      "through i of length 2 log phi, traversed in both directions")
 for t in range(3, 9):
     eps = (t + math.sqrt(t * t - 4)) / 2
     print(f"     trace {t}: length {2 * math.acosh(t / 2):.4f} = 2 log {eps:.4f}, unit of Q(sqrt {t * t - 4})")

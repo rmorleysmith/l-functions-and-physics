@@ -13,18 +13,13 @@
 \noindent
 How does the speed of light enter an arithmetic picture of physics?
 Its value, $299\,792\,458$\,m/s, is exact by the definition of the metre, so its digits record a choice of units.
-Its role is geometric: $c$ fixes the light cone, and with $c=1$ the light cone is a quadratic form.
-That places the arithmetic of quadratic forms inside relativity.
-\begin{itemize}
-\item In a box of light, $c$ turns a count of lattice points into a count of frequencies (Planck's $c^3$).
-The number of modes at each frequency is a Dirichlet $L$-value (Gauss, Dirichlet).
-\item Gauss's binary quadratic forms are integer vectors in $2+1$-dimensional spacetime, whose Minkowski square is the discriminant.
-Definite forms are massive particles, degenerate forms are light rays, and indefinite forms are geodesics.
+Its role is geometric: $c$ fixes the light cone, and with $c=1$ the light cone is a quadratic form, which places the arithmetic of quadratic forms inside relativity.
+In a box of light, $c$ turns a count of lattice points into a count of frequencies, and the number of modes at each frequency is a Dirichlet $L$-value.
+Gauss's binary quadratic forms are integer vectors in $2+1$-dimensional spacetime whose Minkowski square is the discriminant: definite forms are massive particles, degenerate forms light rays and indefinite forms geodesics.
 The Gaussian and Eisenstein forms move relative to each other at exactly $c/2$, and class numbers count the integer particles on a mass shell.
-\item Integer points on spheres and on mass shells spread evenly (Linnik, Duke).
-\item In $3+1$ dimensions, Lorentz transformations are M\"obius maps of the celestial sphere, and the Gaussian integers give an arithmetic group of them.
-\end{itemize}
-The fine-structure constant, the dimensionless number that contains $c$, sets a precise test for any arithmetic derivation of a physical constant.
+Integer points on spheres and on mass shells spread evenly.
+In $3+1$ dimensions Lorentz transformations act on the celestial sphere as M\"obius maps, and the Gaussian integers give an arithmetic group of them.
+The fine-structure constant, the dimensionless number that contains $c$, sets the precision that an arithmetic derivation of a physical constant has to meet.
 \end{abstract}
 
 \section{What $c$ is}
@@ -32,7 +27,9 @@ The fine-structure constant, the dimensionless number that contains $c$, sets a 
 Since 1983 the metre has been defined by fixing the speed of light at exactly $299\,792\,458$\,m/s \cite{SI}.
 In other units the digits change: $186\,282.397$ miles per second, or $0.98357$ feet per nanosecond.
 The digits depend on the sizes of the metre and the second.
-\physical $c$ is the exchange rate between units of length and units of time.
+
+\physical
+$c$ is the exchange rate between units of length and units of time.
 In units with $c=1$, space and time are measured alike, and a light ray satisfies $t^2 = x^2+y^2+z^2$.
 The rest of this note follows that equation.
 
@@ -47,7 +44,8 @@ The number of modes with frequency at most $\omega$ is
 The frequency $(2\pi c/L)\sqrt N$ occurs with multiplicity $2r_3(N)$, where $r_3(N)$ is the number of ways to write $N$ as a sum of three squares.
 \end{derivation}
 
-\physical The $c^3$ in Planck's radiation law is this conversion from counting lattice points to counting frequencies.
+\physical
+The $c^3$ in Planck's radiation law is this conversion from counting lattice points to counting frequencies; the asymptotic count is Weyl's law \cite{Weyl}.
 The script \script{light\_cone.py} counts $67\,015\,770$ modes with $|\mathbf n|^2\le 40\,000$, against $67\,020\,643$ from the formula.
 
 \begin{derivation}[Gauss; Dirichlet]\label{d:gauss}
@@ -59,9 +57,9 @@ where $h(D)$ is the number of classes of primitive forms of discriminant $D$ \ci
 With the class number formula, $r_3(n) = \dfrac{24\sqrt n}{\pi}\,L(1,\chi_{-4n})$ for $n\equiv1,2\pmod 4$.
 \end{derivation}
 
-\physical The number of ways light can fit a cubic box at the pitch $\sqrt n$ is a Dirichlet $L$-value at $s=1$.
-The script checks Gauss's formula for every squarefree $n\le3000$.
-It checks the $L$-value form for all 118 squarefree $n\equiv1,2\pmod4$ below 300 (Figure~\ref{fig:modes}).
+\physical
+The number of ways light can fit a cubic box at the pitch $\sqrt n$ is a Dirichlet $L$-value at $s=1$.
+The script checks Gauss's formula for every squarefree $n\le3000$, and the $L$-value form for all 118 squarefree $n\equiv1,2\pmod4$ below 300 (Figure~\ref{fig:modes}).
 
 \begin{figure}[ht]
   \centering
@@ -104,23 +102,38 @@ Rapidity, the relativistic measure of speed, is hyperbolic distance (Figure~\ref
 \begin{derivation}[relative velocity]\label{d:velocity}
 For definite forms $f,g$ of discriminants $D_f,D_g$, with $B(f,g) = b_fb_g - 2a_fc_g - 2a_gc_f$ the bilinear form of the discriminant, the relative rapidity $\eta$ satisfies $\cosh\eta = -B(f,g)/\sqrt{D_fD_g}$.
 For $x^2+y^2$ and $x^2+xy+y^2$ this gives $\cosh\eta = 2/\sqrt3$, so $\tanh\eta = \tfrac12$.
+In the rest frame of $x^2+y^2$, the form $x^2+bxy+cy^2$ of discriminant $D$ has Lorentz factor $(1+c)/\sqrt{|D|}$.
 \end{derivation}
 
-\physical The Gaussian and Eisenstein forms, as particles, move relative to each other at exactly half the speed of light.
+\physical
+The Gaussian and Eisenstein forms, as particles, move relative to each other at exactly half the speed of light.
 Equivalently, the hyperbolic distance from $i$ to $\rho$ is $\operatorname{artanh}\frac12 = 0.5493$.
 The golden form $x^2-xy-y^2$ is spacelike; its geodesic is the shortest closed geodesic of note~05, which passes through $i$.
+The principal forms of the nine fields of class number one (note~02) have the following speeds in the Gaussian frame; the larger the discriminant, the closer to light.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+$D$ & $-4$ & $-3$ & $-8$ & $-7$ & $-11$ & $-19$ & $-43$ & $-67$ & $-163$\\
+\midrule
+$v/c$ & $0$ & $\frac12$ & $\frac13$ & $\frac{\sqrt2}{3}$ & $\frac{\sqrt5}{4}$ & $\frac{\sqrt{17}}{6}$ & $\frac{\sqrt{101}}{12}$ & $\frac{\sqrt{257}}{18}$ & $\frac{\sqrt{1601}}{42}$\\
+ & $0$ & $0.500$ & $0.333$ & $0.471$ & $0.559$ & $0.687$ & $0.837$ & $0.891$ & $0.953$\\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \begin{derivation}[class numbers count particles]\label{d:classes}
-The class number $h(D)$ is the number of primitive integer particles on the mass shell $X^2+Y^2-T^2 = D$, up to integral Lorentz transformations.
+The class number $h(D)$ is the number of orbits of $\SL(2,\Z)$, acting by integral Lorentz transformations, on the primitive integer forms of the future mass shell $X^2+Y^2-T^2 = D$, $T>0$.
 The class number formula reads
 \[
   h(D) = \frac{w_D\sqrt{|D|}}{2\pi}\,L(1,\chi_D).
 \]
 \end{derivation}
 
-\noindent
+\physical
+The number of essentially different integer particles of a given mass is a Dirichlet $L$-value.
 The script checks the formula for all 122 fundamental discriminants $D>-400$.
-\physical How many essentially different integer particles share a given mass is a Dirichlet $L$-value.
 
 \begin{figure}[ht]
   \centering
@@ -132,13 +145,15 @@ The script checks the formula for all 122 fundamental discriminants $D>-400$.
 \section{Spheres and mass shells}
 
 Derivation~\ref{d:gauss} is a bridge.
-The number of integer points on the sphere $x^2+y^2+z^2 = n$, in space, is 12 times the number of integer particles of mass $2\sqrt n$, in $2+1$ spacetime.
+For squarefree $n\equiv1,2\pmod4$, the number of integer points on the sphere $x^2+y^2+z^2 = n$, in space, is twelve times the number of classes of integer particles of mass $2\sqrt n$, in $2+1$ spacetime.
 Both kinds of points spread evenly as they grow.
-On the sphere this is Linnik's problem, solved by Duke; on the mass shell, they are the Heegner points on the modular surface \cite{Duke, Linnik}.
-\physical On a sphere covered evenly, the heights are uniform on $[-1,1]$, which is Archimedes' hat-box theorem.
+On the sphere this is Linnik's problem, solved by Duke; on the mass shell the points are the Heegner points of the modular surface \cite{Duke, Linnik}.
+
+\physical
+On a sphere covered evenly, the heights are uniform on $[-1,1]$: this is Archimedes' hat-box theorem.
 \begin{itemize}
 \item The 7680 integer points on $x^2+y^2+z^2 = 1\,000\,005$ have heights uniform to a Kolmogorov--Smirnov distance of $0.0085$, and $7680 = 12\,h(-4\,000\,020)$.
-\item The 11540 Heegner points with $20000\le|D|<20600$ put $0.639$ and $0.318$ of themselves above heights $1.5$ and $3$, where the hyperbolic areas predict $0.637$ and $0.318$ (Figure~\ref{fig:spheres}).
+\item The 11540 Heegner points with $20000\le|D|<20600$ put $0.639$ and $0.318$ of themselves above heights $1.5$ and $3$, where the hyperbolic areas give $0.637$ and $0.318$ (Figure~\ref{fig:spheres}).
 \end{itemize}
 
 \begin{figure}[ht]
@@ -162,9 +177,9 @@ A light ray is $X = vv^*$ for a spinor $v\in\C^2$.
 On the direction $\zeta = v_1/v_2$, a point of the celestial sphere $\C\cup\{\infty\}$, $A$ acts as the M\"obius map $\zeta\mapsto(a\zeta+b)/(c\zeta+d)$ \cite{PenroseRindler}.
 \end{derivation}
 
-\physical A Lorentz boost moves the stars on the sky by a M\"obius map.
-The group $\SL(2,\Z[i])$ (Picard's group) preserves the Hermitian matrices with integer diagonal and Gaussian-integer off-diagonal entries.
-So it is a lattice of Lorentz transformations built on the Gaussian integers.
+\physical
+A Lorentz boost moves the stars on the sky by a M\"obius map.
+The group $\SL(2,\Z[i])$ (Picard's group) preserves the Hermitian matrices with integer diagonal and Gaussian-integer off-diagonal entries, so it is a lattice of Lorentz transformations built on the Gaussian integers.
 The Bianchi groups $\mathrm{PSL}(2,\mathcal O_D)$ of the imaginary quadratic fields of note~02 act on hyperbolic 3-space, the velocity space of $3+1$ relativity, as $\SL(2,\Z)$ acts on the upper half-plane \cite{EGM}.
 The script checks both statements on random matrices.
 
@@ -173,19 +188,21 @@ The script checks both statements on random matrices.
 The fine-structure constant $\alpha = e^2/(4\pi\varepsilon_0\hbar c)$ is dimensionless, so its value is independent of units.
 CODATA gives $1/\alpha = 137.035\,999\,084(21)$ \cite{CODATA}.
 Eddington proposed $137$ exactly.
-Wyler proposed $\frac{9}{8\pi^4}\big(\frac{\pi^5}{2^4\,5!}\big)^{1/4}$, from volumes of symmetric domains, which gives $137.036\,082$ \cite{Wyler}.
+Wyler proposed $\frac{9}{8\pi^4}\big(\frac{\pi^5}{2^4\,5!}\big)^{1/4}$, from volumes of symmetric domains, which gives $1/\alpha = 137.036\,082$ \cite{Wyler}.
 At CODATA precision these differ from the measured value by about 1.7 million and 4000 standard deviations respectively.
 That precision is the standard an arithmetic derivation of $\alpha$ has to meet.
 
 \section{A working hypothesis, and questions}
 
-The author's working hypothesis has three parts.
+Our working hypothesis has three parts.
 First, the speed of light enters as the slope that turns spacetime into a quadratic form.
 Second, once space and time are counted in the same integers, the arithmetic of quadratic forms is the arithmetic of light.
 Third, spherical phenomena belong to definite forms (spheres, $x^2+y^2+z^2$) and hyperbolic phenomena to indefinite ones (mass shells, light cones), and Gauss's theorem links the two.
+
 \begin{question}
 Is there a physical system in which an integral Lorentz group acts, so that class numbers appear as the degeneracies of its mass levels?
 \end{question}
+
 \begin{question}
 Do the CM points of the Bianchi groups for $\Q(i)$ and $\Q(\sqrt{-3})$ have exact relative velocities, as $i$ and $\rho$ do ($c/2$), and do they organise the celestial sphere as the elliptic points organise the modular surface?
 \end{question}
@@ -201,13 +218,14 @@ Statement & Grade\\
 $c$ exact by definition; unit conversions & \gradeConvention{} (SI), \gradeComputed\\
 Derivations~\ref{d:planck}--\ref{d:mobius} & \gradeClassical\\
 Mode counts; Gauss for $n\le3000$; $L$-value form; class number formula, $D>-400$ & \gradeComputed\\
-Relative velocity $c/2$ of the Gaussian and Eisenstein forms & \gradeComputed\\
+Relative velocity $c/2$ of the Gaussian and Eisenstein forms; the nine speeds & \gradeComputed\\
 Even spreading on the sphere $n = 1\,000\,005$ and on mass shells & \gradeComputed; theorem \gradeClassical\\
-Wyler and Eddington fail at CODATA precision & \gradeComputed\\
-The hypothesis and Questions 1--2 & \gradeOpen\\
+$1/\alpha$ against Eddington's and Wyler's values & \gradeComputed\\
+The working hypothesis; Questions 1 and 2 & \gradeOpen\\
 \bottomrule
 \end{tabular}
 \end{center}
+\gradelegend
 
 \begin{thebibliography}{9}
 \bibitem{SI} Bureau International des Poids et Mesures, \emph{The International System of Units (SI)}, 9th ed., 2019.
@@ -217,6 +235,7 @@ The hypothesis and Questions 1--2 & \gradeOpen\\
 \bibitem{Grosswald} E.~Grosswald, \emph{Representations of Integers as Sums of Squares}, Springer, 1985.
 \bibitem{Linnik} Yu.~V. Linnik, \emph{Ergodic Properties of Algebraic Fields}, Springer, 1968.
 \bibitem{PenroseRindler} R.~Penrose and W.~Rindler, \emph{Spinors and Space-Time}, vol.~1, Cambridge University Press, 1984.
+\bibitem{Weyl} H.~Weyl, Das asymptotische Verteilungsgesetz der Eigenwerte linearer partieller Differentialgleichungen, \emph{Math. Ann.} 71 (1912), 441--479.
 \bibitem{Wyler} E.~W. Weisstein, Wyler's constant, \emph{MathWorld}, \url{https://mathworld.wolfram.com/WylersConstant.html} (A.~Wyler, 1969).
 \end{thebibliography}
 

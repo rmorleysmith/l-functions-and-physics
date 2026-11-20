@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \input{../preamble}
+\renewcommand{\notenumber}{3}
 
 \title{How many colours in the rainbow?}
 \author{Richard Morley-Smith}
@@ -11,19 +12,17 @@
 \begin{abstract}
 \noindent
 Seven, by convention: Newton chose seven colours by analogy with the seven notes of the musical scale.
-The visible spectrum is continuous, and colour vision is three-dimensional.
-The visible band spans close to one octave of frequency: 1.97 with the common limits of 380--750\,nm, 2.31 with the colorimetric limits of 360--830\,nm.
+The visible spectrum is a continuum, and colour vision is three-dimensional.
+The visible band spans close to one octave of frequency: 1.97 with the common limits of 380--750\,nm, and 2.31 with the colorimetric limits of 360--830\,nm.
 The seven diatonic steps of that octave and the named colour bands divide it differently.
-Hydrogen, by contrast, has exact rational frequency ratios, because of the Rydberg formula.
+Hydrogen has exact rational frequency ratios, by the Rydberg formula.
 Each series spans the ratio $(m+1)^2/(2m+1)$ from its first line to its limit: $4/3$ for Lyman and $9/5$ for Balmer.
-Each statement is graded.
 \end{abstract}
 
 \section{Seven by convention}
 
-Newton divided the spectrum of white light into seven colours in the \emph{Opticks} (1704).
-He compared their extents with the intervals of the musical scale.
-Earlier divisions had used five colours, and Newton added orange and indigo \cite{Whipple}.
+In his first paper on light, Newton named five ``Original or primary colours'', red, yellow, green, blue and violet-purple, ``together with Orange, Indico, and an indefinite variety of Intermediate gradations'' \cite{Newton1672}.
+In the \emph{Opticks} he divided the spectrum into seven colours whose extents follow the divisions of a musical string \cite{Opticks, Whipple}.
 Physically, the spectrum is a continuum of wavelengths, and the eye samples it with three types of cone.
 So perceived colour is a point in a three-dimensional space.
 The number of named colours varies between languages and conventions.
@@ -57,14 +56,14 @@ In the Balmer series ($m=2$), consecutive visible lines have ratios
 \[
   \tfrac{27}{20},\quad \tfrac{28}{25},\quad \tfrac{200}{189},\quad \tfrac{405}{392}.
 \]
-Several lie close to musical intervals.
-$\tfrac{27}{20}$ is 21.5 cents above the fourth $\tfrac43$, and $\tfrac{28}{25}$ is 7.7 cents below the tone $\tfrac98$.
+Several lie close to musical intervals: $\tfrac{27}{20}$ is 21.5 cents above the fourth $\tfrac43$, and $\tfrac{28}{25}$ is 7.7 cents below the tone $\tfrac98$.
 The span of a whole series, from its first line $n=m+1$ to its limit $n\to\infty$, is exact:
 \[
   \frac{1/m^2}{1/m^2 - 1/(m+1)^2} = \frac{(m+1)^2}{2m+1} = \tfrac43,\ \tfrac95,\ \tfrac{16}7,\ \tfrac{25}9\quad(m = 1,2,3,4).
 \]
 So the Lyman series spans exactly a perfect fourth, and the Balmer series exactly a just minor seventh.
 Both are exact consequences of the Rydberg formula, which makes the hydrogen spectrum a small piece of exact arithmetic.
+Note~08 returns to hydrogen: the degeneracy $n^2$ of its levels is a count of harmonics on a sphere.
 
 \section*{Status of the statements}
 
@@ -75,14 +74,17 @@ Both are exact consequences of the Rydberg formula, which makes the hydrogen spe
 Statement & Grade\\
 \midrule
 Seven colours & \gradeConvention{} (Newton)\\
-The visible band spans about an octave (1.97 or 2.31, by convention) & \gradeComputed\\
+The visible band spans about an octave (1.97 or 2.31, by the limits chosen) & \gradeComputed\\
 Diatonic steps and colour bands divide the octave differently & \gradeComputed\\
 Balmer ratios; series spans $(m+1)^2/(2m+1)$ & \gradeClassical{} (Rydberg), \gradeComputed\\
 \bottomrule
 \end{tabular}
 \end{center}
+\gradelegend
 
 \begin{thebibliography}{9}
+\bibitem{Newton1672} I.~Newton, A letter of Mr.\ Isaac Newton \dots\ containing his new theory about light and colors, \emph{Phil. Trans.} no.~80 (1671/2), 3075--3087.
+\bibitem{Opticks} I.~Newton, \emph{Opticks}, London, 1704; Book~I, Part~II, Prop.~III.
 \bibitem{Whipple} Whipple Library, University of Cambridge, \emph{Isaac Newton (1642--1727)}, \url{https://www.whipplelib.hps.cam.ac.uk/node/216}.
 \end{thebibliography}
 

@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \input{../preamble}
+\renewcommand{\notenumber}{2}
 
 \title{Quadratic characters, lattices and waves}
 \author{Richard Morley-Smith}
@@ -11,16 +12,10 @@
 \begin{abstract}
 \noindent
 The quadratic Dirichlet characters $\chi_D$ of the imaginary quadratic fields appear in three physical settings.
-\begin{itemize}
-\item They count the plane waves of equal frequency on a periodic lattice, for the square and hexagonal lattices and the seven other lattices of class number one.
-\item Their $L$-functions are the spectral zeta functions of those lattices.
-They give the electrostatic energy of a two-dimensional ionic crystal, $4(\sqrt2-1)\,|\zeta(\tfrac12)|\,L(\tfrac12,\chi_{-4}) = 1.61554\ldots$, a product of two values at the centre of the critical strip.
-\item Their Gauss sums govern the diffraction of light by a grating (the Talbot effect) and the scattering of sound by Schroeder's quadratic-residue diffuser.
-\end{itemize}
-The identity $|G(q)|^2 = q$ makes the Talbot images equally bright and the diffuser's orders equally loud.
-The same identity makes the root number of a quadratic $L$-function have modulus one.
-All of this is classical, and we check each statement numerically.
-Section~5 places these facts in the author's programme of modelling waves with quadratic characters.
+They count the plane waves of equal frequency on a periodic lattice: for the square and hexagonal lattices and the seven other lattices of class number one, the multiplicity of a frequency is a divisor sum of $\chi_D$.
+Their $L$-functions are the spectral zeta functions of those lattices and give lattice energies; the Madelung constant of the square ionic crystal is $4(\sqrt2-1)\,|\zeta(\tfrac12)|\,L(\tfrac12,\chi_{-4}) = 1.61554\ldots$, a product of two values at the centre of the critical line.
+Their Gauss sums govern the diffraction of light by a grating (the Talbot effect) and the scattering of sound by Schroeder's quadratic-residue diffuser: the identity $|G(q)|^2 = q$ makes the Talbot images equally bright and the diffuser's orders equally loud, and it gives the root number of a quadratic $L$-function modulus one.
+The theorems are classical; we check each numerically and pose two questions.
 \end{abstract}
 
 \section{Quadratic characters and their fields}
@@ -28,12 +23,12 @@ Section~5 places these facts in the author's programme of modelling waves with q
 For a fundamental discriminant $D<0$ let $K = \Q(\sqrt D)$, with ring of integers $\mathcal O_D$, $w_D$ units and class number $h(D)$.
 The Kronecker symbol $\chi_D(n) = (D/n)$ is a Dirichlet character modulo $|D|$.
 It records how primes behave in $K$: a prime $p$ splits when $\chi_D(p) = 1$, stays inert when $\chi_D(p) = -1$, and ramifies when $\chi_D(p) = 0$.
-Exactly nine fields have class number one (Heegner, Stark, Baker):
+Exactly nine fields have class number one (Heegner, Stark, Baker; see \cite{Cox}):
 \[
   D = -3,\,-4,\,-7,\,-8,\,-11,\,-19,\,-43,\,-67,\,-163.
 \]
-The first two are the Eisenstein integers $\Z[\omega]$ and the Gaussian integers $\Z[i]$.
-The third, $\Z[\tfrac{1+\sqrt{-7}}2]$, is sometimes called the Kleinian integers.
+The first two have the Eisenstein integers $\Z[\omega]$ and the Gaussian integers $\Z[i]$ as their rings of integers.
+The third ring, $\Z[\tfrac{1+\sqrt{-7}}2]$, is sometimes called the Kleinian integers.
 
 \section{Plane waves on a flat torus}
 
@@ -53,14 +48,11 @@ If $h(D)=1$, the number of $k\in\mathcal O_D$ with $N(k)=n$ is
 \noindent
 The divisor sum counts the ideals of norm $n$, and each ideal is principal with $w_D$ generators \cite{Cox}.
 The script \script{lattice\_waves.py} checks the identity for all nine fields and all $n\le 3000$.
-It also checks two related statements.
-\begin{itemize}
-\item For class number two the identity fails for a single form.
-For $D=-20$, the form $x^2+5y^2$ misses $n=2$.
-The two reduced forms together satisfy it.
-\item A square membrane with \emph{fixed} edges has modes $\sin(m\pi x)\sin(n\pi y)$ with $m,n\ge1$.
-The multiplicity of $m^2+n^2=N$ is $(r_{-4}(N) - 4[N\text{ a square}])/4$.
-\end{itemize}
+
+\physical
+On a periodic membrane with the symmetry of the lattice, the number of plane waves that share a frequency is a sum of signs $\pm1$ over the divisors of $n$.
+The signs record which primes split in the field.
+Figure~\ref{fig:tori} shows two cases.
 
 \begin{figure}[ht]
   \centering
@@ -69,9 +61,16 @@ The multiplicity of $m^2+n^2=N$ is $(r_{-4}(N) - 4[N\text{ a square}])/4$.
   \label{fig:tori}
 \end{figure}
 
+The script checks two companions of the theorem.
+\begin{itemize}
+\item For class number greater than one the divisor sum counts the representations by all classes together.
+For $D=-20$ the forms $x^2+5y^2$ and $2x^2+2xy+3y^2$ together represent $n$ in $2\sum_{d\mid n}\chi_{-20}(d)$ ways; the number $2$ is represented by the second form alone.
+\item A square membrane with \emph{fixed} edges has modes $\sin(m\pi x)\sin(n\pi y)$ with $m,n\ge1$.
+The multiplicity of $m^2+n^2=N$ is $(r_{-4}(N) - 4[N\text{ a square}])/4$.
+\end{itemize}
 The same count appears wherever a square or hexagonal lattice sets the wave vectors.
 In the free-electron (``empty lattice'') picture of a two-dimensional crystal, plane waves whose wave vectors are reciprocal-lattice vectors of the same length are degenerate.
-In diffraction, the Bragg reflections with the same $|G|$ fall on the same ring.
+In powder diffraction, the Bragg reflections with the same $|G|$ fall on the same ring, and $r_D$ is their multiplicity.
 
 \section{Spectral zeta functions and the energy of a crystal}
 
@@ -96,9 +95,8 @@ $Z_D(2)$ & 7.71114573 & 6.02681204 & 3.78968290 & 3.50283502 & 2.99226372\\
 For the square lattice this is $\tfrac{2\pi^2}{3}G$, with $G$ Catalan's constant.
 
 \paragraph{The square ionic crystal.}
-Put charges $\pm e$ on the points of $\Z^2$ with sign $(-1)^{x+y}$.
-This is a single layer of rock salt.
-The energy per ion is $-\alpha e^2/a$, where $\alpha$ is the Madelung constant, minus the alternating sum of $(x^2+y^2)^{-1/2}$.
+Put charges $\pm e$ on the points of $\Z^2$, with sign $(-1)^{x+y}$ and spacing $a$: a single layer of rock salt.
+The electrostatic energy of one ion in the field of all the others is $-\alpha e^2/a$ (Gaussian units), where the Madelung constant $\alpha$ is minus the alternating sum of $(x^2+y^2)^{-1/2}$.
 
 \begin{proposition}\label{prop:madelung}
 For $\mathrm{Re}\,s>1$, and by analytic continuation,
@@ -114,23 +112,22 @@ Next, $r_{-4} = 4\,(1*\chi_{-4})$, and $\chi_{-4}$ vanishes on even numbers, so 
 The sum is therefore $4L(s,\chi_{-4})\sum_m(-1)^m m^{-s} = -4L(s,\chi_{-4})(1-2^{1-s})\zeta(s)$.
 \end{proof}
 
-At $s=\tfrac12$ the lattice sum converges only conditionally.
-The physical value, summed over neutral blocks, agrees with the analytic continuation \cite{Lattice}.
-The script sums squares of ions with Evjen's weighting (half charges on edges, quarter charges on corners) \cite{Evjen}.
-At half-width 200 this matches the formula to $10^{-5}$ (Figure~\ref{fig:madelung}).
+At $s=\tfrac12$ the lattice sum converges conditionally.
+Summed over expanding squares it converges to the value given by the analytic continuation \cite{Lattice}.
+The script sums squares of ions, both plainly and with Evjen's weighting (half charges on edges, quarter charges on corners) \cite{Evjen}.
+At half-width 200 the weighted sum matches the formula to $10^{-5}$ (Figure~\ref{fig:madelung}).
 The three-dimensional rock-salt constant, $1.7475646\ldots$, is computed the same way.
 There the lattice-point counts $r_3(n)$ are class numbers rather than divisor sums (note~08), and no closed form in $L$-values is known \cite{Lattice}.
+
+\physical
+The electrostatic energy of an ion in this model crystal is a product of two $L$-values at $s=\frac12$, the centre of the critical line.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.82\textwidth]{waves-madelung}
-  \caption{Partial sums of the energy of the square ionic crystal. Evjen's neutral weighting converges quickly to the product of $L$-values.}
+  \caption{Partial sums of the Madelung constant of the square ionic crystal. Evjen's neutral weighting converges quickly to the product of $L$-values.}
   \label{fig:madelung}
 \end{figure}
-
-\begin{remark}
-A measurable crystal energy is thus a product of two $L$-values at $s=\frac12$, the centre of the critical line.
-\end{remark}
 
 \section{Gauss sums: diffraction and diffusion}
 
@@ -159,7 +156,7 @@ The script verifies both statements and the decomposition itself for every $p/q$
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.92\textwidth]{waves-talbot}
-  \caption{The Talbot carpet of a grating with slits one tenth of the period wide. Dark is bright light. At $\frac14$ and $\frac34$ of the Talbot length there are two images per period, at $\frac13$ and $\frac23$ three, and at $\frac12$ one, shifted by half a period.}
+  \caption{The Talbot carpet of a grating with slits one tenth of the period wide; darker shading marks higher intensity. At $\frac14$ and $\frac34$ of the Talbot length there are two images per period, at $\frac13$ and $\frac23$ three, and at $\frac12$ one, shifted by half a period.}
   \label{fig:talbot}
 \end{figure}
 
@@ -184,32 +181,31 @@ For a primitive real character $\chi$ modulo $q$ with $\chi(-1) = (-1)^a$, the c
   \Lambda(s,\chi) = (q/\pi)^{(s+a)/2}\,\Gamma\!\left(\tfrac{s+a}2\right)L(s,\chi).
 \]
 It satisfies $\Lambda(1-s,\chi) = \varepsilon(\chi)\Lambda(s,\chi)$ with root number $\varepsilon(\chi) = \tau(\chi)/(i^a\sqrt q)$ \cite{Davenport}.
-The identity $|\tau(\chi)| = \sqrt q$ makes $|\varepsilon| = 1$.
-For real characters Gauss's evaluation of the sign gives $\varepsilon = 1$.
+The identity $|\tau(\chi)| = \sqrt q$ makes $|\varepsilon| = 1$, and for real characters Gauss's evaluation of the sign gives $\varepsilon = 1$.
 The script checks the functional equation, with $\varepsilon=1$, for $\chi_{-4}$, $\chi_{-3}$, $\chi_{-7}$, $\chi_5$ and $\chi_{12}$.
 So one normalisation does three jobs.
 It makes the Talbot images equally bright and the diffuser's orders equally loud, and it makes the completed $L$-function symmetric about $\mathrm{Re}\,s=\frac12$.
 
 \section{The programme, and questions}
 
-The author proposed that the quadratic residue structures behind the Dirichlet characters model wave propagation.
-The three settings above realise this exactly, through classical theorems that the scripts check.
+Our working hypothesis is that the arithmetic of quadratic residues models wave propagation.
+The three settings above realise it exactly, through classical theorems that the scripts check.
 \begin{itemize}
 \item Mode counting on lattices is the character $\chi_D$.
 \item Lattice energies are values of $L(s,\chi_D)$.
 \item Equal-brightness diffraction is the Gauss sum.
 \end{itemize}
-The questions below extend them.
+Two questions extend them.
 
 \begin{question}
-The lattices $\mathcal O_{-7}$ (centred rectangular, axis ratio $\sqrt7$), $\mathcal O_{-8}$ (rectangular, $1:\sqrt2$) and $\mathcal O_{-11}$ are realisable as two-dimensional photonic or phononic crystals.
+The lattices $\mathcal O_{-7}$ (centred rectangular, $1:\sqrt7$), $\mathcal O_{-8}$ (rectangular, $1:\sqrt2$) and $\mathcal O_{-11}$ (centred rectangular, $1:\sqrt{11}$) are realisable as two-dimensional photonic or phononic crystals.
 Their empty-lattice degeneracies are predicted by $\chi_{-7}$, $\chi_{-8}$, $\chi_{-11}$.
-Which of these degeneracies survive a periodic potential, and which split, and is the splitting governed by the arithmetic of $\mathcal O_D$?
+Which of these degeneracies survive a periodic potential, which split, and is the splitting governed by the arithmetic of $\mathcal O_D$?
 \end{question}
 
 \begin{question}
-The newform of level 11 has root number $+1$, because its Fricke eigenvalue is $-1$; a Lean proof is in the author's working repository, to be published in \formal.
-Is there a physical system whose ``equal-brightness'' normalisation is that root number, in the way the Gauss sum is for the Talbot effect?
+The newform of weight 2 and level 11 has root number $+1$, since its Fricke eigenvalue is $-1$.
+Is there a physical system whose equal-brightness normalisation is that root number, as the Gauss sum is for the Talbot effect?
 \end{question}
 
 \section*{Status of the statements}
@@ -225,10 +221,11 @@ Epstein zeta factorisation; values at $s=2$ & \gradeClassical{}, \gradeComputed\
 Proposition~\ref{prop:madelung}; $\alpha = 1.6155426\ldots$ & \gradeClassical{}, \gradeComputed\\
 Gauss sums; Talbot weights; Schroeder's flat spectrum & \gradeClassical{}, \gradeComputed\\
 Functional equations with root number 1 for five characters & \gradeClassical{}, \gradeComputed\\
-Questions 1 and 2 & \gradeOpen\\
+The working hypothesis; Questions 1 and 2 & \gradeOpen\\
 \bottomrule
 \end{tabular}
 \end{center}
+\gradelegend
 
 \begin{thebibliography}{9}
 \bibitem{BerryKlein} M.~V. Berry and S.~Klein, Integer, fractional and fractal Talbot effects, \emph{J. Mod. Opt.} 43 (1996), 2139--2164.
@@ -238,7 +235,7 @@ Questions 1 and 2 & \gradeOpen\\
 \bibitem{Evjen} H.~M. Evjen, On the stability of certain heteropolar crystals, \emph{Phys. Rev.} 39 (1932), 675--687.
 \bibitem{IrelandRosen} K.~Ireland and M.~Rosen, \emph{A Classical Introduction to Modern Number Theory}, 2nd ed., Springer, 1990.
 \bibitem{Schroeder79} M.~R. Schroeder, Binaural dissimilarity and optimum ceilings for concert halls: more lateral sound diffusion, \emph{J. Acoust. Soc. Am.} 65 (1979), 958--963.
-\bibitem{SchroederBook} M.~R. Schroeder, \emph{Number Theory in Science and Communication}, Springer (5th ed., 2009).
+\bibitem{SchroederBook} M.~R. Schroeder, \emph{Number Theory in Science and Communication}, 5th ed., Springer, 2009.
 \bibitem{Talbot} H.~F. Talbot, Facts relating to optical science, No.~IV, \emph{Phil. Mag.} 9 (1836), 401--407.
 \end{thebibliography}
 

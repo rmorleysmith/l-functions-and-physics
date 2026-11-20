@@ -18,7 +18,8 @@ What it computes (exact rational arithmetic throughout)
   (5) Colour lives on the Eisenstein integers. The roots of SU(3) are the six units of Z[omega], so its root
       lattice is Z[omega]; the colour triplet's weights are 1/(1 - omega) times the cube roots of unity; the
       weight lattice is (1 - omega)^(-1) Z[omega], and the centre Z/3 is the residue field Z[omega]/(1 - omega)
-      at the ramified prime sqrt(-3).
+      at the ramified prime sqrt(-3). The six roots are one orbit of the stabiliser of the Eisenstein point rho
+      in SL(2, Z): ST acts on Z + Z rho as multiplication by e^(2 pi i/6). The roots of SU(2) are the units of Z.
   (6) Chirality. One generation differs from its conjugate: the Standard Model is chiral.
 
 What it shows
@@ -135,6 +136,17 @@ check(all(abs(t - lam1 * w ** k) < 1e-12 for t, k in zip(triplet, (0, 1, 2))),
       "the three colours are 1/(1 - omega) times the cube roots of unity 1, omega, omega^2")
 check(abs(abs(1 - w) ** 2 - 3) < 1e-12 and round(np.linalg.det(np.array(cartan))) == 3,
       "N(1 - omega) = 3 = det(Cartan) = [weights : roots]: the centre Z/3 is Z[omega]/(1 - omega)")
+ST = ((0, -1), (1, 1))                                   # S T, which fixes rho = omega
+fixed = (ST[0][0] * w + ST[0][1]) / (ST[1][0] * w + ST[1][1])
+mult = ST[1][0] * w + ST[1][1]                           # c rho + d: how ST acts on the lattice Z + Z rho
+check(abs(fixed - w) < 1e-12 and abs(mult - cmath.exp(1j * math.pi / 3)) < 1e-12,
+      "ST fixes rho and acts on Z + Z rho as multiplication by rho + 1 = e^(2 pi i/6)")
+orbit = [mult ** k for k in range(6)]
+check(all(min(abs(r - o) for o in orbit) < 1e-12 for r in roots),
+      "the six roots of SU(3) are one orbit of the stabiliser of rho (the units of Z[omega])")
+units_Z = [u for u in range(-3, 4) if u != 0 and 1 % u == 0]
+check(units_Z == [-1, 1] and len(roots) + len(units_Z) == 8 and 8 + (2 + 1 + 1) == 12,
+      "roots of SU(2) = units of Z; 6 + 2 = 8 gauge bosons of non-zero weight, plus rank 2 + 1 + 1 = 4: twelve")
 
 # ---------------------------------------------------------------------------------------------------
 print("(6) chirality")

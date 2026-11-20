@@ -18,8 +18,10 @@ What it computes
       half-plane, which is the space of velocities); degenerate forms are lightlike (the cusps); indefinite forms
       are spacelike (the closed geodesics). The Gaussian form x^2 + y^2 and the Eisenstein form x^2 + xy + y^2,
       normalised to the mass shell, move relative to each other at exactly c/2: their relative rapidity
-      artanh(1/2) is the hyperbolic distance from i to rho. The class number h(D) counts integer particles of
-      "mass" sqrt|D| up to integral Lorentz transformations, and equals (w sqrt|D| / 2 pi) L(1, chi_D).
+      artanh(1/2) is the hyperbolic distance from i to rho. In the rest frame of x^2 + y^2 the principal forms
+      of the nine class-number-one fields have speeds 0, 1/2, 1/3, sqrt(2)/3, ..., sqrt(1601)/42. The class number
+      h(D) counts the SL(2, Z)-orbits of primitive integer particles of "mass" sqrt|D|, and equals
+      (w sqrt|D| / 2 pi) L(1, chi_D).
   (5) Even spreading (Linnik, Duke). Integer points on the sphere x^2 + y^2 + z^2 = n, and integer particles on the
       mass shell b^2 - 4ac = D (Heegner points), spread evenly as n and |D| grow. On the sphere this is checked
       with Archimedes' hat-box law (heights uniform on [-1, 1]); on the modular surface, by the share of points
@@ -218,6 +220,18 @@ rho = cmath.exp(2j * math.pi / 3)
 d_hyp = math.acosh(1 + abs(1j - rho) ** 2 / (2 * 1 * rho.imag))
 check(abs(d_hyp - math.atanh(0.5)) < 1e-12 and abs(rel - math.atanh(0.5)) < 1e-12,
       f"hyperbolic distance from i to rho = artanh(1/2) = {math.atanh(0.5):.6f}: relative speed c/2")
+nine = {-4: (0, 1), -3: (1, 4), -8: (1, 9), -7: (2, 9), -11: (5, 16), -19: (17, 36), -43: (101, 144),
+        -67: (257, 324), -163: (1601, 1764)}             # D: v^2 = num/den for the principal form
+speeds = {}
+for D_, (num, den) in nine.items():
+    f_ = (1, 0, -D_ // 4) if D_ % 4 == 0 else (1, 1, (1 - D_) // 4)
+    T_, X_, Y_ = tc(f_)
+    okD = disc(f_) == D_ and Fraction(X_ * X_ + Y_ * Y_, T_ * T_) == Fraction(num, den) \
+        and abs((1 + f_[2]) / math.sqrt(-D_) - 1 / math.sqrt(1 - num / den)) < 1e-12
+    speeds[D_] = math.sqrt(num / den) if okD else None
+check(all(v is not None for v in speeds.values()),
+      "principal forms of the nine class-number-one fields, Gaussian frame: Lorentz factor (1 + c)/sqrt|D|, speeds "
+      + ", ".join(f"{D_}: {v:.3f}" for D_, v in speeds.items()))
 check(disc((1, -1, -1)) == 5 and disc((1, 0, 0)) == 0,
       "x^2 - xy - y^2 (the golden geodesic) is spacelike, x^2 (a cusp) is lightlike")
 fund = [D for D in range(-3, -400, -1) if (D % 4 == 1 and squarefree(-D)) or (D % 16 in (8, 12) and squarefree(-D // 4))]

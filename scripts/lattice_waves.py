@@ -235,7 +235,7 @@ ax.axhline(float(madelung), color=INK_2, lw=1, ls="--")
 ax.text(40.5, float(madelung), "$4(\\sqrt{2}-1)\\,|\\zeta(\\frac{1}{2})|\\,L(\\frac{1}{2},\\chi_{-4})$\n= 1.61554...",
         va="center", fontsize=9, color=INK)
 ax.set_xlabel("half-width of the square of ions summed, M")
-ax.set_ylabel("energy per ion (units $e^2/a$)")
+ax.set_ylabel("partial sum of the Madelung constant")
 ax.set_ylim(1.1, 1.75)
 ax.set_xlim(0, 40)
 ax.legend(loc="lower right")

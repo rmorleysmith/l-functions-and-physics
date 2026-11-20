@@ -6,8 +6,15 @@
 - Note 08, the speed of light, the light cone and spheres (Derivations 8.1–8.6).
 - DERIVATIONS.md: an index of the reusable derivations, each with its physical reading and its check.
 - Shared preamble: numbered Derivation boxes, Conjecture environment, "In physical terms" paragraphs.
-- Editorial pass over all notes, the README and the script headers: a formal register throughout, with open
-  points stated as conjectures and hypotheses. Note 05 retitled.
+- Editorial pass over all notes, the README and the script headers: a formal register throughout, abstracts in
+  prose, open points stated as conjectures and hypotheses, a grade legend under every status table. Note 05
+  retitled.
+- Note 01: the two twelves on the modular surface (continued fractions as geodesics). Note 03: Newton's 1672
+  colour list, quoted. Note 05: the shortest geodesic is reciprocal, a loop of length 2 log φ through i
+  traversed in both directions; the conjecture stated. Note 06: the programme stated as four propositions and
+  five conjectures; the six roots of SU(3) as one orbit of the stabiliser of ρ. Note 07: Poisson summation in
+  heat-kernel form; Landau's formula stated unconditionally. Note 08: the speeds of the nine class-number-one
+  forms.
 
 ## 0.2.0 (2026-11-20)
 
