@@ -38,10 +38,10 @@ with $C_0(p) = \cos(2\pi(p^2-p-\tfrac1{16}))/\cos(2\pi p)$ and $C_1 = -C_0'''/(9
 \physical
 At height $t$ the function $Z$ is a chord of $\sqrt{t/2\pi}$ pure tones, with frequencies $\log n$ and amplitudes $n^{-1/2}$.
 Near $t = 10^6$ there are 398 of them.
-The script \script{zeros\_statistics.py} evaluates the formula in bulk; it agrees with a multiprecision evaluation to $2.5\times10^{-9}$.
+The script \script{zeros\_statistics.py} evaluates the formula in bulk; it agrees with a multiprecision evaluation \cite{mpmath} to $2.5\times10^{-9}$.
 
 On the window $995290<t<1000280$ the function $Z$ changes sign 9511 times.
-The exact number of zeros of $\zeta$ in the critical strip between these heights, counted with multiplicity, is $N(1000280)-N(995290) = 9511$.
+The number of zeros of $\zeta$ in the critical strip between these heights, counted with multiplicity, is $N(1000280)-N(995290) = 9511$, by an independent computation with the mpmath library \cite{mpmath}.
 So every zero in the window is simple and lies on the critical line.
 
 \section{The mean density}
@@ -255,6 +255,7 @@ Conjecture~\ref{conj:indep}; Questions 1 and 2; the Riemann hypothesis & \gradeO
 \bibitem{IwaniecKowalski} H.~Iwaniec and E.~Kowalski, \emph{Analytic Number Theory}, American Mathematical Society, 2004.
 \bibitem{Mehta} M.~L. Mehta, \emph{Random Matrices}, 3rd ed., Elsevier, 2004.
 \bibitem{Montgomery} H.~L. Montgomery, The pair correlation of zeros of the zeta function, in \emph{Analytic Number Theory}, Proc. Sympos. Pure Math. 24, American Mathematical Society, 1973, 181--193.
+\bibitem{mpmath} The mpmath development team, \emph{mpmath: a Python library for arbitrary-precision floating-point arithmetic}, version 1.4.1, \url{https://mpmath.org}.
 \bibitem{Odlyzko} A.~M. Odlyzko, On the distribution of spacings between zeros of the zeta function, \emph{Math. Comp.} 48 (1987), 273--308.
 \end{thebibliography}
 
