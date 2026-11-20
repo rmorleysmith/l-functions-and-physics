@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 (unreleased)
+## 0.1.0 (2026-11-20)
 
 - Note 01, the twelve characters of the modular group (Lean proofs in morley-smith-formal).
 - Note 02, quadratic characters, lattices and waves.
