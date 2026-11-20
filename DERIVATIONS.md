@@ -36,6 +36,18 @@ proposition in the note. Every script asserts the numbers it prints (`make check
 | 9.5 | Berry: `Σ²(L) = (2/π²)[Σ_{p^k<E/2π} sin²(πLk log p/log(E/2π))/(k²p^k) + ∫₁^∞ sin²(πLτ)/τ² dτ]`. | Universal statistics at short range; at long range the shortest orbits, `log 2`, `log 3`, …, set the rigidity. |
 | 9.6 | Independent spectra with relative densities `f_i` superpose with gap probability `E(s) = Π E_i(f_i s)`; spacing distribution `1 + E′(s)`. | Levels with different quantum numbers do not repel; the four characters mod 12 label four sectors. |
 
+## Spheres (note 10, [`scripts/spheres.py`](scripts/spheres.py))
+
+| | Statement | In physical terms |
+|---|---|---|
+| 10.1 | Harmonic polynomials of degree `l` in `d` variables have dimension `2`, `2l + 1`, `(l + 1)²` for `d = 2, 3, 4`, and are orthogonal on the sphere for different `l`. | Packets of angular momentum; `(l + 1)²` is the degeneracy of hydrogen's level `n = l + 1` (Fock). |
+| 10.2 | A flash at every point of `ℤ³`: `u(0, t) = Σ r₃(N) δ(t − √N)/(4π√N) = t + Σ r₃(N) sin(2π√N t)/(2π√N)`; `r₃(N)/(4π√N) = L(1, χ_D)/ζ(2)` for squarefree `N ≢ 7 mod 8`. | Echoes at the times `√N`, each as loud as an L-value, none at `N = 4^a(8b + 7)`; the echoes and the tones carry the same integers. |
+| 10.3 | `Σ_{x∈ℤ^d} K₄(x) q^{\|x\|²} = (2d(d − 1)/(d + 2)) θ^d ψ`, `K₄ = Σ xᵢ⁴ − (3/(d + 2))\|x\|⁴`, `ψ = η(z)⁸η(4z)⁸/η(2z)⁸`; for `d = 2, 3, 4`: `η(z)⁴η(2z)²η(4z)⁴`, `(12/5) η(z)²η(2z)⁷η(4z)²`, `4 η(2z)¹²`. | The hexadecapole of a shell is a coefficient of a modular form of weight `4 + d/2`. The crystal field of a simple cubic lattice is the nearest-neighbour field times `L(g, 9/2) = 0.888064766…` (rock salt: `1.0224521…`). |
+| 10.4 | For squarefree `N ≢ 7 mod 8`: `a(N)²/N^{9/2} = L(5, F ⊗ χ_D)/L(5, F ⊗ χ₋₄)`, with `g = Σ a(N) q^N = η(z)²η(2z)⁷η(4z)²` and `F` the newform of weight 10 and level 2, the Shimura lift of `g` (Waldspurger). | The size of a shell is an L-value at the edge of the critical strip; the square of its shape is an L-value at the centre. |
+| 10.5 | Anisotropy `μ_d(N)` of a shell: `¼ cos 4θ_p` for `d = 2`; `μ₃² = (π²/100) L(5, F ⊗ χ_D)/(L(5, F ⊗ χ₋₄) L(1, χ_D)² √N)`; `\|μ₄(p)\| ≤ √p/(p + 1)` (Deligne). | Shells are as round as random points: anisotropy about `1/√(number of points)`. The Ramanujan bound is this statement. |
+| 10.6 | Forms fixed by the 24 Hurwitz units have generating function `(1 + t¹²)/((1 − t⁶)(1 − t⁸))`, the count of newforms of weight `l + 2` and level 2; `Σ_x ⟨v, x·v⟩ q^{N(x)}` is the newform (`Φ ↦ η(z)⁸η(2z)⁸`, `Ψ ↦ F`). | Spin states with the symmetry of the tetrahedron (octahedron, cube) are newforms; the root number is a parity of the state. |
+| 10.7 | The six rotations from `1 ± 2i`, `1 ± 2j`, `1 ± 2k` sum to `2(cos ϑJ_x + cos ϑJ_y + cos ϑJ_z)`, `cos ϑ = −3/5`, with eigenvalues `\|λ\| ≤ 2√5` on every degree `l ≥ 1` (Lubotzky–Phillips–Sarnak). | A walk by these rotations forgets its start as fast as a walk on a tree; they are the V gates of a quantum bit. |
+
 ## Earlier notes
 
 | Where | Statement | In physical terms | Checked by |
@@ -45,5 +57,6 @@ proposition in the note. Every script asserts the numbers it prints (`make check
 | Note 02, Proposition 2 | `Σ′ (−1)^{x+y}(x² + y²)^{−s} = −4(1 − 2^{1−s}) ζ(s) L(s, χ₋₄)`. | The energy of a square ionic crystal is a product of L-values at `s = ½`. | [`lattice_waves.py`](scripts/lattice_waves.py) |
 | Note 02, §4 | `ψ(x, p/q) = Σ_m a_m g(x − md/q)` with Gauss-sum weights; `\|a_m\| = 1/√q` for odd `q`. | Talbot images and Schroeder diffusers are equally bright because `\|G(q)\|² = q`. | [`gauss_sums_waves.py`](scripts/gauss_sums_waves.py) |
 | Note 04, §2 | `log L(σ + it, χ) = Σ_p Σ_k χ(p)^k p^{−kσ} e^{−ikt log p}/k`. | Each prime is a tone of frequency `log p`. | [`lfunction_picture.py`](scripts/lfunction_picture.py) |
+| Note 04, §4 | For `f = η(z)²η(11z)²` and `Λ(s) = (2π)^{−s}Γ(s)L(f, s)`: `Λ(2 − s) = 11^{s−1}Λ(s)`, `L(f, 1) > 0`, and `11^{s/2}Λ(s)` is real on `Re s = 1`. | Hardy's function of a modular form: its zeros on the line are the sign changes of a real signal. | Lean ([morley-smith-formal](https://github.com/rmorleysmith/morley-smith-formal), `tau-track/TauTrack/ElevenFunctionalEquation`); [`lfunction_picture.py`](scripts/lfunction_picture.py) |
 | Note 05, §3 | A hyperbolic `γ ∈ SL(2, ℤ)` gives a closed geodesic of length `2 arccosh(\|tr γ\|/2)`; the shortest is `4 log φ`, a loop of length `2 log φ` through `i` traversed in both directions. | The lowest note of the modular surface belongs to the golden ratio. | [`golden_ratio.py`](scripts/golden_ratio.py) |
 | Note 06, §3 | The anomaly equations force `{y_u, y_d} = {2y_Q, −4y_Q}`, `y_L = −3y_Q`, `y_e = 6y_Q`. | The Standard Model's consistency fixes its charges. | [`standard_model.py`](scripts/standard_model.py) |

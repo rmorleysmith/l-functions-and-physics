@@ -10,6 +10,11 @@ What it computes
       (q/pi)^((s+a)/2) Gamma((s+a)/2). The root number is 1 for all four, so Z is real; its sign changes are
       the zeros on the critical line. The first zeros are located and checked, and their number below t = 30
       is compared with the Riemann-von Mangoldt main term (T/2 pi) log(qT/(2 pi e)): more zeros for larger q.
+  (4) A modular form. For f = eta(z)^2 eta(11z)^2, the newform of weight 2 and level 11, the completed
+      L-function Lambda(s) = (2 pi)^(-s) Gamma(s) L(f, s) satisfies Lambda(2 - s) = 11^(s-1) Lambda(s), L(f, 1) > 0,
+      and 11^(s/2) Lambda(s) is real on the critical line Re s = 1: these three statements are proved in Lean
+      (morley-smith-formal, tau-track/TauTrack/ElevenFunctionalEquation). Here they are evaluated: the central
+      value, and the first zeros on the line as sign changes of the real function.
 
 What it shows
   An L-function as a sum of waves whose frequencies are the logarithms of the primes, and the four L-functions
@@ -104,6 +109,52 @@ for name, q, vals, a, col in CHARS:
     main = T / (2 * math.pi) * math.log(q * T / (2 * math.pi * math.e)) + (7 / 8 if q == 1 else 0)
     check(abs(len(zeros[name]) - main) < 1.5,
           f"{name}: {len(zeros[name])} zeros below t = 30; Riemann-von Mangoldt main term {main:.2f}")
+
+# ---------------------------------------------------------------------------------------------------
+print("(4) the newform of level 11")
+N11 = 30                                       # exp(-2 pi n/sqrt 11) < 10^-24 beyond n = 30
+series = [1] + [0] * N11                       # prod (1 - q^n)^2 (1 - q^(11n))^2
+for step in (1, 1, 11, 11):
+    for n in range(step, N11 + 1, step):
+        for i in range(N11, n - 1, -1):
+            series[i] -= series[i - n]
+a11 = [0] + series[:N11]                       # f = q prod ... = sum a(n) q^n
+check(a11[1:12] == [1, -2, -1, 2, 1, 2, -2, 0, -2, -2, 1],
+      "eta(z)^2 eta(11z)^2 = q - 2q^2 - q^3 + 2q^4 + q^5 + 2q^6 - 2q^7 - 2q^9 - 2q^10 + q^11 + ...")
+
+
+def Lambda11(s):
+    """(2 pi)^(-s) Gamma(s) L(f, s) for every complex s, from f(i/(11y)) = 11 y^2 f(iy) (the Fricke relation)."""
+    total = mp.mpc(0)
+    for n in range(1, N11):
+        if a11[n]:
+            x = 2 * mp.pi * n / mp.sqrt(11)
+            total += a11[n] * (mp.gammainc(s, x) / (2 * mp.pi * n) ** s
+                               + mp.mpf(11) ** (1 - s) * mp.gammainc(2 - s, x) / (2 * mp.pi * n) ** (2 - s))
+    return total
+
+
+s0 = mp.mpc(0.3, 2.7)
+check(abs(Lambda11(2 - s0) - mp.mpf(11) ** (s0 - 1) * Lambda11(s0)) < mp.mpf(10) ** -15,
+      "Lambda(2 - s) = 11^(s - 1) Lambda(s) (in Lean: functional equation with root number +1)")
+L11 = 2 * mp.pi * Lambda11(mp.mpf(1))
+check(abs(L11.imag) < mp.mpf(10) ** -15 and abs(L11.real - mp.mpf("0.2538418608559107")) < mp.mpf(10) ** -14,
+      f"L(f, 1) = {mp.nstr(L11.real, 16)} > 0 (in Lean: the central value is a positive real)")
+
+
+def Z11(t):
+    s = mp.mpc(1, t)
+    return mp.mpf(11) ** (s / 2) * Lambda11(s)
+
+
+worst = max(abs(Z11(t).imag) / abs(Z11(t)) for t in (0.5, 3.0, 7.5, 12.0))
+check(worst < mp.mpf(10) ** -12, "11^(s/2) Lambda(s) is real for s = 1 + it (in Lean: the critical line)")
+grid11 = [mp.mpf(k) / 2 for k in range(0, 31)]
+vals11 = [Z11(t).real for t in grid11]
+zeros11 = [mp.findroot(lambda t: Z11(t).real, (grid11[k], grid11[k + 1]), solver="illinois")
+           for k in range(len(grid11) - 1) if vals11[k] * vals11[k + 1] < 0]
+check(len(zeros11) == 5 and abs(zeros11[0] - mp.mpf("6.36261389")) < mp.mpf(10) ** -7,
+      "zeros of L(f, 1 + it) below t = 15: " + ", ".join(mp.nstr(z, 8) for z in zeros11))
 
 # ---------------------------------------------------------------------------------------------------
 print("figures")

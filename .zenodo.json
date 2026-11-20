@@ -1,11 +1,11 @@
 {
   "title": "L-functions and physics: notes on Dirichlet L-functions, the zeta function and physical models",
-  "description": "Short notes, with figures and checking scripts, on where Dirichlet L-functions, the Riemann zeta function and their characters appear in physical settings: the characters of the modular group and the twelve-tone scale; quadratic characters, lattice sums, Talbot diffraction and Schroeder diffusers; light and the hydrogen spectrum; what an L-function is and looks like; the golden ratio; towards a number-theoretic standard model (conjectures with exact evidence); impulses, packets and spectra (primes and zeros as a Fourier pair); the speed of light, the light cone and spheres; the zeros as energy levels (random-matrix statistics, the trace formula, independent spectra). Each statement is graded (proved in Lean, classical, computed, convention, open).",
+  "description": "Short notes, with figures and checking scripts, on where Dirichlet L-functions, the Riemann zeta function and their characters appear in physical settings: the characters of the modular group and the twelve-tone scale; quadratic characters, lattice sums, Talbot diffraction and Schroeder diffusers; light and the hydrogen spectrum; what an L-function is and looks like; the golden ratio; towards a number-theoretic standard model (conjectures with exact evidence); impulses, packets and spectra (primes and zeros as a Fourier pair); the speed of light, the light cone and spheres; the zeros as energy levels (random-matrix statistics, the trace formula, independent spectra); spheres (echoes of a lattice, multipole moments of lattice shells as coefficients and central values of modular forms, the Hurwitz quaternions and newforms of level 2, rotations at the Ramanujan bound). Each statement is graded (proved in Lean, classical, computed, convention, open).",
   "upload_type": "publication",
   "publication_type": "workingpaper",
   "creators": [
     {"name": "Morley-Smith, Richard"}
   ],
   "license": "cc-by-4.0",
-  "keywords": ["Dirichlet L-functions", "Riemann zeta function", "modular group", "Gauss sums", "lattice sums", "Talbot effect", "mathematical physics"]
+  "keywords": ["Dirichlet L-functions", "Riemann zeta function", "modular group", "Gauss sums", "lattice sums", "Talbot effect", "spherical harmonics", "quaternions", "mathematical physics"]
 }

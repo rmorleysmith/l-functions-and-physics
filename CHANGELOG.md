@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.5.0 (2026-11-20)
+
+- Note 10, spheres: echoes, multipoles and rotations (Derivations 10.1–10.7). The echoes of a cubic lattice of
+  flashes, with strengths `L(1, χ_D)/ζ(2)`; the hexadecapole of a lattice shell as a coefficient of a modular
+  form (`η(z)⁴η(2z)²η(4z)⁴`, `η(z)²η(2z)⁷η(4z)²`, `η(2z)¹²` in dimensions 2, 3, 4), and its square as a central
+  L-value; the crystal field of a cubic lattice as the nearest-neighbour field times `0.888064766…`; roundness
+  of shells and the Ramanujan bound; the spin states fixed by the Hurwitz units and the newforms of level 2;
+  six rotations at the bound `2√5`.
+- Notes 02 and 04 cite the Lean proof of the functional equation of the newform of level 11
+  (`ElevenFunctionalEquation` in morley-smith-formal: Fricke eigenvalue −1, `Λ(2 − s) = 11^{s−1}Λ(s)`,
+  `L(f, 1) > 0`, reality on the critical line). Note 04 evaluates the central value and the five zeros below
+  `t = 15`.
+
 ## 0.4.0 (2026-11-20)
 
 - Note 09, the zeros as energy levels (Derivations 9.1–9.6): all 9511 zeros of ζ in a window near t = 10⁶; the

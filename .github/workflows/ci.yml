@@ -42,6 +42,7 @@ jobs:
             notes/07-impulses-packets-spectra/impulses-packets-spectra.tex
             notes/08-light-cone-and-spheres/light-cone-and-spheres.tex
             notes/09-zeros-as-energy-levels/zeros-as-energy-levels.tex
+            notes/10-spheres/spheres.tex
           work_in_root_file_dir: true
       - name: Collect the PDFs
         run: |

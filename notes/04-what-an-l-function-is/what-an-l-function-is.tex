@@ -94,6 +94,16 @@ The script locates the sign changes below $t=30$ on a fine grid, refines each ro
 The first zeros are $14.134725$ for $\zeta$, $6.020949$ for $\chi_{-4}$, $8.039737$ for $\chi_{-3}$ and $3.804628$ for $\chi_{12}$.
 Turing's method certifies that such a list is complete; here the counts agree with the Riemann--von Mangoldt main terms of Section~3.
 
+\paragraph{A modular form.}
+The same construction applies to the $L$-function of a cusp form.
+For $f = \eta(z)^2\eta(11z)^2 = \sum a(n)q^n$, the newform of weight 2 and level 11, let $\Lambda(s) = (2\pi)^{-s}\Gamma(s)L(f,s)$.
+Three statements are proved in Lean (\formal, \texttt{tau-track/TauTrack/ElevenFunctionalEquation}):
+the functional equation $\Lambda(2-s) = 11^{s-1}\Lambda(s)$, with root number $+1$;
+the central value $L(f,1)$ is a positive real number;
+and $11^{s/2}\Lambda(s)$ is real on the critical line $s = 1+it$.
+The last is Hardy's function for $f$.
+The script evaluates it: $L(f,1) = 0.253\,841\,860\,855\,910\,7$, and the zeros below $t = 15$ are at $t = 6.362614$, $8.603540$, $10.035509$, $11.451259$ and $13.568639$.
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.86\textwidth]{lfun-hardy}
@@ -124,6 +134,8 @@ Statement & Grade\\
 Euler product, continuation, functional equation, root number & \gradeClassical\\
 Prime tones reproduce $\log|\zeta(1.3+it)|$ to 1.3\% & \gradeComputed\\
 $Z$ real; listed zeros on the line, $|L|<10^{-12}$; counts against Riemann--von Mangoldt & \gradeComputed\\
+Level 11: $\Lambda(2-s) = 11^{s-1}\Lambda(s)$; $L(f,1)>0$; $11^{s/2}\Lambda(s)$ real on $\mathrm{Re}\,s = 1$ & \gradeLean\\
+Level 11: the value $L(f,1)$ and the five zeros below $t=15$ & \gradeComputed\\
 All non-trivial zeros on the critical line (GRH) & \gradeOpen\\
 \bottomrule
 \end{tabular}
