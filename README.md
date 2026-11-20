@@ -22,6 +22,8 @@ every number it states.
 | 04 | [What an L-function is, and what it looks like](notes/04-what-an-l-function-is/what-an-l-function-is.tex) | Each prime is a tone of frequency `log p`, and their sum is the function. On the critical line, `L(½ + it)` winds through the origin at every zero. The four L-functions of `ℚ(ζ₁₂)` form a bundle of curves in `t`. Hardy's Z-functions locate the zeros, and a character's parity is the first rung of chirality. | [pdf](pdf/what-an-l-function-is.pdf) |
 | 05 | [The golden ratio: where it is, and where it is not](notes/05-golden-ratio/golden-ratio.tex) | Not in the twelve tones: φ is the worst-approximable number, the opposite of `7/12 ≈ log₂(3/2)`. It is in phyllotaxis, in the shortest closed geodesic on the modular surface (`4 log φ`), in `X(5)` (an icosahedron), and in the E8 masses of the Ising chain (`m₂/m₁ = φ`, observed 2010). | [pdf](pdf/golden-ratio.pdf) |
 | 06 | [Towards a number-theoretic standard model](notes/06-number-theoretic-standard-model/number-theoretic-standard-model.tex) | A programme stated as conjectures, with exact evidence. Anomaly cancellation is Diophantine and fixes the hypercharges. SU(3) colour lives on the Eisenstein integers, with its centre the residue field at `√−3`. The fields are blind to a `ℤ/6`, matching `PSL(2, ℤ)^ab = ℤ/6`. A three-rung chirality ladder. | [pdf](pdf/number-theoretic-standard-model.pdf) |
+| 07 | [Impulses, packets and spectra](notes/07-impulses-packets-spectra/impulses-packets-spectra.tex) | The primes as unit impulses. The four characters mod 12 split them into four orthogonal packets, losslessly (a Hadamard matrix, with energy conserved). The L-function is each packet's transfer function. The explicit formula rebuilds each packet from the zeros, and the zeros, played together, ring at the logarithms of the prime powers (Landau). Primes and zeros are a Fourier pair. | [pdf](pdf/impulses-packets-spectra.pdf) |
+| 08 | [The speed of light, the light cone and spheres](notes/08-light-cone-and-spheres/light-cone-and-spheres.tex) | c's digits are a unit choice; what c does is make the light cone a quadratic form. Light in a box: each mode degeneracy is an L-value (Gauss). Gauss's binary forms are integer relativity in 2+1 dimensions: the Gaussian and Eisenstein forms move apart at exactly c/2, and class numbers count particles on a mass shell. Lorentz boosts act on the sky as Möbius maps. | [pdf](pdf/light-cone-and-spheres.pdf) |
 
 <p align="center">
   <img src="figures/tones-clock.svg" alt="The pitch map of SL(2, Z): the powers of S form a diminished seventh, the powers of ST a whole-tone scale" width="340">
@@ -32,6 +34,16 @@ every number it states.
   <img src="figures/lfun-bundle.svg" alt="The four L-functions of Q(zeta_12) on the critical line, drawn as a bundle of curves winding in t" width="420">
   <img src="figures/golden-phyllotaxis.svg" alt="Seeds at a fixed angle: the fifth makes twelve rays, the golden angle fills the disc" width="380">
 </p>
+
+<p align="center">
+  <img src="figures/imp-explicit.svg" alt="The four residue classes of primes mod 12 rebuilt from the zeros of four L-functions" width="420">
+  <img src="figures/light-forms.svg" alt="Gauss's binary quadratic forms as velocities in 2+1 relativity with c = 1" width="320">
+</p>
+
+## Reusable derivations
+
+[`DERIVATIONS.md`](DERIVATIONS.md) indexes every derivation the notes rely on. Each entry gives the
+statement, its meaning in physical terms, and the script or Lean file that checks it.
 
 ## How the statements are graded
 

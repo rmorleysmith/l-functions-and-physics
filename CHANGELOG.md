@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 (2026-11-20)
+
+- Note 07, impulses, packets and spectra (Derivations 7.1–7.5).
+- Note 08, the speed of light, the light cone and spheres (Derivations 8.1–8.6).
+- DERIVATIONS.md: an index of the reusable derivations, each with its physical reading and its check.
+- Shared preamble: numbered Derivation boxes and "In physical terms" paragraphs.
+
 ## 0.2.0 (2026-11-20)
 
 - Note 04, what an L-function is, and what it looks like.

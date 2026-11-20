@@ -18,6 +18,10 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+% Reusable derivations, numbered note.k; each note sets \notenumber. Indexed in DERIVATIONS.md.
+\newcommand{\notenumber}{0}
+\newtheorem{derivation}{Derivation}
+\renewcommand{\thederivation}{\notenumber.\arabic{derivation}}
 \newtheorem{question}{Question}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
@@ -40,3 +44,5 @@
 \newcommand{\gradeComputed}{\textsc{computed}}    % checked numerically by a script in this repository
 \newcommand{\gradeConvention}{\textsc{convention}}
 \newcommand{\gradeOpen}{\textsc{open}}      % a question or working hypothesis, not a result
+% A plain-language physical reading, placed after each derivation.
+\newcommand{\physical}{\paragraph{In physical terms.}}
