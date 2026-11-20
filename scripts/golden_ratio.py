@@ -229,8 +229,9 @@ for seg in np.split(np.arange(len(pts)), jumps + 1):
 ax.plot([-1 / PHI, PHI], [0, 0], "o", ms=7, color=ORANGE, mec="white", mew=1.5, zorder=4, clip_on=False)
 ax.text(PHI + 0.08, 0.07, "φ", ha="left", fontsize=10, color=INK)
 ax.text(-1 / PHI - 0.08, 0.07, "−1/φ", ha="right", fontsize=10, color=INK)
-ax.text(1.75, 1.45, "the axis of [[2, 1], [1, 1]]\n(dashed), folded into the\nfundamental domain (solid):\n"
-        "a closed geodesic of\nlength 4 log φ = 1.925", fontsize=8.5, color=INK, va="top")
+ax.text(1.75, 1.6, "the axis of [[2, 1], [1, 1]]\n(dashed), folded into the\nfundamental domain (solid):\n"
+        "a loop of length 2 log φ\nthrough i, traversed both\nways by the closed geodesic\nof length 4 log φ = 1.925",
+        fontsize=8.5, color=INK, va="top")
 ax.set_xlim(-1.2, 2.9)
 ax.set_ylim(0, top)
 ax.set_aspect("equal")

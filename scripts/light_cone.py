@@ -355,9 +355,10 @@ for f in ((1, 0, 0), (0, 0, 1), (1, 2, 1), (1, -2, 1), (4, 4, 1), (1, 4, 4)):
     T_, X_, Y_ = tc(f)
     ax.plot([X_ / T_], [Y_ / T_], "s", ms=6, color=INK, zorder=4)
 ax.plot([], [], "s", ms=6, color=INK, label="squares such as x² (lightlike): cusps")
-ax.annotate("x² + y² at rest", xy=(0, 0), xytext=(-0.75, 0.3), fontsize=9, color=INK,
+box = dict(facecolor="white", edgecolor="none", pad=1.5, alpha=0.9)
+ax.annotate("x² + y² at rest", xy=(0, 0), xytext=(-0.42, -0.5), fontsize=9, color=INK, bbox=box,
             arrowprops=dict(arrowstyle="-", color=INK_2, lw=0.8))
-ax.annotate("x² + xy + y² at c/2", xy=(0.5, 0), xytext=(0.22, -0.35), fontsize=9, color=INK,
+ax.annotate("x² + xy + y² at c/2", xy=(0.5, 0), xytext=(-0.28, 0.62), fontsize=9, color=INK, bbox=box,
             arrowprops=dict(arrowstyle="-", color=INK_2, lw=0.8))
 ax.text(0.72, 0.86, "light\n|v| = c", fontsize=9, color=INK_2)
 ax.set_xlim(-1.15, 1.15)

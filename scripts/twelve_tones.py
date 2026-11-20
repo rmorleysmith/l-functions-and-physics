@@ -245,8 +245,9 @@ ax.vlines(ns, 1e-2, err, color="#9ec5f4", lw=2)
 ax.plot(ns, err, "o", ms=4, color=BLUE)
 for n in (12, 41, 53):
     ax.plot([n], [err[n - 1]], "o", ms=8, color=ORANGE, mec="white", mew=1.5, zorder=4)
-    ax.annotate(f"{n}: {err[n - 1]:.2f}¢", xy=(n, err[n - 1]), xytext=(4, 6), textcoords="offset points",
-                fontsize=9, color=INK)
+    ax.annotate(f"{n}: {err[n - 1]:.2f}¢", xy=(n, err[n - 1]), xytext=(5, -13 if n == 12 else 6),
+                textcoords="offset points", fontsize=9, color=INK,
+                bbox=dict(facecolor="white", edgecolor="none", pad=1, alpha=0.85))
 ax.set_yscale("log")
 ax.set_ylim(1e-2, 1000)
 ax.set_xlim(0, 61)

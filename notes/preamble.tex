@@ -46,11 +46,12 @@
 \newcommand{\gradeConvention}{\textsc{convention}}  % a choice of units or names
 \newcommand{\gradeOpen}{\textsc{open}}      % a question, conjecture or working hypothesis
 % The legend printed under every status table.
-\newcommand{\gradelegend}{\par\smallskip\noindent{\small
+\newcommand{\gradelegend}{\par\nopagebreak\smallskip\noindent\begin{minipage}{\textwidth}\small
 \gradeLean: proved in Lean 4 with Mathlib.
 \gradeClassical: a published theorem.
 \gradeComputed: checked numerically by a script in the repository \repo.
 \gradeConvention: a choice of units or names.
-\gradeOpen: a question, conjecture or working hypothesis.\par}}
+\gradeOpen: a question, conjecture or working hypothesis.
+\end{minipage}\par\medskip}
 % A plain-language physical reading, placed after each derivation.
 \newcommand{\physical}{\paragraph{In physical terms.}}

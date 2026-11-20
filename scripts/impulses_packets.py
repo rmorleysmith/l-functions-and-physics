@@ -268,10 +268,11 @@ scale = spec[np.argmin(np.abs(u - math.log(2)))] / (math.log(2) / math.sqrt(2))
 for n in pp:
     if math.log(n) <= 3.3:
         ax.vlines(math.log(n), 0, scale * Lam[n] / math.sqrt(n), color=ORANGE, lw=2.2, alpha=0.8)
-        ax.text(math.log(n), 3.2, str(n), ha="center", va="bottom", fontsize=7.5, color=INK)
+        ax.text(math.log(n), 4.6 if n in (16, 25) else 3.0, str(n), ha="center", va="bottom", fontsize=7.5,
+                color=INK)
 ax.axhline(0, color=GRID, lw=0.8)
-ax.set_ylim(-23, 5)
-ax.text(0.3, 4.3, "n:", fontsize=7.5, color=INK_2)
+ax.set_ylim(-23, 6.5)
+ax.text(0.3, 3.0, "n =", fontsize=7.5, color=INK_2, va="bottom")
 ax.set_xlabel("u = log x")
 ax.set_ylabel("Σ w(γ) cos(γu)")
 ax.set_title("The zeros of ζ, read as frequencies, ring exactly at the logarithms of the prime powers\n"
