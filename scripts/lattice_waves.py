@@ -14,17 +14,14 @@ What it computes
   (5) The Madelung constant of the two-dimensional square ionic crystal: the alternating lattice sum
       sum' (-1)^(x+y) (x^2 + y^2)^(-s) = -4 (1 - 2^(1-s)) zeta(s) beta(s), checked at s = 2 and at
       s = 1/2, where it gives the electrostatic energy 1.6155... (Evjen's method for the direct sum).
-  (6) The three-dimensional rock-salt constant 1.7476 by the same direct method, for contrast: x^2 + y^2 + z^2
-      is not the norm form of a field and no closed form in L-values is known.
+  (6) The three-dimensional rock-salt constant 1.7476 by the same direct method; there the lattice-point counts
+      r_3(n) are class numbers (note 08), and no closed form in L-values is known.
 
 What it shows
-  The quadratic Dirichlet characters of the class-number-one fields are exactly the mode-counting functions
-  of the corresponding periodic lattices, and their L-functions are the spectral zeta functions of those
-  lattices. These are classical theorems (Jacobi, Dirichlet, Epstein; see Borwein, Glasser, McPhedran, Wan
-  and Zucker, Lattice Sums Then and Now, Cambridge University Press, 2013).
-
-What it does not claim
-  Any new theorem. The identities are classical; the script checks them and draws them.
+  The quadratic Dirichlet characters of the class-number-one fields are the mode-counting functions of the
+  corresponding periodic lattices, and their L-functions are the spectral zeta functions of those lattices.
+  Classical theorems (Jacobi, Dirichlet, Epstein; see Borwein, Glasser, McPhedran, Wan and Zucker, Lattice
+  Sums Then and Now, Cambridge University Press, 2013), checked and drawn.
 """
 import math
 
@@ -118,7 +115,7 @@ div20 = np.zeros(N + 1, dtype=np.int64)
 for d in range(1, N + 1):
     div20[d::d] += chi20[d]
 check(not (ra[1:] == 2 * div20[1:]).all() and ra[2] == 0 and div20[2] == 1,
-      "x^2 + 5y^2 alone is not counted by the character (it misses n = 2)")
+      "x^2 + 5y^2 alone misses n = 2, which the character sum counts")
 check((ra[1:] + rb[1:] == 2 * div20[1:]).all(),
       "x^2 + 5y^2 and 2x^2 + 2xy + 3y^2 together: 2 * sum chi_-20(d), n <= 3000")
 

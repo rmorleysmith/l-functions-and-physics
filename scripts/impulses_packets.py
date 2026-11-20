@@ -26,9 +26,9 @@ What it shows
   Unit impulses (the primes), orthogonal packets (the four characters mod 12) and a continuous spectrum
   (the zeros) are three views of one object, with exact, reusable transforms between them.
 
-What it does not claim
-  That every zero is on the critical line. The reconstructions use the zeros found on the line, as the
-  generalised Riemann hypothesis predicts; they would be incomplete if any zero were off it.
+Assumption
+  The reconstructions use the zeros on the critical line below height 150; under the generalised Riemann
+  hypothesis these are all the non-trivial zeros below that height.
 """
 import math
 

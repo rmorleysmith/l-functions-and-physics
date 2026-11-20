@@ -20,7 +20,7 @@ Several of these facts are exact and checked here in rational arithmetic:
 \item the fields are blind to a $\Z/6$, as the abelianisation of $\mathrm{PSL}(2,\Z)$ is $\Z/6$;
 \item the model is chiral.
 \end{itemize}
-The counts (twelve fermions, twelve gauge bosons, twelve tones) are recorded, but they remain coincidences until a mechanism is found.
+The counts (twelve fermions, twelve gauge bosons, twelve tones) are recorded as a conjecture.
 Every conjecture is graded \textsc{open}.
 \end{abstract}
 
@@ -36,7 +36,7 @@ The only scalar is the Higgs boson.
 The masses of the fermions and of $W^\pm$ and $Z$ come from the Higgs field.
 \item \emph{Torsion.} In algebra a torsion element is one of finite order, such as $S$ and $ST$ in $\SL(2,\Z)$.
 In geometry torsion is a property of a connection.
-The programme's ``torsion'' (coupling between lattices) is not yet either; we use the algebraic sense below.
+The programme's ``torsion'', a coupling between lattices, is a third sense still to be made precise; below we use the algebraic one.
 \item \emph{Orthogonal.} The Lie algebra $\mathfrak{su}(3)\oplus\mathfrak{su}(2)\oplus\mathfrak{u}(1)$ is an orthogonal direct sum for its invariant inner product.
 \item \emph{Perfectly balanced.} The precise form is anomaly cancellation (\S\ref{sec:balance}).
 \item \emph{A stable energy signature.} Wigner's classification makes this precise: a particle is an irreducible unitary representation of the Poincar\'e group, and its mass squared is the eigenvalue of a Casimir operator \cite{Wigner}.
@@ -48,7 +48,6 @@ There are twelve fermion flavours: six quarks ($u,d,c,s,t,b$) and six leptons ($
 There are twelve gauge bosons, since $\dim SU(3)+\dim SU(2)+\dim U(1) = 8+3+1$.
 The pitch group of note~01 is $\Z/12$.
 A generation has fifteen Weyl fermions, or sixteen with a right-handed neutrino, so not every count is twelve.
-None of these twelves is known to cause another.
 \textbf{Conjecture C1:} the twelves are linked. \gradeOpen.
 
 \section{Balance: anomaly cancellation is Diophantine}\label{sec:balance}
@@ -86,7 +85,7 @@ Then the cubic gives $y_uy_d = -8y_Q^2$.
 So $\{y_u,y_d\} = \{2y_Q,-4y_Q\}$: if $y_Q\ne0$ the solution is unique up to scale and the exchange $u\leftrightarrow d$, and it is the observed one.
 An exhaustive search over integers $|y|\le40$ with $y_Q = 1$ finds exactly these two solutions.
 The general solution of such $U(1)$ anomaly equations, as Diophantine problems, is due to Costa, Dobrescu and Fox \cite{CDF} and to Allanach, Gripaios and Tooby-Smith \cite{AGT}.
-This is the most solid number-theoretic content of the Standard Model we know: its consistency is a system of linear and cubic Diophantine equations.
+Its consistency is a system of linear and cubic Diophantine equations, the firmest number-theoretic content of the Standard Model.
 
 \section{Colour lives on the Eisenstein integers}
 
@@ -99,7 +98,7 @@ The weight lattice is $(1-\omega)^{-1}\Z[\omega]$.
 Its index over the root lattice is $N(1-\omega) = 3 = \det$ of the Cartan matrix.
 So the centre $\Z/3$ of $SU(3)$ is the residue field $\Z[\omega]/(1-\omega)$ at the ramified prime $\sqrt{-3}$.
 All of this is checked by the script.
-\textbf{Conjecture C2:} the appearance of the Eisenstein field in the colour group is not an accident of low rank, and it connects to the role of $\Q(\sqrt{-3})$ in notes~01--02. \gradeOpen.
+\textbf{Conjecture C2:} the Eisenstein field enters the colour group for the same structural reason that $\Q(\sqrt{-3})$ enters notes~01--02. \gradeOpen.
 
 \begin{figure}[ht]
   \centering
@@ -113,7 +112,7 @@ All of this is checked by the script.
 The element $(e^{2\pi i/3}I_3,\,-I_2,\,e^{2\pi i/6})$ of $SU(3)\times SU(2)\times U(1)$ acts trivially on every field of the Standard Model, the Higgs included.
 The subgroup that acts trivially is exactly the $\Z/6$ it generates.
 So the group acting faithfully on the fields is $(SU(3)\times SU(2)\times U(1))/\Z_6$ \cite{BaezHuerta}.
-The observed fields do not decide which quotient by a subgroup of $\Z/6$ is nature's gauge group \cite{Tong}.
+Which quotient by a subgroup of $\Z/6$ is nature's gauge group is an open question in physics \cite{Tong}.
 On the arithmetic side, $\mathrm{PSL}(2,\Z) = \Z/2*\Z/3$ has abelianisation $\Z/6$.
 Equivalently, the characters of $\SL(2,\Z)$ trivial on $-1$ are the six even powers of the $\eta^2$ multiplier (note~01).
 Both $\Z/6$'s are built from the primes 2 and 3.
@@ -127,9 +126,7 @@ For a Maass form the Laplace eigenvalue is $\frac14+r^2$.
 For a holomorphic form of weight $k$, the weight plays the role of spin \cite{Bump}.
 Hecke eigenvalues play the role of charges, and the $L$-function packages them.
 \textbf{Conjecture C4:} the particles of the Standard Model correspond to automorphic representations, with masses given by Casimir eigenvalues, and the model has an $L$-function built from them. \gradeOpen.
-At present this has no definition precise enough to test.
-The first step is to define the candidate $L$-function and derive one prediction from it, such as the number of generations or a mass ratio.
-That would turn the conjecture into a testable claim.
+The next step is to define the candidate $L$-function and derive a prediction from it, such as the number of generations or a mass ratio.
 
 \section{The chirality ladder}
 
@@ -141,7 +138,7 @@ Imaginary quadratic fields have odd characters, and the parity changes the gamma
 \item \emph{Modular forms.} For $\SL(2,\Z)$ the parabolic cohomology is $S_k\times S_k$, through the even and odd period polynomials.
 It carries a pure Hodge structure with only the types $(k-1,0)$, holomorphic, and $(0,k-1)$, antiholomorphic.
 Both statements are proved in Lean in \formal{} (\texttt{tau-track/TauTrack/Cohomology}).
-\item \emph{The Standard Model.} $SU(2)$ acts only on left-handed fermions, and a generation is not equivalent to its conjugate.
+\item \emph{The Standard Model.} $SU(2)$ acts only on left-handed fermions, and a generation differs from its conjugate.
 The script checks this.
 \end{enumerate}
 \textbf{Conjecture C5:} these three are one structure, the parity of a character becoming the Hodge type and then the chirality of the electroweak force. \gradeOpen.

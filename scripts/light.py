@@ -2,20 +2,17 @@
 
 What it computes
   (1) The visible band. With the common limits 380-750 nm it spans a frequency ratio of 1.974, just under an
-      octave; with the CIE colorimetric limits 360-830 nm it spans 2.31. The twelve equal steps and the seven
-      diatonic steps of the octave 750 -> 375 nm are set beside the conventional colour bands.
+      octave; with the CIE colorimetric limits 360-830 nm it spans 2.31. The seven diatonic steps of the octave
+      750 -> 375 nm are set beside the conventional colour bands.
   (2) Hydrogen. The Rydberg formula 1/lambda = R (1/m^2 - 1/n^2) makes every frequency ratio rational. The
       visible Balmer lines have consecutive ratios 27/20, 28/25, 200/189, 405/392; each series m spans the
       exact ratio (m + 1)^2 / (2m + 1) from its first line to its limit: 4/3 (Lyman), 9/5 (Balmer),
       16/7 (Paschen), 25/9 (Brackett).
 
 What it shows
-  The seven colours are a convention (Newton chose seven by analogy with the seven notes of the scale; the
-  spectrum is continuous and colour vision is three-dimensional). The rational ratios in hydrogen are exact,
-  and follow from the Rydberg formula; naming them as musical intervals is a labelling, not a mechanism.
-
-What it does not claim
-  That light is organised by the musical scale.
+  Newton chose seven colours by analogy with the seven notes of the scale; the spectrum is a continuum and colour
+  vision is three-dimensional. The rational frequency ratios of hydrogen are exact consequences of the Rydberg
+  formula, and several lie close to musical intervals.
 """
 import math
 from fractions import Fraction
@@ -40,7 +37,7 @@ edges = [750 * 2 ** (-k / 12) for k in diat]
 widths = [round(edges[i] - edges[i + 1]) for i in range(7)]
 print(f"     diatonic steps of 750 -> 375 nm: {', '.join(f'{n} {e:.0f}' for n, e in zip(notes, edges))}")
 print(f"     widths of the 7 diatonic bands (nm): {widths}; of the 6 colour bands: {[b - a for _, a, b in bands]}")
-check(widths == [82, 73, 33, 61, 55, 49, 22], "the diatonic widths do not follow the colour bands")
+check(widths == [82, 73, 33, 61, 55, 49, 22], "the diatonic widths differ from the colour bands")
 
 # ---------------------------------------------------------------------------------------------------
 print("(2) the hydrogen series")
@@ -105,6 +102,6 @@ ax.set_ylim(0, 4)
 ax.set_yticks([])
 ax.spines["left"].set_visible(False)
 ax.set_xlabel("wavelength (nm)")
-ax.set_title("Seven colours are a convention: the diatonic steps do not match the colour bands")
+ax.set_title("Two divisions of the visible octave: seven colours and seven diatonic steps")
 save(fig, "light-spectrum")
 print("done")

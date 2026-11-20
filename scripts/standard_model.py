@@ -13,21 +13,18 @@ What it computes (exact rational arithmetic throughout)
   (4) The hidden Z/6. The element (e^(2 pi i/3) I_3, -I_2, e^(2 pi i/6)) of SU(3) x SU(2) x U(1) acts
       trivially on every field, and the subgroup of the centre and U(1) acting trivially is exactly Z/6, so the
       group acting faithfully on the fields is (SU(3) x SU(2) x U(1))/Z6. (Which quotient by a subgroup of Z/6 is
-      nature's gauge group is not decided by the observed fields: Tong, JHEP 07 (2017) 104.) For comparison: PSL(2, Z) = Z/2 * Z/3 has abelianisation Z/6
+      nature's gauge group is an open question: Tong, JHEP 07 (2017) 104.) For comparison: PSL(2, Z) = Z/2 * Z/3 has abelianisation Z/6
       (note 01: the characters of SL(2, Z) trivial on -1 are the six even powers of the eta^2 multiplier).
   (5) Colour lives on the Eisenstein integers. The roots of SU(3) are the six units of Z[omega], so its root
       lattice is Z[omega]; the colour triplet's weights are 1/(1 - omega) times the cube roots of unity; the
       weight lattice is (1 - omega)^(-1) Z[omega], and the centre Z/3 is the residue field Z[omega]/(1 - omega)
       at the ramified prime sqrt(-3).
-  (6) Chirality. One generation is not equal to its conjugate: the Standard Model is chiral.
+  (6) Chirality. One generation differs from its conjugate: the Standard Model is chiral.
 
 What it shows
   Exact arithmetic facts about the Standard Model's representations: the conditions that make it consistent are
-  Diophantine, and its colour group is built on the Eisenstein integers.
-
-What it does not claim
-  That number theory explains the Standard Model. The counts (12 and 12, Z/6 and Z/6) are coincidences until a
-  mechanism is found; the note grades them OPEN.
+  Diophantine, its colour group is built on the Eisenstein integers, and its fields are blind to the same Z/6
+  that abelianises PSL(2, Z). The counts and the Z/6 match are recorded as conjectures in note 06.
 """
 import cmath
 import itertools

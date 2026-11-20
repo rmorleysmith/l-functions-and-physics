@@ -1,9 +1,8 @@
-"""Note 05: the golden ratio, where it is and where it is not.
+"""Note 05: the golden ratio in the modular world and in physics.
 
 What it computes
   (1) Continued fractions. phi = [1; 1, 1, 1, ...]: q |q phi - p| -> 1/sqrt 5 at the convergents, the worst possible
       (Hurwitz). log2(3/2) = [0; 1, 1, 2, 2, 3, 1, 5, 2, 23, ...] is much better approximated: 0.235 at q = 12.
-      The symmetry group of the twelve-tone circle, {1, 5, 7, 11} in (Z/12)^x, involves no phi.
   (2) Phyllotaxis. Points at angle n * alpha and radius sqrt n (Vogel's model) for alpha = 7/12, log2(3/2) and
       1/phi^2 of a turn. 7/12 gives exactly 12 rays; the golden angle 137.508 degrees spreads the points most
       evenly (largest-to-smallest gap ratio, by the three-gap theorem, stays the smallest of the three).
@@ -17,12 +16,10 @@ What it computes
       gives Zamolodchikov's eight masses of the Ising field theory in a magnetic field; m2/m1 = phi.
 
 What it shows
-  The golden ratio is not the symmetry of the twelve tones; it is the opposite kind of number. It does appear
-  in the modular world (the shortest geodesic, level 5) and in physics where five-fold or E8 structure is
-  present (phyllotaxis; quasicrystals; the Ising chain in a field, Coldea et al., Science 327 (2010) 177).
-
-What it does not claim
-  That the golden ratio governs propagation in general. The cases above are the ones with evidence.
+  The golden ratio is the number least well approximated by fractions, the opposite extreme from
+  log2(3/2) ~ 7/12. It appears in the modular world (the shortest closed geodesic, level 5) and in physics where
+  five-fold or E8 structure is present (phyllotaxis; quasicrystals; the Ising chain in a field, Coldea et al.,
+  Science 327 (2010) 177).
 """
 import itertools
 import math

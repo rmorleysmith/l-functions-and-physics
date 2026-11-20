@@ -13,10 +13,10 @@
 Seven, by convention: Newton chose seven colours by analogy with the seven notes of the musical scale.
 The visible spectrum is continuous, and colour vision is three-dimensional.
 The visible band spans close to one octave of frequency: 1.97 with the common limits of 380--750\,nm, 2.31 with the colorimetric limits of 360--830\,nm.
-The seven diatonic steps of that octave do not line up with the named colour bands.
+The seven diatonic steps of that octave and the named colour bands divide it differently.
 Hydrogen, by contrast, has exact rational frequency ratios, because of the Rydberg formula.
 Each series spans the ratio $(m+1)^2/(2m+1)$ from its first line to its limit: $4/3$ for Lyman and $9/5$ for Balmer.
-We separate the exact statements from the labels.
+Each statement is graded.
 \end{abstract}
 
 \section{Seven by convention}
@@ -24,9 +24,8 @@ We separate the exact statements from the labels.
 Newton divided the spectrum of white light into seven colours in the \emph{Opticks} (1704).
 He compared their extents with the intervals of the musical scale.
 Earlier divisions had used five colours, and Newton added orange and indigo \cite{Whipple}.
-The physics gives no such division.
-The spectrum is a continuum of wavelengths, and the eye samples it with three types of cone.
-So perceived colour is a point in a three-dimensional space, not a position on a line.
+Physically, the spectrum is a continuum of wavelengths, and the eye samples it with three types of cone.
+So perceived colour is a point in a three-dimensional space.
 The number of named colours varies between languages and conventions.
 
 \section{The octave of light}
@@ -34,7 +33,7 @@ The number of named colours varies between languages and conventions.
 Frequency is inversely proportional to wavelength, so a band from $\lambda_1$ to $\lambda_2$ spans the frequency ratio $\lambda_2/\lambda_1$.
 For 380--750\,nm this is $1.974$, just under an octave.
 The CIE colour-matching tables run from 360 to 830\,nm, a ratio of $2.31$, just over one.
-``The visible spectrum is an octave'' is therefore true only roughly, and depends on where the threshold is put.
+The octave of light is therefore approximate, and its size depends on the threshold chosen.
 
 Figure~\ref{fig:spectrum} sets three divisions of the octave side by side.
 \begin{itemize}
@@ -42,7 +41,7 @@ Figure~\ref{fig:spectrum} sets three divisions of the octave side by side.
 \item The seven diatonic steps of the octave 750$\to$375\,nm have widths 82, 73, 33, 61, 55, 49 and 22\,nm.
 \item The visible Balmer lines of hydrogen sit at 656.5, 486.3, 434.2 and 410.3\,nm (vacuum wavelengths).
 \end{itemize}
-The first two divisions do not correspond.
+The first two divide the octave differently.
 
 \begin{figure}[ht]
   \centering
@@ -58,15 +57,14 @@ In the Balmer series ($m=2$), consecutive visible lines have ratios
 \[
   \tfrac{27}{20},\quad \tfrac{28}{25},\quad \tfrac{200}{189},\quad \tfrac{405}{392}.
 \]
-These are near musical intervals but not equal to them.
+Several lie close to musical intervals.
 $\tfrac{27}{20}$ is 21.5 cents above the fourth $\tfrac43$, and $\tfrac{28}{25}$ is 7.7 cents below the tone $\tfrac98$.
 The span of a whole series, from its first line $n=m+1$ to its limit $n\to\infty$, is exact:
 \[
   \frac{1/m^2}{1/m^2 - 1/(m+1)^2} = \frac{(m+1)^2}{2m+1} = \tfrac43,\ \tfrac95,\ \tfrac{16}7,\ \tfrac{25}9\quad(m = 1,2,3,4).
 \]
 So the Lyman series spans exactly a perfect fourth, and the Balmer series exactly a just minor seventh.
-These ratios are exact consequences of the Rydberg formula.
-Calling them intervals is a choice of name, not a physical mechanism.
+Both are exact consequences of the Rydberg formula, which makes the hydrogen spectrum a small piece of exact arithmetic.
 
 \section*{Status of the statements}
 
@@ -78,7 +76,7 @@ Statement & Grade\\
 \midrule
 Seven colours & \gradeConvention{} (Newton)\\
 The visible band spans about an octave (1.97 or 2.31, by convention) & \gradeComputed\\
-Diatonic steps do not match the colour bands & \gradeComputed\\
+Diatonic steps and colour bands divide the octave differently & \gradeComputed\\
 Balmer ratios; series spans $(m+1)^2/(2m+1)$ & \gradeClassical{} (Rydberg), \gradeComputed\\
 \bottomrule
 \end{tabular}

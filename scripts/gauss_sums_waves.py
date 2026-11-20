@@ -17,14 +17,10 @@ What it computes
       q. Checked for all p/q with q <= 12, and the decomposition itself on a grid.
 
 What it shows
-  The same identity |G(q)|^2 = q makes the Talbot images equally bright, makes the Schroeder diffuser scatter
-  sound equally into every order, and normalises the functional equation of a quadratic Dirichlet L-function
-  (its root number has modulus 1). Classical: Gauss; Schroeder (J. Acoust. Soc. Am. 65 (1979) 958-963);
-  Berry and Klein (J. Mod. Opt. 43 (1996) 2139-2164).
-
-What it does not claim
-  Anything about the zeros of L-functions. The functional equation is a symmetry about Re s = 1/2; it does
-  not locate the zeros on that line.
+  One identity, |G(q)|^2 = q, makes the Talbot images equally bright, makes the Schroeder diffuser scatter
+  sound equally into every order, and gives the root number of a quadratic Dirichlet L-function modulus 1, so
+  that the completed L-function is symmetric about Re s = 1/2. Classical: Gauss; Schroeder (J. Acoust. Soc. Am.
+  65 (1979) 958-963); Berry and Klein (J. Mod. Opt. 43 (1996) 2139-2164).
 """
 import cmath
 import math

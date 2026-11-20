@@ -16,11 +16,11 @@ every number it states.
 
 | | Note | What it shows | PDF |
 |---|---|---|---|
-| 01 | [The twelve characters of the modular group](notes/01-twelve-tones/twelve-tones.tex) | `SL(2, ℤ)` has exactly twelve characters, the powers of the multiplier of `η² = Δ^{1/12}`. The resulting pitch map is an exact dictionary with the twelve-tone scale: `T` a semitone, the stabilisers of `i` and `ρ` the diminished seventh and the whole-tone scale, the circle of fifths a Galois automorphism of `ℚ(ζ₁₂)`. Proved in Lean. Why musicians use twelve is a separate, acoustic fact. | [pdf](pdf/twelve-tones.pdf) |
+| 01 | [The twelve characters of the modular group](notes/01-twelve-tones/twelve-tones.tex) | `SL(2, ℤ)` has exactly twelve characters, the powers of the multiplier of `η² = Δ^{1/12}`. The resulting pitch map is an exact dictionary with the twelve-tone scale: `T` a semitone, the stabilisers of `i` and `ρ` the diminished seventh and the whole-tone scale, the circle of fifths a Galois automorphism of `ℚ(ζ₁₂)`. Proved in Lean. The musical twelve has a second, acoustic origin, `7/12 ≈ log₂(3/2)`. | [pdf](pdf/twelve-tones.pdf) |
 | 02 | [Quadratic characters, lattices and waves](notes/02-characters-and-waves/characters-and-waves.tex) | Quadratic characters count the plane waves of equal frequency on the nine class-number-one lattices. Their L-functions give lattice energies: the square ionic crystal's Madelung constant is `−4(√2 − 1)·ζ(½)·L(½, χ₋₄) = 1.6155…` (ζ(½) is negative). Their Gauss sums govern Talbot diffraction and Schroeder's acoustic diffusers. | [pdf](pdf/characters-and-waves.pdf) |
-| 03 | [How many colours in the rainbow?](notes/03-light/light.tex) | Seven is Newton's musical convention, and the diatonic steps do not match the colour bands. Hydrogen's frequency ratios are exactly rational: the Lyman series spans `4/3`, the Balmer series `9/5`. | [pdf](pdf/light.pdf) |
+| 03 | [How many colours in the rainbow?](notes/03-light/light.tex) | Seven is Newton's musical convention; the diatonic steps and the colour bands divide the visible octave differently. Hydrogen's frequency ratios are exactly rational: the Lyman series spans `4/3`, the Balmer series `9/5`. | [pdf](pdf/light.pdf) |
 | 04 | [What an L-function is, and what it looks like](notes/04-what-an-l-function-is/what-an-l-function-is.tex) | Each prime is a tone of frequency `log p`, and their sum is the function. On the critical line, `L(½ + it)` winds through the origin at every zero. The four L-functions of `ℚ(ζ₁₂)` form a bundle of curves in `t`. Hardy's Z-functions locate the zeros, and a character's parity is the first rung of chirality. | [pdf](pdf/what-an-l-function-is.pdf) |
-| 05 | [The golden ratio: where it is, and where it is not](notes/05-golden-ratio/golden-ratio.tex) | Not in the twelve tones: φ is the worst-approximable number, the opposite of `7/12 ≈ log₂(3/2)`. It is in phyllotaxis, in the shortest closed geodesic on the modular surface (`4 log φ`), in `X(5)` (an icosahedron), and in the E8 masses of the Ising chain (`m₂/m₁ = φ`, observed 2010). | [pdf](pdf/golden-ratio.pdf) |
+| 05 | [The golden ratio in the modular world and in physics](notes/05-golden-ratio/golden-ratio.tex) | φ is the number fractions approximate least well, the opposite extreme from `7/12 ≈ log₂(3/2)`. It appears in phyllotaxis, in the shortest closed geodesic on the modular surface (`4 log φ`), in `X(5)` (an icosahedron), and in the E8 masses of the Ising chain (`m₂/m₁ = φ`, observed 2010). | [pdf](pdf/golden-ratio.pdf) |
 | 06 | [Towards a number-theoretic standard model](notes/06-number-theoretic-standard-model/number-theoretic-standard-model.tex) | A programme stated as conjectures, with exact evidence. Anomaly cancellation is Diophantine and fixes the hypercharges. SU(3) colour lives on the Eisenstein integers, with its centre the residue field at `√−3`. The fields are blind to a `ℤ/6`, matching `PSL(2, ℤ)^ab = ℤ/6`. A three-rung chirality ladder. | [pdf](pdf/number-theoretic-standard-model.pdf) |
 | 07 | [Impulses, packets and spectra](notes/07-impulses-packets-spectra/impulses-packets-spectra.tex) | The primes as unit impulses. The four characters mod 12 split them into four orthogonal packets, losslessly (a Hadamard matrix, with energy conserved). The L-function is each packet's transfer function. The explicit formula rebuilds each packet from the zeros, and the zeros, played together, ring at the logarithms of the prime powers (Landau). Primes and zeros are a Fourier pair. | [pdf](pdf/impulses-packets-spectra.pdf) |
 | 08 | [The speed of light, the light cone and spheres](notes/08-light-cone-and-spheres/light-cone-and-spheres.tex) | c's digits are a unit choice; what c does is make the light cone a quadratic form. Light in a box: each mode degeneracy is an L-value (Gauss). Gauss's binary forms are integer relativity in 2+1 dimensions: the Gaussian and Eisenstein forms move apart at exactly c/2, and class numbers count particles on a mass shell. Lorentz boosts act on the sky as Möbius maps. | [pdf](pdf/light-cone-and-spheres.pdf) |
@@ -54,12 +54,11 @@ Every note ends with a table that grades each statement it makes:
 | **lean** | Proved in Lean 4 with Mathlib, in [morley-smith-formal](https://github.com/rmorleysmith/morley-smith-formal). |
 | **classical** | A published theorem, cited. |
 | **computed** | Checked numerically by a script in [`scripts/`](scripts). The script asserts it and fails if it stops holding. |
-| **convention** | A human choice, not a fact about nature. |
-| **open** | A question or working hypothesis, not a result. |
+| **convention** | A human choice of units or names. |
+| **open** | A question, conjecture or working hypothesis. |
 
-This repository models; it does not claim to settle open problems. The Riemann hypothesis and its
-relatives appear here only as context. A symmetry about the critical line, or a physical quantity
-evaluated on it, says nothing about where the zeros are.
+The notes model physical phenomena with L-functions and their characters. Open problems such as the
+Riemann hypothesis enter as context and, where a result depends on them, as stated hypotheses.
 
 ## Reproduce
 
@@ -76,7 +75,7 @@ PDFs.
 
 ```
 notes/      one folder per note (LaTeX); notes/preamble.tex is shared
-scripts/    one script per note; each begins with what it computes, shows, and does not claim
+scripts/    one script per note; each begins with what it computes and what it shows
 figures/    generated by the scripts (PDF for the notes, SVG for the web)
 pdf/        the built notes
 ```
@@ -92,9 +91,9 @@ pdf/        the built notes
 
 The ideas and questions are Richard Morley-Smith's: which connections to look for, and what to test.
 Claude (Anthropic), through Claude Code, writes the scripts, figures, notes and Lean proofs from the
-author's direction, searches the literature for the classical results, and checks each claim. Checking
-does not rely on trusting the AI. The Lean theorems are verified by the Lean kernel. The scripts assert
-every number they report and run in CI. The classical results cite their sources.
+author's direction, searches the literature for the classical results, and checks each claim. Each check
+is independent of the AI: the Lean kernel verifies the theorems, the scripts assert every number they
+report and run in CI, and the classical results cite their sources.
 
 ## Cite and licence
 

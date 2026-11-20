@@ -20,7 +20,7 @@ They give the electrostatic energy of a two-dimensional ionic crystal, $4(\sqrt2
 The identity $|G(q)|^2 = q$ makes the Talbot images equally bright and the diffuser's orders equally loud.
 The same identity makes the root number of a quadratic $L$-function have modulus one.
 All of this is classical, and we check each statement numerically.
-We record what it supports in the author's programme of modelling waves with quadratic characters, and what it does not.
+Section~5 places these facts in the author's programme of modelling waves with quadratic characters.
 \end{abstract}
 
 \section{Quadratic characters and their fields}
@@ -118,8 +118,8 @@ At $s=\tfrac12$ the lattice sum converges only conditionally.
 The physical value, summed over neutral blocks, agrees with the analytic continuation \cite{Lattice}.
 The script sums squares of ions with Evjen's weighting (half charges on edges, quarter charges on corners) \cite{Evjen}.
 At half-width 200 this matches the formula to $10^{-5}$ (Figure~\ref{fig:madelung}).
-For contrast, the three-dimensional rock-salt constant $1.7475646\ldots$ (also computed) has no known closed form \cite{Lattice}.
-The reason is that $x^2+y^2+z^2$ is not the norm form of a field.
+The three-dimensional rock-salt constant, $1.7475646\ldots$, is computed the same way.
+There the lattice-point counts $r_3(n)$ are class numbers rather than divisor sums (note~08), and no closed form in $L$-values is known \cite{Lattice}.
 
 \begin{figure}[ht]
   \centering
@@ -129,8 +129,7 @@ The reason is that $x^2+y^2+z^2$ is not the norm form of a field.
 \end{figure}
 
 \begin{remark}
-This puts a measurable crystal energy at the centre of the critical strip.
-It says nothing about the zeros of $\zeta$ or $L(s,\chi_{-4})$.
+A measurable crystal energy is thus a product of two $L$-values at $s=\frac12$, the centre of the critical line.
 \end{remark}
 
 \section{Gauss sums: diffraction and diffusion}
@@ -190,19 +189,17 @@ For real characters Gauss's evaluation of the sign gives $\varepsilon = 1$.
 The script checks the functional equation, with $\varepsilon=1$, for $\chi_{-4}$, $\chi_{-3}$, $\chi_{-7}$, $\chi_5$ and $\chi_{12}$.
 So one normalisation does three jobs.
 It makes the Talbot images equally bright and the diffuser's orders equally loud, and it makes the completed $L$-function symmetric about $\mathrm{Re}\,s=\frac12$.
-The symmetry does not place the zeros on that line.
 
-\section{What this supports, and questions}
+\section{The programme, and questions}
 
-The author's suggestion was that the quadratic residue structures behind the Dirichlet characters can model wave propagation.
-In the three senses above it is supported, by classical theorems that the scripts check.
+The author proposed that the quadratic residue structures behind the Dirichlet characters model wave propagation.
+The three settings above realise this exactly, through classical theorems that the scripts check.
 \begin{itemize}
 \item Mode counting on lattices is the character $\chi_D$.
 \item Lattice energies are values of $L(s,\chi_D)$.
 \item Equal-brightness diffraction is the Gauss sum.
 \end{itemize}
-None of this is new.
-The questions below are where the programme goes next.
+The questions below extend them.
 
 \begin{question}
 The lattices $\mathcal O_{-7}$ (centred rectangular, axis ratio $\sqrt7$), $\mathcal O_{-8}$ (rectangular, $1:\sqrt2$) and $\mathcal O_{-11}$ are realisable as two-dimensional photonic or phononic crystals.

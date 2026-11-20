@@ -35,12 +35,9 @@ What it computes
       (9/(8 pi^4)) (pi^5/(2^4 5!))^(1/4) miss by about 1.7 million and 4000 standard deviations.
 
 What it shows
-  The speed of light cannot be derived from number theory, because its value is a choice of units. What c does
-  is set the light cone; with c = 1 the light cone is a quadratic form, and the arithmetic of quadratic forms
-  (Gauss's classes, Dirichlet's L-values, the modular group) becomes the arithmetic of integer relativity.
-
-What it does not claim
-  That spacetime is a lattice, or that any physical constant follows from these identities.
+  The value of c is fixed by the choice of units; its role is geometric. With c = 1 the light cone is a quadratic
+  form, and the arithmetic of quadratic forms (Gauss's classes, Dirichlet's L-values, the modular group) becomes
+  the arithmetic of integer relativity.
 """
 import cmath
 import itertools

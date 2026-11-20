@@ -17,8 +17,8 @@ The stabilisers of the two elliptic points $i$ and $\rho$ sound the diminished-s
 The automorphisms of $\Z/12$, the circle of fifths among them, form the Galois group of $\Q(\zeta_{12})$.
 Its three quadratic subfields $\Q(i)$, $\Q(\sqrt{-3})$ and $\Q(\sqrt3)$ carry the three non-trivial Dirichlet characters modulo~12.
 The group-theoretic statements are proved in Lean, and the rest is checked numerically.
-We also separate what the dictionary explains from what it does not.
-The ear's choice of twelve steps has a different, acoustic origin: $7/12$ is a convergent of $\log_2(3/2)$.
+The ear's choice of twelve steps has a second, acoustic origin: $7/12$ is a convergent of $\log_2(3/2)$.
+How the two twelves are related is posed as a question.
 \end{abstract}
 
 \section{The modular group and its two elliptic points}
@@ -194,12 +194,11 @@ Twelve wins because it is the smallest number of steps with a good fifth.
   \label{fig:temp}
 \end{figure}
 
-\paragraph{What the dictionary does and does not show.}
+\paragraph{Two twelves.}
 The pitch map is exact.
 The modular group's characters, the automorphisms of the chromatic circle and the quadratic subfields of $\Q(\zeta_{12})$ are one structure, $\Z/12$ with its Klein group of automorphisms.
-The dictionary does not explain why musicians use twelve notes.
-That comes from $\log_2(3/2)$, a quantity that does not appear in the modular reason.
-The author's working hypothesis is that the two appearances of twelve are linked.
+The modular twelve comes from the orders 4 and 6 of the elliptic stabilisers; the musical twelve comes from the continued fraction of $\log_2(3/2)$.
+The author conjectures that the two are linked.
 
 \begin{question}
 Is there a mechanism, physical or perceptual, by which the arithmetic of $\SL(2,\Z)$ or of $\Q(\zeta_{12})$ constrains musical tuning or harmony?
@@ -227,7 +226,7 @@ The two twelves are linked & \gradeOpen{} (working hypothesis)\\
 \textsc{lean}: proved in Lean 4 with Mathlib.
 \textsc{classical}: a published theorem.
 \textsc{computed}: checked numerically by a script in this repository.
-\textsc{open}: a question, not a result.
+\textsc{open}: a question or conjecture.
 
 \begin{thebibliography}{9}
 \bibitem{Apostol} T.~M. Apostol, \emph{Modular Functions and Dirichlet Series in Number Theory}, 2nd ed., Springer, 1990.

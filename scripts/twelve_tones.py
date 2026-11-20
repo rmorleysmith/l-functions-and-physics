@@ -16,10 +16,8 @@ What it computes
 What it shows
   The group-theoretic statements (1)-(2) are proved in Lean in the companion repository
   morley-smith-formal (tau-track/TauTrack/Tones); here they are checked numerically. (3)-(6) are classical.
-
-What it does not claim
-  That the modular group explains musical tuning. Section (6) gives the acoustic reason for 12, which is
-  a different reason from the one in (1)-(2).
+  Section (6) gives the acoustic origin of the musical twelve; its relation to the modular twelve of (1)-(2)
+  is Question 1 of note 01.
 """
 import cmath
 import itertools

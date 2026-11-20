@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 \input{../preamble}
 
-\title{The golden ratio: where it is, and where it is not}
+\title{The golden ratio in the modular world and in physics}
 \author{Richard Morley-Smith}
 \date{Note 05 \quad November 2026}
 
@@ -10,32 +10,31 @@
 
 \begin{abstract}
 \noindent
-The symmetry of the twelve-tone circle is not the golden ratio.
-It is the Klein four-group $\{1,5,7,11\}$ of note~01, and $\varphi = (1+\sqrt5)/2$ does not appear in it.
-In fact $\varphi$ is the opposite kind of number.
+The symmetry group of the twelve-tone circle is the Klein four-group $\{1,5,7,11\}$ of note~01.
+The golden ratio $\varphi = (1+\sqrt5)/2$ sits at the other extreme of arithmetic.
 Twelve-tone music exists because $\log_2(3/2)$ is unusually close to the fraction $7/12$, while $\varphi$ is the number worst approximated by fractions.
-That is why plants use it: they need to avoid periodic arrangements.
-The golden ratio does appear, precisely, in the modular world and in physics:
+That extremal property is why plants use it: it avoids periodic arrangements.
+The golden ratio appears precisely in the modular world and in physics:
 \begin{itemize}
 \item the shortest closed geodesic on the modular surface has length $4\log\varphi$;
 \item the modular curve $X(5)$ is an icosahedron, whose twelve vertices, the cusps, have coordinates in $\Q(\sqrt5)$;
 \item the Ising chain in a magnetic field has a particle mass ratio $m_2/m_1 = \varphi$, predicted from $E_8$ and observed by neutron scattering.
 \end{itemize}
-We check each statement numerically and say where the evidence stops.
+Each statement is checked numerically.
 \end{abstract}
 
 \section{Two kinds of number}
 
 Every irrational $x$ has a continued fraction $[a_0;a_1,a_2,\dots]$.
 Its convergents $p/q$ are its best rational approximations, and large partial quotients mean very good ones.
-Hurwitz's theorem says that $q\,|qx-p| < 1/\sqrt5$ infinitely often for every irrational $x$, and that $\sqrt5$ cannot be improved.
+Hurwitz's theorem says that $q\,|qx-p| < 1/\sqrt5$ infinitely often for every irrational $x$, and that $\sqrt5$ is the best possible constant.
 The extreme case is $\varphi = [1;1,1,1,\dots]$, where $q\,|q\varphi - p|\to 1/\sqrt5 = 0.447$ at the convergents.
 By contrast, $\log_2\frac32 = [0;1,1,2,2,3,1,5,2,23,\dots]$ gives $0.235$ already at $q=12$.
 The script \script{golden\_ratio.py} checks both.
 
 So the two numbers do opposite jobs.
 Twelve-tone equal temperament works because one fraction, $7/12$, approximates the fifth well (note~01).
-The golden ratio is the number that no fraction approximates well.
+The golden ratio is the number that fractions approximate least well.
 
 \section{Phyllotaxis}
 
@@ -92,8 +91,7 @@ Since $12 - 30 + 20 = 2$, it is a sphere tiled as an icosahedron: the cusps are 
 This is Klein's picture \cite{Klein}.
 The vertices of a regular icosahedron can be taken to be the cyclic permutations of $(0,\pm1,\pm\varphi)$.
 They lie on three golden rectangles (Figure~\ref{fig:ico}, left).
-Here a twelve and the golden ratio do meet.
-But these twelve are the $60/5$ cusps of $\Gamma(5)$, not the twelve tones of note~01.
+Here a twelve and the golden ratio meet: the $60/5 = 12$ cusps of $\Gamma(5)$ are the vertices of a golden figure.
 
 \section{The golden ratio as a mass ratio}
 
@@ -112,13 +110,14 @@ This is the clearest case of a number field, here $\Q(\sqrt5)$, setting a measur
   \label{fig:ico}
 \end{figure}
 
-\section{Where the evidence stops}
+\section{A conjecture, and questions}
 
-The author's suggestion was that the golden ratio is how ``basically everything propagates, including matter''.
-The evidence supports narrower statements.
-$\varphi$ appears where five-fold or $E_8$ structure is present: phyllotaxis, icosahedral quasicrystals, and the $E_8$ Ising chain.
-It also appears in the modular world at the shortest geodesic and at level five.
-We found no evidence for the general claim.
+The established instances share five-fold or $E_8$ structure: phyllotaxis, icosahedral quasicrystals and the $E_8$ Ising chain, together with the shortest geodesic and level five in the modular world.
+The author proposes a wider statement.
+
+\begin{conjecture}
+The golden ratio governs propagation in nature generally, including the propagation of matter.
+\end{conjecture}
 
 \begin{question}
 Is there a physical system whose spectrum is the length spectrum of closed geodesics on the modular surface, so that its lowest mode is $4\log\varphi$?
@@ -133,14 +132,14 @@ Does the level-five structure, the icosahedron $X(5)$, have a physical realisati
 \toprule
 Statement & Grade\\
 \midrule
-The twelve-tone symmetry is the Klein group, not $\varphi$ & \gradeLean{} (note 01)\\
+The twelve-tone symmetry is the Klein four-group & \gradeLean{} (note 01)\\
 Hurwitz; continued fractions of $\varphi$ and $\log_2\frac32$ & \gradeClassical, \gradeComputed\\
 Golden angle and gap ratios in Vogel's model & \gradeComputed; physics \gradeClassical{} \cite{DouadyCouder}\\
 Shortest closed geodesic $4\log\varphi$; minimal hyperbolic trace 3 & \gradeClassical, \gradeComputed\\
 $\mathrm{PSL}(2,\Z/5)$ and $A_5$ order statistics; $X(5)$ an icosahedron & \gradeClassical, \gradeComputed\\
 $E_8$ masses, $m_2/m_1=\varphi$; observed in CoNb$_2$O$_6$ & \gradeClassical, \gradeComputed\\
-$\varphi$ governs propagation in general & not supported\\
-The questions above & \gradeOpen\\
+The conjecture of Section~6 & \gradeOpen\\
+The questions of Section~6 & \gradeOpen\\
 \bottomrule
 \end{tabular}
 \end{center}

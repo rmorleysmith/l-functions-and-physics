@@ -13,11 +13,7 @@ What it computes
 
 What it shows
   An L-function as a sum of waves whose frequencies are the logarithms of the primes, and the four L-functions
-  of Q(zeta_12) as a bundle of curves winding as t increases.
-
-What it does not claim
-  That the zeros found here, or any others, lie on the critical line for a reason this picture explains. The
-  curves are not geodesics; the geodesic picture of the primes is Selberg's (note 05).
+  of Q(zeta_12) as a bundle of curves winding as t increases, meeting the axis at their zeros.
 """
 import math
 
