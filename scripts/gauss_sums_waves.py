@@ -212,7 +212,10 @@ ax.set_xlabel("diffraction order")
 ax.set_ylabel("share of reflected energy")
 ax.set_xticks([-8, -4, 0, 4, 8])
 ax.set_ylim(0, 1.05)
-ax.legend(loc="upper right")
+ax.annotate("flat panel:\nall in order 0", xy=(-0.2, 0.97), xytext=(1.2, 0.8), fontsize=9, color=INK,
+            arrowprops=dict(arrowstyle="-", color=INK_2, lw=0.8))
+ax.annotate("residue wells:\n1/17 in every order", xy=(4.2, 1 / p), xytext=(1.2, 0.3), fontsize=9, color=INK,
+            arrowprops=dict(arrowstyle="-", color=INK_2, lw=0.8))
 ax.set_title("Every order gets 1/17", fontsize=10)
 save(fig, "waves-schroeder")
 print("done")
