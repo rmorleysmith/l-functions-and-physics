@@ -87,11 +87,24 @@ So $\{y_u,y_d\} = \{2y_Q,-4y_Q\}$: for $y_Q\ne0$ the solution is unique up to sc
 An exhaustive search over integers $|y|\le40$ with $y_Q = 1$ finds exactly these two solutions.
 The general solution of such $U(1)$ anomaly equations, as Diophantine problems, is due to Costa, Dobrescu and Fox \cite{CDF} and to Allanach, Gripaios and Tooby-Smith \cite{AGT}.
 
+\paragraph{Without gravity: Fermat's cubic.}
+Drop the gravitational condition, the third of the four.
+The two linear gauge conditions give $y_L = -3y_Q$ and $y_d = -2y_Q-y_u$, and the cubic condition becomes
+\[
+  y_e^3+(y_u-2y_Q)^3 = (y_u+4y_Q)^3,
+\]
+Fermat's equation of degree 3 (Lohitsiri and Tong \cite{LohitsiriTong}).
+Its rational solutions are the trivial ones, in which one of the three cubes is zero; the classical proof is a descent in the Eisenstein integers $\Z[\omega]$.
+The three cases are $y_Q = 0$, and the two assignments $\{y_u,y_d\} = \{2y_Q,-4y_Q\}$ with $y_e = 6y_Q$ found above.
+In each case the gravitational condition holds.
+So the gauge conditions alone fix the hypercharges, through the arithmetic of the ring that carries the colour roots in Section~\ref{sec:colour}.
+That every solution of the gauge conditions satisfies the gravitational condition is proved in Lean in Physlib \cite{Physlib}, from Mathlib's proof of Fermat's theorem for cubes.
+
 \physical
 Once the particle content is fixed, consistency dictates the electric charges.
 The quark charges $\frac23$ and $-\frac13$ and the lepton charges $0$ and $-1$ follow, up to the unit of charge, from one cubic and three linear equations in integers.
 
-\section{Colour lives on the Eisenstein integers}
+\section{Colour lives on the Eisenstein integers}\label{sec:colour}
 
 In the plane, the roots of $SU(3)$ are the six units $\pm1,\pm\omega,\pm\omega^2$ of $\Z[\omega]$, with Cartan matrix $\left(\begin{smallmatrix}2&-1\\-1&2\end{smallmatrix}\right)$.
 So the colour root lattice is exactly the ring of Eisenstein integers, the hexagonal lattice of notes~01 and~02.
@@ -175,6 +188,7 @@ Statement & Grade\\
 \midrule
 Counts: 12 flavours, 12 gauge bosons, 15 Weyl fermions per generation & \gradeClassical, \gradeComputed\\
 Anomaly cancellation; it fixes the hypercharges up to scale & \gradeClassical, \gradeComputed\\
+The gauge conditions alone are Fermat's cubic and imply the gravitational one & \gradeClassical, \gradeComputed; Lean (Physlib)\\
 $SU(3)$ roots are the units of $\Z[\omega]$ and one orbit of the stabiliser of $\rho$; centre $=\Z[\omega]/(1-\omega)$ & \gradeClassical, \gradeComputed\\
 The fields are blind to $\Z/6$; $\mathrm{PSL}(2,\Z)^{\mathrm{ab}} = \Z/6$ & \gradeClassical, \gradeComputed\\
 Hodge types $(k-1,0)$, $(0,k-1)$ for $\SL(2,\Z)$ & \gradeLean\\
@@ -190,6 +204,8 @@ Conjectures~\ref{c:twelve}--\ref{c:chiral} & \gradeOpen\\
 \bibitem{BaezHuerta} J.~Baez and J.~Huerta, The algebra of grand unified theories, \emph{Bull. Amer. Math. Soc.} 47 (2010), 483--552.
 \bibitem{Bump} D.~Bump, \emph{Automorphic Forms and Representations}, Cambridge University Press, 1997.
 \bibitem{CDF} D.~B. Costa, B.~A. Dobrescu and P.~J. Fox, General solution to the $U(1)$ anomaly equations, \emph{Phys. Rev. Lett.} 123 (2019), 151601.
+\bibitem{LohitsiriTong} N.~Lohitsiri and D.~Tong, Hypercharge quantisation and Fermat's last theorem, \emph{SciPost Phys.} 8 (2020), 009.
+\bibitem{Physlib} The Physlib Community, \emph{Physlib: the Lean physics library}, \url{https://github.com/leanprover-community/physlib}; theorem \texttt{SM.SMNoGrav.One.accGravSatisfied} in \texttt{Physlib/Particles/StandardModel/AnomalyCancellation/NoGrav/One/Lemmas.lean} (consulted 20 November 2026).
 \bibitem{Tong} D.~Tong, Line operators in the Standard Model, \emph{J. High Energy Phys.} 2017, no.~7, 104.
 \bibitem{Wigner} E.~P. Wigner, On unitary representations of the inhomogeneous Lorentz group, \emph{Ann. of Math.} 40 (1939), 149--204.
 \bibitem{Witten} E.~Witten, An $SU(2)$ anomaly, \emph{Phys. Lett. B} 117 (1982), 324--328.

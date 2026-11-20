@@ -9,7 +9,9 @@ What it computes (exact rational arithmetic throughout)
   (3) The balance fixes the charges. With the Standard Model's representations and unknown hypercharges, the
       linear and cubic conditions have, up to scale and swapping u and d, the single solution with y_Q != 0:
       the observed hypercharges (1/6, -2/3, 1/3, -1/2, 1). Checked by an exhaustive integer search and by
-      algebra.
+      algebra. Without the gravitational condition the cubic condition is Fermat's equation
+      y_e^3 + (y_u - 2 y_Q)^3 = (y_u + 4 y_Q)^3 (Lohitsiri and Tong), whose solutions are the trivial ones: the
+      same hypercharges, and the gravitational condition follows (proved in Lean in Physlib).
   (4) The hidden Z/6. The element (e^(2 pi i/3) I_3, -I_2, e^(2 pi i/6)) of SU(3) x SU(2) x U(1) acts
       trivially on every field, and the subgroup of the centre and U(1) acting trivially is exactly Z/6, so the
       group acting faithfully on the fields is (SU(3) x SU(2) x U(1))/Z6. (Which quotient by a subgroup of Z/6 is
@@ -90,6 +92,24 @@ for u, d, L, e in itertools.product(R, R, R, R):
 check(sorted(sols) == [(-4, 2, -3, 6), (2, -4, -3, 6)],
       f"y_Q = 1: the only integer solutions with |y| <= 40 are {sorted(sols)}, the Standard Model's (x6) up to u <-> d")
 check([6 * y for _, _, _, y in GEN] == [1, -4, 2, -3, 6], "6 Y = (1, -4, 2, -3, 6) for (Q, u^c, d^c, L, e^c)")
+
+# without the gravitational condition: Fermat's cubic (Lohitsiri and Tong)
+grid = range(-3, 4)
+check(all(6 * q ** 3 + 3 * u ** 3 + 3 * (-2 * q - u) ** 3 + 2 * (-3 * q) ** 3 + e ** 3
+          == e ** 3 + (u - 2 * q) ** 3 - (u + 4 * q) ** 3 for q in grid for u in grid for e in grid),
+      "with y_L = -3 y_Q and y_d = -2 y_Q - y_u, the cubic condition is y_e^3 + (y_u - 2 y_Q)^3 = (y_u + 4 y_Q)^3")
+gauge_only = []
+for q in (0, 1):
+    for u, e in itertools.product(R, R):
+        d, L = -2 * q - u, -3 * q
+        if 6 * q ** 3 + 3 * u ** 3 + 3 * d ** 3 + 2 * L ** 3 + e ** 3 == 0:
+            gauge_only.append((q, u, d, L, e))
+trivial = all(e == 0 or u == 2 * q or u == -4 * q for q, u, d, L, e in gauge_only)
+gravity = all(6 * q + 3 * u + 3 * d + 2 * L + e == 0 for q, u, d, L, e in gauge_only)
+check(trivial and gravity and sorted(t for t in gauge_only if t[0] == 1) == [(1, -4, 2, -3, 6), (1, 2, -4, -3, 6)]
+      and all(e == 0 and d == -u for q, u, d, L, e in gauge_only if q == 0),
+      f"gauge conditions alone, |y_u|, |y_e| <= 40: {len(gauge_only)} solutions, all with one cube zero (Fermat), "
+      "all satisfying the gravitational condition; for y_Q = 1 they are the Standard Model's two")
 
 # ---------------------------------------------------------------------------------------------------
 print("(4) the hidden Z/6")

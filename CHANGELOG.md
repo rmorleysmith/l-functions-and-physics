@@ -12,6 +12,9 @@
   (`ElevenFunctionalEquation` in morley-smith-formal: Fricke eigenvalue −1, `Λ(2 − s) = 11^{s−1}Λ(s)`,
   `L(f, 1) > 0`, reality on the critical line). Note 04 evaluates the central value and the five zeros below
   `t = 15`.
+- Note 06: without the gravitational condition, anomaly cancellation for one generation is Fermat's cubic
+  `y_e³ + (y_u − 2y_Q)³ = (y_u + 4y_Q)³` (Lohitsiri and Tong), whose trivial solutions are the observed
+  hypercharges; the statement is formalised in Lean in Physlib.
 
 ## 0.4.0 (2026-11-20)
 
