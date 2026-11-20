@@ -5,7 +5,8 @@ authors:
   - family-names: Morley-Smith
     given-names: Richard
 date-released: 2026-11-20
-version: 0.1.0
+version: 0.2.0
+doi: 10.5281/zenodo.24406415
 repository-code: https://github.com/rmorleysmith/l-functions-and-physics
 license: CC-BY-4.0
 keywords:

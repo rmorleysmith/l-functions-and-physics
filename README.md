@@ -1,6 +1,7 @@
 # L-functions and physics
 
 [![ci](https://github.com/rmorleysmith/l-functions-and-physics/actions/workflows/ci.yml/badge.svg)](https://github.com/rmorleysmith/l-functions-and-physics/actions/workflows/ci.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24406415.svg)](https://doi.org/10.5281/zenodo.24406415)
 
 Where Dirichlet L-functions, the Riemann zeta function and their characters turn up in the physical
 world, and how far they can be used to model it: lattices and crystals, waves and diffraction, light and
@@ -18,10 +19,18 @@ every number it states.
 | 01 | [The twelve characters of the modular group](notes/01-twelve-tones/twelve-tones.tex) | `SL(2, ℤ)` has exactly twelve characters, the powers of the multiplier of `η² = Δ^{1/12}`. The resulting pitch map is an exact dictionary with the twelve-tone scale: `T` a semitone, the stabilisers of `i` and `ρ` the diminished seventh and the whole-tone scale, the circle of fifths a Galois automorphism of `ℚ(ζ₁₂)`. Proved in Lean. Why musicians use twelve is a separate, acoustic fact. | [pdf](pdf/twelve-tones.pdf) |
 | 02 | [Quadratic characters, lattices and waves](notes/02-characters-and-waves/characters-and-waves.tex) | Quadratic characters count the plane waves of equal frequency on the nine class-number-one lattices. Their L-functions give lattice energies: the square ionic crystal's Madelung constant is `−4(√2 − 1)·ζ(½)·L(½, χ₋₄) = 1.6155…` (ζ(½) is negative). Their Gauss sums govern Talbot diffraction and Schroeder's acoustic diffusers. | [pdf](pdf/characters-and-waves.pdf) |
 | 03 | [How many colours in the rainbow?](notes/03-light/light.tex) | Seven is Newton's musical convention, and the diatonic steps do not match the colour bands. Hydrogen's frequency ratios are exactly rational: the Lyman series spans `4/3`, the Balmer series `9/5`. | [pdf](pdf/light.pdf) |
+| 04 | [What an L-function is, and what it looks like](notes/04-what-an-l-function-is/what-an-l-function-is.tex) | Each prime is a tone of frequency `log p`, and their sum is the function. On the critical line, `L(½ + it)` winds through the origin at every zero. The four L-functions of `ℚ(ζ₁₂)` form a bundle of curves in `t`. Hardy's Z-functions locate the zeros, and a character's parity is the first rung of chirality. | [pdf](pdf/what-an-l-function-is.pdf) |
+| 05 | [The golden ratio: where it is, and where it is not](notes/05-golden-ratio/golden-ratio.tex) | Not in the twelve tones: φ is the worst-approximable number, the opposite of `7/12 ≈ log₂(3/2)`. It is in phyllotaxis, in the shortest closed geodesic on the modular surface (`4 log φ`), in `X(5)` (an icosahedron), and in the E8 masses of the Ising chain (`m₂/m₁ = φ`, observed 2010). | [pdf](pdf/golden-ratio.pdf) |
+| 06 | [Towards a number-theoretic standard model](notes/06-number-theoretic-standard-model/number-theoretic-standard-model.tex) | A programme stated as conjectures, with exact evidence. Anomaly cancellation is Diophantine and fixes the hypercharges. SU(3) colour lives on the Eisenstein integers, with its centre the residue field at `√−3`. The fields are blind to a `ℤ/6`, matching `PSL(2, ℤ)^ab = ℤ/6`. A three-rung chirality ladder. | [pdf](pdf/number-theoretic-standard-model.pdf) |
 
 <p align="center">
   <img src="figures/tones-clock.svg" alt="The pitch map of SL(2, Z): the powers of S form a diminished seventh, the powers of ST a whole-tone scale" width="340">
   <img src="figures/waves-tori.svg" alt="Wave vectors of equal frequency on the square and hexagonal tori, counted by quadratic characters" width="460">
+</p>
+
+<p align="center">
+  <img src="figures/lfun-bundle.svg" alt="The four L-functions of Q(zeta_12) on the critical line, drawn as a bundle of curves winding in t" width="420">
+  <img src="figures/golden-phyllotaxis.svg" alt="Seeds at a fixed angle: the fifth makes twelve rays, the golden angle fills the disc" width="380">
 </p>
 
 ## How the statements are graded
@@ -77,6 +86,7 @@ every number they report and run in CI. The classical results cite their sources
 
 ## Cite and licence
 
-Cite with the metadata in [`CITATION.cff`](CITATION.cff) (GitHub's "Cite this repository" button).
+Cite with the metadata in [`CITATION.cff`](CITATION.cff) (GitHub's "Cite this repository" button). Every
+release is archived on Zenodo: [10.5281/zenodo.24406415](https://doi.org/10.5281/zenodo.24406415) (all versions).
 Code: Apache-2.0 ([`LICENSE-CODE`](LICENSE-CODE)). Notes, text and figures: CC-BY-4.0
 ([`LICENSE-TEXT`](LICENSE-TEXT)).

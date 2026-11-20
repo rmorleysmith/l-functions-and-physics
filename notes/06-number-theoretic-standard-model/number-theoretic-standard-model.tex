@@ -1,0 +1,178 @@
+\documentclass[11pt]{article}
+\input{../preamble}
+
+\title{Towards a number-theoretic standard model}
+\author{Richard Morley-Smith}
+\date{Note 06 \quad November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+This note states a programme as conjectures and collects the exact facts it can rest on.
+The programme is that the Standard Model of particle physics is arithmetic in disguise.
+Its particles would be stable signatures of a lattice-like space, its gauge group $SU(3)\times SU(2)\times U(1)$ would reflect the structure of the modular group, it would be described by an $L$-function, and its chirality would rise through levels from the foundations.
+Several of these facts are exact and checked here in rational arithmetic:
+\begin{itemize}
+\item the consistency conditions of the Standard Model (anomaly cancellation) are Diophantine equations, and they fix the hypercharges of a generation up to scale;
+\item the colour group's root lattice is the Eisenstein integers $\Z[\omega]$, and its centre is the residue field $\Z[\omega]/(1-\omega)$;
+\item the fields are blind to a $\Z/6$, as the abelianisation of $\mathrm{PSL}(2,\Z)$ is $\Z/6$;
+\item the model is chiral.
+\end{itemize}
+The counts (twelve fermions, twelve gauge bosons, twelve tones) are recorded, but they remain coincidences until a mechanism is found.
+Every conjecture is graded \textsc{open}.
+\end{abstract}
+
+\section{The programme, and some terms}
+
+In the author's words, the twelve fermions represent ``the torsion on the lattice space creating real scalar force and mass quantities we refer to as bosons''.
+Each particle ``corresponds to a stable energy signature of the state in the space''.
+The whole is ``a number-theoretic standard model'' that can be modelled with an $L$-function, and it gives rise to chirality at ever higher levels.
+Some terms first, to keep the statements precise.
+\begin{itemize}
+\item \emph{Bosons.} The twelve gauge bosons (eight gluons, $W^\pm$, $Z$, the photon) are vector particles, of spin 1.
+The only scalar is the Higgs boson.
+The masses of the fermions and of $W^\pm$ and $Z$ come from the Higgs field.
+\item \emph{Torsion.} In algebra a torsion element is one of finite order, such as $S$ and $ST$ in $\SL(2,\Z)$.
+In geometry torsion is a property of a connection.
+The programme's ``torsion'' (coupling between lattices) is not yet either; we use the algebraic sense below.
+\item \emph{Orthogonal.} The Lie algebra $\mathfrak{su}(3)\oplus\mathfrak{su}(2)\oplus\mathfrak{u}(1)$ is an orthogonal direct sum for its invariant inner product.
+\item \emph{Perfectly balanced.} The precise form is anomaly cancellation (\S\ref{sec:balance}).
+\item \emph{A stable energy signature.} Wigner's classification makes this precise: a particle is an irreducible unitary representation of the Poincar\'e group, and its mass squared is the eigenvalue of a Casimir operator \cite{Wigner}.
+\end{itemize}
+
+\section{The counts}
+
+There are twelve fermion flavours: six quarks ($u,d,c,s,t,b$) and six leptons ($e,\mu,\tau$ and three neutrinos).
+There are twelve gauge bosons, since $\dim SU(3)+\dim SU(2)+\dim U(1) = 8+3+1$.
+The pitch group of note~01 is $\Z/12$.
+A generation has fifteen Weyl fermions, or sixteen with a right-handed neutrino, so not every count is twelve.
+None of these twelves is known to cause another.
+\textbf{Conjecture C1:} the twelves are linked. \gradeOpen.
+
+\section{Balance: anomaly cancellation is Diophantine}\label{sec:balance}
+
+Write one generation as left-handed Weyl fermions:
+
+\begin{center}
+\begin{tabular}{@{}lccrr@{}}
+\toprule
+field & $SU(3)$ & $SU(2)$ & $Y$ & $6Y$\\
+\midrule
+$Q$ & $\mathbf 3$ & $\mathbf 2$ & $\tfrac16$ & $1$\\
+$u^c$ & $\bar{\mathbf 3}$ & $\mathbf 1$ & $-\tfrac23$ & $-4$\\
+$d^c$ & $\bar{\mathbf 3}$ & $\mathbf 1$ & $\tfrac13$ & $2$\\
+$L$ & $\mathbf 1$ & $\mathbf 2$ & $-\tfrac12$ & $-3$\\
+$e^c$ & $\mathbf 1$ & $\mathbf 1$ & $1$ & $6$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
+A gauge theory with chiral fermions is consistent only if its gauge anomalies cancel.
+For the Standard Model there are six conditions: $SU(3)^3$, $SU(3)^2U(1)$, $SU(2)^2U(1)$, $U(1)^3$, the mixed gravitational $U(1)$ condition, and Witten's $SU(2)$ condition (an even number of doublets) \cite{Witten}.
+The script \script{standard\_model.py} checks all six in exact rational arithmetic, with and without a right-handed neutrino.
+The electric charges of a generation also sum to zero.
+
+The conditions do more than hold: they \emph{determine} the charges.
+Keep the representations and let the hypercharges $y_Q,y_u,y_d,y_L,y_e$ be unknown.
+The conditions read
+\[
+  2y_Q+y_u+y_d = 0,\quad 3y_Q+y_L=0,\quad 6y_Q+3y_u+3y_d+2y_L+y_e = 0,\quad 6y_Q^3+3y_u^3+3y_d^3+2y_L^3+y_e^3 = 0.
+\]
+The linear ones give $y_L=-3y_Q$, $y_e = 6y_Q$ and $y_u+y_d=-2y_Q$.
+Then the cubic gives $y_uy_d = -8y_Q^2$.
+So $\{y_u,y_d\} = \{2y_Q,-4y_Q\}$: if $y_Q\ne0$ the solution is unique up to scale and the exchange $u\leftrightarrow d$, and it is the observed one.
+An exhaustive search over integers $|y|\le40$ with $y_Q = 1$ finds exactly these two solutions.
+The general solution of such $U(1)$ anomaly equations, as Diophantine problems, is due to Costa, Dobrescu and Fox \cite{CDF} and to Allanach, Gripaios and Tooby-Smith \cite{AGT}.
+This is the most solid number-theoretic content of the Standard Model we know: its consistency is a system of linear and cubic Diophantine equations.
+
+\section{Colour lives on the Eisenstein integers}
+
+In the plane, the roots of $SU(3)$ are the six units $\pm1,\pm\omega,\pm\omega^2$ of $\Z[\omega]$, with Cartan matrix $\left(\begin{smallmatrix}2&-1\\-1&2\end{smallmatrix}\right)$.
+So the colour root lattice is exactly the Eisenstein integers, the hexagonal lattice of notes~01 and~02.
+The six roots are six of the eight gluons; the other two carry no colour charge.
+The highest weight of the quark triplet is $1/(1-\omega)$.
+The three colours are $1/(1-\omega)$ times the cube roots of unity $1,\omega,\omega^2$, and antiquarks are their negatives (Figure~\ref{fig:colour}, left).
+The weight lattice is $(1-\omega)^{-1}\Z[\omega]$.
+Its index over the root lattice is $N(1-\omega) = 3 = \det$ of the Cartan matrix.
+So the centre $\Z/3$ of $SU(3)$ is the residue field $\Z[\omega]/(1-\omega)$ at the ramified prime $\sqrt{-3}$.
+All of this is checked by the script.
+\textbf{Conjecture C2:} the appearance of the Eisenstein field in the colour group is not an accident of low rank, and it connects to the role of $\Q(\sqrt{-3})$ in notes~01--02. \gradeOpen.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.95\textwidth]{sm-colour-balance}
+  \caption{Left: the six roots of $SU(3)$ are the units of $\Z[\omega]$; quark colours are $1/(1-\omega)$ times the cube roots of unity. Right: each field's contribution to the linear and cubic anomaly conditions; each set sums to zero.}
+  \label{fig:colour}
+\end{figure}
+
+\section{The hidden $\Z/6$}
+
+The element $(e^{2\pi i/3}I_3,\,-I_2,\,e^{2\pi i/6})$ of $SU(3)\times SU(2)\times U(1)$ acts trivially on every field of the Standard Model, the Higgs included.
+The subgroup that acts trivially is exactly the $\Z/6$ it generates.
+So the group acting faithfully on the fields is $(SU(3)\times SU(2)\times U(1))/\Z_6$ \cite{BaezHuerta}.
+The observed fields do not decide which quotient by a subgroup of $\Z/6$ is nature's gauge group \cite{Tong}.
+On the arithmetic side, $\mathrm{PSL}(2,\Z) = \Z/2*\Z/3$ has abelianisation $\Z/6$.
+Equivalently, the characters of $\SL(2,\Z)$ trivial on $-1$ are the six even powers of the $\eta^2$ multiplier (note~01).
+Both $\Z/6$'s are built from the primes 2 and 3.
+\textbf{Conjecture C3:} the two are the same $\Z/6$ in a precise sense. \gradeOpen.
+
+\section{Particles as representations}
+
+Wigner's dictionary has an arithmetic twin.
+An automorphic form generates an irreducible representation of $\SL(2,\R)$, or of an adelic group, and its Casimir eigenvalue is a ``mass''.
+For a Maass form the Laplace eigenvalue is $\frac14+r^2$.
+For a holomorphic form of weight $k$, the weight plays the role of spin \cite{Bump}.
+Hecke eigenvalues play the role of charges, and the $L$-function packages them.
+\textbf{Conjecture C4:} the particles of the Standard Model correspond to automorphic representations, with masses given by Casimir eigenvalues, and the model has an $L$-function built from them. \gradeOpen.
+At present this has no definition precise enough to test.
+The first step is to define the candidate $L$-function and derive one prediction from it, such as the number of generations or a mass ratio.
+That would turn the conjecture into a testable claim.
+
+\section{The chirality ladder}
+
+The programme predicts handedness at every level.
+Three rungs are exact.
+\begin{enumerate}
+\item \emph{Characters.} A Dirichlet character is even or odd.
+Imaginary quadratic fields have odd characters, and the parity changes the gamma factor of the $L$-function (note~04).
+\item \emph{Modular forms.} For $\SL(2,\Z)$ the parabolic cohomology is $S_k\times S_k$, through the even and odd period polynomials.
+It carries a pure Hodge structure with only the types $(k-1,0)$, holomorphic, and $(0,k-1)$, antiholomorphic.
+Both statements are proved in Lean in \formal{} (\texttt{tau-track/TauTrack/Cohomology}).
+\item \emph{The Standard Model.} $SU(2)$ acts only on left-handed fermions, and a generation is not equivalent to its conjugate.
+The script checks this.
+\end{enumerate}
+\textbf{Conjecture C5:} these three are one structure, the parity of a character becoming the Hodge type and then the chirality of the electroweak force. \gradeOpen.
+
+\section*{Status of the statements}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.62\textwidth}l@{}}
+\toprule
+Statement & Grade\\
+\midrule
+Counts: 12 flavours, 12 gauge bosons, 15 Weyl fermions per generation & \gradeClassical, \gradeComputed\\
+Anomaly cancellation; it fixes the hypercharges up to scale & \gradeClassical, \gradeComputed\\
+$SU(3)$ roots are the units of $\Z[\omega]$; centre $=\Z[\omega]/(1-\omega)$ & \gradeClassical, \gradeComputed\\
+The fields are blind to $\Z/6$; $\mathrm{PSL}(2,\Z)^{\mathrm{ab}} = \Z/6$ & \gradeClassical, \gradeComputed\\
+Hodge types $(k-1,0)$, $(0,k-1)$ for $\SL(2,\Z)$ & \gradeLean\\
+The Standard Model is chiral & \gradeClassical, \gradeComputed\\
+Conjectures C1--C5 & \gradeOpen\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{9}
+\bibitem{AGT} B.~C. Allanach, B.~Gripaios and J.~Tooby-Smith, Geometric general solution to the $U(1)$ anomaly equations, \emph{J. High Energy Phys.} 2020, no.~5, 065.
+\bibitem{BaezHuerta} J.~Baez and J.~Huerta, The algebra of grand unified theories, \emph{Bull. Amer. Math. Soc.} 47 (2010), 483--552.
+\bibitem{Bump} D.~Bump, \emph{Automorphic Forms and Representations}, Cambridge University Press, 1997.
+\bibitem{CDF} D.~B. Costa, B.~A. Dobrescu and P.~J. Fox, General solution to the $U(1)$ anomaly equations, \emph{Phys. Rev. Lett.} 123 (2019), 151601.
+\bibitem{Tong} D.~Tong, Line operators in the Standard Model, \emph{J. High Energy Phys.} 2017, no.~7, 104.
+\bibitem{Wigner} E.~P. Wigner, On unitary representations of the inhomogeneous Lorentz group, \emph{Ann. of Math.} 40 (1939), 149--204.
+\bibitem{Witten} E.~Witten, An $SU(2)$ anomaly, \emph{Phys. Lett. B} 117 (1982), 324--328.
+\end{thebibliography}
+
+\end{document}
