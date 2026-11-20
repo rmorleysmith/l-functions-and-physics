@@ -880,8 +880,8 @@ ax.hist(eigs, bins=36, range=(-bound, bound), density=True, color=BLUE, alpha=0.
 ax.plot(xg, kesten_mckay_pdf(xg), color=INK, lw=1.2)
 ax.axvline(-bound, color=ORANGE, lw=1)
 ax.axvline(bound, color=ORANGE, lw=1)
-ax.text(bound + 0.12, 0.17, "$2\\sqrt{5}$", ha="left", fontsize=9, color=INK)
-ax.text(-bound - 0.12, 0.17, "$-2\\sqrt{5}$", ha="right", fontsize=9, color=INK)
+ax.text(bound + 0.2, 0.09, "$2\\sqrt{5}$", ha="left", va="center", fontsize=9, color=INK)
+ax.text(-bound - 0.2, 0.09, "$-2\\sqrt{5}$", ha="right", va="center", fontsize=9, color=INK)
 ax.annotate("Kesten–McKay law", xy=(-3.6, kesten_mckay_pdf(np.array([-3.6]))[0]), xytext=(-2.6, 0.162), fontsize=8.5,
             color=INK, arrowprops=dict(arrowstyle="-", color=INK_2, lw=0.6))
 ax.set_xlim(-7.4, 7.4)

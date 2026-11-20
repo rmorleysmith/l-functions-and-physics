@@ -13,7 +13,7 @@
 \noindent
 A lattice of unit impulses in space can be taken apart in two ways: by distance, into shells, and by direction, into spherical harmonics.
 We follow both.
-A flash at every site of a cubic lattice returns to a site as a train of echoes at the times $\sqrt N$; the strength of each echo is a Dirichlet $L$-value divided by $\zeta(2)$, the echoes at $N = 7, 15, 23, 28,\dots$ are missing, and the same integers weight the echoes and the normal modes.
+A flash at every site of a cubic lattice returns to a site as a train of echoes at the times $\sqrt N$; for squarefree $N$ the strength of the echo is a Dirichlet $L$-value divided by $\zeta(2)$, the echoes at $N = 7, 15, 23, 28,\dots$ are missing, and the same integers weight the echoes and the normal modes.
 The shape of a shell is carried by its multipole moments, and these are the coefficients of modular forms of weight $l+d/2$.
 The first of them, the hexadecapole of the $N$-th shell of $\Z^d$, is the coefficient of an eta product for $d = 2,3,4$, and the crystal field of a cubic lattice of charges is the field of the nearest neighbours times $0.888\,064\,766\ldots$, a value of its Dirichlet series.
 In space the square of the hexadecapole is the central value of an $L$-function, so the size of a shell is an $L$-value at the edge of the critical strip and its shape an $L$-value at the centre.
@@ -64,7 +64,7 @@ and $r_3(N) = 0$ exactly when $N = 4^a(8b+7)$ (Gauss; Legendre \cite{Grosswald})
 
 \physical
 An observer at a lattice site hears the $N$-th shell of neighbours at the time $a\sqrt N/c$.
-The loudness of that echo is a Dirichlet $L$-value at $s=1$ divided by $\zeta(2)$, and the echoes numbered $7, 15, 23, 28, 31,\dots$ are missing (Figure~\ref{fig:echoes}).
+For squarefree $N$ the loudness of that echo is a Dirichlet $L$-value at $s=1$ divided by $\zeta(2)$, and the echoes numbered $7, 15, 23, 28, 31,\dots$ are missing (Figure~\ref{fig:echoes}).
 The left side of the second formula lists echoes and the right side lists tones.
 In the trace formula of note~09 the two lists were the primes and the zeros; for the cubic torus they are one list, the integers $r_3(N)$.
 The script \script{spheres.py} checks the identity, smoothed by a Gaussian, to $10^{-13}$, and the $L$-value form for the 151 squarefree $N\le300$.
@@ -245,7 +245,8 @@ The six rotations generate a free group: the $6\cdot5^{t-1}$ reduced words of le
 \end{derivation}
 
 \physical
-The number $2\sqrt5$ is the norm of the same sum on the tree of the free group \cite{Kesten}, and the eigenvalues fill the interval $[-2\sqrt5,2\sqrt5]$ with the Kesten--McKay density $3\sqrt{20-\lambda^2}/\big(\pi(36-\lambda^2)\big)$ of the 6-regular tree \cite{McKay}: for $l\le40$ the 1680 eigenvalues lie within $4.4475<2\sqrt5 = 4.4721$ and follow that density to a Kolmogorov--Smirnov distance of $0.014$ (Figure~\ref{fig:rotations}).
+The number $2\sqrt5$ is the norm of the same sum on the tree of the free group \cite{Kesten}.
+For $l\le40$ the 1680 eigenvalues lie within $4.4475<2\sqrt5 = 4.4721$, and they follow the Kesten--McKay density $3\sqrt{20-\lambda^2}/\big(\pi(36-\lambda^2)\big)$ of the 6-regular tree \cite{McKay} to a Kolmogorov--Smirnov distance of $0.014$ (Figure~\ref{fig:rotations}).
 A walk on the sphere by these rotations forgets its starting point as fast as a walk on a tree does.
 A quantum bit is a point of the sphere and a gate is a rotation.
 These six rotations are the V gates \cite{BGS}, and the Ramanujan bound is the reason that short circuits of such gates reach every rotation evenly \cite{ParzanchevskiSarnak}.
