@@ -45,6 +45,13 @@ and attribution.
   of plane lattices, equals `2 cosh d − 2`; a change of basis costs at least the discriminant `t² − 4`, least value
   5; Dirichlet's formula relates the minimum and the geodesic length to `L(1, χ_D)`. Lean:
   `LatticeMetricDivergence`. Reviewed by an independent AI agent before publication.
+- **Note 11: hearing the lattice.** Beside the law of duality, Kac's question for the torus `R³/Z³`: its tones give
+  its echoes, and by Schiemann's theorem (1997, real ternary forms) they determine the cubic lattice up to rotation
+  among lattices in `R³`; in four dimensions they do not (Schiemann, 1990), nor for plane membranes
+  (Gordon–Webb–Wolpert, 1992). Milnor's tori on `E8 ⊕ E8` and `D16⁺` (1964, after Witt) are checked in the new
+  `scripts/hearing_lattices.py`: equal theta series to squared length 60, the identity that gives equality at every
+  length, and root graphs with two components and one. Suggested by the author; reviewed by an independent AI agent
+  before publication.
 - **Grades and checks.** A new grade, *physics*, for published derivations and measurements. Every number quoted
   in a note is now asserted by its script to the precision printed.
 
