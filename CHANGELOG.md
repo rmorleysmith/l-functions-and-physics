@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.2 (2026-11-21)
+
+- Note 11: the laws written as one framed set of four lines (duality, size, shape, silence); the
+  historical section is now a dated record from Huygens (1690) to Berry and Keating (1999), with a
+  bibliography checked against Crossref.
+- The "if" direction of the law of silence (no sum of three squares equals `4^a(8b+7)`) is proved in
+  Lean in morley-smith-formal (`MorleySmithFormal/SilentShells`).
+- Note 11 is indexed in `DERIVATIONS.md`.
+
 ## 0.6.1 (2026-11-21)
 
 - Note 11 opens with the headline law `E_N = L(1, χ_D)/ζ(2)`: the strength of the N-th echo of a cubic
