@@ -15,7 +15,7 @@ We state the results of notes 08 and 10 on the cubic lattice as four lines for o
 The first says that the echoes and the tones of the lattice are the same list of integers; by a theorem of Schiemann that list determines the lattice up to rotation, so that among flat tori in three dimensions, in the words of Kac's title, one can hear the shape of the cubic lattice.
 The second says that the strength of an echo is a Dirichlet $L$-value at the edge of the critical strip.
 The third says that the squared anisotropy of the shell that sends the echo is an $L$-value at the centre of the strip.
-The fourth says which echoes are missing.
+The fourth says which shells are empty, and so at which times the observer hears nothing.
 Each relation is stated in one line, read in physical terms, and graded.
 The second, $E_N = L(1,\chi_D)/\zeta(2)$, is a theorem in every part, and it reappears as the multiplicity of a ring in the powder diffraction pattern of a cubic crystal.
 The last section records, in order of time, whose theorems these are.
@@ -47,7 +47,7 @@ For squarefree $N\not\equiv 7\pmod 8$ the relation reads
 \[
   \boxed{\;m_N = \frac{24}{\pi}\,\sqrt N\,L(1,\chi_D)\;}
 \]
-and the missing shells are the rings $N = 7, 15, 23, 28, 31, 39,\dots$, absent from every primitive cubic pattern.
+and the empty shells $N = 7, 15, 23, 28, 31, 39,\dots$ give no ring in any primitive cubic pattern.
 
 \physical
 The multiplicity factors that crystallographers tabulate are, ring by ring, values of Dirichlet $L$-functions: $m_1 = 6$ is $L(1,\chi_{-4}) = \pi/4$, Leibniz's series.
@@ -103,18 +103,18 @@ Together the echo strength and the shell anisotropy give the roundness of a shel
 $\mu_3(N)^2 = \dfrac{\pi^2}{100}\,\dfrac{L(5,F\otimes\chi_D)}{L(5,F\otimes\chi_{-4})\,L(1,\chi_D)^2\sqrt N}$:
 strength at the edge of the strip, anisotropy at its centre, and a factor $1/\sqrt N$ that is the roundness of random points.
 
-\begin{derivation}[missing shells]\label{d:silence}
+\begin{derivation}[empty shells]\label{d:silence}
 For every $N\ge1$, $r_3(N) = 0$ exactly when $N = 4^a(8b+7)$.
 \end{derivation}
 
 \physical
-The echoes numbered $7, 15, 23, 28,\dots$ do not exist (Figure~\ref{fig:laws}).
+The shells $N = 7, 15, 23, 28,\dots$ hold no lattice points, and at the times $\sqrt7, \sqrt{15}, \sqrt{23}, \sqrt{28},\dots$ the observer hears nothing (Figure~\ref{fig:laws}).
 That no lattice point lies on these shells is proved in Lean (\leanpath{MorleySmithFormal/SilentShells} in \formal); that every other shell is occupied is the theorem of Legendre and Gauss.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.94\textwidth]{spheres-echoes}
-  \caption{Echo strength, missing shells and Poisson duality. Left: the echo strengths $L(1,\chi_D)/\zeta(2)$, with the missing echoes. Right: the same signal from the normal modes.}
+  \caption{Echo strength, empty shells and Poisson duality. Left: the echo strengths $L(1,\chi_D)/\zeta(2)$, with gaps at the empty shells. Right: the same signal from the normal modes.}
   \label{fig:laws}
 \end{figure}
 
@@ -127,7 +127,7 @@ Written as one set, with $E_N = r_3(N)/(4\pi\sqrt N)$ the strength of the $N$-th
   \textstyle\sum_{N\ge1} E_N\,\delta(t-\sqrt N) &= t+\textstyle\sum_{N\ge1} r_3(N)\,\frac{\sin(2\pi\sqrt N\,t)}{2\pi\sqrt N} &&\text{(duality)}\\[2pt]
   E_N\,\zeta(2) &= L(1,\chi_D) &&\text{(strength)}\\[2pt]
   S_N\,L(5,F\otimes\chi_{-4}) &= L(5,F\otimes\chi_D) &&\text{(anisotropy)}\\[2pt]
-  E_N = 0 &\iff N = 4^a(8b+7) &&\text{(missing shells)}
+  E_N = 0 &\iff N = 4^a(8b+7) &&\text{(empty shells)}
 \end{aligned}\;}
 \]
 The first and last lines hold for every $N$; the second and third for squarefree $N\not\equiv7\pmod 8$.
@@ -144,7 +144,7 @@ The four relations, and the notes they summarise, rest on the following work, in
 
 \begin{description}\setlength{\itemsep}{1pt}
 \item[Huygens, 1690.] Each point of a wavefront is a source of the next front~\cite{Huygens}. In three dimensions the fronts are sharp, which is why the echoes are separate clicks.
-\item[Legendre, 1798, and Gauss, 1801.] Legendre gave the theorem on which integers are sums of three squares; Gauss counted the representations by classes of binary quadratic forms~\cite{Gauss,Grosswald}. These are the missing shells and half of the echo strength.
+\item[Legendre, 1798, and Gauss, 1801.] Legendre gave the theorem on which integers are sums of three squares; Gauss counted the representations by classes of binary quadratic forms~\cite{Gauss,Grosswald}. These are the empty shells and half of the echo strength.
 \item[Poisson, 1819 and 1823.] The solution of the wave equation in three dimensions by spherical means~\cite{Poisson1819}, which turns the count $r_3(N)$ into the strength $E_N$; and the summation formula that exchanges a lattice with its dual~\cite{Poisson1823,KosmannSchwarzbach}, which is Poisson duality.
 \item[Jacobi, 1829.] The theta function and its transformation law~\cite{Jacobi}, the generating function of every shell count in these notes.
 \item[Dirichlet, 1839.] The class number formula: the number of classes of forms is a value $L(1,\chi)$~\cite{Dirichlet}. This is the other half of the echo strength.
@@ -164,7 +164,7 @@ The four relations, and the notes they summarise, rest on the following work, in
 \end{description}
 
 \noindent
-Our contribution is the arrangement: one physical system in which Poisson duality, the echo strength, the shell anisotropy and the missing shells are statements about what an observer measures.
+Our contribution is the arrangement: one physical system in which Poisson duality, the echo strength, the shell anisotropy and the empty shells are statements about what an observer measures.
 
 \section*{Status of the statements}
 

@@ -52,9 +52,13 @@ and attribution.
   `scripts/hearing_lattices.py`: equal theta series to squared length 60, the identity that gives equality at every
   length, and root graphs with two components and one. Suggested by the author; reviewed by an independent AI agent
   before publication.
+- **Note 03: the octave section states its outcome.** The colour bands and the equal-tempered diatonic steps are
+  listed in the same order, from the violet end, and the section says what the comparison shows: the band is a
+  continuum, both rows are divisions laid on it, and exact ratios appear in the hydrogen lines. The figure title
+  now reads six colour names, as its row shows.
 - **Note 11: standard names.** "Four laws for a lattice of impulses" is now "Four relations for a cubic lattice
   of impulses", and the laws of duality, size, shape and silence are Poisson duality, echo strength, shell anisotropy
-  and missing shells. Files: `notes/11-four-relations/`, `pdf/four-relations.pdf`, `scripts/shell_anisotropy.py`
+  and empty shells. Files: `notes/11-four-relations/`, `pdf/four-relations.pdf`, `scripts/shell_anisotropy.py`
   (formerly `notes/11-laws/`, `pdf/laws.pdf`, `scripts/shape_law.py`).
 - **New: note 13, speed, spread and swirl: motion on a lattice.** Shapes of based lattices are four-velocities in
   `2 + 1` dimensions, and the functional `S` of note 12 is `2(γ − 1)`, twice the relativistic kinetic energy per rest

@@ -14,8 +14,8 @@
 Seven, by convention: Newton chose seven colours by analogy with the seven notes of the musical scale.
 The visible spectrum is a continuum, and colour vision is three-dimensional.
 The visible band spans close to one octave of frequency: 1.97 with the common limits of 380--750\,nm, and 2.31 with the colorimetric limits of 360--830\,nm.
-The seven diatonic steps of that octave and the named colour bands divide it differently.
-In the Rydberg formula the frequency ratios of hydrogen are rational, and the observed lines follow the formula to a few parts in $10^5$.
+The colour names and the seven steps of a musical scale are two divisions laid on that continuum, and they differ in number and in width.
+Exact ratios appear in a line spectrum: in the Rydberg formula the frequency ratios of hydrogen are rational, and the observed lines follow the formula to a few parts in $10^5$.
 Each series spans the ratio $(m+1)^2/(2m+1)$ from its first line to its limit: $4/3$ for Lyman and $9/5$ for Balmer.
 \end{abstract}
 
@@ -32,20 +32,24 @@ The number of named colours varies between languages and conventions.
 Frequency is inversely proportional to wavelength, so a band from $\lambda_1$ to $\lambda_2$ spans the frequency ratio $\lambda_2/\lambda_1$.
 For 380--750\,nm this is $1.974$, just under an octave.
 The CIE colour-matching tables run from 360 to 830\,nm, a ratio of $2.31$, just over one.
-The octave of light is therefore approximate, and its size depends on the threshold chosen.
+The sensitivity of the eye falls off gradually at both ends, so these limits are thresholds, and the octave of light holds to within the choice of threshold.
 
-Figure~\ref{fig:spectrum} sets three divisions of the octave side by side.
+Figure~\ref{fig:spectrum} lays two divisions on this band, with the hydrogen lines of the next section beneath them.
+From the violet end:
 \begin{itemize}
-\item The six conventional colour bands have widths 70, 45, 75, 20, 30 and 130\,nm.
-\item The seven diatonic steps of the octave 750$\to$375\,nm have widths 82, 73, 33, 61, 55, 49 and 22\,nm.
-\item The first five Balmer lines of hydrogen sit at 656.5, 486.3, 434.2, 410.3 and 397.1\,nm (vacuum wavelengths).
+\item the six conventional colour bands, violet, blue, green, yellow, orange and red, have widths 70, 45, 75, 20, 30 and 130\,nm;
+\item the seven steps of the equal-tempered major scale on the octave 375--750\,nm have widths 22, 49, 55, 61, 33, 73 and 82\,nm.
 \end{itemize}
-The first two do not correspond: there are six named bands and seven steps, and their widths differ.
+The two rows differ in number and in width.
+The band itself is a continuum: every wavelength in it is seen, and both rows are divisions laid on it from outside, the colour names by the conventions of perception and language, the steps by the arithmetic of the scale.
+Newton's seven colours are his five primaries with orange and indigo, a count matched to the seven notes of the scale.
+Exact ratios appear when the light comes from an atom.
+Its spectrum is a set of lines; for hydrogen, whose first five Balmer lines sit at 656.5, 486.3, 434.2, 410.3 and 397.1\,nm (vacuum wavelengths), the Rydberg formula makes the ratios rational.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.95\textwidth]{light-spectrum}
-  \caption{The visible spectrum (approximate sRGB rendering), the conventional colour names, the diatonic steps of the octave 750$\to$375\,nm, and the Balmer lines. Script: \script{light.py}.}
+  \caption{The visible spectrum (approximate sRGB rendering), the six conventional colour names, the seven steps of the equal-tempered major scale on the octave 375--750\,nm, and the Balmer lines. Script: \script{light.py}.}
   \label{fig:spectrum}
 \end{figure}
 
@@ -75,7 +79,7 @@ Statement & Grade\\
 \midrule
 Seven colours & \gradeConvention{} (Newton)\\
 The visible band spans about an octave (1.97 or 2.31, by the limits chosen) & \gradeComputed\\
-Widths of the seven diatonic steps of the octave 750$\to$375\,nm, beside the six named bands & \gradeComputed\\
+Widths of the seven equal-tempered diatonic steps of the octave 375--750\,nm, beside the six named bands & \gradeComputed\\
 Balmer ratios and series spans $(m+1)^2/(2m+1)$ in the Rydberg formula & \gradeClassical{} (Rydberg), \gradeComputed\\
 \bottomrule
 \end{tabular}

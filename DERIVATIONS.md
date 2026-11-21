@@ -57,7 +57,7 @@ Note 11 restates derivations 10.2 and 10.4, with Gauss's count from note 08, as 
 | Poisson duality | Σ E_N δ(t − √N) = t + Σ r₃(N) sin(2π√N t)/(2π√N), with E_N = r₃(N)/(4π√N) | classical, computed |
 | Echo strength | E_N ζ(2) = L(1, χ_D) for squarefree N ≢ 7 mod 8 | classical, computed |
 | Shell anisotropy | S_N L(5, F⊗χ₋₄) = L(5, F⊗χ_D), with S_N = a(N)²/N^{9/2} | classical within a class of N in ℚ₂ˣ modulo squares; one constant for the seven classes computed |
-| Missing shells | E_N = 0 exactly when N = 4^a(8b+7) | "if": Lean ([`SilentShells`](https://github.com/rmorleysmith/morley-smith-formal/tree/main/MorleySmithFormal/SilentShells)); "only if": classical |
+| Empty shells | E_N = 0 exactly when N = 4^a(8b+7) | "if": Lean ([`SilentShells`](https://github.com/rmorleysmith/morley-smith-formal/tree/main/MorleySmithFormal/SilentShells)); "only if": classical |
 
 ## Lattice metrics and the cosmological-term functional (note 12, [`scripts/lattice_divergence.py`](scripts/lattice_divergence.py))
 

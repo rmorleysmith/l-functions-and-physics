@@ -2,8 +2,8 @@
 
 What it computes
   (1) The visible band. With the common limits 380-750 nm it spans a frequency ratio of 1.974, just under an
-      octave; with the CIE colorimetric limits 360-830 nm it spans 2.31. The seven diatonic steps of the octave
-      750 -> 375 nm are set beside the conventional colour bands.
+      octave; with the CIE colorimetric limits 360-830 nm it spans 2.31. The seven steps of the equal-tempered major
+      scale on the octave 375-750 nm are set beside the six conventional colour bands.
   (2) Hydrogen. The Rydberg formula 1/lambda = R (1/m^2 - 1/n^2) makes every frequency ratio rational. The
       visible Balmer lines have consecutive ratios 27/20, 28/25, 200/189, 405/392; each series m spans the
       exact ratio (m + 1)^2 / (2m + 1) from its first line to its limit: 4/3 (Lyman), 9/5 (Balmer),
@@ -11,7 +11,8 @@ What it computes
 
 What it shows
   Newton chose seven colours by analogy with the seven notes of the scale; the spectrum is a continuum and colour
-  vision is three-dimensional. The rational frequency ratios of hydrogen are exact consequences of the Rydberg
+  vision is three-dimensional. The colour names and the steps of the scale are two divisions laid on that
+  continuum, and they differ in number and in width. The rational frequency ratios of hydrogen are exact consequences of the Rydberg
   formula, and several lie close to musical intervals.
 """
 import math
@@ -37,7 +38,8 @@ edges = [750 * 2 ** (-k / 12) for k in diat]
 widths = [round(edges[i] - edges[i + 1]) for i in range(7)]
 print(f"     diatonic steps of 750 -> 375 nm: {', '.join(f'{n} {e:.0f}' for n, e in zip(notes, edges))}")
 print(f"     widths of the 7 diatonic bands (nm): {widths}; of the 6 colour bands: {[b - a for _, a, b in bands]}")
-check(widths == [82, 73, 33, 61, 55, 49, 22], "the diatonic widths differ from the colour bands")
+check(widths[::-1] == [22, 49, 55, 61, 33, 73, 82],
+      "equal-tempered diatonic steps from the violet end: 22, 49, 55, 61, 33, 73, 82 nm; colour bands 70, 45, 75, 20, 30, 130 nm")
 
 # ---------------------------------------------------------------------------------------------------
 print("(2) the hydrogen series")
@@ -92,7 +94,7 @@ for i in range(7):
     a, b = edges[i + 1], edges[i]
     ax.add_patch(plt.Rectangle((a, 1.15), b - a, 0.7, color="#cde2fb" if i % 2 else "#9ec5f4", lw=0))
     ax.text((a + b) / 2, 1.5, notes[i], ha="center", va="center", fontsize=9, color=INK)
-ax.text(366, 1.5, "diatonic octave\n750 → 375 nm", ha="right", va="center", fontsize=8.5, color=INK_2)
+ax.text(366, 1.5, "diatonic steps\n(equal temperament)", ha="right", va="center", fontsize=8.5, color=INK_2)
 for n, lam in list(balmer.items())[:4]:
     ax.plot([lam, lam], [0.15, 0.85], color=INK, lw=1.6)
     ax.text(lam + 3, 0.5, ["Hα", "Hβ", "Hγ", "Hδ"][n - 3], fontsize=8.5, va="center", color=INK)
@@ -102,6 +104,6 @@ ax.set_ylim(0, 4)
 ax.set_yticks([])
 ax.spines["left"].set_visible(False)
 ax.set_xlabel("wavelength (nm)")
-ax.set_title("Two divisions of the visible octave: seven colours and seven diatonic steps")
+ax.set_title("Two divisions of the visible band: six colour names and seven diatonic steps")
 save(fig, "light-spectrum")
 print("done")
