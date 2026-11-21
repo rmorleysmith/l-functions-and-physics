@@ -43,6 +43,7 @@ jobs:
             notes/08-light-cone-and-spheres/light-cone-and-spheres.tex
             notes/09-zeros-as-energy-levels/zeros-as-energy-levels.tex
             notes/10-spheres/spheres.tex
+            notes/11-laws/laws.tex
           work_in_root_file_dir: true
       - name: Collect the PDFs
         run: |

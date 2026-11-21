@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\input{../preamble}
+\renewcommand{\notenumber}{11}
+
+\title{Three laws for a lattice of impulses}
+\author{Richard Morley-Smith}
+\date{Note 11 \quad November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+We collect the results of notes 01 to 10 into three equations for one physical system: a cubic lattice of unit impulses, observed from one of its sites.
+The first says that the echoes and the tones of the lattice are the same list of integers.
+The second says that the strength of an echo is a Dirichlet $L$-value at the edge of the critical strip.
+The third says that the squared shape of the shell that sends the echo is an $L$-value at the centre of the strip.
+Each law is stated in one line, read in physical terms, and graded.
+The last section records whose theorems they are.
+\end{abstract}
+
+\section{The system}
+
+Place a unit impulse at every point of $\Z^3$ and let it propagate by the wave equation with speed $c = 1$ (note~10).
+An observer at the origin receives the $N$-th shell of neighbours, the $r_3(N)$ lattice points at distance $\sqrt N$, at the time $\sqrt N$.
+Write $D$ for the discriminant of $\Q(\sqrt{-N})$, $\chi_D$ for its quadratic character, and $a(N)$ for the hexadecapole of the shell, the first coefficient of its shape (note~10, Derivation~10.3).
+
+\section{The three laws}
+
+\begin{derivation}[the law of duality]\label{d:duality}
+For $t>0$,
+\[
+  \sum_{N\ge1}\frac{r_3(N)}{4\pi\sqrt N}\,\delta(t-\sqrt N) \;=\; t+\sum_{N\ge1}r_3(N)\,\frac{\sin(2\pi\sqrt N\,t)}{2\pi\sqrt N}.
+\]
+\end{derivation}
+
+\physical
+What arrives in time (left) equals what resonates in frequency (right), and both are weighted by the same integers.
+This is Poisson summation in three dimensions; in the trace formula of note~09 the two sides are the primes and the zeros of $\zeta$.
+
+\begin{derivation}[the law of size]\label{d:size}
+For squarefree $N\not\equiv7\pmod8$,
+\[
+  \boxed{\;\frac{r_3(N)}{4\pi\sqrt N} = \frac{L(1,\chi_D)}{\zeta(2)}\;}
+\]
+and $r_3(N) = 0$ exactly when $N = 4^a(8b+7)$.
+\end{derivation}
+
+\physical
+The loudness of the $N$-th echo is the value of an $L$-function at $s=1$, measured against $\zeta(2)$.
+The echoes numbered $7, 15, 23, 28,\dots$ do not exist (Figure~\ref{fig:laws}).
+
+\begin{derivation}[the law of shape]\label{d:shape}
+For squarefree $N\not\equiv7\pmod8$, with $F$ the newform of weight 10 and level 2,
+\[
+  \boxed{\;\frac{a(N)^2}{N^{9/2}} = \frac{L(5,F\otimes\chi_D)}{L(5,F\otimes\chi_{-4})}\;}
+\]
+\end{derivation}
+
+\physical
+The energy in the shape of the $N$-th shell, relative to the first shell, is the value of an $L$-function at the centre of its critical strip.
+Together the two boxed laws give the roundness of a shell,
+$\mu_3(N)^2 = \dfrac{\pi^2}{100}\,\dfrac{L(5,F\otimes\chi_D)}{L(5,F\otimes\chi_{-4})\,L(1,\chi_D)^2\sqrt N}$:
+size at the edge of the strip, shape at its centre, and a factor $1/\sqrt N$ that is the roundness of random points.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.94\textwidth]{spheres-echoes}
+  \caption{The laws of size and duality. Left: the echo strengths $L(1,\chi_D)/\zeta(2)$, with the missing echoes. Right: the same signal from the normal modes.}
+  \label{fig:laws}
+\end{figure}
+
+\section{Whose theorems these are}
+
+The law of duality is Poisson's summation formula, in the form Riemann used for $\zeta$ and Ewald for crystals.
+The wave it describes obeys Kirchhoff's formula, and its sharp fronts are Huygens' principle.
+The law of size is Gauss's theorem on sums of three squares, with Legendre's description of the empty shells and Dirichlet's class number formula.
+The law of shape is a case of Waldspurger's theorem, through Shimura's correspondence; the modular forms behind it go back to Jacobi's theta function, Dedekind's eta function and Hecke.
+That shells are as round as chance allows is Deligne's theorem in four dimensions and Duke's and Iwaniec's in three.
+The dictionary from zeros to energy levels (note~09) is due to Montgomery, Dyson, Berry and Keating, and the reading of twelve through the modular group (note~01) rests on Dedekind and Klein.
+Our contribution is the arrangement: one physical system in which each of these theorems is a measurable statement.
+
+\section*{Status of the statements}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.64\textwidth}l@{}}
+\toprule
+Statement & Grade\\
+\midrule
+Derivation~\ref{d:duality}; checked with Gaussian smoothing to $10^{-13}$ & \gradeClassical, \gradeComputed\\
+Derivation~\ref{d:size}; checked for 151 values of $N\le300$ and $N\le3000$ & \gradeClassical, \gradeComputed\\
+Derivation~\ref{d:shape}: proportionality within each class of $N$ modulo 8 & \gradeClassical\\
+Derivation~\ref{d:shape}: one constant for all classes, 16 values of $N\le30$, to $10^{-14}$ & \gradeComputed\\
+The formula for $\mu_3(N)^2$ & \gradeComputed\\
+\bottomrule
+\end{tabular}
+\end{center}
+\gradelegend
+
+\noindent
+All checks are in \script{spheres.py}; references are in note~10.
+
+\end{document}

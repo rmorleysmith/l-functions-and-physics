@@ -12,7 +12,8 @@ NOTES = notes/01-twelve-tones/twelve-tones \
         notes/07-impulses-packets-spectra/impulses-packets-spectra \
         notes/08-light-cone-and-spheres/light-cone-and-spheres \
         notes/09-zeros-as-energy-levels/zeros-as-energy-levels \
-        notes/10-spheres/spheres
+        notes/10-spheres/spheres \
+        notes/11-laws/laws
 
 .PHONY: venv check pdf
 
