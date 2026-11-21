@@ -16,7 +16,7 @@ The first says that the echoes and the tones of the lattice are the same list of
 The second says that the strength of an echo is a Dirichlet $L$-value at the edge of the critical strip.
 The third says that the squared shape of the shell that sends the echo is an $L$-value at the centre of the strip.
 Each law is stated in one line, read in physical terms, and graded.
-The second, the headline law $E_N = L(1,\chi_D)/\zeta(2)$, is a theorem in every part. The last section records whose theorems they are.
+The second, the headline law $E_N = L(1,\chi_D)/\zeta(2)$, is a theorem in every part. They are then written as one set, followed by a record, in order of time, of whose theorems they are.
 \end{abstract}
 
 \section{The system}
@@ -81,14 +81,49 @@ size at the edge of the strip, shape at its centre, and a factor $1/\sqrt N$ tha
   \label{fig:laws}
 \end{figure}
 
+\section{The laws together}
+
+Written as one set, in the manner of Maxwell's equations, with $E_N = r_3(N)/(4\pi\sqrt N)$ the strength of the $N$-th echo and $S_N = a(N)^2/N^{9/2}$ the energy in its shape:
+\[
+\boxed{\;
+\begin{aligned}
+  \textstyle\sum_{N\ge1} E_N\,\delta(t-\sqrt N) &= t+\textstyle\sum_{N\ge1} r_3(N)\,\frac{\sin(2\pi\sqrt N\,t)}{2\pi\sqrt N} &&\text{(duality)}\\[2pt]
+  E_N\,\zeta(2) &= L(1,\chi_D) &&\text{(size)}\\[2pt]
+  S_N\,L(5,F\otimes\chi_{-4}) &= L(5,F\otimes\chi_D) &&\text{(shape)}\\[2pt]
+  E_N = 0 &\iff N = 4^a(8b+7) &&\text{(silence)}
+\end{aligned}\;}
+\]
+The first and last lines hold for every $N$; the second and third for squarefree $N\not\equiv7\pmod 8$.
+
+\physical
+Maxwell's equations tie a field to its sources. These four lines tie a wave to arithmetic: on the left of each is something an observer at a lattice site can measure with a clock and a detector, on the right an invariant of the field $\Q(\sqrt{-N})$.
+By Dirichlet's formula the second line also reads, for $N>3$, $r_3(N) = 12\,h(D)$ when $N\equiv1,2\pmod4$ and $24\,h(D)$ when $N\equiv3\pmod8$ (note~08): the echo counts the classes of binary quadratic forms of discriminant $D$.
+
 \section{Whose theorems these are}
 
-The law of duality is Poisson's summation formula, in the form Riemann used for $\zeta$ and Ewald for crystals.
-The wave it describes obeys Kirchhoff's formula, and its sharp fronts are Huygens' principle.
-The law of size is Gauss's theorem on sums of three squares, with Legendre's description of the empty shells and Dirichlet's class number formula.
-The law of shape is a case of Waldspurger's theorem, through Shimura's correspondence; the modular forms behind it go back to Jacobi's theta function, Dedekind's eta function and Hecke.
-That shells are as round as chance allows is Deligne's theorem in four dimensions and Duke's and Iwaniec's in three.
-The dictionary from zeros to energy levels (note~09) is due to Montgomery, Dyson, Berry and Keating, and the reading of twelve through the modular group (note~01) rests on Dedekind and Klein.
+Every line above was found by someone else. In order of time:
+
+\begin{description}\setlength{\itemsep}{1pt}
+\item[Huygens, 1690.] Each point of a wavefront is a source of the next front~\cite{Huygens}. In three dimensions the fronts are sharp, which is why the echoes are separate clicks.
+\item[Legendre, 1798, and Gauss, 1801.] Legendre stated which integers are sums of three squares; Gauss proved it and counted the representations by classes of binary quadratic forms~\cite{Gauss,Grosswald}. This is the law of silence and half of the law of size.
+\item[Poisson, 1820s.] The summation formula that exchanges a lattice with its dual~\cite{SteinWeiss}. This is the law of duality.
+\item[Jacobi, 1829.] The theta function and its transformation law~\cite{Jacobi}, the generating function of every shell count in these notes.
+\item[Dirichlet, 1839.] The class number formula: the number of classes of forms is a value $L(1,\chi)$~\cite{Dirichlet}. This is the other half of the law of size.
+\item[Riemann, 1859.] The duality of the theta function continues $\zeta$ to the whole plane and gives its functional equation; the primes are then governed by its zeros~\cite{Edwards}.
+\item[Dedekind, 1877.] The eta function~\cite{Dedekind}, from which the forms $\psi$ and $F$ of the law of shape are built, and whose transformation law carries the twelve tones of note~01.
+\item[Kirchhoff, 1883.] The solution of the wave equation in three dimensions by spherical means~\cite{Kirchhoff}; it turns the count $r_3(N)$ into the strength $E_N$.
+\item[Klein, 1884.] The invariant forms of the finite rotation groups~\cite{Klein} (note~10, Derivation~10.6).
+\item[Ewald, 1921.] Lattice sums in crystals computed by dividing the work between the lattice and its dual~\cite{Ewald}: the law of duality as a working method of physics.
+\item[Hecke, from 1920.] $L$-functions attached to characters of number fields~\cite{Hecke} and, later, the operators and $L$-functions of modular forms.
+\item[Shimura, 1973.] The correspondence between forms of half-integral weight and forms of even integral weight~\cite{Shimura}; it takes the hexadecapole series of note~10 to $F$.
+\item[Montgomery, 1973, with Dyson.] The pair correlation of the zeros of $\zeta$, recognised by Dyson as that of the eigenvalues of random Hermitian matrices~\cite{Montgomery,Dyson} (note~09).
+\item[Deligne, 1974.] The bound on the coefficients of cusp forms~\cite{Deligne}: shells in four dimensions are as round as chance allows.
+\item[Waldspurger, 1981.] Squares of coefficients of forms of half-integral weight are central values of twisted $L$-functions~\cite{Waldspurger}. This is the law of shape.
+\item[Iwaniec, 1987, and Duke, 1988.] The bound for half-integral weight and the equidistribution of lattice points on spheres in three dimensions~\cite{Iwaniec87,Duke}.
+\item[Berry and Keating, 1999.] The zeros of $\zeta$ read as energy levels of a quantum system whose classical periodic orbits are the primes~\cite{BerryKeating} (note~09).
+\end{description}
+
+\noindent
 Our contribution is the arrangement: one physical system in which each of these theorems is a measurable statement.
 
 \section*{Status of the statements}
@@ -110,6 +145,29 @@ The formula for $\mu_3(N)^2$ & \gradeComputed\\
 \gradelegend
 
 \noindent
-All checks are in \script{spheres.py}; references are in note~10.
+All checks are in \script{spheres.py}; further references are in note~10.
+
+\begin{thebibliography}{99}\small
+\bibitem{BerryKeating} M.~V. Berry and J.~P. Keating, The Riemann zeros and eigenvalue asymptotics, \emph{SIAM Rev.} 41 (1999), 236--266.
+\bibitem{Dedekind} R.~Dedekind, Schreiben an Herrn Borchardt \"uber die Theorie der elliptischen Modul-Functionen, \emph{J. reine angew. Math.} 83 (1877), 265--292.
+\bibitem{Deligne} P.~Deligne, La conjecture de Weil. I, \emph{Publ. Math. Inst. Hautes \'Etudes Sci.} 43 (1974), 273--307.
+\bibitem{Dirichlet} P.~G. Lejeune Dirichlet, Recherches sur diverses applications de l'analyse infinit\'esimale \`a la th\'eorie des nombres, \emph{J. reine angew. Math.} 19 (1839), 324--369; 21 (1840), 1--12.
+\bibitem{Duke} W.~Duke, Hyperbolic distribution problems and half-integral weight Maass forms, \emph{Invent. Math.} 92 (1988), 73--90.
+\bibitem{Dyson} F.~Dyson, Birds and frogs, \emph{Notices Amer. Math. Soc.} 56 (2009), 212--223.
+\bibitem{Edwards} H.~M. Edwards, \emph{Riemann's Zeta Function}, Academic Press, 1974 (with a translation of Riemann's paper of 1859).
+\bibitem{Ewald} P.~P. Ewald, Die Berechnung optischer und elektrostatischer Gitterpotentiale, \emph{Ann. Phys.} 369 (1921), 253--287.
+\bibitem{Gauss} C.~F. Gauss, \emph{Disquisitiones Arithmeticae}, Leipzig, 1801.
+\bibitem{Grosswald} E.~Grosswald, \emph{Representations of Integers as Sums of Squares}, Springer, 1985.
+\bibitem{Hecke} E.~Hecke, Eine neue Art von Zetafunktionen und ihre Beziehungen zur Verteilung der Primzahlen. Zweite Mitteilung, \emph{Math. Z.} 6 (1920), 11--51.
+\bibitem{Huygens} C.~Huygens, \emph{Trait\'e de la lumi\`ere}, Leiden, 1690.
+\bibitem{Iwaniec87} H.~Iwaniec, Fourier coefficients of modular forms of half-integral weight, \emph{Invent. Math.} 87 (1987), 385--401.
+\bibitem{Jacobi} C.~G.~J. Jacobi, \emph{Fundamenta nova theoriae functionum ellipticarum}, K\"onigsberg, 1829.
+\bibitem{Kirchhoff} G.~Kirchhoff, Zur Theorie der Lichtstrahlen, \emph{Ann. Phys.} 254 (1883), 663--695.
+\bibitem{Klein} F.~Klein, \emph{Vorlesungen \"uber das Ikosaeder}, Teubner, 1884.
+\bibitem{Montgomery} H.~L. Montgomery, The pair correlation of zeros of the zeta function, in \emph{Analytic Number Theory}, Proc. Sympos. Pure Math. 24, American Mathematical Society, 1973, 181--193.
+\bibitem{Shimura} G.~Shimura, On modular forms of half integral weight, \emph{Ann. of Math.} 97 (1973), 440--481.
+\bibitem{SteinWeiss} E.~M. Stein and G.~Weiss, \emph{Introduction to Fourier Analysis on Euclidean Spaces}, Princeton University Press, 1971.
+\bibitem{Waldspurger} J.-L. Waldspurger, Sur les coefficients de Fourier des formes modulaires de poids demi-entier, \emph{J. Math. Pures Appl.} 60 (1981), 375--484.
+\end{thebibliography}
 
 \end{document}
