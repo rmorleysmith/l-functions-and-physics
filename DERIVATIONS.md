@@ -71,6 +71,18 @@ Note 11 restates derivations 10.2 and 10.4, with Gauss's count from note 08, as 
 
 Lean: 12.1 and 12.2 in `MorleySmithFormal/LatticeMetricDivergence`.
 
+## Speed, spread and swirl (note 13, [`scripts/motion_and_flow.py`](scripts/motion_and_flow.py))
+
+| | Statement | In physical terms |
+|---|---|---|
+| 13.1 | For positive definite symmetric `A`, `B` of determinant one, `(t, x, y) = ((a + c)/2, (a − c)/2, b)` lies on `t² − x² − y² = 1`; `½ tr(AB⁻¹) = γ_AB = cosh δ` and `S(A, B) = 2(γ_AB − 1)`. | `½ S mc²` is the relativistic kinetic energy of a body at rest in one lattice frame seen from the other; `≈ ½ mv²` when slow. |
+| 13.2 | For `ad − bc = 1`: `S(M(i), M(γi)) = (a − d)² + (b + c)²` and `S + 4 = (a + d)² + (b − c)²`; the values are exactly the `n` with `n` and `n + 4` sums of two squares, reached by `r₂(n) r₂(n + 4)` matrices (halved for odd `n`). | The square frame reaches only the kinetic energies `½ n mc²` with `n = 0, 1, 4, 5, 9, 13, …`. |
+| 13.3 | `g = (2 1; 1 1)` boosts the frames on its axis with `γ = 7/2`, speed `3√5/7`, rapidity `4 log φ = 2√5 L(1, χ₅)`; on the axis its powers have speeds `√5 F_4n / L_4n`; every hyperbolic element gives every frame `γ ≥ 7/2`. | Einstein's velocity addition for golden boosts follows from the Fibonacci–Lucas addition formulas; no integral boost is slower than `0.958 c`. |
+| 13.4–13.5 | `Θ = Σ_n (4πνt)^{−d/2} e^{−\|x − n\|²/4νt}` solves the heat equation; `u = −2ν∇ log Θ = (x − ⟨n⟩)/t` solves Burgers' equation (Hopf–Cole). | A lattice of explosions: Hubble flows in the Voronoi cells, then decay like the slowest tone. |
+| 13.6–13.7 | Stream functions (plane) or curl eigenfields of one helicity (Beltrami fields, space) on one circle or sphere `\|k\|² = N` are steady Euler flows decaying as `e^{−4π²νNt}` under Navier–Stokes; dimensions `r₂(N)` and `r₃(N)` (per helicity). | An ideal fluid in a periodic cubic box has, for each handedness, an `r₃(N)`-dimensional space of steady Beltrami flows at wavenumber `2π√N`; `r₃(N) = (24/π)√N L(1, χ_D)` for squarefree `N ≢ 7 mod 8`, and none at `N = 4^a(8b + 7)`. |
+
+Lean: 13.2 in `MorleySmithFormal/SquareFrameEnergies`; the bound in 13.3 is 12.2 (`MorleySmithFormal/LatticeMetricDivergence`).
+
 ## The hypercharge curve (note 06, [`scripts/standard_model.py`](scripts/standard_model.py))
 
 | | Statement | In physical terms |

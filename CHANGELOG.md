@@ -56,6 +56,14 @@ and attribution.
   of impulses", and the laws of duality, size, shape and silence are Poisson duality, echo strength, shell anisotropy
   and missing shells. Files: `notes/11-four-relations/`, `pdf/four-relations.pdf`, `scripts/shell_anisotropy.py`
   (formerly `notes/11-laws/`, `pdf/laws.pdf`, `scripts/shape_law.py`).
+- **New: note 13, speed, spread and swirl: motion on a lattice.** Shapes of based lattices are four-velocities in
+  `2 + 1` dimensions, and the functional `S` of note 12 is `2(γ − 1)`, twice the relativistic kinetic energy per rest
+  energy. The square frame moved by `SL(2, ℤ)` reaches exactly the energies `½ n mc²` with `n` and `n + 4` sums of two
+  squares (Lean: `SquareFrameEnergies`, morley-smith-formal 140673b), by `r₂(n) r₂(n + 4)` matrices (halved for odd
+  `n`); golden boosts have speeds `√5 F_4n / L_4n`. Burgers' equation from a lattice of explosions (Hopf–Cole and the
+  theta function), and exact Euler/Navier–Stokes flows in a periodic box counted by `r₂(N)` and `r₃(N)`. Reviewed by
+  an independent AI agent before publication; its corrections (scope of the `r₃` formula, the count for odd `n`,
+  credit to Taylor 1923, Trkal 1919, Bateman 1915, Beltrami and Hénon, notation) are applied.
 - **Grades and checks.** A new grade, *physics*, for published derivations and measurements. Every number quoted
   in a note is now asserted by its script to the precision printed.
 
