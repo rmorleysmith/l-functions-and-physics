@@ -42,7 +42,7 @@ The three-sphere is the group of unit quaternions, which acts on itself from the
 \section{Echoes of a cubic lattice}
 
 Write $r_d(N)$ for the number of $x\in\Z^d$ with $|x|^2 = N$.
-The numbers $r_3(N) = 6, 12, 8, 6, 24, 24, 0, 12, 30,\dots$ are the numbers of $N$-th neighbours of an atom in a simple cubic crystal.
+The numbers $r_3(N)$, which begin $6$, $12$, $8$, $6$, $24$, $24$, $0$, $12$, $30$, are the numbers of $N$-th neighbours of an atom in a simple cubic crystal.
 
 \begin{derivation}[echoes]\label{d:echoes}
 Let $u$ solve the wave equation $u_{tt} = c^2\Delta u$ in $\R^3$ with $u = 0$ and $u_t = \sum_{n\in\Z^3}\delta(x-an)$ at $t=0$: a unit flash at every site of a cubic lattice of spacing $a$.
@@ -188,12 +188,13 @@ Let $V_l$ be the binary forms of degree $l$, the states of a spin $l/2$.
 A state is a constellation of $l$ points on the sphere, the roots of the form \cite{Majorana}, and the unit quaternions, as $\mathrm{SU}(2)$, rotate it.
 
 \begin{derivation}[spin states fixed by the Hurwitz units are newforms of level 2]\label{d:hurwitz}
+Let a quaternion $x = a+bi+cj+dk$ act on $V_l$ through its matrix $\left(\begin{smallmatrix}a+bi&c+di\\-c+di&a-bi\end{smallmatrix}\right)$, and write $N(x)$ for its norm.
 \begin{enumerate}[label=(\roman*)]
 \item The forms fixed by the 24 units are the polynomials in Klein's forms
 $\Phi = u^5v-uv^5$, $\Psi = u^8+14u^4v^4+v^8$ and $X = u^{12}-33u^8v^4-33u^4v^8+v^{12}$, with $X^2 = \Psi^3-108\,\Phi^4$.
 The number $m_l$ of independent ones of degree $l$ has generating function $\sum_l m_lt^l = (1+t^{12})/\big((1-t^6)(1-t^8)\big)$ \cite{Klein}.
 \item For $l\ge1$, $m_l$ is the number of newforms of weight $l+2$ and level 2 \cite{Eichler, JacquetLanglands}.
-\item For a fixed form $v$ of degree $l$, the series $\sum_x\langle v,x\cdot v\rangle\,q^{N(x)}$ over the Hurwitz quaternions $x$ is a cusp form of weight $l+2$ and level 2.
+\item For a fixed form $v$ of degree $l\ge1$, the series $\sum_x\langle v,x\cdot v\rangle\,q^{N(x)}$ over the Hurwitz quaternions $x$ is a cusp form of weight $l+2$ and level 2.
 For $v = \Phi,\Psi,X,\Phi^2$ it is a multiple of the newform in the table below.
 \item In each of these four cases the twist $(1+i)/\sqrt2$ multiplies $v$ by $\varepsilon = \pm1$, and the newform has $a(2) = \varepsilon\,2^{l/2}$ and root number $(-1)^{l/2}\varepsilon$.
 \end{enumerate}
@@ -203,11 +204,11 @@ For $v = \Phi,\Psi,X,\Phi^2$ it is a multiple of the newform in the table below.
 \small
 \begin{tabular}{@{}llclcc@{}}
 \toprule
-state & stars & weight & newform of level 2 & $\varepsilon$ & root number\\
+state & stars & weight & newform of level 2 & $\varepsilon$ & root no.\\
 \midrule
 $\Phi$, spin 3 & octahedron & 8 & $\eta(z)^8\eta(2z)^8 = q-8q^2+12q^3+64q^4-\cdots$ & $-1$ & $+1$\\
 $\Psi$, spin 4 & cube & 10 & $F = q+16q^2-156q^3+256q^4+\cdots$ & $+1$ & $+1$\\
-$X$, spin 6 & 12 edge midpoints & 14 & $q-64q^2-1836q^3+4096q^4+\cdots$ & $-1$ & $-1$\\
+$X$, spin 6 & edge midpoints & 14 & $q-64q^2-1836q^3+4096q^4+\cdots$ & $-1$ & $-1$\\
 $\Phi^2$, spin 6 & octahedron, twice & 14 & $q+64q^2+1236q^3+4096q^4-\cdots$ & $+1$ & $+1$\\
 \bottomrule
 \end{tabular}
