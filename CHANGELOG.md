@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.1 (2026-11-21)
+
+- Note 11 opens with the headline law `E_N = L(1, χ_D)/ζ(2)`: the strength of the N-th echo of a cubic
+  lattice of flashes is a Dirichlet L-value (Gauss, Dirichlet, Kirchhoff).
+
 ## 0.6.0 (2026-11-21)
 
 - Three statements are now proved in Lean in morley-smith-formal and graded so: the pitch map as the
