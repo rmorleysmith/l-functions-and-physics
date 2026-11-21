@@ -118,10 +118,11 @@ pdf/        the built notes
   functional equation of the newform of level 11 (notes 02 and 04,
   `tau-track/TauTrack/ElevenFunctionalEquation`); the least displacement `4 log φ` of a hyperbolic element and
   `tanh d(i, ρ) = ½` (notes 05 and 08, `MorleySmithFormal/ModularSystole`); the hypercharges from Fermat's
-  theorem for cubes (note 06, `MorleySmithFormal/Hypercharge`); the silent shells (note 11,
+  theorem for cubes (note 06, `MorleySmithFormal/Hypercharge`); the empty shells (note 11,
   `MorleySmithFormal/SilentShells`); the divergence of lattice metrics (note 12,
   `MorleySmithFormal/LatticeMetricDivergence`); the Fermat cubic modulo primes `p ≡ 2 (mod 3)` (note 06,
-  `MorleySmithFormal/FermatCubicModP`); and, as accompanying files without a Comparator-checked statement, the Hodge
+  `MorleySmithFormal/FermatCubicModP`); the energies of the square frame (note 13,
+  `MorleySmithFormal/SquareFrameEnergies`); and, as accompanying files without a Comparator-checked statement, the Hodge
   decomposition of the parabolic cohomology of `SL(2, ℤ)` (note 06, `tau-track/TauTrack/Cohomology`).
 - [fugue](https://github.com/rmorleysmith/fugue): the audit of the June 2026 exploration from which this
   work grew.
