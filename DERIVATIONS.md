@@ -48,6 +48,17 @@ proposition in the note. Every script asserts the numbers it prints (`make check
 | 10.6 | Forms fixed by the 24 Hurwitz units have generating function `(1 + t¹²)/((1 − t⁶)(1 − t⁸))`, the count of newforms of weight `l + 2` and level 2; `Σ_x ⟨v, x·v⟩ q^{N(x)}` is the newform (`Φ ↦ η(z)⁸η(2z)⁸`, `Ψ ↦ F`). | Spin states with the symmetry of the tetrahedron (octahedron, cube) are newforms; the root number is a parity of the state. |
 | 10.7 | The six rotations from `1 ± 2i`, `1 ± 2j`, `1 ± 2k` sum to `2(cos ϑJ_x + cos ϑJ_y + cos ϑJ_z)`, `cos ϑ = −3/5`, with eigenvalues `\|λ\| ≤ 2√5` on every degree `l ≥ 1` (Lubotzky–Phillips–Sarnak). | A walk by these rotations forgets its start as fast as a walk on a tree; they are the V gates of a quantum bit. |
 
+## Three laws for a lattice of impulses (note 11)
+
+Note 11 restates derivations 10.1–10.3 as four lines for one system, a cubic lattice of unit impulses heard from one of its sites.
+
+| Law | Statement | Grade |
+|---|---|---|
+| Duality | Σ E_N δ(t − √N) = t + Σ r₃(N) sin(2π√N t)/(2π√N), with E_N = r₃(N)/(4π√N) | classical, computed |
+| Size | E_N ζ(2) = L(1, χ_D) for squarefree N ≢ 7 mod 8 | classical, computed |
+| Shape | S_N L(5, F⊗χ₋₄) = L(5, F⊗χ_D), with S_N = a(N)²/N^{9/2} | classical within a class of N mod 8; one constant for all classes computed |
+| Silence | E_N = 0 exactly when N = 4^a(8b+7) | "if": Lean ([`SilentShells`](https://github.com/rmorleysmith/morley-smith-formal/tree/main/MorleySmithFormal/SilentShells)); "only if": classical |
+
 ## Earlier notes
 
 | Where | Statement | In physical terms | Checked by |
