@@ -16,11 +16,11 @@ and attribution.
   Allanach–Gripaios–Tooby-Smith now say what those papers solve. The Lohitsiri–Tong paper was read.
 - **Lean.** The hypercharge theorem is now also proved for `N` colours
   (`Hypercharge.gauge_anomaly_iff_colours`, `gravitational_anomaly_colours`).
-- **Note 11 (rewritten as four laws).** The comparison with Maxwell's equations is removed; the powder-diffraction
+- **Note 11 (rewritten).** The comparison with Maxwell's equations is removed; the powder-diffraction
   reading is stated as an identity for a monatomic primitive cubic crystal. Attributions corrected: the
   spherical-means solution of the wave equation is Poisson's (1819), Kirchhoff's 1883 paper is the integral
   formula; the list is in order of time; Dyson's remark is cited from Montgomery's paper.
-- **Note 10.** Waldspurger's theorem gives the law of shape within each class of `N` in `ℚ₂ˣ` modulo squares; the
+- **Note 10.** Waldspurger's theorem gives the shell anisotropy relation within each class of `N` in `ℚ₂ˣ` modulo squares; the
   single constant across the seven classes is graded as computed. Roundness "as chance allows" is a theorem in
   four dimensions and a conjecture in space. The spin-2 tetrahedral state is fixed as a ray (up to a cube root of
   unity); spin 3 is the first strictly invariant vector.
@@ -45,13 +45,17 @@ and attribution.
   of plane lattices, equals `2 cosh d − 2`; a change of basis costs at least the discriminant `t² − 4`, least value
   5; Dirichlet's formula relates the minimum and the geodesic length to `L(1, χ_D)`. Lean:
   `LatticeMetricDivergence`. Reviewed by an independent AI agent before publication.
-- **Note 11: hearing the lattice.** Beside the law of duality, Kac's question for the torus `R³/Z³`: its tones give
+- **Note 11: hearing the lattice.** Beside Poisson duality, Kac's question for the torus `R³/Z³`: its tones give
   its echoes, and by Schiemann's theorem (1997, real ternary forms) they determine the cubic lattice up to rotation
   among lattices in `R³`; in four dimensions they do not (Schiemann, 1990), nor for plane membranes
   (Gordon–Webb–Wolpert, 1992). Milnor's tori on `E8 ⊕ E8` and `D16⁺` (1964, after Witt) are checked in the new
   `scripts/hearing_lattices.py`: equal theta series to squared length 60, the identity that gives equality at every
   length, and root graphs with two components and one. Suggested by the author; reviewed by an independent AI agent
   before publication.
+- **Note 11: standard names.** "Four laws for a lattice of impulses" is now "Four relations for a cubic lattice
+  of impulses", and the laws of duality, size, shape and silence are Poisson duality, echo strength, shell anisotropy
+  and missing shells. Files: `notes/11-four-relations/`, `pdf/four-relations.pdf`, `scripts/shell_anisotropy.py`
+  (formerly `notes/11-laws/`, `pdf/laws.pdf`, `scripts/shape_law.py`).
 - **Grades and checks.** A new grade, *physics*, for published derivations and measurements. Every number quoted
   in a note is now asserted by its script to the precision printed.
 

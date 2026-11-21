@@ -1,4 +1,4 @@
-"""Note 11: the law of shape on 201 shells.
+"""Note 11: the shell anisotropy on 201 shells.
 
 What it computes
   For every squarefree N <= 400 with N not 7 (mod 8): the hexadecapole a(N) of the N-th shell of Z^3 (the
@@ -94,5 +94,5 @@ check(sorted(count) == [1, 2, 3, 5, 6, 10, 14] and sum(count.values()) == 201,
       "201 squarefree N <= 400 not 7 mod 8, in seven classes: "
       + ", ".join(f"{c} mod {16 if c % 2 == 0 else 8}: {count[c]}" for c in sorted(count)))
 check(max(worst.values()) < 1e-10,
-      f"law of shape: a(N)^2 / N^(9/2) = L(5, F x chi_D)/L(5, F x chi_-4) on all 201 shells "
+      f"shell anisotropy: a(N)^2 / N^(9/2) = L(5, F x chi_D)/L(5, F x chi_-4) on all 201 shells "
       f"(largest relative error {max(worst.values()):.0e})")
