@@ -305,8 +305,22 @@ check(abs(L92 - mp.mpf("0.888064766485554")) < mp.mpf(10) ** -14 and abs(direct 
 alt = [sum((-1) ** (n - 1) * a[n] * n ** -4.5 for n in range(1, top + 1)) for top in (1500, 3000)]
 check(abs(alt[1] - 1.0224521) < 2e-7 and abs(alt[1] - alt[0]) < 1e-6,
       f"rock salt (alternating charges): sum (-1)^(N-1) a(N) N^(-9/2) = {alt[1]:.7f}")
+
+
+def octahedral_residual(scale):
+    """potential of six unit charges at distance 1 on the axes, minus 6 + (35/4)(x^4 + y^4 + z^4 - 3r^4/5)."""
+    pt = [mp.mpf(v) * scale for v in ("0.31", "0.17", "0.23")]
+    sites = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)]
+    V = sum(1 / mp.sqrt(sum((pc - sc) ** 2 for pc, sc in zip(pt, site))) for site in sites)
+    r2 = sum(v * v for v in pt)
+    return V - 6 - mp.mpf(35) / 4 * (sum(v ** 4 for v in pt) - mp.mpf(3) / 5 * r2 ** 2)
+
+
+ratio = octahedral_residual(mp.mpf(1) / 10) / octahedral_residual(mp.mpf(1) / 20)
+check(abs(ratio - 64) < 1, "six charges at distance a on the axes: V = 6q/a + (35q/4a^5)(x^4 + y^4 + z^4 - 3r^4/5) + O(r^6), "
+      f"the octahedral crystal field (the remainder scales as r^6: ratio {mp.nstr(ratio, 5)} on halving r)")
 check(abs(175 / 48 * 12 / 5 - 35 / 4) < 1e-12,
-      "one shell of six charges at distance a: V_4 = (35/4)(q/a^5)(x^4 + y^4 + z^4 - 3r^4/5), the octahedral crystal field")
+      "a shell of charges at radius a sqrt N adds the same term times a(N) N^(-9/2): (175/48)(12/5) = 35/4")
 
 # ---------------------------------------------------------------------------------------------------
 print("(4) how round is a shell")
