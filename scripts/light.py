@@ -4,20 +4,22 @@ What it computes
   (1) Newton and Young. Newton's rule (Opticks, Book II, Part I, Obs. 14): the thicknesses of air at which the
       seven confines of the colours are reflected are as the cube roots of the squares of the string lengths
       1, 8/9, 5/6, 3/4, 2/3, 3/5, 9/16, 1/2. Young's table of 1802 is recomputed from that rule and from his
-      extreme red, .0000266 inch; Newton's interval of fits, 1/89000 inch, is converted to a wavelength.
+      extreme red, .0000266 inch; Newton's interval of fits, 1/89000 inch, is converted to a wavelength, and
+      the ratio 2^(2/3) is set against Newton's own bounds for it.
   (2) The octave. The frequency ratios of the visible band for three choices of limits; the orders of a grating
       (orders m and m + 1 of a band are separate exactly when the band is narrower than (m + 1)/m); the second
       harmonic of the ruby laser; and the identity 2 f_n - f_2n = f_0 for a comb f_n = f_0 + n f_r.
   (3) Balmer. His four coefficients 9/5, 4/3, 25/21, 9/8 times h = 3645.6 against the wavelengths of Angstrom
-      that he used, his fifth line, the consecutive ratios, and the span (m + 1)^2/(2m + 1) of each series.
+      that he used, his fifth line, his case n = 1, the consecutive ratios, and the span of each series.
   (4) The tones of a cubic cavity. The count 2 r_3(N) of tones of frequency (c/L) sqrt N, its sum against the
       volume term (8 pi/3) X^(3/2), the empty shells, and r_3(N) = (24/pi) sqrt N L(1, chi_D).
   (5) Planck's sum. The integral of x^3/(e^x - 1) is 6 zeta(4) = pi^4/15, term by term; the shares of Wien's
       term; the Stefan-Boltzmann constant from the defined values of h, k and c; the photons of the cosmic
       background; the surface of the Sun.
   (6) The cavity exactly. For the periodic box, with tau = k T L/(h c), the thermal energy in units of h c/L is
-      (8 pi^5/15) tau^4 - 2 tau + Z(2)/(2 pi^3) up to terms smaller than every power of 1/tau, where
-      Z(s) = sum r_3(N) N^(-s) is Epstein's zeta function of the cubic lattice; Z(-1/2) = -Z(2)/(2 pi^3).
+      (8 pi^5/15) tau^4 - 2 tau + Z(2)/(2 pi^3) - rho(tau), where Z(s) = sum r_3(N) N^(-s) is Epstein's zeta
+      function of the cubic lattice, Z(-1/2) = -Z(2)/(2 pi^3), and rho is an explicit sum over the dual lattice
+      of size 96 pi^3 tau^3 e^(-4 pi^2 tau).
   (7) Handedness. On each shell |k|^2 = N the curl has the eigenvalues 0, +2 pi sqrt N, -2 pi sqrt N on the
       three polarisations of each wave vector; a real field of one handedness is checked to satisfy
       curl u = 2 pi sqrt N u.
@@ -51,14 +53,21 @@ rule = [266 * float(s) ** (2 / 3) for s in strings]
 check(all(abs(a - b) < 0.7 for a, b in zip(rule, young_confines)),
       "Young's eight confines, .0000266 to .0000167 inch, are Newton's rule s^(2/3) on the string "
       "1, 8/9, 5/6, 3/4, 2/3, 3/5, 9/16, 1/2 (to the last digit he printed)")
-check(abs(59750 / 37640 - 2 ** (2 / 3)) < 1e-4,
-      f"Young's undulations per inch, 59750/37640 = {59750 / 37640:.4f} = 2^(2/3) = {2 ** (2 / 3):.4f}: "
-      "between a minor sixth 8/5 and a major sixth 5/3")
+check(abs(59750 / 37640 - 2 ** (2 / 3)) < 1e-4 and abs(1200 * math.log2(2 ** (2 / 3)) - 800) < 1e-9
+      and 3 / 2 < 2 ** (2 / 3) < 8 / 5 < 13 / 8 and 14.25 / 9 < 2 ** (2 / 3) < 14.34 / 9,
+      f"Young's undulations per inch, 59750/37640 = {59750 / 37640:.4f} = 2^(2/3) = {2 ** (2 / 3):.4f}: eight "
+      "equal semitones, under the minor sixth 8/5, inside Newton's own bounds 3/2 and 13/8 (Obs. 13)")
+octaves = math.log2(561e12 / 256)
+check(abs(octaves - 41) < 0.02, f"Young's yellow green, 561 millions of millions, is {octaves:.2f} octaves above 256")
 red, violet = INCH / 37640, INCH / 59750
 newton = 2 * INCH / 89000
 check(abs(red - 674.8) < 0.1 and abs(violet - 425.1) < 0.1 and abs(newton - 570.8) < 0.1,
       f"in nanometres: Young's extremes {red:.1f} and {violet:.1f}; Newton's interval of fits 1/89000 inch is "
       f"half of {newton:.1f} nm")
+young_yellow, young_confine = INCH / 44000, 235e-7 * INCH
+check(abs(young_yellow - 577.3) < 0.1 and 1.04 < young_confine / newton < 1.05,
+      f"Young's yellow, 44000 to the inch, is {young_yellow:.1f} nm; his confine of yellow and orange is "
+      f"{young_confine:.0f} nm, {100 * (young_confine / newton - 1):.1f}% longer than Newton's length")
 
 # ---------------------------------------------------------------------------------------------------
 print("(2) the octave")
@@ -104,6 +113,15 @@ spans = {m: Fraction(1, m * m) / nu(m, m + 1) for m in range(1, 5)}
 check(spans == {m: Fraction((m + 1) ** 2, 2 * m + 1) for m in range(1, 5)}
       and spans[1] == Fraction(4, 3) and spans[2] == coeff[0],
       "series spans (m + 1)^2/(2m + 1): Lyman 4/3, Balmer 9/5 (his first coefficient), Paschen 16/7, Brackett 25/9")
+case_one = [Fraction(m * m, m * m - 1) for m in range(2, 6)]
+check(case_one == [Fraction(4, 3), Fraction(9, 8), Fraction(16, 15), Fraction(25, 24)]
+      and case_one == [Fraction(m * m, m * m - 4) for m in (4, 6, 8, 10)],
+      "Balmer's case n = 1, 4/3, 9/8, 16/15, 25/24, is every second coefficient of his own series (m = 4, 6, 8, 10)")
+lyman = [1e9 / (R_H * float(nu(1, n))) for n in range(2, 6)]
+check(all(abs(4e9 / R_H / 4 * float(q) - lam) < 1e-9 for q, lam in zip(case_one, lyman))
+      and abs(lyman[0] - 121.57) < 0.01,
+      "with a fundamental number four times smaller the same coefficients are Lyman's series: "
+      + ", ".join(f"{lam:.2f}" for lam in lyman) + " nm")
 balmer_nm = {n: 1e9 / (R_H * float(nu(2, n))) for n in range(3, 8)}
 
 # ---------------------------------------------------------------------------------------------------
@@ -158,12 +176,12 @@ integral = mp.quad(lambda x: x ** 3 / mp.expm1(x), [0, 1, 10, 50, mp.inf])
 check(abs(integral - mp.pi ** 4 / 15) < 1e-20 and abs(6 * mp.zeta(4) - mp.pi ** 4 / 15) < 1e-25,
       "integral of x^3/(e^x - 1) = sum of 6/m^4 = 6 zeta(4) = pi^4/15 (Euler: zeta(4) = pi^4/90)")
 check(abs(mp.quad(lambda x: x ** 3 * mp.exp(-3 * x), [0, mp.inf]) - mp.mpf(6) / 81) < 1e-20,
-      "term by term: the m-th quantum of every tone carries the integral of x^3 e^(-m x) = 6/m^4")
+      "term by term: the j-th quantum of every tone carries the integral of x^3 e^(-j x) = 6/j^4")
 check(abs(mp.quad(lambda x: x ** 2 / mp.expm1(x), [0, 1, 10, 50, mp.inf]) - 2 * mp.zeta(3)) < 1e-20,
       "integral of x^2/(e^x - 1) = 2 zeta(3): the number of photons")
 wien_energy, wien_number = 1 / mp.zeta(4), 1 / mp.zeta(3)
 check(abs(wien_energy - 0.92394) < 1e-5 and abs(wien_number - 0.83191) < 1e-5,
-      f"Wien's term m = 1 carries {float(wien_energy):.4f} of the energy and {float(wien_number):.4f} of the photons")
+      f"Wien's term j = 1 carries {float(wien_energy):.4f} of the energy and {float(wien_number):.4f} of the photons")
 sigma = 2 * math.pi ** 5 * kB ** 4 / (15 * h ** 3 * c ** 2)
 check(abs(sigma - 5.670374419e-8) < 1e-17, f"Stefan-Boltzmann constant 2 pi^5 k^4/(15 h^3 c^2) = {sigma:.9e} W/m^2/K^4")
 photons = lambda T: 16 * math.pi * float(mp.zeta(3)) * (kB * T / (h * c)) ** 3
@@ -204,15 +222,25 @@ def thermal(tau):
     return float((r3[1: top + 1] * root / np.expm1(root / tau)).sum())
 
 
-closed = lambda tau: 4 * math.pi ** 5 / 15 * tau ** 4 - tau + float(Z2) / (4 * math.pi ** 3)
-worst = max(abs(thermal(tau) - closed(tau)) for tau in (1.0, 1.5, 2.0))
-check(worst < 1e-9,
-      "thermal energy of the periodic box = (hc/L) [(8 pi^5/15) tau^4 - 2 tau + Z(2)/(2 pi^3)] for "
-      f"tau = 1, 1.5, 2: worst difference {worst:.1e}")
-small = [(thermal(tau) - closed(tau)) / (tau ** 3 * math.exp(-4 * math.pi ** 2 * tau)) for tau in (0.3, 0.4, 0.5)]
-check(all(-1520 < q < -1470 for q in small) and abs(thermal(0.5) - closed(0.5)) < 1e-6,
-      "the remainder is of order tau^3 e^(-4 pi^2 tau): its ratio to that is "
-      + ", ".join(f"{q:.0f}" for q in small) + f" at tau = 0.3, 0.4, 0.5 ({thermal(0.5) - closed(0.5):.1e} at 0.5)")
+def rho_half(tau):
+    """Half of rho(tau): sum over xi != 0 of (2 pi^3 tau^3/|xi|) coth(a)/sinh(a)^2, a = 2 pi^2 tau |xi|."""
+    total = 0.0
+    for N in range(1, 400):
+        a = 2 * math.pi ** 2 * tau * math.sqrt(N)
+        if r3[N] and a < 300:
+            total += r3[N] * 2 * math.pi ** 3 * tau ** 3 / math.sqrt(N) / math.tanh(a) / math.sinh(a) ** 2
+    return total
+
+
+closed = lambda tau: 4 * math.pi ** 5 / 15 * tau ** 4 - tau + float(Z2) / (4 * math.pi ** 3) - rho_half(tau)
+worst = max(abs(thermal(tau) / closed(tau) - 1) for tau in (0.2, 0.3, 0.5, 1.0, 1.5, 2.0))
+check(worst < 1e-12,
+      "thermal energy of the periodic box = (hc/L) [(8 pi^5/15) tau^4 - 2 tau + Z(2)/(2 pi^3) - rho(tau)] for "
+      f"tau = 0.2 to 2: worst relative difference {worst:.1e}")
+check(abs(2 * rho_half(0.5) - 1.0e-6) < 1e-7 and 2 * rho_half(1.0) < 1e-12
+      and abs(2 * rho_half(1.5) / (96 * math.pi ** 3 * 1.5 ** 3 * math.exp(-4 * math.pi ** 2 * 1.5)) - 1) < 1e-6,
+      f"rho(1/2) = {2 * rho_half(0.5):.2e}, rho(1) = {2 * rho_half(1.0):.1e}, and rho(tau) -> "
+      "96 pi^3 tau^3 e^(-4 pi^2 tau)")
 check(abs(thermal(0.05) / (6 / math.expm1(20)) - 1) < 1e-2 and 2 * thermal(0.05) < 1e-7,
       "at tau = 0.05 only the six lowest tones are excited: the formula is one of high temperature")
 
@@ -316,10 +344,10 @@ a1.legend(loc="upper left")
 a1.grid(True, axis="y")
 xx = np.linspace(1e-3, 12, 500)
 a2.plot(xx, xx ** 3 / np.expm1(xx), color=INK, lw=1.8, label="Planck")
-for m, col in ((1, BLUE), (2, ORANGE)):
-    share = float(1 / (m ** 4 * mp.zeta(4)))
-    a2.plot(xx, xx ** 3 * np.exp(-m * xx), color=col, lw=1.4,
-            label=rf"$m={m}$: {100 * share:.1f}% of the energy")
+for j, col in ((1, BLUE), (2, ORANGE)):
+    share = float(1 / (j ** 4 * mp.zeta(4)))
+    a2.plot(xx, xx ** 3 * np.exp(-j * xx), color=col, lw=1.4,
+            label=rf"$j={j}$: {100 * share:.1f}% of the energy")
 a2.set_xlabel(r"$x=h\nu/kT$")
 a2.set_ylabel(r"energy per unit $x$")
 a2.set_title(r"Planck's law as a sum: $6\zeta(4)=\pi^4/15$")
