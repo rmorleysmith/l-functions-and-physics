@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.3 (2026-11-21)
+
+- The law of shape is now checked on all 201 squarefree `N ≤ 400` with `N ≢ 7 (mod 8)`, in each of the seven
+  classes of `N` in `ℚ₂ˣ` modulo squares, to `10⁻¹¹` (`scripts/shape_law.py`; previously 16 shells).
+
 ## 0.6.2 (2026-11-21)
 
 - Note 11: the laws written as one framed set of four lines (duality, size, shape, silence); the
