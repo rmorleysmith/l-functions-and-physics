@@ -14,7 +14,7 @@
 How does the speed of light enter an arithmetic picture of physics?
 Its value, $299\,792\,458$\,m/s, is exact by the definition of the metre, so its digits record a choice of units.
 Its role is geometric: $c$ fixes the light cone, and with $c=1$ the light cone is a quadratic form, which places the arithmetic of quadratic forms inside relativity.
-In a box of light, $c$ turns a count of lattice points into a count of frequencies, and the number of modes at each frequency is a Dirichlet $L$-value.
+In a box of light, $c$ turns a count of lattice points into a count of frequencies, and for squarefree $N$ the number of modes at the frequency of index $N$ is a multiple of a Dirichlet $L$-value.
 Gauss's binary quadratic forms are integer vectors in $2+1$-dimensional spacetime whose Minkowski square is the discriminant: definite forms are massive particles, degenerate forms light rays and indefinite forms geodesics.
 The Gaussian and Eisenstein forms move relative to each other at exactly $c/2$, and class numbers count the integer particles on a mass shell.
 Integer points on spheres and on mass shells spread evenly.
@@ -109,7 +109,7 @@ In the rest frame of $x^2+y^2$, the form $x^2+bxy+cy^2$ of discriminant $D$ has 
 The Gaussian and Eisenstein forms, as particles, move relative to each other at exactly half the speed of light.
 Equivalently, the hyperbolic distance from $i$ to $\rho$ is $\operatorname{artanh}\frac12 = \frac12\log3 = 0.5493$; this equality is proved in Lean in \formal{} (\leanpath{MorleySmithFormal/ModularSystole}).
 The golden form $x^2-xy-y^2$ is spacelike; its geodesic is the shortest closed geodesic of note~05, which passes through $i$.
-The principal forms of the nine fields of class number one (note~02) have the following speeds in the Gaussian frame; the larger the discriminant, the closer to light.
+The principal forms of the nine fields of class number one (note~02) have the following speeds in the Gaussian frame; for large $|D|$ the Lorentz factor grows like $\sqrt{|D|}/4$.
 
 \begin{center}
 \small
@@ -184,10 +184,10 @@ The group $\SL(2,\Z[i])$ (Picard's group) preserves the Hermitian matrices with 
 The Bianchi groups $\mathrm{PSL}(2,\mathcal O_D)$ of the imaginary quadratic fields of note~02 act on hyperbolic 3-space, the velocity space of $3+1$ relativity, as $\SL(2,\Z)$ acts on the upper half-plane \cite{EGM}.
 The script checks both statements on random matrices.
 
-\section{The one pure number with $c$ in it}
+\section{A pure number with $c$ in it}
 
 The fine-structure constant $\alpha = e^2/(4\pi\varepsilon_0\hbar c)$ is dimensionless, so its value is independent of units.
-CODATA gives $1/\alpha = 137.035\,999\,084(21)$ \cite{CODATA}.
+CODATA gives $1/\alpha = 137.035\,999\,177(21)$ \cite{CODATA}.
 Eddington proposed $137$ exactly.
 Wyler proposed $\frac{9}{8\pi^4}\big(\frac{\pi^5}{2^4\,5!}\big)^{1/4}$, from volumes of symmetric domains, which gives $1/\alpha = 137.036\,082$ \cite{Wyler}.
 At CODATA precision these differ from the measured value by about 1.7 million and 4000 standard deviations respectively.
@@ -231,14 +231,14 @@ The working hypothesis; Questions 1 and 2 & \gradeOpen\\
 
 \begin{thebibliography}{9}
 \bibitem{SI} Bureau International des Poids et Mesures, \emph{The International System of Units (SI)}, 9th ed., 2019.
-\bibitem{CODATA} E.~Tiesinga, P.~J. Mohr, D.~B. Newell and B.~N. Taylor, CODATA recommended values of the fundamental physical constants: 2018, \emph{Rev. Mod. Phys.} 93 (2021), 025010.
+\bibitem{CODATA} P.~J. Mohr, D.~B. Newell, B.~N. Taylor and E.~Tiesinga, CODATA recommended values of the fundamental physical constants: 2022, \emph{Rev. Mod. Phys.} 97 (2025), 025002.
 \bibitem{Duke} W.~Duke, Hyperbolic distribution problems and half-integral weight Maass forms, \emph{Invent. Math.} 92 (1988), 73--90.
 \bibitem{EGM} J.~Elstrodt, F.~Grunewald and J.~Mennicke, \emph{Groups Acting on Hyperbolic Space}, Springer, 1998.
 \bibitem{Grosswald} E.~Grosswald, \emph{Representations of Integers as Sums of Squares}, Springer, 1985.
 \bibitem{Linnik} Yu.~V. Linnik, \emph{Ergodic Properties of Algebraic Fields}, Springer, 1968.
 \bibitem{PenroseRindler} R.~Penrose and W.~Rindler, \emph{Spinors and Space-Time}, vol.~1, Cambridge University Press, 1984.
 \bibitem{Weyl} H.~Weyl, Das asymptotische Verteilungsgesetz der Eigenwerte linearer partieller Differentialgleichungen, \emph{Math. Ann.} 71 (1912), 441--479.
-\bibitem{Wyler} E.~W. Weisstein, Wyler's constant, \emph{MathWorld}, \url{https://mathworld.wolfram.com/WylersConstant.html} (A.~Wyler, 1969).
+\bibitem{Wyler} A.~Wyler, L'espace sym\'etrique du groupe des \'equations de Maxwell, \emph{C. R. Acad. Sci. Paris S\'er. A-B} 269 (1969), A743--A745.
 \end{thebibliography}
 
 \end{document}

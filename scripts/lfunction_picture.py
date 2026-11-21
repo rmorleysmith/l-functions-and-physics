@@ -17,7 +17,7 @@ What it computes
       value, and the first zeros on the line as sign changes of the real function.
 
 What it shows
-  An L-function as a sum of waves whose frequencies are the logarithms of the primes, and the four L-functions
+  The logarithm of an L-function as a sum of waves whose frequencies are the logarithms of the primes, and the four L-functions
   of Q(zeta_12) as a bundle of curves winding as t increases, meeting the axis at their zeros.
 """
 import math
@@ -80,7 +80,7 @@ for p in P:
         tones += amp * np.cos(k * ts * math.log(p))
 exact = np.array([float(mp.log(abs(mp.zeta(mp.mpc(sigma, t))))) for t in ts])
 err = np.max(np.abs(tones - exact)) / np.max(np.abs(exact))
-check(err < 0.02, f"log|zeta(1.3 + it)| = sum over primes p < 10^4 of the tones, max relative error {err:.4f}")
+check(0.0125 < err < 0.0135, f"log|zeta(1.3 + it)| = sum over primes p < 10^4 of the tones, max relative error {err:.4f} (1.3%)")
 
 # ---------------------------------------------------------------------------------------------------
 print("(2) and (3) the critical line")
@@ -107,7 +107,7 @@ check(abs(zeros["χ₋₄"][0] - 6.020949) < 1e-5, "L(s, chi_-4): first zero 6.0
 for name, q, vals, a, col in CHARS:
     T = 30
     main = T / (2 * math.pi) * math.log(q * T / (2 * math.pi * math.e)) + (7 / 8 if q == 1 else 0)
-    check(abs(len(zeros[name]) - main) < 1.5,
+    check((len(zeros[name]), round(main, 1)) == {1: (3, 3.6), 4: (10, 9.3), 3: (8, 7.9), 12: (14, 14.6)}[q],
           f"{name}: {len(zeros[name])} zeros below t = 30; Riemann-von Mangoldt main term {main:.2f}")
 
 # ---------------------------------------------------------------------------------------------------
@@ -175,7 +175,7 @@ ax.plot(ts, tones, color=BLUE, lw=1.2, label="sum of the tones of all primes bel
 ax.set_xlabel("t")
 ax.set_ylabel("log |ζ|")
 ax.legend(loc="upper right", fontsize=8.5)
-ax.set_title("Their sum is the zeta function", fontsize=10)
+ax.set_title("Their sum is log|ζ(1.3 + it)|", fontsize=10)
 save(fig, "lfun-tones")
 
 # (b) the curve of zeta on the critical line

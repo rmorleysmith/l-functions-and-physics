@@ -13,8 +13,8 @@
 \noindent
 The quadratic Dirichlet characters $\chi_D$ of the imaginary quadratic fields appear in three physical settings.
 They count the plane waves of equal frequency on a periodic lattice: for the square and hexagonal lattices and the seven other lattices of class number one, the multiplicity of a frequency is a divisor sum of $\chi_D$.
-Their $L$-functions are the spectral zeta functions of those lattices and give lattice energies; the Madelung constant of the square ionic crystal is $4(\sqrt2-1)\,|\zeta(\tfrac12)|\,L(\tfrac12,\chi_{-4}) = 1.61554\ldots$, a product of two values at the centre of the critical line.
-Their Gauss sums govern the diffraction of light by a grating (the Talbot effect) and the scattering of sound by Schroeder's quadratic-residue diffuser: the identity $|G(q)|^2 = q$ makes the Talbot images equally bright and the diffuser's orders equally loud, and it gives the root number of a quadratic $L$-function modulus one.
+The spectral zeta function of such a lattice is $\zeta(s)L(s,\chi_D)$, up to the number of units, and gives lattice energies; the Madelung constant of the square ionic crystal is $4(\sqrt2-1)\,|\zeta(\tfrac12)|\,L(\tfrac12,\chi_{-4}) = 1.61554\ldots$, a product of two values at the centre of the critical line.
+Their Gauss sums govern the diffraction of light by a grating (the Talbot effect) and the scattering of sound by Schroeder's quadratic-residue diffuser: for odd $q$ the identity $|G(q)|^2 = q$ makes the Talbot images equally bright and the diffuser's orders equally loud, and it gives the root number of a quadratic $L$-function modulus one.
 The theorems are classical; we check each numerically and pose two questions.
 \end{abstract}
 
@@ -69,7 +69,7 @@ For $D=-20$ the forms $x^2+5y^2$ and $2x^2+2xy+3y^2$ together represent $n$ in $
 The multiplicity of $m^2+n^2=N$ is $(r_{-4}(N) - 4[N\text{ a square}])/4$.
 \end{itemize}
 The same count appears wherever a square or hexagonal lattice sets the wave vectors.
-In the free-electron (``empty lattice'') picture of a two-dimensional crystal, plane waves whose wave vectors are reciprocal-lattice vectors of the same length are degenerate.
+In the free-electron (``empty lattice'') picture of a two-dimensional crystal, plane waves at the zone centre whose wave vectors are reciprocal-lattice vectors of the same length are degenerate.
 In powder diffraction, the Bragg reflections with the same $|G|$ fall on the same ring, and $r_D$ is their multiplicity.
 
 \section{Spectral zeta functions and the energy of a crystal}
@@ -199,13 +199,14 @@ Two questions extend them.
 
 \begin{question}
 The lattices $\mathcal O_{-7}$ (centred rectangular, $1:\sqrt7$), $\mathcal O_{-8}$ (rectangular, $1:\sqrt2$) and $\mathcal O_{-11}$ (centred rectangular, $1:\sqrt{11}$) are realisable as two-dimensional photonic or phononic crystals.
-Their empty-lattice degeneracies are predicted by $\chi_{-7}$, $\chi_{-8}$, $\chi_{-11}$.
-Which of these degeneracies survive a periodic potential, which split, and is the splitting governed by the arithmetic of $\mathcal O_D$?
+Their empty-lattice degeneracies at the zone centre are predicted by $\chi_{-7}$, $\chi_{-8}$, $\chi_{-11}$.
+The point group of these lattices is $2mm$, whose irreducible representations are one-dimensional, so a generic periodic potential lifts every degeneracy, at first order through its Fourier coefficients $V_{G-G'}$ between wave vectors $G$, $G'$ of equal length.
+Is the pattern of the splittings governed by the arithmetic of $\mathcal O_D$, through the norms of the differences $G-G'$?
 \end{question}
 
 \begin{question}
 The newform of weight 2 and level 11 has root number $+1$, since its Fricke eigenvalue is $-1$; both statements are proved in Lean (\formal, \leanpath{tau-track/TauTrack/ElevenFunctionalEquation}).
-Is there a physical system whose equal-brightness normalisation is that root number, as the Gauss sum is for the Talbot effect?
+For a quadratic character the root number is the normalised Gauss sum, whose modulus is seen in the Talbot effect. Is there a physical system in which the sign of the root number of this newform is an observable?
 Note~10 finds one reading at level 2, where the root number is the parity of a spin state.
 \end{question}
 

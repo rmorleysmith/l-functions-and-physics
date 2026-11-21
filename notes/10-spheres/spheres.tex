@@ -17,7 +17,7 @@ A flash at every site of a cubic lattice returns to a site as a train of echoes 
 The shape of a shell is carried by its multipole moments, and these are the coefficients of modular forms of weight $l+d/2$.
 The first of them, the hexadecapole of the $N$-th shell of $\Z^d$, is the coefficient of an eta product for $d = 2,3,4$, and the crystal field of a cubic lattice of charges is the field of the nearest neighbours times $0.888\,064\,766\ldots$, a value of its Dirichlet series.
 In space the square of the hexadecapole is the central value of an $L$-function, so the size of a shell is an $L$-value at the edge of the critical strip and its shape an $L$-value at the centre.
-Shells are as round as chance allows: their anisotropy is about one over the square root of the number of points, which in four dimensions is Deligne's theorem.
+In four dimensions shells are as round as chance allows, their anisotropy about one over the square root of the number of points: this is Deligne's theorem. In space the same rate is a Lindel\"of hypothesis, and it holds in the median of the computation.
 On the three-sphere, whose harmonics are the shells of the hydrogen atom, the spin states fixed by the 24 Hurwitz units are Klein's octahedron and cube, and they are counted by the newforms of level~2.
 Finally, the six rotations given by the quaternions $1\pm2i$, $1\pm2j$, $1\pm2k$ mix the sphere at the rate $2\sqrt5$ of the Ramanujan bound; they are gates for a quantum bit.
 \end{abstract}
@@ -136,7 +136,9 @@ For squarefree $N\not\equiv7\pmod8$, with $D$ the discriminant of $\Q(\sqrt{-N})
 \[
   \frac{a(N)^2}{N^{9/2}} = \frac{L(5,F\otimes\chi_D)}{L(5,F\otimes\chi_{-4})},
 \]
-a ratio of central values of the twisted $L$-functions $L(s,F\otimes\chi_D) = \sum a_F(n)\chi_D(n)n^{-s}$ \cite{Waldspurger}.
+a ratio of central values of the twisted $L$-functions $L(s,F\otimes\chi_D) = \sum a_F(n)\chi_D(n)n^{-s}$.
+By Waldspurger's theorem \cite{Waldspurger} the two sides are proportional within each class of $N$ in $\Q_2^\times$ modulo squares ($N$ modulo 8 for odd $N$, modulo 16 for even $N$).
+That the constant is the same in the seven classes that occur is computed, for the 201 values $N\le400$.
 For squarefree $N\equiv7\pmod8$ the functional equation of $L(s,F\otimes\chi_{-N})$ has root number $-1$, and the central value is zero.
 \end{derivation}
 
@@ -145,14 +147,13 @@ The energy in the hexadecapole of the $N$-th shell, relative to the first shell,
 With Derivation~\ref{d:echoes}, the size of a shell is an $L$-value at $s=1$, the edge of the critical strip, and the square of its shape is an $L$-value at the centre.
 The empty shells are those on which the central value vanishes by symmetry.
 The script checks the lift for $3\le p\le47$ and the formula for the 16 squarefree $N\le30$, to $10^{-14}$ (\script{shape\_law.py} extends this to the 201 values $N\le400$, to $10^{-11}$); the constant is $1/L(5,F\otimes\chi_{-4}) = 0.377\,316\,969$.
-Waldspurger's theorem gives the proportionality within each class of $N$ modulo 8; the computation finds one constant for all classes.
 
 \begin{derivation}[how round is a shell]\label{d:round}
 Let $\mu_d(N) = r_d(N)^{-1}\sum_{|x|^2=N}K_4(x/|x|)$, the mean of the cubic harmonic over the $N$-th shell of $\Z^d$.
 It is zero for a shell spread evenly, and of order $1/\sqrt{\text{number of points}}$ for independent random points.
 \begin{itemize}
 \item $d=2$. For a prime $p = a^2+b^2$ with $a>b>0$ and $\theta_p = \arctan(b/a)$, $\mu_2(p) = \tfrac14\cos4\theta_p$. The angles $\theta_p$ are equidistributed in $(0,\pi/4)$ \cite{Hecke}.
-\item $d=3$. For squarefree $N\not\equiv7\pmod8$,
+\item $d=3$. For squarefree $N\not\equiv7\pmod8$, by Derivations~\ref{d:echoes} and~\ref{d:central} (the second computed across classes),
 \[
   \mu_3(N)^2 = \frac{\pi^2}{100}\,\frac{L(5,F\otimes\chi_D)}{L(5,F\otimes\chi_{-4})\,L(1,\chi_D)^2\,\sqrt N},
 \]
@@ -162,12 +163,12 @@ and $\mu_3(N)\to0$ \cite{Iwaniec87, Duke}.
 \end{derivation}
 
 \physical
-In every dimension the anisotropy of a shell is about one over the square root of its number of points, the size it would have for points thrown at random (Figure~\ref{fig:round}).
+In the computations the anisotropy of a shell is about one over the square root of its number of points, the size it would have for points thrown at random (Figure~\ref{fig:round}); in four dimensions this is a theorem, and in space a conjecture.
 In the plane a shell of prime radius has eight points and stays anisotropic, and the pattern turns with the prime: the angles of the 39\,175 primes $p\equiv1\pmod4$ below $10^6$ are uniform to a Kolmogorov--Smirnov distance of $0.0018$.
 In space $|\mu_3|\sqrt{r_3}$ has median $0.37$ for $N\le20\,000$.
-The proved rate is $N^{-1/28+\varepsilon}$, from Iwaniec's bound; the rate $N^{-1/4+\varepsilon}$ of random points is, by the formula above, the Lindel\"of hypothesis for the central values $L(5,F\otimes\chi_D)$.
+Iwaniec's bound \cite{Iwaniec87} gives the rate $N^{-1/28+\varepsilon}$; the rate $N^{-1/4+\varepsilon}$ of random points is, by the formula above, the Lindel\"of hypothesis for the central values $L(5,F\otimes\chi_D)$.
 In four dimensions the random rate is a theorem: $|a_6(p)|\le2p^{5/2}$ holds for the 2261 odd primes below $20\,000$ with largest ratio $0.9983$, and $a_6(p)/2p^{5/2}$ follows the semicircle law \cite{SatoTate}.
-The Ramanujan--Petersson bound on the coefficients of a cusp form is the statement that lattice shells are as round as chance allows.
+The Ramanujan--Petersson bound on the coefficients of a cusp form of integral weight is the statement that lattice shells in four dimensions are as round as chance allows.
 
 \begin{figure}[ht]
   \centering
@@ -215,7 +216,7 @@ $\Phi^2$, spin 6 & octahedron, twice & 14 & $q+64q^2+1236q^3+4096q^4-\cdots$ & $
 \end{center}
 
 \physical
-A spin state with the symmetry of the tetrahedron exists first for spin 3, where it is the octahedron, and next for spin 4, where it is the cube (Figure~\ref{fig:constellations}).
+A state vector fixed by all 24 units exists first for spin 3, where it is the octahedron, and next for spin 4, where it is the cube (Figure~\ref{fig:constellations}). As a ray, the state $u^4+2i\sqrt3\,u^2v^2+v^4$ of spin 2, whose stars are the vertices of a tetrahedron, is already preserved: each unit multiplies it by a cube root of unity, the character of the quotient $\Z/3$.
 Summing its overlaps with its own images under the Hurwitz integers of norm $n$ gives the $n$-th coefficient of a newform: a Hecke eigenform, with $a(mn) = a(m)a(n)$ for coprime $m$ and $n$.
 The cube's form is $F$, the form whose central values gave the shapes of the shells in space; under the isomorphism $V_8\cong\mathcal H_4(\R^3)$ the state $\Psi$ is the cubic harmonic $K_4$.
 In hydrogen the shell $n$ carries two spins $(n-1)/2$ (Section~1).
@@ -289,14 +290,16 @@ Does $D_4$, with its triality, enter that programme?
 \toprule
 Statement & Grade\\
 \midrule
-Derivations~\ref{d:packets}--\ref{d:lps} & \gradeClassical\\
+Derivations~\ref{d:packets}--\ref{d:multipoles}, \ref{d:hurwitz}(i)--(iii) and \ref{d:lps}: the cited theorems & \gradeClassical\\
+Derivation~\ref{d:central}: proportionality within each class of $N$ in $\Q_2^\times$ modulo squares & \gradeClassical\\
+Derivation~\ref{d:central}: one constant for the seven classes, $N\le400$; the formula for $\mu_3(N)^2$ & \gradeComputed\\
+Derivation~\ref{d:hurwitz}(iii) for $\Phi,\Psi,X,\Phi^2$, and (iv) & \gradeComputed\\
 Echoes: the trace identity to $10^{-13}$; $L$-value form for 151 values of $N$; silent echoes, $N\le3000$ & \gradeComputed\\
 Hexadecapole identities for $d = 2,3,4$; the three eta products & \gradeComputed; theorem \gradeClassical\\
 Crystal-field values $0.888\,064\,766\,485\,554$ and $1.022\,452\,1$ & \gradeComputed\\
-$a(N)^2/N^{9/2}$ as a ratio of central values, one constant for all classes, $N\le400$ & \gradeComputed; theorem \gradeClassical\\
 Roundness in $d = 2,3,4$; Deligne's bound and the semicircle law for $\eta(2z)^{12}$ & \gradeComputed; theorems \gradeClassical\\
 Hurwitz units as $\SL(2,\mathbb F_3)$, quotient $\Z/3$, root system $D_4$ & \gradeComputed\\
-Klein's forms and the four newforms; $a(2)$ and root numbers; the count for $l\le600$ & \gradeComputed; theorem \gradeClassical\\
+Klein's forms; the count of newforms for $l\le600$; the tetrahedral state of spin 2 & \gradeComputed; theorems \gradeClassical\\
 Eigenvalues of the six rotations for $l\le40$; free group to length 6 & \gradeComputed; theorem \gradeClassical\\
 The working hypothesis; Questions 1--3 & \gradeOpen\\
 \bottomrule

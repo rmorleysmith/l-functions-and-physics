@@ -59,6 +59,16 @@ def mobius(g, tau):
 S_inv = -S
 T_inv = np.array([[1, -1], [0, 1]], dtype=object)
 letters = {"T": (T, 1), "t": (T_inv, 11), "S": (S, 9), "s": (S_inv, 3)}
+
+
+def pitch_formula(g):
+    """the closed form of Proposition 3, entries read modulo 12."""
+    a, b, c, d = int(g[0][0]), int(g[0][1]), int(g[1][0]), int(g[1][1])
+    if c % 2:
+        return ((a + d) * c - b * d * (c * c - 1) - 3 * c) % 12
+    return ((a + d) * c - b * d * (c * c - 1) + 3 * d - 3 - 3 * c * d) % 12
+
+
 zeta12 = mp.exp(2j * mp.pi / 12)
 rng = random.Random(20261120)
 tau0 = mp.mpc(0.13, 1.07)
@@ -80,6 +90,15 @@ while tested < 200:
     tested += 1
 check(worst < mp.mpf(10) ** -30,
       f"eta^2 |_1 gamma = zeta_12^pitch(gamma) eta^2 for 200 random words (max error {mp.nstr(worst, 3)})")
+formula_ok = True
+for _ in range(20000):
+    g, pitch = I2, 0
+    for ch in (rng.choice("TtSs") for _ in range(rng.randint(1, 30))):
+        m, p = letters[ch]
+        g, pitch = g.dot(m), (pitch + p) % 12
+    formula_ok = formula_ok and pitch_formula(g) == pitch
+check(formula_ok, "the closed formula for the pitch agrees with the count of letters on 20000 random words "
+                  "of length up to 30")
 check(abs(eta(tau0 + 1) ** 2 - zeta12 * eta(tau0) ** 2) < 1e-30, "T: pitch 1, a semitone")
 check(abs(eta(-1 / tau0) ** 2 / tau0 - (-1j) * eta(tau0) ** 2) < 1e-30, "S: multiplier -i = zeta_12^9")
 

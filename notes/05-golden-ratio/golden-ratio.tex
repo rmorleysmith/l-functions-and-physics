@@ -12,13 +12,12 @@
 \begin{abstract}
 \noindent
 The golden ratio $\varphi = (1+\sqrt5)/2$ is the number that fractions approximate least well.
-It stands at the opposite extreme from the musical fifth, whose logarithm $\log_2(3/2)$ lies unusually close to the fraction $7/12$ (note~01).
 That extremal property accounts for its best-known appearance in nature, the phyllotaxis of plants.
 The golden ratio also appears exactly in the modular world and in physics.
 The shortest closed geodesic on the modular surface has length $4\log\varphi$.
-The modular curve $X(5)$ is an icosahedron whose twelve vertices, the cusps, have coordinates in $\Q(\sqrt5)$.
-The Ising chain in a magnetic field has the particle mass ratio $m_2/m_1 = \varphi$, predicted from $E_8$ and observed by neutron scattering.
-We check each statement numerically, and conjecture that these instances are cases of one rule.
+The modular curve $X(5)$ is an icosahedron: its twelve cusps are the vertices, and in Klein's coordinate they are $0$, $\infty$ and the ten points with $z^5 = \varphi^{-5}$ or $-\varphi^5$.
+The critical Ising chain in a weak longitudinal field has particles whose two lightest masses are in the ratio $m_2/m_1 = \varphi$, derived from $E_8$ by Zamolodchikov and observed by neutron scattering.
+We check each statement numerically, group the instances into two families, each with a classical explanation, and ask whether the families have a common source.
 \end{abstract}
 
 \section{Two kinds of number}
@@ -27,12 +26,11 @@ Every irrational $x$ has a continued fraction $[a_0;a_1,a_2,\dots]$.
 Its convergents $p/q$ are its best rational approximations, and large partial quotients mean very good ones.
 Hurwitz's theorem states that $q\,|qx-p| < 1/\sqrt5$ infinitely often for every irrational $x$, and that $\sqrt5$ is the best possible constant \cite{HardyWright}.
 The extreme case is $\varphi = [1;1,1,1,\dots]$, where $q\,|q\varphi - p|\to 1/\sqrt5 = 0.447$ at the convergents.
-By comparison, $\log_2\frac32 = [0;1,1,2,2,3,1,5,2,23,\dots]$ gives $0.235$ already at $q=12$.
+For comparison, $\log_2\frac32 = [0;1,1,2,2,3,1,5,2,23,\dots]$ has $q\,|qx-p| = 0.235$ at its convergent $7/12$.
 The script \script{golden\_ratio.py} checks both.
 
-The two numbers do opposite jobs.
-Twelve-tone equal temperament works because one fraction, $7/12$, approximates the fifth well (note~01).
-The golden ratio is the number that fractions approximate least well.
+Twelve-tone equal temperament uses one convergent, $7/12$, of the fifth (note~01).
+The golden ratio is the number all of whose convergents are as poor as Hurwitz's theorem allows.
 
 \section{Phyllotaxis}
 
@@ -95,7 +93,8 @@ Those are the order statistics of $A_5$, the rotation group of the icosahedron, 
 The quotient $X(5) = \Gamma(5)\backslash\HH^*$ has 12 cusps, 30 images of $i$ and 20 images of $\rho$.
 Since $12 - 30 + 20 = 2$, it is a sphere tiled as an icosahedron: the cusps are the vertices, the images of $i$ the edge midpoints, and the images of $\rho$ the face centres.
 This is Klein's picture \cite{Klein}.
-The vertices of a regular icosahedron can be taken to be the cyclic permutations of $(0,\pm1,\pm\varphi)$, which lie on three golden rectangles (Figure~\ref{fig:ico}, left).
+In Klein's coordinate $z$ on $X(5)$ the cusps are $0$, $\infty$ and the roots of $z^{10}+11z^5-1$, the ten points with $z^5 = \varphi^{-5}$ or $z^5 = -\varphi^5$ \cite{Klein}.
+Stereographic projection carries them to the vertices of a regular icosahedron, which in space can be taken to be the cyclic permutations of $(0,\pm1,\pm\varphi)$, on three golden rectangles (Figure~\ref{fig:ico}, left).
 Here a twelve and the golden ratio meet: the $60/5 = 12$ cusps of $\Gamma(5)$ are the vertices of a golden figure.
 
 \section{The golden ratio as a mass ratio}
@@ -106,7 +105,7 @@ The script computes that eigenvector (eigenvalue $2\cos\frac{\pi}{30}$, from the
 The first ratio is $m_2/m_1 = 2\cos\frac\pi5 = \varphi$.
 Coldea and collaborators observed the two lowest modes in the quasi-one-dimensional Ising magnet CoNb$_2$O$_6$ by neutron scattering \cite{Coldea}; their ratio approaches $\varphi$ near the critical field (Figure~\ref{fig:ico}, right).
 \physical
-Here a number field, $\Q(\sqrt5)$, sets a measured ratio of particle masses.
+The ratio of the two lightest masses, a measured quantity, is the golden ratio; the other ratios are products of the numbers $2\cos(k\pi/30)$.
 
 \begin{figure}[ht]
   \centering
@@ -115,18 +114,28 @@ Here a number field, $\Q(\sqrt5)$, sets a measured ratio of particle masses.
   \label{fig:ico}
 \end{figure}
 
-\section{A conjecture, and a question}
+\section{Two links, and a question}
 
-In each case above the golden ratio is an extremal value: the least approximable rotation in phyllotaxis, the shortest closed orbit on the modular surface, the lowest mass ratio in the $E_8$ spectrum.
-It also organises the icosahedral quasicrystals, whose diffraction patterns have five-fold axes and scale by powers of $\varphi$ \cite{Shechtman}.
-We conjecture that this is a general rule.
+The exact appearances above fall into two families, each with a classical explanation.
 
-\begin{conjecture}\label{conj:golden}
-The golden ratio governs propagation in nature, matter included: in a physical system whose propagation is organised by an arithmetic lattice, $\varphi$ occurs as an extremal value of a frequency ratio, an orbit length or a mass ratio.
-\end{conjecture}
+\paragraph{Hurwitz's constant and the shortest geodesic.}
+The axis of $\left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)$ is the semicircle on the diameter from $-1/\varphi$ to $\varphi$, of length $\sqrt5 = \sqrt{3^2-4}$, so it rises to height $\sqrt5/2$.
+A real number is well approximated by fractions when the geodesics ending at it climb high into the cusp \cite{Series}; the golden geodesic, which stays lowest, ends at the number approximated least well, and Hurwitz's constant $\sqrt5$ is twice its height.
+Phyllotaxis rests on the same property.
+
+\paragraph{The icosahedron and $E_8$.}
+The rotation group of the icosahedron is $\mathrm{PSL}(2,\Z/5)$, and its double cover in $\mathrm{SU}(2)$, the binary icosahedral group, corresponds to the Dynkin diagram of $E_8$ under McKay's correspondence \cite{McKay}.
+The golden ratio also organises the icosahedral quasicrystals, whose diffraction patterns have five-fold axes and scale by powers of $\varphi$ \cite{Shechtman}.
 
 \begin{question}
-Is there a physical system whose spectrum is the length spectrum of closed geodesics on the modular surface, so that its lowest mode is $4\log\varphi$?
+Do the two families have a common source?
+The square and hexagonal lattices of note~02 are organised by arithmetic and contain no $\varphi$; in the systems above either the geodesic of trace 3 or the group $\mathrm{PSL}(2,\Z/5)$ is present.
+Is there a physical system in which $\varphi$ is forced as an extremal ratio by one of these two alone?
+\end{question}
+
+\begin{question}
+The geodesic flow on the modular surface is a mechanical system, Artin's billiard \cite{Artin}, and its shortest periodic orbit has length $4\log\varphi$.
+Is there a laboratory system with these periodic orbits, in which $4\log\varphi$ is observed as the shortest period?
 Does the icosahedron $X(5)$ have a physical realisation tied to its modular forms, beyond its symmetry group?
 \end{question}
 
@@ -139,23 +148,29 @@ Does the icosahedron $X(5)$ have a physical realisation tied to its modular form
 Statement & Grade\\
 \midrule
 Hurwitz; continued fractions of $\varphi$ and $\log_2\frac32$ & \gradeClassical, \gradeComputed\\
-Golden angle and gap ratios in Vogel's model & \gradeComputed; physics \gradeClassical{} \cite{DouadyCouder}\\
+Golden angle and gap ratios in Vogel's model & \gradeComputed\\
+The golden angle in a laboratory experiment \cite{DouadyCouder} & \gradePhysics\\
 Displacement formula; every hyperbolic element moves every point at least $4\log\varphi$, with equality at $i$ & \gradeLean\\
 Closed geodesics as axes; the loop through $i$ & \gradeClassical, \gradeComputed\\
-$\mathrm{PSL}(2,\Z/5)$ and $A_5$ order statistics; $X(5)$ an icosahedron & \gradeClassical, \gradeComputed\\
-$E_8$ masses, $m_2/m_1=\varphi$; observed in CoNb$_2$O$_6$ & \gradeClassical, \gradeComputed\\
-Conjecture~\ref{conj:golden}; Question 1 & \gradeOpen\\
+$\mathrm{PSL}(2,\Z/5)$ and $A_5$ order statistics; $X(5)$ an icosahedron; its cusps in Klein's coordinate & \gradeClassical, \gradeComputed\\
+The $E_8$ eigenvector and its closed forms, $m_2/m_1=\varphi$ & \gradeComputed\\
+Zamolodchikov's derivation of the masses; their observation in CoNb$_2$O$_6$ & \gradePhysics\\
+Hurwitz's constant as twice the height of the golden geodesic; McKay's correspondence & \gradeClassical\\
+Questions 1 and 2 & \gradeOpen\\
 \bottomrule
 \end{tabular}
 \end{center}
 \gradelegend
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
+\bibitem{Artin} E.~Artin, Ein mechanisches System mit quasiergodischen Bahnen, \emph{Abh. Math. Sem. Univ. Hamburg} 3 (1924), 170--175.
 \bibitem{Coldea} R.~Coldea et al., Quantum criticality in an Ising chain: experimental evidence for emergent $E_8$ symmetry, \emph{Science} 327 (2010), 177--180.
 \bibitem{DouadyCouder} S.~Douady and Y.~Couder, Phyllotaxis as a physical self-organized growth process, \emph{Phys. Rev. Lett.} 68 (1992), 2098--2101.
 \bibitem{HardyWright} G.~H. Hardy and E.~M. Wright, \emph{An Introduction to the Theory of Numbers}, 6th ed., Oxford University Press, 2008.
 \bibitem{Iwaniec} H.~Iwaniec, \emph{Spectral Methods of Automorphic Forms}, 2nd ed., American Mathematical Society, 2002.
 \bibitem{Klein} F.~Klein, \emph{Vorlesungen \"uber das Ikosaeder}, Teubner, 1884.
+\bibitem{McKay} J.~McKay, Graphs, singularities, and finite groups, in \emph{The Santa Cruz Conference on Finite Groups}, Proc. Sympos. Pure Math. 37, American Mathematical Society, 1980, 183--186.
+\bibitem{Series} C.~Series, The modular surface and continued fractions, \emph{J. London Math. Soc.} (2) 31 (1985), 69--80.
 \bibitem{Shechtman} D.~Shechtman, I.~Blech, D.~Gratias and J.~W. Cahn, Metallic phase with long-range orientational order and no translational symmetry, \emph{Phys. Rev. Lett.} 53 (1984), 1951--1953.
 \bibitem{Sos} V.~T. S\'os, On the distribution mod 1 of the sequence $n\alpha$, \emph{Ann. Univ. Sci. Budapest. E\"otv\"os Sect. Math.} 1 (1958), 127--134.
 \bibitem{Vogel} H.~Vogel, A better way to construct the sunflower head, \emph{Math. Biosci.} 44 (1979), 179--189.

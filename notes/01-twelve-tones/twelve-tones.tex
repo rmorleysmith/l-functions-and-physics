@@ -12,7 +12,7 @@
 \begin{abstract}
 \noindent
 The modular group $\SL(2,\Z)$ has exactly twelve characters, the powers of the multiplier of $\eta^2 = \Delta^{1/12}$.
-Assigning each element its \emph{pitch} in $\Z/12$ gives an exact dictionary between the modular group and the twelve-tone chromatic scale: $T$ is a semitone, $S$ a minor third down, and the stabilisers of the elliptic points $i$ and $\rho$ sound the diminished-seventh chord and the whole-tone scale.
+Assigning each element its \emph{pitch} in $\Z/12$ gives a dictionary between the modular group and the twelve-tone chromatic scale, canonical up to the four automorphisms of $\Z/12$: with the $\eta^2$ multiplier as generator, $T$ is a semitone and $S$ a minor third down, and for every choice the stabilisers of the elliptic points $i$ and $\rho$ sound the diminished-seventh chord and the whole-tone scale.
 The automorphisms of $\Z/12$, the circle of fifths among them, form the Galois group of $\Q(\zeta_{12})$, whose three quadratic subfields $\Q(i)$, $\Q(\sqrt{-3})$ and $\Q(\sqrt3)$ carry the three non-trivial Dirichlet characters modulo~12.
 The group-theoretic statements are proved in Lean, and the rest is checked numerically.
 Musical practice arrives at twelve by a second route, the convergent $7/12$ of $\log_2(3/2)$, and we ask how the two twelves are related.
@@ -93,6 +93,7 @@ The pitch of the next section is that phase, counted in twelfths of a turn.
 Write $\chi_\eta(\gamma) = e^{2\pi i\,p(\gamma)/12}$ with $p(\gamma)\in\Z/12$.
 Then $p\colon\SL(2,\Z)\to\Z/12$ is a surjective homomorphism.
 We call $p(\gamma)$ the \emph{pitch} of $\gamma$, and read $\Z/12$ as the twelve pitch classes with $C = 0$.
+The reading rests on two choices: the generator $\chi_\eta$ among the four generators $\chi_\eta^k$, $k = 1,5,7,11$, of the character group, and the pitch class called $0$. With $\chi_\eta^7$ in place of $\chi_\eta$, $T$ is a fifth. The subgroups of $\Z/12$, and so the chords below, do not depend on either choice.
 
 \begin{proposition}\label{prop:pitch}
 For $\gamma = \left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)$, with the entries read modulo 12,
@@ -105,7 +106,7 @@ Every homomorphism $\chi$ from $\SL(2,\Z)$ to a commutative group satisfies $\ch
 \noindent
 The formula is the square of the classical closed form of the multiplier of $\eta$, a consequence of Dedekind's functional equation \cite{Apostol}.
 In Lean it is checked on the generators: right multiplication by $T$ adds $1$ and by $S$ subtracts $3$, for all entries modulo 12.
-Proposition~\ref{prop:pitch} is proved in Lean in \formal{} (\leanpath{tau-track/TauTrack/Tones/Challenge.lean}, theorem \texttt{exists\_pitch}).
+Proposition~\ref{prop:pitch} is proved in Lean in \formal{} (\leanpath{tau-track/TauTrack/Tones}: theorem \texttt{exists\_pitch}, stated in \texttt{Challenge.lean} and proved in \texttt{Solution.lean}); the script checks the formula against the count of generators on 20\,000 random words.
 
 \begin{center}
 \begin{tabular}{@{}lll@{}}
@@ -151,7 +152,7 @@ Its three subgroups of order two fix the three quadratic subfields of $\Q(\zeta_
   \Q(i)\ \text{fixed by}\ \{1,5\},\qquad \Q(\sqrt{-3})\ \text{fixed by}\ \{1,7\},\qquad \Q(\sqrt3)\ \text{fixed by}\ \{1,11\}.
 \]
 So the circle of fifths $M_7$ is the automorphism that fixes the Eisenstein field and moves the Gaussian one.
-Dually, the four Dirichlet characters modulo 12 are the trivial character and the characters of these fields:
+Dually, the four Dirichlet characters modulo 12 are the trivial character and the three induced by the characters of these fields. The last column gives $L(1,\chi)$ for the primitive character, of conductor 4, 3 or 12:
 
 \begin{center}
 \begin{tabular}{@{}lrrrrl@{}}
@@ -168,7 +169,7 @@ $\chi_{12} = \chi_{-4}\chi_{-3}$ & $1$ & $-1$ & $-1$ & $1$ & $\log(2+\sqrt3)/\sq
 \noindent
 The values $L(1,\chi)$ are given by the class number formula \cite{Davenport}.
 The script computes them from the digamma function and checks them to 35 digits.
-The Dedekind zeta function of $\Q(\zeta_{12})$ factors as $\zeta(s)L(s,\chi_{-4})L(s,\chi_{-3})L(s,\chi_{12})$ \cite{Washington}.
+The Dedekind zeta function of $\Q(\zeta_{12})$ factors as $\zeta(s)L(s,\chi_{-4})L(s,\chi_{-3})L(s,\chi_{12})$, with the primitive characters \cite{Washington}.
 So each of the four characters of the Klein group carries an $L$-function; the four return in notes~04 and~07.
 
 \section{The diatonic scale}
@@ -210,8 +211,8 @@ Twelve is the smallest number of steps with a good fifth.
 \paragraph{Two twelves.}
 The pitch map is exact: the modular group's characters, the automorphisms of the chromatic circle and the quadratic subfields of $\Q(\zeta_{12})$ are one structure, $\Z/12$ with its Klein group of automorphisms.
 The modular twelve comes from the orders 4 and 6 of the elliptic stabilisers, and the musical twelve from the continued fraction of $\log_2(3/2)$.
-Both can be placed on the modular surface.
-A geodesic ending at a real number $x$ crosses the Farey tessellation in a pattern that spells the continued fraction of $x$, and the convergents are vertices of the triangles it meets \cite{Series}; for $x = \log_2(3/2)$ the cusp $7/12$ is one of them.
+The second also has a place in the geometry of the modular group.
+A geodesic of the upper half-plane ending at a real number $x$ crosses the Farey tessellation in a pattern that spells the continued fraction of $x$, and the convergents are vertices of the triangles it meets \cite{Series}; for $x = \log_2(3/2)$ the vertex $7/12$ is one of them.
 Our working hypothesis is that the two twelves are linked.
 
 \begin{question}
@@ -228,7 +229,9 @@ For example, is the special role of the diminished seventh and the whole-tone sc
 Statement & Grade\\
 \midrule
 Theorem~\ref{thm:char}; Theorem~\ref{thm:eta}; Proposition~\ref{prop:pitch}; the pitch table; the stabiliser chords & \gradeLean{} and \gradeComputed\\
-$(\Z/12)^\times$ is the Klein group; the fixed fields; fifths, maximal evenness & \gradeLean{} and \gradeComputed\\
+$(\Z/12)^\times$ is the Klein group; fifths, maximal evenness (finite statements in $\Z/12$) & \gradeLean{} and \gradeComputed\\
+The quadratic subfields of $\Q(\zeta_{12})$ and the subgroups fixing them & \gradeClassical{} and \gradeComputed\\
+Reading $\Z/12$ as pitch classes: the generator $\chi_\eta$ and $C=0$ & \gradeConvention\\
 $L(1,\chi)$ for the characters mod 12; Dedekind zeta factorisation & \gradeClassical{}, values \gradeComputed\\
 Continued fraction of $\log_2(3/2)$ and the temperament errors & \gradeComputed\\
 The two twelves are linked; Question 1 & \gradeOpen\\

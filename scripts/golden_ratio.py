@@ -67,7 +67,8 @@ for _ in range(10):
 check(cf_fifth == [0, 1, 1, 2, 2, 3, 1, 5, 2, 23], "log2(3/2) = [0; 1, 1, 2, 2, 3, 1, 5, 2, 23, ...]")
 hl = {q: q * abs(q * L32 - p) for p, q in convergents([0, 1, 1, 2, 2, 3, 1, 5, 2])}
 print(f"     log2(3/2): q |q x - p| = {', '.join(f'{v:.3f} (q = {q})' for q, v in hl.items() if q > 1)}")
-check(abs(hl[12] - 0.2346) < 1e-3 and hl[12] < 1 / math.sqrt(5), "the fifth: 0.235 at q = 12, far better than phi")
+check(abs(hl[12] - 0.2346) < 1e-3 and hl[12] < 1 / math.sqrt(5) < hl[41],
+      "the fifth: q |q x - p| = 0.235 at the convergent 7/12, and 0.678 at 24/41")
 
 # ---------------------------------------------------------------------------------------------------
 print("(2) phyllotaxis")
@@ -86,8 +87,9 @@ def gap_ratio(alpha, n):
 worst = {k: max(gap_ratio(a, n) for n in range(20, 801)) for k, a in angles.items() if k[0] != "7"}
 for k, v in worst.items():
     print(f"     {k}: largest/smallest gap among the first n points, worst over 20 <= n <= 800: {v:.3f}")
-check(worst["1/φ² of a turn (the golden angle)"] < worst["log₂(3/2) of a turn (the pure fifth)"],
-      "the golden angle spreads points more evenly than the fifth")
+check(abs(worst["1/φ² of a turn (the golden angle)"] - 2.618) < 1e-3
+      and abs(worst["log₂(3/2) of a turn (the pure fifth)"] - 24.417) < 1e-2,
+      "worst ratio of largest to smallest gap, 20 <= n <= 800: 2.618 for the golden angle, 24.4 for the fifth")
 check(len({round((n * 7) % 12) for n in range(1, 801)}) == 12, "7/12 of a turn: exactly 12 rays")
 
 # ---------------------------------------------------------------------------------------------------
@@ -111,6 +113,9 @@ arc = math.acosh(1 + abs(1j - wall) ** 2 / (2 * 1 * wall.imag))
 check(abs(arc - math.log(PHI)) < 1e-12 and abs(abs(1j - 0.5) - math.sqrt(5) / 2) < 1e-12,
       "the axis passes through i; from i to the wall point 1/2 + i sqrt(5)/2 is log phi, so the image is a loop "
       "through i of length 2 log phi, traversed in both directions")
+check(abs((PHI + 1 / PHI) - math.sqrt(5)) < 1e-12 and abs(math.sqrt(3 * 3 - 4) - math.sqrt(5)) < 1e-12
+      and abs(1 / (2 * (PHI + 1 / PHI) / 2) - 1 / math.sqrt(5)) < 1e-12,
+      "the axis is a semicircle of diameter sqrt 5 = sqrt(3^2 - 4): its height sqrt(5)/2 is half Hurwitz's constant")
 for t in range(3, 9):
     eps = (t + math.sqrt(t * t - 4)) / 2
     print(f"     trace {t}: length {2 * math.acosh(t / 2):.4f} = 2 log {eps:.4f}, unit of Q(sqrt {t * t - 4})")
@@ -151,6 +156,18 @@ D = np.array([[np.linalg.norm(u - v) for v in V] for u in V])
 edges = [(i, j) for i in range(12) for j in range(i + 1, 12) if abs(D[i, j] - 2) < 1e-9]
 check(len(V) == 12 and len(edges) == 30 and all(sum(abs(D[i] - 2) < 1e-9) == 5 for i in range(12)),
       "(0, +-1, +-phi): 12 vertices, 30 edges of length 2, five at each vertex: the icosahedron")
+zc = np.roots([1, 0, 0, 0, 0, 11, 0, 0, 0, 0, -1])                 # Klein's vertex form z^10 + 11 z^5 - 1
+fifth = np.sort_complex(zc ** 5)
+sphere = [np.array([0.0, 0.0, -1.0]), np.array([0.0, 0.0, 1.0])]    # z = 0 and z = infinity
+sphere += [np.array([2 * z.real, 2 * z.imag, abs(z) ** 2 - 1]) / (1 + abs(z) ** 2) for z in zc]
+gram = np.array([[u @ v for v in sphere] for u in sphere])
+check(np.abs(fifth[:5] + PHI ** 5).max() < 1e-9 and np.abs(fifth[5:] - PHI ** -5).max() < 1e-9
+      and abs(PHI ** 5 - (11 + 5 * math.sqrt(5)) / 2) < 1e-12
+      and all(sorted(np.round(row, 9)) == sorted([-1.0] + [-1 / math.sqrt(5)] * 5 + [1 / math.sqrt(5)] * 5 + [1.0])
+              or np.allclose(sorted(row), sorted([-1.0] + [-1 / math.sqrt(5)] * 5 + [1 / math.sqrt(5)] * 5 + [1.0]))
+              for row in gram),
+      "Klein's coordinate: the cusps 0, infinity and the roots of z^10 + 11 z^5 - 1 (z^5 = phi^-5 or -phi^5) "
+      "are the vertices of a regular icosahedron on the sphere")
 
 # ---------------------------------------------------------------------------------------------------
 print("(5) the E8 masses")

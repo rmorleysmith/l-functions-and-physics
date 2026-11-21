@@ -11,8 +11,8 @@
 
 \begin{abstract}
 \noindent
-Treat the primes as a train of unit impulses: one click at each prime power $p^k$, of strength $\log p$.
-Five reusable derivations turn this train into orthogonal packets and a continuous spectrum, and back.
+Treat the primes as a train of impulses: one click at each prime power $p^k$, of strength $\log p$.
+Five reusable derivations turn this train into orthogonal packets and a line spectrum, and back.
 Poisson summation pairs a comb of impulses with a comb of waves.
 The character table modulo 12 is a Hadamard matrix, so the train splits into four orthogonal packets, the residue classes $1,5,7,11$, with energy conserved.
 The Laplace transform of each packet is $-L'/L$ of a Dirichlet $L$-function, and the explicit formula rebuilds each packet from the zeros of the $L$-functions.
@@ -67,6 +67,7 @@ The matrix $H$ satisfies $HH^{\mathsf T} = 4I$; it is a Hadamard matrix.
   \quad(\text{rows } \chi_0,\ \chi_{-4},\ \chi_{-3},\ \chi_{12}).
 \]
 Hence, for $n$ coprime to 12, $\mathbf 1[n\equiv a] = \tfrac14\sum_\chi\chi(a)\chi(n)$.
+Write $\Lambda(n)$ for von Mangoldt's function, $\log p$ at a prime power $p^k$ and zero elsewhere (the completed $L$-function of notes~02 and~04, also written $\Lambda$, has two arguments).
 For the impulse trains $\psi(x;12,a) = \sum_{n\le x,\,n\equiv a}\Lambda(n)$ and $\psi(x,\chi) = \sum_{n\le x}\chi(n)\Lambda(n)$,
 \[
   \psi(x;12,a) = \tfrac14\sum_\chi\chi(a)\,\psi(x,\chi),\qquad \sum_a\psi(x;12,a)^2 = \tfrac14\sum_\chi\psi(x,\chi)^2.
@@ -148,12 +149,12 @@ For fixed $x>1$, as $T\to\infty$,
   \sum_{0<\gamma\le T} x^{\rho} = -\frac{T}{2\pi}\,\Lambda(x) + O(\log T),
 \]
 where the sum runs over the zeros $\rho = \beta+i\gamma$ of $\zeta$, and $\Lambda(x)=0$ unless $x$ is a prime power \cite{Landau}.
-For zeros on the critical line, $x^\rho = \sqrt x\,x^{i\gamma}$, and the formula reads $\sum_{0<\gamma\le T} x^{i\gamma} = -\frac{T}{2\pi}\Lambda(x)/\sqrt x + O(\log T)$.
+Under the Riemann hypothesis $x^\rho = \sqrt x\,x^{i\gamma}$, and the formula reads $\sum_{0<\gamma\le T} x^{i\gamma} = -\frac{T}{2\pi}\Lambda(x)/\sqrt x + O(\log T)$.
 \end{derivation}
 
 \physical
 Read the zeros as the lines of a spectrum, and play them all at once.
-The result is silent except at $u = \log p^k$, where it rings with depth proportional to $\Lambda(p^k)/p^{k/2}$.
+Under the Riemann hypothesis the result is silent except at $u = \log p^k$, where it rings with depth proportional to $\Lambda(p^k)/p^{k/2}$.
 The zeros behave like a crystal whose diffraction pattern has its Bragg peaks at the logarithms of the prime powers; Dyson suggested reading them as a one-dimensional quasicrystal for this reason \cite{Dyson}.
 
 With the first 600 zeros of $\zeta$ ($T = 939.02$), the script finds $\sum\cos(\gamma\log x) = -73.3$, $-93.3$, $-50.6$, $-107.3$ and $-108.7$ at $x = 2, 3, 4, 5, 7$.
@@ -197,6 +198,7 @@ Rubinstein and Sarnak made this precise, under the generalised Riemann hypothesi
 Statement & Grade\\
 \midrule
 Derivations~\ref{d:poisson}--\ref{d:landau} & \gradeClassical\\
+The form of Landau's formula on the critical line & \gradeClassical, under RH\\
 $HH^{\mathsf T}=4I$; packet split and Parseval at $10^2,10^4,10^6$ & \gradeComputed\\
 $-L'/L(2,\chi)$ from the impulses; zero counts; rebuild errors & \gradeComputed\\
 Landau's formula at $x = 2,3,4,5,7$; dips at prime powers & \gradeComputed\\

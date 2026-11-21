@@ -589,6 +589,15 @@ for name, F in KLEIN.items():
           f"Klein's form {name} (degree {len(F) - 1}, spin {(len(F) - 1) // 2}) is fixed by the 24 units; "
           f"the twist (1 + i)/sqrt 2 acts by {signs[name]:+d}")
 
+TETRA = form(4, {0: 1, 2: 2j * math.sqrt(3), 4: 1})     # u^4 + 2 i sqrt 3 u^2 v^2 + v^4: the vertices of a tetrahedron
+images = act(TETRA, unit_mats)
+phases = inner(TETRA, images) / inner(TETRA, TETRA[None, :])[0]
+stars_T = np.array([[2 * z.real, 2 * z.imag, abs(z) ** 2 - 1] for z in np.roots(TETRA)]) / (1 + np.abs(np.roots(TETRA))[:, None] ** 2)
+check(np.abs(images - phases[:, None] * TETRA).max() < 1e-12 and np.abs(phases ** 3 - 1).max() < 1e-12
+      and len({(round(z.real, 6), round(z.imag, 6)) for z in phases}) == 3
+      and np.allclose(stars_T @ stars_T.T, (4 * np.eye(4) - 1) / 3),
+      "spin 2: each of the 24 units multiplies u^4 + 2 i sqrt 3 u^2 v^2 + v^4 by a cube root of unity (all three "
+      "occur); its four stars are the vertices of a regular tetrahedron")
 hmats = su2(hurwitz)
 
 

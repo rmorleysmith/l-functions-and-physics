@@ -33,7 +33,7 @@ What it computes
   (7) Spheres: harmonics of degree l on the sphere have dimension 2l + 1, and sum_{l < n} (2l + 1) = n^2, the
       degeneracy of hydrogen's level n (without spin).
   (8) The fine-structure constant alpha = e^2/(4 pi eps0 hbar c), the dimensionless number in which c appears:
-      CODATA 2018 gives 1/alpha = 137.035999084(21). Eddington's 137 and Wyler's 1969 formula
+      CODATA 2022 gives 1/alpha = 137.035999177(21). Eddington's 137 and Wyler's 1969 formula
       (9/(8 pi^4)) (pi^5/(2^4 5!))^(1/4) miss by about 1.7 million and 4000 standard deviations.
 
 What it shows
@@ -323,9 +323,9 @@ check(all(sum(2 * l + 1 for l in range(n)) == n * n for n in range(1, 50)), "sum
 
 # ---------------------------------------------------------------------------------------------------
 print("(8) the fine-structure constant")
-inv_alpha, sig = 137.035999084, 0.000000021
+inv_alpha, sig = 137.035999177, 0.000000021
 wyler = 1 / (9 / (8 * math.pi ** 4) * (math.pi ** 5 / (2 ** 4 * math.factorial(5))) ** 0.25)
-print(f"     CODATA 2018 1/alpha = {inv_alpha} +- {sig}; Wyler {wyler:.7f}; Eddington 137")
+print(f"     CODATA 2022 1/alpha = {inv_alpha} +- {sig}; Wyler {wyler:.7f}; Eddington 137")
 check(abs(wyler - 137.0360824) < 1e-6 and abs(wyler - inv_alpha) / sig > 3000 and (inv_alpha - 137) / sig > 1e6,
       f"Wyler misses by {abs(wyler - inv_alpha) / sig:.0f} standard deviations, Eddington by {(inv_alpha - 137) / sig:.2e}")
 

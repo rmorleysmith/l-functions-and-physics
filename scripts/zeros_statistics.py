@@ -86,7 +86,7 @@ def Z(t):
 sample_t = np.sort(rng.uniform(T1, T2, 12))
 ref = np.array([float(mp.siegelz(mp.mpf(float(t)))) for t in sample_t])
 err = float(np.max(np.abs(Z(sample_t) - ref)))
-check(err < 1e-7, f"Z by Riemann-Siegel with C0 and C1 agrees with mpmath at 12 random points: max error {err:.1e}")
+check(err < 3e-9, f"Z by Riemann-Siegel with C0 and C1 agrees with mpmath at 12 random points: max error {err:.1e}")
 
 # ---------------------------------------------------------------------------------------------------
 print("(2) every zero in the window")
@@ -138,7 +138,7 @@ def ks(sample, cdf):
 ks_zero = {k: ks(s, f) for k, f in CDF.items()}
 print("     Kolmogorov-Smirnov distance of the zero spacings: "
       + ", ".join(f"{k} {v:.4f}" for k, v in ks_zero.items()))
-check(ks_zero["GUE"] < 0.02 < ks_zero["GOE"] < ks_zero["Poisson"] and ks_zero["Poisson"] > 0.25,
+check(abs(ks_zero["GUE"] - 0.0148) < 5e-4 and abs(ks_zero["GOE"] - 0.0829) < 5e-4 and abs(ks_zero["Poisson"] - 0.2941) < 5e-4,
       "the spacings of the zeros follow the unitary ensemble, not the orthogonal one, and not Poisson")
 below_half = float(np.mean(s < 0.5))
 check(abs(below_half - float(CDF["GUE"](0.5))) < 0.015,
@@ -224,7 +224,7 @@ for L in (2.0, 4.0, 6.0):
           f"Berry's sum over prime powers {nv_berry[at(L)]:.3f})")
 dev_berry = float(np.max(np.abs(nv_zero - nv_berry)))
 dev_gue = float(np.max(np.abs(nv_zero - nv_gue)))
-check(dev_berry < 0.03 < dev_gue,
+check(dev_berry < 0.0025 and abs(dev_gue - 0.087) < 0.001,
       f"over 0.1 <= L <= 6 the zeros stay within {dev_berry:.3f} of Berry's formula and depart by {dev_gue:.3f} from GUE")
 
 # ---------------------------------------------------------------------------------------------------
@@ -285,7 +285,7 @@ smooth = np.exp(-(gamma[None, :] - E[:, None]) ** 2 / 2).sum(axis=1) / math.sqrt
 mean_density = np.array([float((mp.digamma(mp.mpc(0.25, e / 2)).real - mp.log(mp.pi)) / (2 * mp.pi)) for e in E])
 orbit_sum = -(np.cos(np.outer(E, np.log(nn))) @ amp) / math.pi
 gap = float(np.max(np.abs(smooth - mean_density - orbit_sum)))
-check(gap < 1e-6, f"smoothed density of zeros = mean density + sum over prime powers at 400 energies: "
+check(gap < 3e-10, f"smoothed density of zeros = mean density + sum over prime powers at 400 energies: "
                   f"largest difference {gap:.1e}")
 print(f"     mean density {mean_density.mean():.4f} per unit t; the oscillation ranges over "
       f"{orbit_sum.min():+.3f} .. {orbit_sum.max():+.3f}")
@@ -315,7 +315,8 @@ own = {name: (ks(np.diff(xf), CDF["GUE"]), ks(np.diff(xf), CDF["Poisson"])) for 
 print("     each spectrum alone, Kolmogorov-Smirnov distance to GUE / Poisson: "
       + ", ".join(f"{k} {a:.3f} / {b:.3f}" for k, (a, b) in own.items()))
 small = {name: float(np.mean(np.diff(xf) < 0.5)) for name, xf in unfolded.items()}
-check(all(a < 0.1 and b > 0.3 for a, b in own.values()) and max(small.values()) < 0.1,
+check([round(a, 3) for a, _ in own.values()] == [0.058, 0.072, 0.079, 0.084] and all(b > 0.3 for _, b in own.values())
+      and [round(v_, 3) for v_ in small.values()] == [0.062, 0.059, 0.050, 0.064],
       "each of the four spectra repels itself: share of spacings below half the mean "
       + ", ".join(f"{k} {v_:.3f}" for k, v_ in small.items()) + " (GUE 0.112, Poisson 0.393)")
 

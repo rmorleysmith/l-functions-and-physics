@@ -1,5 +1,43 @@
 # Changelog
 
+## Unreleased: corrections from an adversarial review (2026-11-21)
+
+Three independent cold reads were made of the notes and of the Lean statements, as a sceptical expert would
+read them. The numerics were confirmed throughout; the corrections are to physics statements, framing, grading
+and attribution.
+
+- **Note 06 (rewritten).** The checked facts now come first and the programme last, as a working hypothesis with
+  five questions (formerly five conjectures). Corrected physics: the hypercharges are fixed for one generation of
+  fifteen with `y_Q ≠ 0`; with a right-handed neutrino the family `Y + ε(B − L)` solves the conditions; the
+  gauge-only theorem of Lohitsiri and Tong needs quantised (rational) hypercharge, and a real counterexample is
+  given; the electric charges need the Higgs doublet; the Fermat cubic appears for every number `N` of colours, so
+  the exponent is that of the triangle diagram and not of `SU(3)`. The parity of a character and the Hodge types
+  of a modular form are no longer called chirality. The citations of Costa–Dobrescu–Fox and
+  Allanach–Gripaios–Tooby-Smith now say what those papers solve. The Lohitsiri–Tong paper was read.
+- **Lean.** The hypercharge theorem is now also proved for `N` colours
+  (`Hypercharge.gauge_anomaly_iff_colours`, `gravitational_anomaly_colours`).
+- **Note 11 (rewritten as four laws).** The comparison with Maxwell's equations is removed; the powder-diffraction
+  reading is stated as an identity for a monatomic primitive cubic crystal. Attributions corrected: the
+  spherical-means solution of the wave equation is Poisson's (1819), Kirchhoff's 1883 paper is the integral
+  formula; the list is in order of time; Dyson's remark is cited from Montgomery's paper.
+- **Note 10.** Waldspurger's theorem gives the law of shape within each class of `N` in `ℚ₂ˣ` modulo squares; the
+  single constant across the seven classes is graded as computed. Roundness "as chance allows" is a theorem in
+  four dimensions and a conjecture in space. The spin-2 tetrahedral state is fixed as a ray (up to a cube root of
+  unity); spin 3 is the first strictly invariant vector.
+- **Note 09.** The independence of the zeros of different `L`-functions is attributed to Bogomolny and Leboeuf
+  (1994). Unitary statistics are described as the absence of time-reversal symmetry, not as handedness; the
+  universality of level statistics is stated as a conjecture, with the modular surface as an exception.
+- **Note 05.** The conjecture that the golden ratio "governs propagation" is replaced by two classical links
+  (Hurwitz's constant as twice the height of the shortest geodesic; the icosahedron and `E8` through McKay) and
+  two questions. Corrected: `m₂/m₁` is the ratio of the two lightest masses, not the lowest ratio; the cusps of
+  `X(5)` in Klein's coordinate; the comparison with the musical fifth.
+- **Notes 01–04, 07, 08.** `L(1, χ)` values are those of the primitive characters; the pitch reading is a
+  convention up to the automorphisms of `ℤ/12`; hydrogen's rational ratios are those of the Rydberg formula; the
+  logarithm of an `L`-function is the sum of prime tones; Landau's formula on the critical line assumes RH;
+  CODATA 2022; the squarefree condition is stated wherever the `L`-value form is quoted.
+- **Grades and checks.** A new grade, *physics*, for published derivations and measurements. Every number quoted
+  in a note is now asserted by its script to the precision printed.
+
 ## 0.6.4 (2026-11-21)
 
 - Note 11, new section "Where the law is measured": in powder diffraction by a primitive cubic crystal the

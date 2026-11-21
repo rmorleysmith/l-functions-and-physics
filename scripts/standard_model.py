@@ -1,4 +1,4 @@
-"""Note 06: towards a number-theoretic standard model. The exact facts the conjectures rest on.
+"""Note 06: towards a number-theoretic standard model. The exact facts the questions rest on.
 
 What it computes (exact rational arithmetic throughout)
   (1) Counts. Twelve fermion flavours (six quarks, six leptons); twelve gauge bosons, the dimension of
@@ -6,12 +6,16 @@ What it computes (exact rational arithmetic throughout)
       neutrino). The Higgs is the one scalar; the gauge bosons are vectors.
   (2) Balance. The six anomaly-cancellation conditions of one generation: SU(3)^3, SU(3)^2 U(1), SU(2)^2 U(1),
       U(1)^3, gravitational U(1), and Witten's SU(2) condition (an even number of doublets). All hold exactly.
-  (3) The balance fixes the charges. With the Standard Model's representations and unknown hypercharges, the
-      linear and cubic conditions have, up to scale and swapping u and d, the single solution with y_Q != 0:
-      the observed hypercharges (1/6, -2/3, 1/3, -1/2, 1). Checked by an exhaustive integer search and by
-      algebra. Without the gravitational condition the cubic condition is Fermat's equation
-      y_e^3 + (y_u - 2 y_Q)^3 = (y_u + 4 y_Q)^3 (Lohitsiri and Tong), whose solutions are the trivial ones: the
-      same hypercharges, and the gravitational condition follows (proved in Lean in Physlib).
+  (3) The balance fixes the charges of one generation of fifteen. With the Standard Model's representations and
+      unknown rational hypercharges, the linear and cubic conditions have, up to scale and swapping u and d,
+      the single solution with y_Q != 0: the observed hypercharges (1/6, -2/3, 1/3, -1/2, 1). Checked by an
+      exhaustive integer search and by algebra. Without the gravitational condition the cubic condition is
+      Fermat's equation y_e^3 + (y_u - 2 y_Q)^3 = (y_u + 4 y_Q)^3 (Lohitsiri and Tong), whose rational
+      solutions are the trivial ones: y_Q = 0, or the same hypercharges; the gravitational condition follows.
+      Scope, each point checked: over the reals the gauge conditions have solutions that violate the
+      gravitational one; with a right-handed neutrino the conditions hold for Y + eps (B - L), every eps; the
+      electric charges need the Higgs doublet as well (Q = T3 + Y/(2 y_H), y_H = -y_Q - y_u); with N colours
+      the cubic condition is y_e^3 + (y_u + (1 - N) y_Q)^3 = (y_u + (N + 1) y_Q)^3, Fermat's cubic for every N.
   (4) The hidden Z/6. The element (e^(2 pi i/3) I_3, -I_2, e^(2 pi i/6)) of SU(3) x SU(2) x U(1) acts
       trivially on every field, and the subgroup of the centre and U(1) acting trivially is exactly Z/6, so the
       group acting faithfully on the fields is (SU(3) x SU(2) x U(1))/Z6. (Which quotient by a subgroup of Z/6 is
@@ -27,7 +31,7 @@ What it computes (exact rational arithmetic throughout)
 What it shows
   Exact arithmetic facts about the Standard Model's representations: the conditions that make it consistent are
   Diophantine, its colour group is built on the Eisenstein integers, and its fields are blind to the same Z/6
-  that abelianises PSL(2, Z). The counts and the Z/6 match are recorded as conjectures in note 06.
+  that abelianises PSL(2, Z). The counts, the shared lattice and the Z/6 are the subject of the questions in note 06.
 """
 import cmath
 import itertools
@@ -110,6 +114,46 @@ check(trivial and gravity and sorted(t for t in gauge_only if t[0] == 1) == [(1,
       and all(e == 0 and d == -u for q, u, d, L, e in gauge_only if q == 0),
       f"gauge conditions alone, |y_u|, |y_e| <= 40: {len(gauge_only)} solutions, all with one cube zero (Fermat), "
       "all satisfying the gravitational condition; for y_Q = 1 they are the Standard Model's two")
+
+# scope: quantisation, the right-handed neutrino, the Higgs, the number of colours
+q_, u_ = 1.0, 0.0
+d_, L_, e_ = -2 * q_ - u_, -3 * q_, 72 ** (1 / 3)
+real_cubic = 6 * q_ ** 3 + 3 * u_ ** 3 + 3 * d_ ** 3 + 2 * L_ ** 3 + e_ ** 3
+real_grav = 6 * q_ + 3 * u_ + 3 * d_ + 2 * L_ + e_
+check(abs(real_cubic) < 1e-12 and abs(real_grav - (72 ** (1 / 3) - 6)) < 1e-12 and real_grav < -1.8,
+      f"over the reals: (y_Q, y_u, y_d, y_L, y_e) = (1, 0, -2, -3, 72^(1/3)) satisfies the gauge conditions "
+      f"and has gravitational sum {real_grav:.3f}: quantised hypercharge is a hypothesis")
+B_MINUS_L = {"Q": F(1, 3), "u^c": F(-1, 3), "d^c": F(-1, 3), "L": F(-1), "e^c": F(1), "nu^c": F(1)}
+check(all(all(v == 0 for v in anomalies([(n, c, d2, y + eps * B_MINUS_L[n]) for n, c, d2, y in GEN + [NU]]).values())
+          for eps in (F(1, 7), F(-2, 3), F(5))),
+      "with a right-handed neutrino every Y + eps (B - L) satisfies all the conditions: sixteen fermions do not "
+      "fix their hypercharges")
+for yq in (F(1, 6), F(5, 7)):
+    yu, yd, yL, ye = -4 * yq, 2 * yq, -3 * yq, 6 * yq
+    yH = -yq - yu                                   # the Yukawa coupling Q u^c H is neutral
+    lam = 1 / (2 * yH)                              # the charge T3 + lam Y that leaves the Higgs vacuum neutral
+    observed = [F(1, 2) + lam * yq, F(-1, 2) + lam * yq, F(1, 2) + lam * yL, F(-1, 2) + lam * yL,
+                lam * yu, lam * yd, lam * ye]
+    check(yH == 3 * yq and observed == [F(2, 3), F(-1, 3), F(0), F(-1), F(-2, 3), F(1, 3), F(1)]
+          and F(1, 2) + 2 * lam * yq == F(5, 6),
+          f"y_Q = {yq}: with the Higgs, y_H = -y_Q - y_u = 3 y_Q and Q = T3 + Y/(2 y_H) gives "
+          "(u, d, nu, e, u^c, d^c, e^c) = (2/3, -1/3, 0, -1, -2/3, 1/3, 1); another multiple of Y does not")
+
+
+def cubic_colours(N, q, u, e):
+    """the U(1)^3 condition with N colours, after y_L = -N y_Q and y_d = -2 y_Q - y_u."""
+    return 2 * N * q ** 3 + N * u ** 3 + N * (-2 * q - u) ** 3 + 2 * (-N * q) ** 3 + e ** 3
+
+
+check(all(cubic_colours(N, q, u, e) == e ** 3 + (u + (1 - N) * q) ** 3 - (u + (N + 1) * q) ** 3
+          for N in range(1, 13) for q in grid for u in grid for e in grid),
+      "N colours, N = 1, ..., 12: the cubic condition is y_e^3 + (y_u + (1 - N) y_Q)^3 = (y_u + (N + 1) y_Q)^3 "
+      "(an identity of cubic polynomials, checked on a 7 x 7 x 7 grid)")
+check(all(cubic_colours(N, 1, (N - 1), 2 * N) == 0 and cubic_colours(N, 1, -(N + 1), 2 * N) == 0
+          and 2 * N + N * (-2) + 2 * (-N) + 2 * N == 0
+          and F(1, 2) + F(1, 2 * N) * (-N) == 0 and F(1, 2 * N) * 2 * N == 1 for N in range(1, 13)),
+      "N colours: {y_u, y_d} = {(N - 1) y_Q, -(N + 1) y_Q}, y_L = -N y_Q, y_e = 2N y_Q solve all four conditions; "
+      "with y_H = N y_Q the neutrino is neutral, e^c has charge 1 and the quarks have 1/2 + 1/(2N), -1/2 + 1/(2N)")
 
 # ---------------------------------------------------------------------------------------------------
 print("(4) the hidden Z/6")

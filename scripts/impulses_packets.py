@@ -182,7 +182,8 @@ for T in (50, 100, TMAX):
                   for a in units)
 print("     root-mean-square error of the four rebuilt staircases on 3 < x < 150: "
       + ", ".join(f"T = {T}: {e:.3f}" for T, e in errs.items()))
-check(errs[TMAX] < errs[50] and errs[TMAX] < 0.6, "the error falls as more zeros are used, and is below 0.6 at T = 150")
+check([round(errs[T], 2) for T in (50, 100, TMAX)] == [0.83, 0.53, 0.42],
+      "the error falls as more zeros are used: 0.83, 0.53, 0.42 at T = 50, 100, 150")
 
 # ---------------------------------------------------------------------------------------------------
 print("D5 the spectrum of the zeros (Landau's formula)")
@@ -195,7 +196,7 @@ print(f"     the 600th zero is at height {T:.2f}")
 for n_, lab in ((2, "2"), (3, "3"), (4, "4"), (5, "5"), (7, "7")):
     val = np.cos(gam * math.log(n_)).sum()
     pred = -T / (2 * math.pi) * math.log(2 if n_ in (2, 4) else n_) / math.sqrt(n_)
-    check(abs(val - pred) < 0.2 * abs(pred), f"x = {lab}: sum cos(gamma log x) = {val:.1f}, Landau -(T/2pi) Lambda(x)/sqrt x = {pred:.1f}")
+    check(abs(val - pred) < 0.03 * abs(pred), f"x = {lab}: sum cos(gamma log x) = {val:.1f}, Landau -(T/2pi) Lambda(x)/sqrt x = {pred:.1f}")
 u = np.linspace(0.3, 3.3, 3001)
 sigma = 150.0
 w = np.exp(-(gam / sigma) ** 2 / 2)

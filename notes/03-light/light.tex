@@ -15,7 +15,7 @@ Seven, by convention: Newton chose seven colours by analogy with the seven notes
 The visible spectrum is a continuum, and colour vision is three-dimensional.
 The visible band spans close to one octave of frequency: 1.97 with the common limits of 380--750\,nm, and 2.31 with the colorimetric limits of 360--830\,nm.
 The seven diatonic steps of that octave and the named colour bands divide it differently.
-Hydrogen has exact rational frequency ratios, by the Rydberg formula.
+In the Rydberg formula the frequency ratios of hydrogen are rational, and the observed lines follow the formula to a few parts in $10^5$.
 Each series spans the ratio $(m+1)^2/(2m+1)$ from its first line to its limit: $4/3$ for Lyman and $9/5$ for Balmer.
 \end{abstract}
 
@@ -38,9 +38,9 @@ Figure~\ref{fig:spectrum} sets three divisions of the octave side by side.
 \begin{itemize}
 \item The six conventional colour bands have widths 70, 45, 75, 20, 30 and 130\,nm.
 \item The seven diatonic steps of the octave 750$\to$375\,nm have widths 82, 73, 33, 61, 55, 49 and 22\,nm.
-\item The visible Balmer lines of hydrogen sit at 656.5, 486.3, 434.2 and 410.3\,nm (vacuum wavelengths).
+\item The first five Balmer lines of hydrogen sit at 656.5, 486.3, 434.2, 410.3 and 397.1\,nm (vacuum wavelengths).
 \end{itemize}
-The first two divide the octave differently.
+The first two do not correspond: there are six named bands and seven steps, and their widths differ.
 
 \begin{figure}[ht]
   \centering
@@ -49,20 +49,20 @@ The first two divide the octave differently.
   \label{fig:spectrum}
 \end{figure}
 
-\section{Hydrogen: exact ratios}
+\section{Hydrogen: rational ratios}
 
 The Rydberg formula $1/\lambda = R_H(1/m^2-1/n^2)$ makes every frequency ratio in the hydrogen spectrum rational.
-In the Balmer series ($m=2$), consecutive visible lines have ratios
+In the Balmer series ($m=2$), the first five lines have consecutive ratios
 \[
   \tfrac{27}{20},\quad \tfrac{28}{25},\quad \tfrac{200}{189},\quad \tfrac{405}{392}.
 \]
-Several lie close to musical intervals: $\tfrac{27}{20}$ is 21.5 cents above the fourth $\tfrac43$, and $\tfrac{28}{25}$ is 7.7 cents below the tone $\tfrac98$.
-The span of a whole series, from its first line $n=m+1$ to its limit $n\to\infty$, is exact:
+Two can be named in musical terms: $\tfrac{27}{20}$ is a syntonic comma ($\tfrac{81}{80}$, 21.5 cents) above the fourth $\tfrac43$, and $\tfrac{28}{25}$ is 7.7 cents below the tone $\tfrac98$.
+The span of a whole series, from its first line $n=m+1$ to its limit $n\to\infty$, is
 \[
   \frac{1/m^2}{1/m^2 - 1/(m+1)^2} = \frac{(m+1)^2}{2m+1} = \tfrac43,\ \tfrac95,\ \tfrac{16}7,\ \tfrac{25}9\quad(m = 1,2,3,4).
 \]
-So the Lyman series spans exactly a perfect fourth, and the Balmer series exactly a just minor seventh.
-Both are exact consequences of the Rydberg formula, which makes the hydrogen spectrum a small piece of exact arithmetic.
+So in the Rydberg formula the Lyman series spans a perfect fourth and the Balmer series a just minor seventh.
+The measured lines follow the formula to a few parts in $10^5$; fine structure and the Lamb shift account for the difference.
 Note~08 returns to hydrogen: the degeneracy $n^2$ of its levels is a count of harmonics on a sphere.
 
 \section*{Status of the statements}
@@ -75,8 +75,8 @@ Statement & Grade\\
 \midrule
 Seven colours & \gradeConvention{} (Newton)\\
 The visible band spans about an octave (1.97 or 2.31, by the limits chosen) & \gradeComputed\\
-Diatonic steps and colour bands divide the octave differently & \gradeComputed\\
-Balmer ratios; series spans $(m+1)^2/(2m+1)$ & \gradeClassical{} (Rydberg), \gradeComputed\\
+Widths of the seven diatonic steps of the octave 750$\to$375\,nm, beside the six named bands & \gradeComputed\\
+Balmer ratios and series spans $(m+1)^2/(2m+1)$ in the Rydberg formula & \gradeClassical{} (Rydberg), \gradeComputed\\
 \bottomrule
 \end{tabular}
 \end{center}
