@@ -86,7 +86,7 @@ Every note ends with a table that grades each statement it makes:
 | **physics** | A published derivation or measurement in physics, cited. |
 | **computed** | Checked numerically by a script in [`scripts/`](scripts). The script asserts it and fails if it stops holding. |
 | **convention** | A human choice of units or names. |
-| **open** | A question, conjecture or working hypothesis. |
+| **open** | A question, a conjecture or a reading. |
 
 The notes model physical phenomena with L-functions and their characters. Open problems such as the
 Riemann hypothesis enter as context and, where a result depends on them, as stated hypotheses.
