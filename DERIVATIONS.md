@@ -59,6 +59,12 @@ Note 11 restates derivations 10.2 and 10.4, with Gauss's count from note 08, as 
 | Shape | S_N L(5, F⊗χ₋₄) = L(5, F⊗χ_D), with S_N = a(N)²/N^{9/2} | classical within a class of N in ℚ₂ˣ modulo squares; one constant for the seven classes computed |
 | Silence | E_N = 0 exactly when N = 4^a(8b+7) | "if": Lean ([`SilentShells`](https://github.com/rmorleysmith/morley-smith-formal/tree/main/MorleySmithFormal/SilentShells)); "only if": classical |
 
+## The hypercharge curve (note 06, [`scripts/standard_model.py`](scripts/standard_model.py))
+
+| | Statement | In physical terms |
+|---|---|---|
+| 6.1 | For one generation with `N` colours and rational hypercharges, the non-zero solutions of the gauge anomaly conditions, up to scale, are the rational points of `X³ + Y³ = Z³`, `(X, Y, Z) = (y_e, y_u + (1 − N)y_Q, y_u + (N + 1)y_Q)`. There are three, collinear, a group of order 3 in which `u ↔ d` is negation. The curve is `y² + y = x³ − 7` (conductor 27, complex multiplication by `ℤ[ω]`); it has `p + 1 − a(p)` points modulo `p`, with `Σ a(n)qⁿ = η(3z)²η(9z)²`; `Λ(2 − s) = Λ(s)` and `L(1) = Ω/3 = 0.588879583…`, not zero, which by Coates–Wiles gives finitely many rational points (and, with the counts 6 and 9 modulo 5 and 7, exactly three). All classical. | The hypercharges of a generation are the rational points of one elliptic curve, the same for every number of colours; that they are fixed is visible in the central value of its L-function. Lean: the list of solutions (`MorleySmithFormal/Hypercharge`), and the count for `p ≡ 2 mod 3` (`MorleySmithFormal/FermatCubicModP`). |
+
 ## Earlier notes
 
 | Where | Statement | In physical terms | Checked by |

@@ -11,8 +11,8 @@
 
 \begin{abstract}
 \noindent
-We record four exact facts about the representations of the Standard Model of particle physics, each checked in rational arithmetic or in Lean, and then state the programme they suggest as a working hypothesis and five questions.
-For one generation of fermions with quantised hypercharge, the conditions for the cancellation of gauge anomalies are Fermat's equation $x^3+y^3=z^3$, and its trivial solutions are the observed hypercharges (Lohitsiri and Tong); the same reduction holds for any number of colours.
+We record four exact facts about the representations of the Standard Model of particle physics, each checked by computation or in Lean, and then state the programme they suggest as a working hypothesis and five questions.
+For one generation of fermions with quantised hypercharge, the conditions for the cancellation of gauge anomalies are Fermat's equation $x^3+y^3=z^3$, and its trivial solutions are the observed hypercharges (Lohitsiri and Tong); the same reduction holds for any number of colours. The solutions are the three rational points of an elliptic curve with complex multiplication by the Eisenstein integers, whose $L$-function is that of $\eta(3z)^2\eta(9z)^2$ and does not vanish at its centre (all classical).
 The root lattice of the colour group is the ring of Eisenstein integers $\Z[\omega]$: its roots are the units, and its centre is the residue field $\Z[\omega]/(1-\omega)$.
 The fields of the model are blind to a subgroup $\Z/6$ of the gauge group, and the abelianisation of $\mathrm{PSL}(2,\Z)$ is $\Z/6$.
 The model is chiral; a Dirichlet character has a parity, and the cohomology of a modular form has two conjugate Hodge types.
@@ -86,8 +86,38 @@ The reduction to Fermat's cubic holds for every $N$: the exponent is that of the
 The solutions with $y_Q\neq0$ are $\{y_u,y_d\} = \{(N-1)y_Q,\,-(N+1)y_Q\}$, $y_L=-Ny_Q$, $y_e=2Ny_Q$, and they satisfy the gravitational condition.
 The list of solutions and the gravitational consequence for every $N\ge1$ are proved in Lean in the same file.
 
+\begin{derivation}[the hypercharge curve and its $L$-function]\label{d:curve}
+For one generation with $N$ colours and rational hypercharges, put $(X,Y,Z) = \bigl(y_e,\ y_u+(1-N)y_Q,\ y_u+(N+1)y_Q\bigr)$.
+The non-zero solutions of the three gauge conditions, up to scale, are the rational points of the plane cubic
+\[
+  \mathcal F:\quad X^3+Y^3=Z^3 .
+\]
+\begin{enumerate}[label=(\roman*)]
+\item $\mathcal F(\Q)$ consists of the three points $(0:1:1)$, $(1:-1:0)$ and $(1:0:1)$, which lie on the line $X+Y=Z$ (Euler).
+They are the solution with $y_Q=0$, the assignment of the table, and its image under $u\leftrightarrow d$.
+With the first as origin they form a group of order 3, in which the exchange $u\leftrightarrow d$, the map $(X:Y:Z)\mapsto(X:-Z:-Y)$, is negation.
+\item With that origin $\mathcal F$ is an elliptic curve with complex multiplication by $\Z[\omega]$, where $\omega$ acts by $(X:Y:Z)\mapsto(\omega X:Y:Z)$; over $\Q$ it is the curve $y^2+y=x^3-7$ of conductor 27 \cite{LMFDB}.
+Modulo a prime $p\equiv2\pmod3$ it has $p+1$ points; modulo a prime $p\equiv1\pmod3$ it has $p+1+A$, where $4p=A^2+27B^2$ and $A\equiv1\pmod3$ (Gauss).
+\item Its $L$-function is that of the newform $f=\eta(3z)^2\eta(9z)^2 = q-2q^4-q^7+5q^{13}+4q^{16}-7q^{19}+\cdots$ of weight 2 and level 27 \cite{MartinOno}: for $p\ne3$ the number of points modulo $p$ is $p+1-a(p)$.
+\item $\Lambda(s) = 27^{s/2}(2\pi)^{-s}\Gamma(s)L(\mathcal F,s)$ satisfies $\Lambda(2-s)=\Lambda(s)$, since $\eta(-1/z)^2 = -iz\,\eta(z)^2$ gives $f(-1/(27z)) = -27z^2f(z)$.
+At the centre $L(\mathcal F,1) = \Omega/3 = 0.588\,879\,583\ldots$, where $\Omega = 1.766\,638\,750\ldots$ is the real period of the curve \cite{LMFDB}; numerically $\Omega = \Gamma(\tfrac13)^3/(2\pi\sqrt3)$.
+\item An elliptic curve over $\Q$ with complex multiplication by the ring of integers of an imaginary quadratic field, whose $L$-function does not vanish at $s=1$, has finitely many rational points (Coates and Wiles \cite{CoatesWiles}).
+A finite group of rational points embeds in the points modulo 5 and modulo 7, of which there are 6 and 9, so its order divides 3: the three points of (i) are all.
+\end{enumerate}
+\end{derivation}
+
+\noindent
+Everything in Derivation~\ref{d:curve} is classical; Lohitsiri and Tong note that the curve is a special one \cite{LohitsiriTong}.
+The script checks, exactly, the three points, that they are collinear flexes, and that $u\leftrightarrow d$ is negation for $N\le12$; the number of points for the 77 primes $p<400$, $p\ne3$, against the coefficients $a(p)$ and against Gauss's formula; and, in floating point, the functional equation and the central value, to $10^{-13}$.
+The count for $p\equiv2\pmod3$, in the form that $x^3+y^3\equiv z^3$ has $p^2$ solutions modulo $p$, is proved in Lean in \formal{} (\leanpath{MorleySmithFormal/FermatCubicModP}).
+As algebra the derivation holds for every $N\ge1$; as physics it applies to odd $N\ge3$, since a generation has $N+1$ weak doublets and Witten's condition requires that number to be even.
+
 \physical
 Once the fermions of a generation are fixed and hypercharge is quantised, consistency fixes the hypercharges up to one scale.
+The solutions of the three gauge conditions are the rational points of one elliptic curve, the same curve for every number of colours.
+There are three: the observed assignment, its image under $u\leftrightarrow d$, and the one with $y_Q=0$.
+The curve has an $L$-function, and the finiteness of the list is visible in it: its value at the centre of the critical strip is not zero.
+With a right-handed neutrino that carries hypercharge the curve is replaced by the Fermat cubic surface, which has infinitely many rational points, and the gravitational condition no longer follows from the gauge conditions \cite{LohitsiriTong}.
 The electric charges follow when the Higgs doublet is added: with $y_u=-4y_Q$ the Yukawa coupling of $Q$ and $u^c$ fixes its hypercharge, $y_H = -y_Q-y_u = 3y_Q$, the charge left unbroken is $T_3+Y/(2y_H)$, and it takes the values $\frac23$ and $-\frac13$ on the quarks and $0$ and $-1$ on the leptons.
 
 \section{Colour lives on the Eisenstein integers}\label{sec:colour}
@@ -106,8 +136,8 @@ In the same way the roots of the weak $SU(2)$ are the units $\pm1$ of $\Z$.
 The eight gauge bosons of non-zero weight, six gluons and $W^\pm$, are indexed by the units of $\Z[\omega]$ and of $\Z$, and the four of weight zero by the rank $2+1+1$.
 The script checks each of these statements.
 
-The same ring carries the descent that proves Fermat's theorem for cubes.
-For $N$ colours the cubic of Section~\ref{sec:balance} is unchanged while the root lattice becomes $A_{N-1}$, so the two appearances of $\Z[\omega]$ meet at $N=3$ only.
+The same ring is the ring of complex multiplication of the hypercharge curve (Derivation~\ref{d:curve}), and it carries the descent that proves Fermat's theorem for cubes.
+For $N$ colours the curve is unchanged while the root lattice becomes $A_{N-1}$, so the two appearances of $\Z[\omega]$ meet at $N=3$ only.
 
 \begin{question}\label{q:colour}
 Is there a construction in which the root lattice of colour and the lattice $\Z+\Z\rho$ on which the stabiliser of $\rho$ acts are one lattice, with the six roots and the six units matched by the construction and not only by their coordinates?
@@ -145,6 +175,7 @@ For a holomorphic form of weight $k$, the weight, the character by which the rot
 Hecke eigenvalues stand in the place of charges, and the $L$-function packages them.
 
 \begin{question}\label{q:rep}
+Derivation~\ref{d:curve} attaches an $L$-function to the gauge anomaly conditions of one generation, and its non-vanishing at $s=1$ implies that they have finitely many solutions.
 Is there an $L$-function, built from automorphic representations attached to the particles of the Standard Model, from which a number of the model can be derived, such as the number of generations or a ratio of masses?
 \end{question}
 
@@ -206,6 +237,13 @@ The six anomaly conditions hold for one generation & \gradeClassical, \gradeComp
 With gravity they fix the hypercharges of a generation of fifteen, for $y_Q\ne0$, up to scale and $u\leftrightarrow d$ & \gradeClassical, \gradeComputed\\
 For rational hypercharges the gauge conditions alone are Fermat's cubic; their solutions; they imply the gravitational condition (the last also in Physlib) & \gradeClassical, \gradeLean\\
 The same for $N$ colours: the cubic, the solutions, the gravitational condition & \gradeLean, \gradeComputed\\
+Derivation~\ref{d:curve}(i): the three rational points & \gradeClassical, \gradeLean\\
+Derivation~\ref{d:curve}(i): collinear flexes; $u\leftrightarrow d$ is negation & \gradeComputed\\
+Derivation~\ref{d:curve}(ii): complex multiplication; the model $y^2+y=x^3-7$ of conductor 27 & \gradeClassical\\
+Derivation~\ref{d:curve}(ii): for $p\equiv2\pmod3$, $p^2$ solutions of $x^3+y^3\equiv z^3$ (so $p+1$ points) & \gradeLean, \gradeComputed\\
+Derivation~\ref{d:curve}(ii), (iii): Gauss's count and the coefficients of $\eta(3z)^2\eta(9z)^2$, primes $p<400$ & \gradeClassical, \gradeComputed\\
+Derivation~\ref{d:curve}(iv): functional equation and central value & \gradeClassical, \gradeComputed\\
+Derivation~\ref{d:curve}(v) & \gradeClassical, \gradeComputed\\
 The real solution without the gravitational condition; the family $Y+\varepsilon(B-L)$; the electric charges with the Higgs & \gradeComputed\\
 $SU(3)$ roots are the units of $\Z[\omega]$; centre $=\Z[\omega]/(1-\omega)$ & \gradeClassical, \gradeComputed\\
 The roots are one orbit of the stabiliser of $\rho$ & \gradeComputed\\
@@ -224,10 +262,13 @@ The working hypothesis and Questions~\ref{q:colour}--\ref{q:twelve} & \gradeOpen
 \bibitem{AGT2} B.~C. Allanach, B.~Gripaios and J.~Tooby-Smith, Solving local anomaly equations in gauge-rank extensions of the Standard Model, \emph{Phys. Rev. D} 101 (2020), 075015.
 \bibitem{BaezHuerta} J.~Baez and J.~Huerta, The algebra of grand unified theories, \emph{Bull. Amer. Math. Soc.} 47 (2010), 483--552.
 \bibitem{Bump} D.~Bump, \emph{Automorphic Forms and Representations}, Cambridge University Press, 1997.
+\bibitem{CoatesWiles} J.~Coates and A.~Wiles, On the conjecture of Birch and Swinnerton-Dyer, \emph{Invent. Math.} 39 (1977), 223--251.
 \bibitem{ConwaySloane} J.~H. Conway and N.~J.~A. Sloane, \emph{Sphere Packings, Lattices and Groups}, 3rd ed., Springer, 1999.
 \bibitem{CDF} D.~B. Costa, B.~A. Dobrescu and P.~J. Fox, General solution to the $U(1)$ anomaly equations, \emph{Phys. Rev. Lett.} 123 (2019), 151601.
 \bibitem{GengMarshak} C.~Q. Geng and R.~E. Marshak, Uniqueness of quark and lepton representations in the standard model from the anomalies viewpoint, \emph{Phys. Rev. D} 39 (1989), 693--696.
+\bibitem{LMFDB} The LMFDB Collaboration, \emph{The $L$-functions and modular forms database}, elliptic curve 27.a3 and newform 27.2.a.a, \url{https://www.lmfdb.org/EllipticCurve/Q/27/a/3}, consulted November 2026.
 \bibitem{LohitsiriTong} N.~Lohitsiri and D.~Tong, Hypercharge quantisation and Fermat's last theorem, \emph{SciPost Phys.} 8 (2020), 009.
+\bibitem{MartinOno} Y.~Martin and K.~Ono, Eta-quotients and elliptic curves, \emph{Proc. Amer. Math. Soc.} 125 (1997), 3169--3176.
 \bibitem{MRW} J.~A. Minahan, P.~Ramond and R.~C. Warner, Comment on anomaly cancellation in the standard model, \emph{Phys. Rev. D} 41 (1990), 715--716.
 \bibitem{Physlib} J.~Tooby-Smith, theorem \texttt{SM.SMNoGrav.One.accGravSatisfied}, in The Physlib Community, \emph{Physlib: the Lean physics library}, \url{https://github.com/leanprover-community/physlib}, file \nolinkurl{Physlib/Particles/StandardModel/AnomalyCancellation/NoGrav/One/Lemmas.lean}.
 \bibitem{HepLean} J.~Tooby-Smith, HepLean: digitalising high energy physics, \emph{Comput. Phys. Commun.} 308 (2025), 109457.

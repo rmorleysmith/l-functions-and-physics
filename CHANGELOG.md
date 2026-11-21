@@ -35,6 +35,11 @@ and attribution.
   convention up to the automorphisms of `ℤ/12`; hydrogen's rational ratios are those of the Rydberg formula; the
   logarithm of an `L`-function is the sum of prime tones; Landau's formula on the critical line assumes RH;
   CODATA 2022; the squarefree condition is stated wherever the `L`-value form is quoted.
+- **New in note 06: Derivation 6.1, the hypercharge curve and its L-function.** The solutions of the gauge
+  conditions are the three rational points of the elliptic curve `X³ + Y³ = Z³` (conductor 27, complex
+  multiplication by `ℤ[ω]`), a group of order 3 in which `u ↔ d` is negation; its L-function is that of
+  `η(3z)²η(9z)²`, with `L(1) = Ω/3 ≠ 0` (Coates–Wiles then gives finitely many points). All classical;
+  reviewed independently before publication. Lean: `FermatCubicModP` (the count modulo primes `p ≡ 2 mod 3`).
 - **Grades and checks.** A new grade, *physics*, for published derivations and measurements. Every number quoted
   in a note is now asserted by its script to the precision printed.
 

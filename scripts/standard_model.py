@@ -1,6 +1,6 @@
 """Note 06: towards a number-theoretic standard model. The exact facts the questions rest on.
 
-What it computes (exact rational arithmetic throughout)
+What it computes (exact rational arithmetic, except the L-function checks of (3b), which are in floating point)
   (1) Counts. Twelve fermion flavours (six quarks, six leptons); twelve gauge bosons, the dimension of
       SU(3) x SU(2) x U(1) = 8 + 3 + 1; fifteen Weyl fermions per generation (sixteen with a right-handed
       neutrino). The Higgs is the one scalar; the gauge bosons are vectors.
@@ -16,6 +16,11 @@ What it computes (exact rational arithmetic throughout)
       gravitational one; with a right-handed neutrino the conditions hold for Y + eps (B - L), every eps; the
       electric charges need the Higgs doublet as well (Q = T3 + Y/(2 y_H), y_H = -y_Q - y_u); with N colours
       the cubic condition is y_e^3 + (y_u + (1 - N) y_Q)^3 = (y_u + (N + 1) y_Q)^3, Fermat's cubic for every N.
+  (3b) The hypercharge curve. The solutions, up to scale, are the three rational points of the elliptic curve
+      X^3 + Y^3 = Z^3, a group of order 3 in which u <-> d is negation. The curve has complex multiplication by
+      Z[omega]; its number of points modulo p is p + 1 - a(p) with sum a(n) q^n = eta(3z)^2 eta(9z)^2 (level 27),
+      a(p) = 0 for p = 2 (mod 3) and Gauss's formula for p = 1 (mod 3). Its L-function has root number +1 and
+      central value L(1) = Gamma(1/3)^3/(6 pi sqrt 3) = 0.5888795834..., which is not zero.
   (4) The hidden Z/6. The element (e^(2 pi i/3) I_3, -I_2, e^(2 pi i/6)) of SU(3) x SU(2) x U(1) acts
       trivially on every field, and the subgroup of the centre and U(1) acting trivially is exactly Z/6, so the
       group acting faithfully on the fields is (SU(3) x SU(2) x U(1))/Z6. (Which quotient by a subgroup of Z/6 is
@@ -154,6 +159,67 @@ check(all(cubic_colours(N, 1, (N - 1), 2 * N) == 0 and cubic_colours(N, 1, -(N +
           and F(1, 2) + F(1, 2 * N) * (-N) == 0 and F(1, 2 * N) * 2 * N == 1 for N in range(1, 13)),
       "N colours: {y_u, y_d} = {(N - 1) y_Q, -(N + 1) y_Q}, y_L = -N y_Q, y_e = 2N y_Q solve all four conditions; "
       "with y_H = N y_Q the neutrino is neutral, e^c has charge 1 and the quarks have 1/2 + 1/(2N), -1/2 + 1/(2N)")
+
+# ---------------------------------------------------------------------------------------------------
+print("(3b) the hypercharge curve X^3 + Y^3 = Z^3 and its L-function")
+# (X, Y, Z) = (y_e, y_u + (1 - N) y_Q, y_u + (N + 1) y_Q); for N = 3: (y_e, y_u - 2 y_Q, y_u + 4 y_Q)
+points = {"y_Q = 0": (0, 1, 0), "observed": (1, -4, 6), "observed, u <-> d": (1, 2, 6)}      # (y_Q, y_u, y_e)
+XYZ = {k: (e, u - 2 * q, u + 4 * q) for k, (q, u, e) in points.items()}
+O_, P_, Q_ = XYZ["y_Q = 0"], XYZ["observed"], XYZ["observed, u <-> d"]
+det3 = lambda r1, r2, r3: (r1[0] * (r2[1] * r3[2] - r2[2] * r3[1]) - r1[1] * (r2[0] * r3[2] - r2[2] * r3[0])
+                           + r1[2] * (r2[0] * r3[1] - r2[1] * r3[0]))
+sigma = lambda pt: (pt[0], -pt[2], -pt[1])                  # u <-> d
+proj_eq = lambda s_, t_: all(s_[i] * t_[j] == s_[j] * t_[i] for i in range(3) for j in range(3))
+check((O_, P_, Q_) == ((0, 1, 1), (6, -6, 0), (6, 0, 6)) and det3(O_, P_, Q_) == 0
+      and all(X ** 3 + Y ** 3 == Z ** 3 and X + Y == Z and X * Y * Z == 0 for X, Y, Z in (O_, P_, Q_)),
+      "the three solutions are the points (0:1:1), (1:-1:0) (observed), (1:0:1) of the cubic: flexes on the line X + Y = Z")
+check(all((e, (-2 * q - u) + (1 - N) * q, (-2 * q - u) + (N + 1) * q) == sigma((e, u + (1 - N) * q, u + (N + 1) * q))
+          for N in range(1, 13) for q in grid for u in grid for e in grid)
+      and proj_eq(sigma(O_), O_) and proj_eq(sigma(P_), Q_)
+      and all(det3(O_, (X, Y, Z), sigma((X, Y, Z))) == 0 for X in grid for Y in grid for Z in grid),
+      "exchanging u and d is (X : Y : Z) -> (X : -Z : -Y) for N = 1, ..., 12; it fixes (0:1:1), swaps the other two, "
+      "and O, T, sigma(T) are collinear for every T: negation in the group with origin O, of order 3 on these points")
+check(all(1728 - 432 * (x + y) ** 3 - 1296 * (x - y) ** 2 * (x + y) == 1728 * (1 - x ** 3 - y ** 3)
+          for x in grid for y in grid)
+      and all((4 * (2 * y + 1)) ** 2 - ((4 * x) ** 3 - 432) == 64 * (y * y + y - x ** 3 + 7) for x in grid for y in grid),
+      "x^3 + y^3 = 1 maps to Y^2 = X^3 - 432 by X = 12/(x + y), Y = 36 (x - y)/(x + y); with X = 4x', "
+      "Y = 4(2y' + 1) this is y'^2 + y' = x'^3 - 7 (LMFDB 27.a3)")
+MC = 400
+eta27 = [1] + [0] * MC                                   # prod (1 - q^(3n))^2 (1 - q^(9n))^2
+for step in (3, 3, 9, 9):
+    for n_ in range(step, MC + 1, step):
+        for i_ in range(MC, n_ - 1, -1):
+            eta27[i_] -= eta27[i_ - n_]
+a27 = [0] + eta27[:MC]                                   # eta(3z)^2 eta(9z)^2 = sum a27[n] q^n
+check(a27[1:20] == [1, 0, 0, -2, 0, 0, -1, 0, 0, 0, 0, 0, 5, 0, 0, 4, 0, 0, -7],
+      "eta(3z)^2 eta(9z)^2 = q - 2q^4 - q^7 + 5q^13 + 4q^16 - 7q^19 + ...")
+primes_c = [p for p in range(2, MC) if all(p % d for d in range(2, int(p ** 0.5) + 1)) and p != 3]
+counts_ok, gauss_ok, inert_ok = True, True, True
+for p in primes_c:
+    mult = {}
+    for x in range(p):
+        mult[pow(x, 3, p)] = mult.get(pow(x, 3, p), 0) + 1
+    affine = sum(mult[u_] * mult[v_] * mult.get((u_ + v_) % p, 0) for u_ in mult for v_ in mult)
+    projective = (affine - 1) // (p - 1)
+    counts_ok = counts_ok and projective == p + 1 - a27[p]
+    if p % 3 == 2:
+        inert_ok = inert_ok and affine == p * p and a27[p] == 0
+    else:
+        A = [A_ for A_ in range(-2 * p, 2 * p) if A_ % 3 == 1 and 4 * p - A_ * A_ > 0
+             and (4 * p - A_ * A_) % 27 == 0 and math.isqrt((4 * p - A_ * A_) // 27) ** 2 == (4 * p - A_ * A_) // 27]
+        gauss_ok = gauss_ok and len(A) == 1 and a27[p] == -A[0]
+check(counts_ok, f"for the {len(primes_c)} primes p < {MC}, p != 3: the cubic has p + 1 - a(p) points modulo p, "
+                 "a(p) the coefficient of eta(3z)^2 eta(9z)^2")
+check(inert_ok, "p = 2 (mod 3): p^2 solutions (x, y, z) of x^3 + y^3 = z^3 modulo p, and a(p) = 0")
+check(gauss_ok, "p = 1 (mod 3): a(p) = -A with 4p = A^2 + 27 B^2, A = 1 (mod 3) (Gauss)")
+check((5 + 1 - a27[5], 7 + 1 - a27[7], math.gcd(5 + 1 - a27[5], 7 + 1 - a27[7])) == (6, 9, 3),
+      "6 points modulo 5 and 9 modulo 7: a finite group of rational points has order dividing 3")
+G27 = lambda y_: sum(a27[n_] * math.exp(-2 * math.pi * n_ * y_ / math.sqrt(27)) for n_ in range(1, MC))
+check(all(abs(G27(1 / y_) / (y_ * y_ * G27(y_)) - 1) < 1e-12 for y_ in (0.7, 1.3, 2.1)),
+      "f(i/(sqrt 27 y)) = y^2 f(i y/sqrt 27): the functional equation Lambda(2 - s) = Lambda(s), root number +1")
+L27 = 2 * sum(a27[n_] / n_ * math.exp(-2 * math.pi * n_ / math.sqrt(27)) for n_ in range(1, MC))
+check(abs(L27 - math.gamma(1 / 3) ** 3 / (6 * math.pi * math.sqrt(3))) < 1e-13 and abs(L27 - 0.5888795834284833) < 1e-13,
+      f"the central value L(1) = {L27:.16f} = Omega/3, Omega = Gamma(1/3)^3/(2 pi sqrt 3) the real period; not zero")
 
 # ---------------------------------------------------------------------------------------------------
 print("(4) the hidden Z/6")
