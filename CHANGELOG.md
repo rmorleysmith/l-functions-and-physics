@@ -61,7 +61,7 @@ and attribution.
   Z(2)/(2π³)]`, with Epstein's zeta function; and the tones as eigenforms of `⋆d`. A closing section, graded open,
   reads what Newton, Dirichlet and Hodge were reaching for, with Jacobi's and Atiyah's words. Derivations 3.1 to 3.7;
   31 checks in `scripts/light.py`; new figure `light-cavity`. Requested by the author: a celebration of the
-  arithmetic that the physics of light later needed, with nothing claimed as new.
+  arithmetic that the physics of light later needed.
 - **Note 11: standard names.** "Four laws for a lattice of impulses" is now "Four relations for a cubic lattice
   of impulses", and the laws of duality, size, shape and silence are Poisson duality, echo strength, shell anisotropy
   and empty shells. Files: `notes/11-four-relations/`, `pdf/four-relations.pdf`, `scripts/shell_anisotropy.py`
