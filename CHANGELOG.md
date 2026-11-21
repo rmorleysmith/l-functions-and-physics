@@ -6,6 +6,8 @@
   abelianisation of `SL(2, ℤ)`, with its explicit formula (note 01, new Proposition 3); the displacement
   formula in the modular group and the bound `4 log φ` (note 05), with `tanh d(i, ρ) = ½` (note 08); the
   solutions of the gauge anomaly conditions of one generation (note 06).
+- Note 11, three laws for a lattice of impulses: the laws of duality, size and shape stated as the model's
+  central equations, with their physical readings, grades and attributions.
 - Lean paths break at slashes, and every line of the built notes stays inside the margin.
 
 ## 0.5.0 (2026-11-21)
