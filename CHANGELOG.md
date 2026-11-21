@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.1 (2026-11-21)
+## 0.6.0 (2026-11-21)
 
 - Three statements are now proved in Lean in morley-smith-formal and graded so: the pitch map as the
   abelianisation of `SL(2, ℤ)`, with its explicit formula (note 01, new Proposition 3); the displacement
