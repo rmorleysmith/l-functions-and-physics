@@ -2,7 +2,7 @@
 # make check   run every script: each asserts the numbers it prints and redraws its figures
 # make pdf     build the notes with latexmk (needs a TeX Live installation) and copy them to pdf/
 PY ?= $(CURDIR)/.venv/bin/python
-SCRIPTS = twelve_tones lattice_waves gauss_sums_waves light lfunction_picture golden_ratio standard_model impulses_packets light_cone zeros_statistics spheres shape_law
+SCRIPTS = twelve_tones lattice_waves gauss_sums_waves light lfunction_picture golden_ratio standard_model impulses_packets light_cone zeros_statistics spheres shape_law lattice_divergence
 NOTES = notes/01-twelve-tones/twelve-tones \
         notes/02-characters-and-waves/characters-and-waves \
         notes/03-light/light \
@@ -13,7 +13,8 @@ NOTES = notes/01-twelve-tones/twelve-tones \
         notes/08-light-cone-and-spheres/light-cone-and-spheres \
         notes/09-zeros-as-energy-levels/zeros-as-energy-levels \
         notes/10-spheres/spheres \
-        notes/11-laws/laws
+        notes/11-laws/laws \
+        notes/12-lattice-divergence/lattice-divergence
 
 .PHONY: venv check pdf
 

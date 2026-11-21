@@ -2,7 +2,7 @@
 
 ## Unreleased: corrections from an adversarial review (2026-11-21)
 
-Three independent cold reads were made of the notes and of the Lean statements, as a sceptical expert would
+Three independent cold reads by AI agents were made of the notes and of the Lean statements, as a sceptical expert would
 read them. The numerics were confirmed throughout; the corrections are to physics statements, framing, grading
 and attribution.
 
@@ -39,7 +39,12 @@ and attribution.
   conditions are the three rational points of the elliptic curve `X³ + Y³ = Z³` (conductor 27, complex
   multiplication by `ℤ[ω]`), a group of order 3 in which `u ↔ d` is negation; its L-function is that of
   `η(3z)²η(9z)²`, with `L(1) = Ω/3 ≠ 0` (Coates–Wiles then gives finitely many points). All classical;
-  reviewed independently before publication. Lean: `FermatCubicModP` (the count modulo primes `p ≡ 2 mod 3`).
+  reviewed by an independent AI agent before publication. Lean: `FermatCubicModP` (the count modulo primes `p ≡ 2 mod 3`).
+- **New: note 12, lattice metrics and the cosmological-term functional of gravity from entropy.** The functional
+  `Tr(𝒢 − I − ln 𝒢)` of the emergent cosmological term of Bianconi's theory, evaluated on normalised Gram matrices
+  of plane lattices, equals `2 cosh d − 2`; a change of basis costs at least the discriminant `t² − 4`, least value
+  5; Dirichlet's formula relates the minimum and the geodesic length to `L(1, χ_D)`. Lean:
+  `LatticeMetricDivergence`. Reviewed by an independent AI agent before publication.
 - **Grades and checks.** A new grade, *physics*, for published derivations and measurements. Every number quoted
   in a note is now asserted by its script to the precision printed.
 

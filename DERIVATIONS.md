@@ -59,6 +59,18 @@ Note 11 restates derivations 10.2 and 10.4, with Gauss's count from note 08, as 
 | Shape | S_N L(5, F⊗χ₋₄) = L(5, F⊗χ_D), with S_N = a(N)²/N^{9/2} | classical within a class of N in ℚ₂ˣ modulo squares; one constant for the seven classes computed |
 | Silence | E_N = 0 exactly when N = 4^a(8b+7) | "if": Lean ([`SilentShells`](https://github.com/rmorleysmith/morley-smith-formal/tree/main/MorleySmithFormal/SilentShells)); "only if": classical |
 
+## Lattice metrics and the cosmological-term functional (note 12, [`scripts/lattice_divergence.py`](scripts/lattice_divergence.py))
+
+`S(A, B) = tr(G − 1 − log G)`, `G = AB⁻¹`: the form of the emergent cosmological term of Bianconi's gravity from entropy, and twice the Kullback–Leibler divergence of `N(0, A)` from `N(0, B)`.
+
+| | Statement | In physical terms |
+|---|---|---|
+| 12.1 | For `M(z) = (1/y)[[x² + y², x], [x, 1]]` (the Gram matrix of the basis `(z, 1)` divided by the covolume) and `G = M(z)M(w)⁻¹`: `det G = 1`, `tr G = 2 cosh δ(z, w)`, eigenvalues `e^{±δ}`, and `S = 2 cosh δ − 2 = \|z − w\|²/(Im z Im w)` (the point-pair invariant); `S = δ² + O(δ⁴)`, and the second-order term is the Fisher metric of `N(0, M(z))`, the hyperbolic metric. | A harmonic trap switched suddenly between thermal covariances `σ²M(z)` and `σ²M(w)` dissipates on average `k_BT (cosh δ − 1)`. |
+| 12.2 | For `γ = (a b; c d) ∈ SL(2, ℤ)` with trace `t`: `S(M(z), M(γz)) = t² − 4 + (c(x² + y²) + (d − a)x − b)²/y² ≥ t² − 4`, with equality exactly when `c(x² + y²) + (d − a)x − b = 0`; for `\|t\| > 2` the least value is `5`, attained by `(2 1; 1 1)` at `z = i`. | A sudden switch between two bases of one lattice related by a hyperbolic `γ` dissipates on average at least `k_BT (t² − 4)/2`. |
+| 12.3 | For hyperbolic `γ`, `t > 2`: `S_γ = t² − 4 = 4 sinh²(ℓ/2)` and `ℓ/√S_γ = (k/(h(D) f)) L(1, χ_D)` (Dirichlet), with `t² − 4 = Df²` and `ε_t = ε_D^k`. | `ℓ` and `S_γ` determine each other, and `ℓ/√S_γ` is `k/(h(D)f)` times `L(1, χ_D)`. |
+
+Lean: 12.1 and 12.2 in `MorleySmithFormal/LatticeMetricDivergence`.
+
 ## The hypercharge curve (note 06, [`scripts/standard_model.py`](scripts/standard_model.py))
 
 | | Statement | In physical terms |

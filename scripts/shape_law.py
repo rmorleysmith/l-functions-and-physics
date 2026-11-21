@@ -10,9 +10,9 @@ What it shows
   a(N)^2 / N^(9/2) = L(5, F x chi_D) / L(5, F x chi_-4) with one constant for all N, in each of the seven classes
   of N in Q_2^x modulo squares that occur (N = 1, 3, 5 mod 8 and N = 2, 6, 10, 14 mod 16), to 1e-10.
 
-What it does not claim
-  A proof. Waldspurger's theorem gives the proportionality within each class; that the constant is the same
-  across the classes is checked here, not derived.
+Status
+  Waldspurger's theorem gives the proportionality within each class of N; the equality of the constant across
+  the seven classes is the computation made here.
 """
 import math
 
