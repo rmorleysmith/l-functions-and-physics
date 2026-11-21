@@ -94,9 +94,12 @@ pdf/        the built notes
 
 ## Related repositories
 
-- [morley-smith-formal](https://github.com/rmorleysmith/morley-smith-formal): the Lean proofs, including
-  the characters of `SL(2, ℤ)` used in note 01 (`tau-track/TauTrack/Tones`) and the functional equation of
-  the newform of level 11 cited in notes 02 and 04 (`tau-track/TauTrack/ElevenFunctionalEquation`).
+- [morley-smith-formal](https://github.com/rmorleysmith/morley-smith-formal): the Lean proofs. Cited here:
+  the twelve characters of `SL(2, ℤ)` and the pitch formula (note 01, `tau-track/TauTrack/Tones`); the
+  functional equation of the newform of level 11 (notes 02 and 04,
+  `tau-track/TauTrack/ElevenFunctionalEquation`); the shortest closed geodesic `4 log φ` and
+  `tanh d(i, ρ) = ½` (notes 05 and 08, `MorleySmithFormal/ModularSystole`); the hypercharges from Fermat's
+  theorem for cubes (note 06, `MorleySmithFormal/Hypercharge`).
 - [fugue](https://github.com/rmorleysmith/fugue): the audit of the June 2026 exploration from which this
   work grew.
 

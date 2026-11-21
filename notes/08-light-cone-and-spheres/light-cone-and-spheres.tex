@@ -107,7 +107,7 @@ In the rest frame of $x^2+y^2$, the form $x^2+bxy+cy^2$ of discriminant $D$ has 
 
 \physical
 The Gaussian and Eisenstein forms, as particles, move relative to each other at exactly half the speed of light.
-Equivalently, the hyperbolic distance from $i$ to $\rho$ is $\operatorname{artanh}\frac12 = 0.5493$.
+Equivalently, the hyperbolic distance from $i$ to $\rho$ is $\operatorname{artanh}\frac12 = \frac12\log3 = 0.5493$; this equality is proved in Lean in \formal{} (\leanpath{MorleySmithFormal/ModularSystole}).
 The golden form $x^2-xy-y^2$ is spacelike; its geodesic is the shortest closed geodesic of note~05, which passes through $i$.
 The principal forms of the nine fields of class number one (note~02) have the following speeds in the Gaussian frame; the larger the discriminant, the closer to light.
 
@@ -219,7 +219,8 @@ Statement & Grade\\
 $c$ exact by definition; unit conversions & \gradeConvention{} (SI), \gradeComputed\\
 Derivations~\ref{d:planck}--\ref{d:mobius} & \gradeClassical\\
 Mode counts; Gauss for $n\le3000$; $L$-value form; class number formula, $D>-400$ & \gradeComputed\\
-Relative velocity $c/2$ of the Gaussian and Eisenstein forms; the nine speeds & \gradeComputed\\
+Relative velocity $c/2$ of the Gaussian and Eisenstein forms: $\tanh d(i,\rho) = \frac12$ & \gradeLean\\
+The nine speeds & \gradeComputed\\
 Even spreading on the sphere $n = 1\,000\,005$ and on mass shells & \gradeComputed; theorem \gradeClassical\\
 $1/\alpha$ against Eddington's and Wyler's values & \gradeComputed\\
 The working hypothesis; Questions 1 and 2 & \gradeOpen\\

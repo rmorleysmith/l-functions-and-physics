@@ -69,6 +69,13 @@ So the shortest closed geodesic belongs to the golden ratio (Figure~\ref{fig:geo
 This geodesic is reciprocal: $S$ conjugates $\gamma$ to $\gamma^{-1}$, so the axis passes through the elliptic point $i$, where the geodesic turns back on itself.
 Its image on the surface is a loop through $i$ of length $2\log\varphi$, traversed once in each direction.
 
+The distance that $\gamma = \left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)$ of trace $t$ moves a point $z = x+iy$ is given exactly by
+\[
+  \cosh d(z,\gamma z) = \frac{t^2}{2}-1+\frac{\big(c(x^2+y^2)+(d-a)x-b\big)^2}{2y^2}.
+\]
+The last term vanishes on the axis, so every hyperbolic element moves every point at least $4\log\varphi$, and $\left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)$ moves the point $i$ exactly that far.
+These statements are proved in Lean in \formal{} (\leanpath{MorleySmithFormal/ModularSystole}).
+
 In general the trace $t$ gives length $2\log\varepsilon_t$, where $\varepsilon_t = (t+\sqrt{t^2-4})/2$ is a unit of $\Q(\sqrt{t^2-4})$.
 Traces $3,4,5,6$ give the fields $\Q(\sqrt5)$, $\Q(\sqrt3)$, $\Q(\sqrt{21})$ and $\Q(\sqrt2)$.
 In Selberg's theory the closed geodesics play the role of the primes: their lengths enter the Selberg zeta function as the $\log p$ enter $\zeta$ (note~04), and they obey a prime geodesic theorem \cite{Iwaniec}.
@@ -133,7 +140,8 @@ Statement & Grade\\
 \midrule
 Hurwitz; continued fractions of $\varphi$ and $\log_2\frac32$ & \gradeClassical, \gradeComputed\\
 Golden angle and gap ratios in Vogel's model & \gradeComputed; physics \gradeClassical{} \cite{DouadyCouder}\\
-Shortest closed geodesic $4\log\varphi$; minimal hyperbolic trace 3; the loop through $i$ & \gradeClassical, \gradeComputed\\
+Displacement formula; every hyperbolic element moves every point at least $4\log\varphi$, with equality at $i$ & \gradeLean\\
+Closed geodesics as axes; the loop through $i$ & \gradeClassical, \gradeComputed\\
 $\mathrm{PSL}(2,\Z/5)$ and $A_5$ order statistics; $X(5)$ an icosahedron & \gradeClassical, \gradeComputed\\
 $E_8$ masses, $m_2/m_1=\varphi$; observed in CoNb$_2$O$_6$ & \gradeClassical, \gradeComputed\\
 Conjecture~\ref{conj:golden}; Question 1 & \gradeOpen\\

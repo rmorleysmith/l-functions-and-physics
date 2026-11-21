@@ -94,6 +94,19 @@ Write $\chi_\eta(\gamma) = e^{2\pi i\,p(\gamma)/12}$ with $p(\gamma)\in\Z/12$.
 Then $p\colon\SL(2,\Z)\to\Z/12$ is a surjective homomorphism.
 We call $p(\gamma)$ the \emph{pitch} of $\gamma$, and read $\Z/12$ as the twelve pitch classes with $C = 0$.
 
+\begin{proposition}\label{prop:pitch}
+For $\gamma = \left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)$, with the entries read modulo 12,
+\[
+  p(\gamma) = \begin{cases}(a+d)c-bd(c^2-1)-3c & c\ \text{odd},\\ (a+d)c-bd(c^2-1)+3d-3-3cd & c\ \text{even}.\end{cases}
+\]
+Every homomorphism $\chi$ from $\SL(2,\Z)$ to a commutative group satisfies $\chi(\gamma) = \chi(T)^{p(\gamma)}$, so $p$ is the abelianisation of $\SL(2,\Z)$.
+\end{proposition}
+
+\noindent
+The formula is the square of the classical closed form of the multiplier of $\eta$, a consequence of Dedekind's functional equation \cite{Apostol}.
+In Lean it is checked on the generators: right multiplication by $T$ adds $1$ and by $S$ subtracts $3$, for all entries modulo 12.
+Proposition~\ref{prop:pitch} is proved in Lean in \formal{} (\leanpath{tau-track/TauTrack/Tones/Challenge.lean}, theorem \texttt{exists\_pitch}).
+
 \begin{center}
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -214,7 +227,7 @@ For example, is the special role of the diminished seventh and the whole-tone sc
 \toprule
 Statement & Grade\\
 \midrule
-Theorem~\ref{thm:char}; Theorem~\ref{thm:eta}; the pitch table; the stabiliser chords & \gradeLean{} and \gradeComputed\\
+Theorem~\ref{thm:char}; Theorem~\ref{thm:eta}; Proposition~\ref{prop:pitch}; the pitch table; the stabiliser chords & \gradeLean{} and \gradeComputed\\
 $(\Z/12)^\times$ is the Klein group; the fixed fields; fifths, maximal evenness & \gradeLean{} and \gradeComputed\\
 $L(1,\chi)$ for the characters mod 12; Dedekind zeta factorisation & \gradeClassical{}, values \gradeComputed\\
 Continued fraction of $\log_2(3/2)$ and the temperament errors & \gradeComputed\\
