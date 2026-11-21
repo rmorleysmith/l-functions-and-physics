@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.0 (2026-11-20)
+## 0.5.0 (2026-11-21)
 
 - Note 10, spheres: echoes, multipoles and rotations (Derivations 10.1–10.7). The echoes of a cubic lattice of
   flashes, with strengths `L(1, χ_D)/ζ(2)`; the hexadecapole of a lattice shell as a coefficient of a modular
