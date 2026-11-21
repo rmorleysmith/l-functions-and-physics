@@ -2,7 +2,7 @@
 \input{../preamble}
 \renewcommand{\notenumber}{3}
 
-\title{How many colours in the rainbow?}
+\title{Light and number:\\ Newton's rings, Balmer's formula and Planck's law}
 \author{Richard Morley-Smith}
 \date{Note 03 \quad November 2026}
 
@@ -11,85 +11,374 @@
 
 \begin{abstract}
 \noindent
-Seven, by convention: Newton chose seven colours by analogy with the seven notes of the musical scale.
-The visible spectrum is a continuum, and colour vision is three-dimensional.
-The visible band spans close to one octave of frequency: 1.97 with the common limits of 380--750\,nm, and 2.31 with the colorimetric limits of 360--830\,nm.
-The colour names and the seven steps of a musical scale are two divisions laid on that continuum, and they differ in number and in width.
-Exact ratios appear in a line spectrum: in the Rydberg formula the frequency ratios of hydrogen are rational, and the observed lines follow the formula to a few parts in $10^5$.
-Each series spans the ratio $(m+1)^2/(2m+1)$ from its first line to its limit: $4/3$ for Lyman and $9/5$ for Balmer.
+Three measurements of light are followed to the arithmetic inside them, with the dates at which the arithmetic and the measurement were each made.
+Newton measured a length that belongs to light of one colour, and described the range of the colours by the lengths of a musical string; in 1802 Young read his numbers as frequencies and placed yellow-green light forty octaves above a tenor $c$.
+In 1885 Balmer, a teacher of mathematics, found that the four visible lines of hydrogen are one number multiplied by $\tfrac95$, $\tfrac43$, $\tfrac{25}{21}$ and $\tfrac98$; Bohr derived the rule in 1913.
+Planck's law of 1900 for the light of a hot body is a count of the tones of a cavity, which is the count of the sums of three squares studied by Legendre and Gauss, and a sum which Euler evaluated in 1735, $\sum 1/n^4 = \pi^4/90$.
+In the language of Dirichlet each tone of a cubic cavity is weighted by a class number, and the energy of the cavity is a value of Epstein's zeta function; in the language of Hodge the tones are the eigenforms of one operator, the same that gives the steady swirling flows of note~13.
+Nothing here is new.
+The note is a record of work done for the love of numbers which the physics of light later needed, and its last section asks what the authors of that work were reaching for.
 \end{abstract}
 
-\section{Seven by convention}
+\section{Newton's measurement}
 
-In his first paper on light, Newton named five ``Original or primary colours'', red, yellow, green, blue and violet-purple, ``together with Orange, Indico, and an indefinite variety of Intermediate gradations'' \cite{Newton1672}.
-In the \emph{Opticks} he divided the spectrum into seven colours whose extents follow the divisions of a musical string \cite{Opticks, Whipple}.
-Physically, the spectrum is a continuum of wavelengths, and the eye samples it with three types of cone.
-So perceived colour is a point in a three-dimensional space.
-The number of named colours varies between languages and conventions.
+The \emph{Opticks} records two measurements of colour \cite{Opticks}.
+In the first (Book~I, Part~II, Prop.~III) Newton casts the spectrum on a paper, and ``an Assistant, whose Eyes for distinguishing Colours were more critical than mine'' marks the confines of red, orange, yellow, green, blue, indigo and violet.
+He finds the image ``divided after the manner of a Musical Chord'': the confines fall as the lengths $1, \tfrac89, \tfrac56, \tfrac34, \tfrac23, \tfrac35, \tfrac9{16}, \tfrac12$ of a string that sounds the notes of an octave.
+In the second (Book~II) he presses a lens on a flat glass and measures the thickness of the air between them at each coloured ring.
+The thicknesses at the confines of the seven colours ``are to one another as the Cube Roots of the Squares of the eight lengths of a Chord, which found the Notes in an eighth'' (Part~I, Obs.~14).
+The thickness at the first dark ring he finds to be ``the 1/89000th Part of an Inch'' (Part~I, Obs.~6), and he assigns this length, as the interval of the ``Fits of easy Reflexion'', to the light at the confine of yellow and orange (Part~III, Prop.~XVIII).
 
-\section{The octave of light}
+Newton had measured a length that belongs to light of one colour and recurs along its path.
+He also asked the question which that length raises (Query~13):
+\begin{quote}
+Do not several sorts of Rays make Vibrations of several bignesses, which according to their bignesses excite Sensations of several Colours, much after the manner that the Vibrations of the Air, according to their several bignesses excite Sensations of several Sounds?
+\end{quote}
+Young answered it in his Bakerian lecture, read in November 1801 \cite{Young}.
+``From Newton's measures of the thicknesses reflecting the different colours,'' he wrote, ``the breadth and duration of their respective undulations may be very accurately determined.''
+His table gives the extreme red as $.0000266$ inch, $37640$ undulations to the inch and $463$ millions of millions in a second, and the extreme violet as $.0000167$ inch, $59750$ and $735$.
+He adds that ``the whole visible spectrum appears to be comprised within the ratio of three to five, or a major sixth in music'', and that ``if a chord sounding the tenor $c$, could be continually bisected 40 times, and should then vibrate, it would afford a yellow green light.''
+In the same lecture he proposes that the number of kinds of sensitive particle in the retina is ``limited, for instance, to the three principal colours, red, yellow, and blue'', which is the origin of the three-colour theory of vision.
 
-Frequency is inversely proportional to wavelength, so a band from $\lambda_1$ to $\lambda_2$ spans the frequency ratio $\lambda_2/\lambda_1$.
-For 380--750\,nm this is $1.974$, just under an octave.
-The CIE colour-matching tables run from 360 to 830\,nm, a ratio of $2.31$, just over one.
-The sensitivity of the eye falls off gradually at both ends, so these limits are thresholds, and the octave of light holds to within the choice of threshold.
+\begin{derivation}[Newton's rule and Young's table]\label{d:newton}
+Let $s_0,\dots,s_7 = 1, \tfrac89, \tfrac56, \tfrac34, \tfrac23, \tfrac35, \tfrac9{16}, \tfrac12$.
+Newton's rule gives the wavelengths at the eight confines as $\lambda_j = \lambda_0\,s_j^{2/3}$.
+With $\lambda_0 = .0000266$ inch these are the two extremes and the six intermediate values of Young's table, to within one unit of the last digit he printed, and
+\[
+  \frac{\lambda_0}{\lambda_7} = 2^{2/3} = 1.5874 = \frac{59750}{37640}.
+\]
+In modern units the extremes are $674.8$ and $425.1$\,nm.
+A ring is dark where the thickness of the air is a whole number of half wavelengths, so Newton's interval of fits is half a wavelength, and his light has $\lambda = 2/89000$ inch $= 570.8$\,nm.
+\end{derivation}
 
-Figure~\ref{fig:spectrum} lays two divisions on this band, with the hydrogen lines of the next section beneath them.
-From the violet end:
-\begin{itemize}
-\item the six conventional colour bands, violet, blue, green, yellow, orange and red, have widths 70, 45, 75, 20, 30 and 130\,nm;
-\item the seven steps of the equal-tempered major scale on the octave 375--750\,nm have widths 22, 49, 55, 61, 33, 73 and 82\,nm.
-\end{itemize}
-The two rows differ in number and in width.
-The band itself is a continuum: every wavelength in it is seen, and both rows are divisions laid on it from outside, the colour names by the conventions of perception and language, the steps by the arithmetic of the scale.
-Newton's seven colours are his five primaries with orange and indigo, a count matched to the seven notes of the scale.
-Exact ratios appear when the light comes from an atom.
-Its spectrum is a set of lines; for hydrogen, whose first five Balmer lines sit at 656.5, 486.3, 434.2, 410.3 and 397.1\,nm (vacuum wavelengths), the Rydberg formula makes the ratios rational.
+\physical
+Newton's number stands: light of 571\,nm is yellow.
+The ratio $2^{2/3}$ lies between a minor and a major sixth, and it is the range of the spectrum as Newton's prism and his assistant's eyes showed it.
+Followed to the limits of the eye the band is wider: the common limits 380--750\,nm span a frequency ratio $1.974$, and the tables of the CIE, 360--830\,nm, span $2.306$ (Figure~\ref{fig:spectrum}).
+The octave of light is therefore a measured statement with a tolerance: the limits of the band are thresholds of the eye, and the ratio between them is close to two.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.95\textwidth]{light-spectrum}
-  \caption{The visible spectrum (approximate sRGB rendering), the six conventional colour names, the seven steps of the equal-tempered major scale on the octave 375--750\,nm, and the Balmer lines. Script: \script{light.py}.}
+  \includegraphics[width=0.97\textwidth]{light-spectrum}
+  \caption{The visible band with three choices of its limits and the frequency ratio of each; the ticks on the first bar are Newton's seven confines by his rule. Below, the lines of hydrogen with Balmer's coefficients. The colours of the strip are an approximate rendering. Script: \script{light.py}.}
   \label{fig:spectrum}
 \end{figure}
 
-\section{Hydrogen: rational ratios}
+\section{The octave}
 
-The Rydberg formula $1/\lambda = R_H(1/m^2-1/n^2)$ makes every frequency ratio in the hydrogen spectrum rational.
-In the Balmer series ($m=2$), the first five lines have consecutive ratios
+For a string, an octave is the interval between a tone and its second harmonic.
+The same is true of light, and three instruments show it.
+
+\begin{derivation}[the octave and the second harmonic]\label{d:octave}
+\leavevmode
+\begin{enumerate}[label=(\roman*)]
+\item A grating of period $d$ sends light of wavelength $\lambda$ in its $m$-th order to the angle $\sin\theta = m\lambda/d$. For a band $\lambda_1\le\lambda\le\lambda_2$ the orders $m$ and $m+1$ are separate exactly when $\lambda_2/\lambda_1 < (m+1)/m$. The first order is clear of the second exactly when the band is narrower than an octave.
+\item In a medium whose polarisation has a term quadratic in the field, light of frequency $\nu$ generates light of frequency $2\nu$.
+\item A train of pulses at intervals $1/f_r$, each a copy of the last up to a fixed shift of phase, has by Poisson summation (note~07) a spectrum of sharp lines $f_n = f_0 + n f_r$, $n\in\Z$. For every $n$,
 \[
-  \tfrac{27}{20},\quad \tfrac{28}{25},\quad \tfrac{200}{189},\quad \tfrac{405}{392}.
+  2f_n - f_{2n} = f_0 .
 \]
-Two can be named in musical terms: $\tfrac{27}{20}$ is a syntonic comma ($\tfrac{81}{80}$, 21.5 cents) above the fourth $\tfrac43$, and $\tfrac{28}{25}$ is 7.7 cents below the tone $\tfrac98$.
-The span of a whole series, from its first line $n=m+1$ to its limit $n\to\infty$, is
+\end{enumerate}
+\end{derivation}
+
+\physical
+With the limits 380--750\,nm the first-order spectrum of a grating is clean, since the second order begins where 760\,nm would fall; the second and third orders overlap.
+Franken, Hill, Peters and Weinreich produced the second harmonic of light in 1961: the red light of a ruby laser at 694\,nm entered a crystal of quartz, and ultraviolet light at 347\,nm came out with it \cite{Franken}.
+The third instrument is the one that counts the frequency of light.
+The lines of a pulsed laser form the comb of (iii); when the comb spans an octave, its doubled red end beats against its blue end at the frequency $f_0$, and after that every line is known: an integer $n$, of the order of a million, times one radio frequency, plus another \cite{Jones, Holzwarth, Hansch}.
+An optical frequency of some $5\times10^{14}$\,Hz is in this way counted against the caesium clock.
+Newton's and Young's comparison of colour with pitch is in this sense exact: an octave of light is the interval between a frequency and its second harmonic, as it is for a string.
+
+\section{Balmer's formula}
+
+In 1885 J.~J. Balmer, a mathematician with a doctorate on the cycloid who taught at a school for girls in Basel, and who was then sixty, published a note on the four visible lines of hydrogen as {\AA}ngstr\"om had measured them \cite{Balmer}.
+``The wavelengths of the first four hydrogen lines are obtained by multiplying the fundamental number $h = 3645.6$ in succession by the coefficients $9/5$; $4/3$; $25/21$; and $9/8$,'' in units of $10^{-7}$\,mm.
+Written $\tfrac95, \tfrac{16}{12}, \tfrac{25}{21}, \tfrac{36}{32}$ they are $m^2/(m^2-4)$ for $m = 3,4,5,6$, and the formula meets {\AA}ngstr\"om's measurements to one part in $40\,000$.
+Balmer computed a fifth line, $\tfrac{49}{45}h = 3969.65$, and ``knew nothing of such a fifth line''; his colleague Hagenbach then told him that it and others beyond it had been measured by Vogel and by Huggins in the ultraviolet and in the light of the white stars.
+He went on to the general coefficient $m^2/(m^2-n^2)$ ``in which $m$ and $n$ are whole numbers'', and wrote out the case $n=1$: $\tfrac43, \tfrac98, \tfrac{16}{15}, \tfrac{25}{24}$.
+These are the lines later found by Lyman in the ultraviolet.
+
+\begin{derivation}[the series of hydrogen]\label{d:balmer}
+In Rydberg's form \cite{Rydberg} the lines of hydrogen are $1/\lambda = R\,(1/m^2 - 1/n^2)$ with whole numbers $n>m\ge1$, so every ratio of two frequencies is rational.
+The first five lines of Balmer's series ($m=2$) have consecutive frequency ratios $\tfrac{27}{20}, \tfrac{28}{25}, \tfrac{200}{189}, \tfrac{405}{392}$.
+From its first line to its limit the series $m$ spans the ratio
 \[
-  \frac{1/m^2}{1/m^2 - 1/(m+1)^2} = \frac{(m+1)^2}{2m+1} = \tfrac43,\ \tfrac95,\ \tfrac{16}7,\ \tfrac{25}9\quad(m = 1,2,3,4).
+  \frac{1/m^2}{1/m^2 - 1/(m+1)^2} = \frac{(m+1)^2}{2m+1} = \tfrac43,\ \tfrac95,\ \tfrac{16}7,\ \tfrac{25}9\qquad(m = 1,2,3,4),
 \]
-So in the Rydberg formula the Lyman series spans a perfect fourth and the Balmer series a just minor seventh.
-The measured lines follow the formula to a few parts in $10^5$; fine structure and the Lamb shift account for the difference.
-Note~08 returns to hydrogen: the degeneracy $n^2$ of its levels is a count of harmonics on a sphere.
+and for $m=2$ this is Balmer's first coefficient.
+His fundamental number is the limit of the series, $h = 4/R$.
+\end{derivation}
+
+\physical
+The frequencies of hydrogen are differences of the terms $R/n^2$.
+Bohr derived this in 1913 from a model of the atom, with $R = m_e e^4/(8\varepsilon_0^2 h^3 c)$ in terms of the mass and charge of the electron and Planck's constant \cite{Bohr}.
+For twenty-eight years the rule had stood as arithmetic alone, found by a mathematician from four numbers; the measured lines follow it to a few parts in $10^5$, and fine structure and the Lamb shift account for the difference.
+The Lyman series spans the ratio of a perfect fourth and the Balmer series that of a minor seventh.
+Note~08 returns to hydrogen: the degeneracy $n^2$ of the level $n$ is a count of harmonics on a sphere.
+
+\section{Planck's law}
+
+Stefan found in 1879 that the heat radiated by a body grows as the fourth power of its absolute temperature \cite{Stefan}, and Boltzmann derived the law in 1884 from thermodynamics and Maxwell's theory of light \cite{Boltzmann}.
+Planck gave the spectrum in 1900 \cite{Planck}.
+In the derivation that became standard, the law is a count of the tones of a cavity (Rayleigh, Jeans \cite{Rayleigh, Jeans}) multiplied by the mean energy of a tone (Planck; Bose \cite{Bose}).
+Both factors are arithmetic.
+
+\begin{derivation}[the tones of a cubic cavity]\label{d:tones}
+In a cubic box of side $L$ with periodic boundary conditions the tones of the electromagnetic field have the wave vectors $n/L$, $n\in\Z^3\setminus\{0\}$, the frequencies $\nu = (c/L)\sqrt N$ with $N = n_1^2+n_2^2+n_3^2$, and two polarisations each (note~08).
+The number of tones of frequency exactly $(c/L)\sqrt N$ is $2r_3(N)$, where $r_3(N)$ is the number of ways to write $N$ as a sum of three squares, and the number of tones up to the frequency $\nu$ is
+\[
+  2\sum_{1\le N\le X} r_3(N) = \frac{8\pi}{3}X^{3/2} + \text{remainder},\qquad X = (L\nu/c)^2 .
+\]
+The leading term is the volume of a ball; per unit volume and per unit frequency it is $8\pi\nu^2/c^3$.
+There is no tone at $N = 4^a(8b+7)$, and for squarefree $N\not\equiv7\pmod 8$, with $\chi_D$ the quadratic character of $\Q(\sqrt{-N})$,
+\[
+  2r_3(N) = \frac{48}{\pi}\sqrt N\,L(1,\chi_D)
+\]
+(Legendre, Gauss, Dirichlet \cite{Gauss, Dirichlet, Grosswald}; note~11).
+\end{derivation}
+
+\physical
+The count of Rayleigh and Jeans is the volume term of a problem in the theory of numbers, the number of points of a lattice in a ball (Figure~\ref{fig:cavity}, left); at $N = 10^4$ the two differ by two parts in $10^4$.
+That the volume term is the same for a cavity of every shape was asked as a question of mathematics.
+At the end of October 1910 Lorentz gave the Wolfskehl lectures in G\"ottingen \cite{Lorentz}, which were paid for, as Kac relates, from the fund endowed as a prize for Fermat's last theorem \cite{Kac}.
+Closing the fourth lecture he put ``a mathematical problem which perhaps will arouse the interest of mathematicians who are present'': ``to prove that the number of sufficiently high overtones which lies between $\nu$ and $\nu+d\nu$ is independent of the shape of the enclosure and is simply proportional to its volume'' (Kac's translation).
+Weyl was present, and proved it within two years; his paper carries the radiation of a cavity in its title \cite{Weyl}.
+Kac's question whether one can hear the shape of a drum (note~11) begins from this theorem.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.97\textwidth]{light-cavity}
+  \caption{Left: the number of tones of a cubic cavity up to $N = (L\nu/c)^2$, with the volume term of Rayleigh and Jeans and the empty shells $N = 7, 15, 23, 28,\dots$ Right: Planck's law as the sum of Derivation~\ref{d:planck}; the first term is Wien's law. Script: \script{light.py}.}
+  \label{fig:cavity}
+\end{figure}
+
+\begin{derivation}[Planck's sum]\label{d:planck}
+In equilibrium at the temperature $T$ a tone of frequency $\nu$ holds at least $m$ quanta with probability $e^{-mx}$, $x = h\nu/kT$, so its mean number of quanta is $\sum_{m\ge1}e^{-mx} = 1/(e^x-1)$.
+With the count of Derivation~\ref{d:tones} the energy in unit volume is
+\[
+  u = \frac{8\pi(kT)^4}{(hc)^3}\sum_{m\ge1}\int_0^\infty x^3e^{-mx}\,dx
+    = \frac{8\pi(kT)^4}{(hc)^3}\sum_{m\ge1}\frac{6}{m^4}
+    = \frac{8\pi(kT)^4}{(hc)^3}\,6\,\zeta(4)
+    = \frac{8\pi^5k^4}{15\,h^3c^3}\,T^4 ,
+\]
+by Euler's $\zeta(4) = \pi^4/90$.
+The number of quanta in unit volume is $16\pi\,\zeta(3)\,(kT/hc)^3$, and a black surface radiates the power $\sigma T^4$ per unit area with $\sigma = 2\pi^5k^4/(15h^3c^2)$.
+\end{derivation}
+
+\physical
+Euler summed the reciprocal fourth powers in 1735, together with the squares, by writing $\sin x/x$ as a product over its zeros \cite{Euler}.
+One hundred and sixty-five years later the sum is the constant in the law by which every hot body shines.
+The $m$-th term of the sum is the energy carried by the $m$-th quantum of each tone; the first term is Wien's law, and it carries $1/\zeta(4) = 92.4\%$ of the energy (Figure~\ref{fig:cavity}, right).
+Since 2019 the constants $h$, $k$ and $c$ have defined values, so that $\sigma = 5.670374419\ldots\times10^{-8}$\,W\,m$^{-2}$\,K$^{-4}$ is $\pi^5$ times a rational number.
+A surface at 300\,K radiates 459\,W per square metre; the surface of the Sun, at its nominal temperature of 5772\,K \cite{Prsa}, radiates 62.9\,MW per square metre.
+The radiation left from the early Universe has the temperature $2.7255$\,K \cite{Fixsen2009}, and follows Planck's law to 50 parts in a million of its peak \cite{Fixsen1996}; each cubic centimetre of space therefore holds $16\pi\zeta(3)(kT/hc)^3 = 411$ of its quanta, a number fixed by $\zeta(3) = 1.2020569\ldots$
+Euler's value of $\zeta(4)$ is a theorem of the Lean library Mathlib (\leanpath{riemannZeta_four}).
+
+\section{In the language of Dirichlet}
+
+Derivation~\ref{d:tones} gives each tone of the cubic cavity a weight that is a value of one of Dirichlet's $L$-functions.
+By his class number formula \cite{Dirichlet} the weight is a class number: for squarefree $N>3$, $r_3(N) = 12\,h(D)$ when $N\equiv1,2\pmod 4$ and $24\,h(D)$ when $N\equiv3\pmod 8$, where $h(D)$ is the number of classes of binary quadratic forms of discriminant $D$ (note~08).
+The series that carries all the weights at once is Epstein's zeta function of the cubic lattice \cite{Epstein},
+\[
+  Z(s) = \sum_{n\in\Z^3\setminus\{0\}}\frac{1}{|n|^{2s}} = \sum_{N\ge1}\frac{r_3(N)}{N^s}\qquad(\operatorname{Re}s>\tfrac32),
+\]
+which continues to all $s\ne\tfrac32$ and satisfies $\pi^{-s}\Gamma(s)Z(s) = \pi^{-(3/2-s)}\Gamma(\tfrac32-s)Z(\tfrac32-s)$, by the method Riemann used for $\zeta$.
+
+\begin{derivation}[the cavity exactly]\label{d:exact}
+The thermal energy of the periodic box is $U = \sum_{N\ge1}2r_3(N)\,h\nu_N/(e^{h\nu_N/kT}-1)$ with $\nu_N = (c/L)\sqrt N$.
+Write $\tau = kTL/(hc)$. Then
+\[
+  U = \frac{hc}{L}\left[\frac{8\pi^5}{15}\,\tau^4 \;-\; 2\tau \;+\; \frac{Z(2)}{2\pi^3}\right] + O\!\left(\frac{hc}{L}\,\tau^3e^{-4\pi^2\tau}\right),
+  \qquad Z(2) = 16.5323159598\ldots,
+\]
+and $Z(2)/(2\pi^3) = -Z(-\tfrac12) = 0.26660$.
+\end{derivation}
+
+\begin{proof}[Sketch]
+Apply Poisson summation over $\Z^3$ to $f(x) = |x|/(e^{|x|/\tau}-1)$.
+The term $\hat f(0) = \int f = 4\pi\tau^4\cdot6\zeta(4)$ is Planck's; $f(0) = \tau$ is the term $n=0$, which is absent from $U$.
+The function $f(x)+\tfrac12|x| = \tfrac12|x|\coth(|x|/2\tau)$ is smooth, and the Fourier transform of $|x|$ on $\R^3$ is $-1/(2\pi^3|k|^4)$, so $\hat f(k) = 1/(4\pi^3|k|^4)$ for $k\ne0$ up to terms of the order shown.
+Summing over $k\ne0$ gives $Z(2)/(4\pi^3)$, and the two polarisations double every term.
+The value at $-\tfrac12$ is the functional equation.
+\end{proof}
+
+\physical
+The three terms are three counts.
+The first is Planck's law for the volume $L^3$, with Euler's sum in it.
+The second, $-2kT$, records that the uniform field is not a tone: the box has no vibration at $N=0$, in either polarisation.
+The third is a constant, $0.2666\,hc/L$, and it is the zero-point energy $\tfrac12\sum h\nu$ of the box with its sign reversed, when the divergent sum $\sum\sqrt N\,r_3(N)$ is given the value $Z(-\tfrac12)$ that Epstein's continuation assigns to it.
+The heat of the cavity at high temperature thus contains the energy of its vacuum.
+The remainder is small: $10^{-6}$ of $hc/L$ at $\tau = \tfrac12$, and below $10^{-9}$ for $\tau\ge1$.
+For two conducting plates at a distance $d$ the energy of the vacuum per unit area is $-\pi^2\hbar c/(720\,d^3)$ \cite{Casimir}, which is $-(\pi^2\hbar c/6d^3)\,\zeta(-3)$ with the value $\zeta(-3) = \tfrac1{120}$ given by Riemann's continuation; the force between the plates was demonstrated by Lamoreaux in 1997 \cite{Lamoreaux}.
+
+\section{In the language of Hodge}
+
+In empty space Maxwell's equations for the field, written as a 2-form $F$ on space-time, are $dF = 0$ and $d{\star}F = 0$.
+Hodge's theory of harmonic integrals \cite{Hodge} takes these two equations as the definition of a harmonic form of any degree on any compact space with a metric, and proves that each class of the cohomology of the space contains exactly one.
+
+\begin{derivation}[the tones as eigenforms]\label{d:hodge}
+On the box $T = \R^3/L\Z^3$ write the potential as a 1-form $A$ with $\delta A = 0$.
+Maxwell's equations become $\partial_t^2A = -c^2\Delta A$ with $\Delta = d\delta+\delta d$ the Laplacian of Hodge, and on such forms $\Delta = ({\star}d)^2$.
+The operator ${\star}d$, the curl, is self-adjoint on the 1-forms with $\delta A = 0$.
+Its kernel is the space of harmonic 1-forms, which are the constant forms, of dimension $3 = b_1(T)$.
+Its other eigenvalues are $\pm(2\pi/L)\sqrt N$, and each of the two has multiplicity $r_3(N)$.
+\end{derivation}
+
+\physical
+The $2r_3(N)$ tones of one pitch divide into $r_3(N)$ of each handedness, the right and left circular polarisations.
+The same eigenforms of ${\star}d$, read as velocities, are the steady swirling flows of an ideal fluid in a periodic box (note~13, Derivation~13.7): light of one handedness and a Beltrami flow are one family, and its size is the number of ways to write $N$ as a sum of three squares.
+Hodge's theorem is the statement about the eigenvalue zero.
+On the torus it finds the three uniform fields; on a general compact space it says that the static fields without sources, in each degree, are as many as the independent cycles of that dimension.
+
+\section{What they were reaching for}\label{s:reaching}
+
+The sections above record facts.
+This one is a reading of them, and is offered as a reading.
+
+\paragraph{Newton.}
+Newton had a measurement and no mechanism.
+He had found a length that belongs to yellow light and recurs along its path, and the one exact science of recurring lengths was that of the musical string, in which ratios of whole numbers had described what is heard since antiquity.
+He used the string twice, to divide the spectrum and to state the law of the rings.
+The names of the seven colours are the part that convention kept; the length is the part that physics kept, and Young read it as a wave and placed it forty octaves above a string.
+What Newton was reaching for, on this reading, is the statement that colour is a frequency, and the statement is true.
+
+\paragraph{Dirichlet.}
+Fourier made his series for the theory of heat.
+Dirichlet met him in Paris, and ``the acquaintance with Fourier and the study of his \emph{Th\'eorie analytique de la chaleur} clearly gave him the impetus for his later epoch-making work on Fourier series'', the memoir of 1829 which first proved, for a wide class of functions, that they converge \cite{Elstrodt}.
+He then turned them on arithmetic.
+Jacobi wrote to his brother in 1838: ``Applying Fourier series to number theory, Dirichlet has recently found results touching the utmost of human acumen''; and later, that Dirichlet ``has created a new branch of mathematics, the application of the infinite series, which Fourier introduced into the theory of heat, to the investigation of the properties of the prime numbers'' (both in \cite{Elstrodt}).
+The results were the theorem of 1837 that every arithmetic progression without a common factor holds infinitely many primes, and the formula of 1839, which for a negative discriminant reads
+\[
+  h(D) = \frac{w\sqrt{|D|}}{2\pi}\,L(1,\chi_D),
+\]
+with $w$ the number of units.
+On the left is a whole number, a count of classes of forms; on the right are $\pi$, a square root and the value of a convergent series.
+We read this as the thing Dirichlet was reaching for: a passage between counting and measuring, in which a count is obtained as the value of something continuous.
+Physics makes the same passage in the other direction whenever it counts states by a volume.
+Rayleigh and Jeans counted the tones of a cavity by the volume of a ball; Dirichlet's formula is the exact count of the tones on one sphere, and it is also the number of reflections in one ring of the powder pattern of a crystal (note~11).
+The formula was there when the cavity and the crystal arrived.
+
+\paragraph{Riemann and Epstein.}
+Riemann's continuation of 1859 gave $\zeta$ a value at $-3$ \cite{Riemann}, and Epstein's of 1903 gave the series of a lattice a value at $-\tfrac12$.
+Both were found in the study of the series for their own sake.
+They are the energy of the vacuum between two plates and in a box.
+
+\paragraph{Hodge.}
+Here the direction is reversed, and the equations of light were the model.
+``One of Hodge's motivations for introducing this concept,'' Atiyah wrote of the harmonic form, ``was the fact that the electromagnetic field can be represented by a 2-form $\omega$ in Minkowski space and that Maxwell's equations are then equivalent to $d\omega = 0$ and $d{*}\omega = 0$'' \cite{Atiyah}.
+The mathematics went on to the geometry of algebraic varieties, where the harmonic forms sort themselves by type $(p,q)$, and where Hodge's conjecture asks which classes come from algebraic subvarieties.
+What Hodge was reaching for, on this reading, is the statement that a space is known by the fields which persist on it when nothing drives them.
+In the cavity the two languages describe one object.
+Hodge's operator ${\star}d$ has the uniform fields for its kernel, and the multiplicities of its other eigenvalues are the numbers $r_3(N)$ of Gauss, which Dirichlet's formula turns into class numbers.
+The spectrum that Hodge's theory organises is weighted by Dirichlet's numbers.
+
+\paragraph{The dates.}
+None of this work was done for the sake of the cavity.
+Table~\ref{tab:dates} sets the dates side by side; the arithmetic is ahead of the physics by between 28 and 165 years.
+Wigner called the effectiveness of mathematics in the natural sciences unreasonable \cite{Wigner}.
+The notes of this series are a study of cases of it.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}p{0.40\textwidth}l@{\quad}p{0.38\textwidth}l@{}}
+\toprule
+The arithmetic & Year & Where light needed it & Year\\
+\midrule
+$\sum 1/n^4 = \pi^4/90$ (Euler) & 1735 & the constant of the law of radiation (Stefan, Planck) & 1900\\
+Sums of three squares (Legendre, Gauss) & 1801 & the tones of a cavity (Rayleigh, Jeans) & 1900\\
+The class number formula (Dirichlet) & 1839 & the tones of one pitch; the rings of a powder pattern (note~11) & 1916\\
+The continuation of $\zeta$ (Riemann) & 1859 & the energy of the vacuum (Casimir) & 1948\\
+Four numbers and their coefficients (Balmer) & 1885 & the atom (Bohr) & 1913\\
+\midrule
+Harmonic forms (Hodge) & 1941 & modelled on Maxwell's equations \cite{Maxwell} & 1865\\
+\bottomrule
+\end{tabular}
+\caption{The arithmetic in this note and the physics of light that later used it. In the last row the physics came first.}
+\label{tab:dates}
+\end{table}
+
+\begin{question}[open]
+The sensitivity of the eye spans close to one octave. Is there a physical or physiological cause for that width?
+\end{question}
+
+\begin{question}[open]
+The corrections of Derivation~\ref{d:exact} belong to a box without walls. Which of them, and which of the arithmetic of the single tones, can be measured in a real cavity?
+\end{question}
+
+\begin{question}[open]
+On the cubic torus the multiplicities of ${\star}d$ are class numbers. For which other compact spaces of three dimensions are the multiplicities of ${\star}d$ values of $L$-functions?
+\end{question}
 
 \section*{Status of the statements}
 
 \begin{center}
 \small
-\begin{tabular}{@{}p{0.62\textwidth}l@{}}
+\begin{tabular}{@{}p{0.70\textwidth}l@{}}
 \toprule
 Statement & Grade\\
 \midrule
-Seven colours & \gradeConvention{} (Newton)\\
-The visible band spans about an octave (1.97 or 2.31, by the limits chosen) & \gradeComputed\\
-Widths of the seven equal-tempered diatonic steps of the octave 375--750\,nm, beside the six named bands & \gradeComputed\\
-Balmer ratios and series spans $(m+1)^2/(2m+1)$ in the Rydberg formula & \gradeClassical{} (Rydberg), \gradeComputed\\
+Newton's division, his rule for the rings and his interval of fits; Young's table and remarks \cite{Opticks, Young} & \gradePhysics\\
+Derivation~\ref{d:newton}: Young's confines from Newton's rule; $2^{2/3}$; 571\,nm & \gradeComputed\\
+The frequency ratio of the visible band for three choices of limits & \gradeComputed, \gradeConvention\\
+Derivation~\ref{d:octave}: orders of a grating; second harmonic \cite{Franken}; the comb \cite{Jones, Holzwarth} & \gradePhysics, \gradeComputed\\
+Balmer's coefficients, his fifth line and the series $n=1$ \cite{Balmer}; Derivation~\ref{d:balmer} \cite{Rydberg, Bohr} & \gradePhysics, \gradeComputed\\
+Derivation~\ref{d:tones}: tones and three squares; $2r_3(N) = (48/\pi)\sqrt N L(1,\chi_D)$, checked for $N<200$ & \gradeClassical, \gradeComputed\\
+No tone at $N = 4^a(8b+7)$ (note~11; \leanpath{MorleySmithFormal/SilentShells}) & \gradeLean, \gradeClassical\\
+The volume term for every shape \cite{Weyl}; Lorentz's question \cite{Lorentz, Kac} & \gradeClassical\\
+Derivation~\ref{d:planck}: Planck's sum and $\sigma$ \cite{Planck, Bose}; the values for the Sun and the background radiation & \gradePhysics, \gradeComputed\\
+$\zeta(4) = \pi^4/90$ \cite{Euler} (Mathlib) & \gradeClassical, \gradeLean\\
+Epstein's zeta function and its functional equation \cite{Epstein} & \gradeClassical\\
+Derivation~\ref{d:exact}: the three terms, $Z(2)$ and the size of the remainder; checked at $\tau = 0.3$ to $2$ & \gradeComputed\\
+The energy between two plates \cite{Casimir, Lamoreaux} & \gradePhysics\\
+Derivation~\ref{d:hodge}: the spectrum of ${\star}d$ on the cubic torus (note~13); checked for seven shells & \gradeComputed\\
+The readings of Section~\ref{s:reaching} & \gradeOpen\\
 \bottomrule
 \end{tabular}
 \end{center}
 \gradelegend
 
-\begin{thebibliography}{9}
-\bibitem{Newton1672} I.~Newton, A letter of Mr.\ Isaac Newton \dots\ containing his new theory about light and colors, \emph{Phil. Trans.} no.~80 (1671/2), 3075--3087.
-\bibitem{Opticks} I.~Newton, \emph{Opticks}, London, 1704; Book~I, Part~II, Prop.~III.
-\bibitem{Whipple} Whipple Library, University of Cambridge, \emph{Isaac Newton (1642--1727)}, \url{https://www.whipplelib.hps.cam.ac.uk/node/216}.
+\begin{sloppypar}
+\noindent All checks are in \script{light.py}.
+\end{sloppypar}
+
+\begin{thebibliography}{99}
+\begin{sloppypar}
+\bibitem{Atiyah} M.~F. Atiyah, Riemann's influence in geometry, analysis and number theory, Facultat de Matem\`atiques i Estad\'{\i}stica, Universitat Polit\`ecnica de Catalunya, \url{https://fme.upc.edu/ca/arxius/butlleti-digital/riemann/071218_conferencia_atiyah_article.pdf}.
+\bibitem{Balmer} J.~J. Balmer, Notiz \"uber die Spectrallinien des Wasserstoffs, \emph{Ann. Phys. Chem.} 25 (1885), 80--87; quoted from the translation in H.~A. Boorse and L.~Motz, \emph{The World of the Atom}, vol.~1, Basic Books, 1966, as given by C.~Giunta, \url{https://web.lemoyne.edu/GIUNTA/balmer.html}.
+\bibitem{Bohr} N.~Bohr, On the constitution of atoms and molecules, \emph{Phil. Mag.} (6) 26 (1913), 1--25.
+\bibitem{Boltzmann} L.~Boltzmann, Ableitung des Stefan'schen Gesetzes, betreffend die Abh\"angigkeit der W\"armestrahlung von der Temperatur aus der electromagnetischen Lichttheorie, \emph{Ann. Phys. Chem.} 22 (1884), 291--294.
+\bibitem{Bose} S.~N. Bose, Plancks Gesetz und Lichtquantenhypothese, \emph{Z. Phys.} 26 (1924), 178--181.
+\bibitem{Casimir} H.~B.~G. Casimir, On the attraction between two perfectly conducting plates, \emph{Proc. Kon. Ned. Akad. Wet.} 51 (1948), 793.
+\bibitem{Dirichlet} P.~G. Lejeune Dirichlet, Recherches sur diverses applications de l'analyse infinit\'esimale \`a la th\'eorie des nombres, \emph{J. reine angew. Math.} 19 (1839), 324--369; 21 (1840), 1--12.
+\bibitem{Elstrodt} J.~Elstrodt, The life and work of Gustav Lejeune Dirichlet (1805--1859), \emph{Clay Math. Proc.} 7 (2007), 1--37.
+\bibitem{Epstein} P.~Epstein, Zur Theorie allgemeiner Zetafunctionen, \emph{Math. Ann.} 56 (1903), 615--644.
+\bibitem{Euler} L.~Euler, De summis serierum reciprocarum, \emph{Comm. Acad. Sci. Petrop.} 7 (1740), 123--134 (presented 5 December 1735; E41).
+\bibitem{Fixsen1996} D.~J. Fixsen, E.~S. Cheng, J.~M. Gales, J.~C. Mather, R.~A. Shafer and E.~L. Wright, The cosmic microwave background spectrum from the full COBE FIRAS data set, \emph{Astrophys. J.} 473 (1996), 576--587.
+\bibitem{Fixsen2009} D.~J. Fixsen, The temperature of the cosmic microwave background, \emph{Astrophys. J.} 707 (2009), 916--920.
+\bibitem{Franken} P.~A. Franken, A.~E. Hill, C.~W. Peters and G.~Weinreich, Generation of optical harmonics, \emph{Phys. Rev. Lett.} 7 (1961), 118--119.
+\bibitem{Gauss} C.~F. Gauss, \emph{Disquisitiones Arithmeticae}, Leipzig, 1801.
+\bibitem{Grosswald} E.~Grosswald, \emph{Representations of Integers as Sums of Squares}, Springer, 1985.
+\bibitem{Hansch} T.~W. H\"ansch, Nobel lecture: Passion for precision, \emph{Rev. Mod. Phys.} 78 (2006), 1297--1309.
+\bibitem{Hodge} W.~V.~D. Hodge, \emph{The Theory and Applications of Harmonic Integrals}, Cambridge University Press, 1941.
+\bibitem{Holzwarth} R.~Holzwarth, Th.~Udem, T.~W. H\"ansch, J.~C. Knight, W.~J. Wadsworth and P.~St.~J. Russell, Optical frequency synthesizer for precision spectroscopy, \emph{Phys. Rev. Lett.} 85 (2000), 2264--2267.
+\bibitem{Jeans} J.~H. Jeans, On the partition of energy between matter and {\ae}ther, \emph{Phil. Mag.} (6) 10 (1905), 91--98.
+\bibitem{Jones} D.~J. Jones, S.~A. Diddams, J.~K. Ranka, A.~Stentz, R.~S. Windeler, J.~L. Hall and S.~T. Cundiff, Carrier-envelope phase control of femtosecond mode-locked lasers and direct optical frequency synthesis, \emph{Science} 288 (2000), 635--639.
+\bibitem{Kac} M.~Kac, Can one hear the shape of a drum?, \emph{Amer. Math. Monthly} 73 (1966), no.~4, part~II, 1--23.
+\bibitem{Lamoreaux} S.~K. Lamoreaux, Demonstration of the Casimir force in the 0.6 to 6\,$\mu$m range, \emph{Phys. Rev. Lett.} 78 (1997), 5--8.
+\bibitem{Lorentz} H.~A. Lorentz, Alte und neue Fragen der Physik (Wolfskehl lectures, G\"ottingen, 24--29 October 1910; report by M.~Born), \emph{Phys. Z.} 11 (1910), 1234~ff.
+\bibitem{Maxwell} J.~C. Maxwell, A dynamical theory of the electromagnetic field, \emph{Phil. Trans. R. Soc. Lond.} 155 (1865), 459--512.
+\bibitem{Opticks} I.~Newton, \emph{Opticks}, London, 1704; quoted from the fourth edition, 1730.
+\bibitem{Planck} M.~Planck, Ueber das Gesetz der Energieverteilung im Normalspectrum, \emph{Ann. Phys.} (4) 4 (1901), 553--563.
+\bibitem{Prsa} A.~Pr\v{s}a et al., Nominal values for selected solar and planetary quantities: IAU 2015 Resolution B3, \emph{Astron. J.} 152 (2016), 41.
+\bibitem{Rayleigh} Lord Rayleigh, Remarks upon the law of complete radiation, \emph{Phil. Mag.} (5) 49 (1900), 539--540.
+\bibitem{Riemann} B.~Riemann, Ueber die Anzahl der Primzahlen unter einer gegebenen Gr\"osse, \emph{Monatsber. K\"onigl. Preuss. Akad. Wiss. Berlin} (1859), 671--680.
+\bibitem{Rydberg} J.~R. Rydberg, On the structure of the line-spectra of the chemical elements, \emph{Phil. Mag.} (5) 29 (1890), 331--337.
+\bibitem{Stefan} J.~Stefan, \"Uber die Beziehung zwischen der W\"armestrahlung und der Temperatur, \emph{Sitzungsber. Kaiserl. Akad. Wiss. Wien, Math.-Naturwiss. Cl.} 79 (1879), 391--428.
+\bibitem{Weyl} H.~Weyl, Das asymptotische Verteilungsgesetz der Eigenwerte linearer partieller Differentialgleichungen (mit einer Anwendung auf die Theorie der Hohlraumstrahlung), \emph{Math. Ann.} 71 (1912), 441--479.
+\bibitem{Wigner} E.~P. Wigner, The unreasonable effectiveness of mathematics in the natural sciences, \emph{Comm. Pure Appl. Math.} 13 (1960), 1--14.
+\bibitem{Young} T.~Young, The Bakerian Lecture: On the theory of light and colours, \emph{Phil. Trans. R. Soc. Lond.} 92 (1802), 12--48.
+\end{sloppypar}
 \end{thebibliography}
 
 \end{document}

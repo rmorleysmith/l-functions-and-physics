@@ -52,10 +52,16 @@ and attribution.
   `scripts/hearing_lattices.py`: equal theta series to squared length 60, the identity that gives equality at every
   length, and root graphs with two components and one. Suggested by the author; reviewed by an independent AI agent
   before publication.
-- **Note 03: the octave section states its outcome.** The colour bands and the equal-tempered diatonic steps are
-  listed in the same order, from the violet end, and the section says what the comparison shows: the band is a
-  continuum, both rows are divisions laid on it, and exact ratios appear in the hydrogen lines. The figure title
-  now reads six colour names, as its row shows.
+- **Note 03 rewritten: Light and number: Newton's rings, Balmer's formula and Planck's law.** The note
+  "How many colours in the rainbow?" is replaced. The new note follows three measurements of light to the arithmetic
+  inside them, with dates and sources: Newton's rule for the rings and Young's table of 1802 (the spectrum they saw
+  spans `2^{2/3}`; the eye's full band close to an octave); the octave as the interval to the second harmonic
+  (gratings, Franken et al. 1961, the frequency comb); Balmer's coefficients of 1885; Planck's law as the count of
+  sums of three squares times Euler's `ζ(4) = π⁴/90`; the periodic box exactly, `(hc/L)[(8π⁵/15)τ⁴ − 2τ +
+  Z(2)/(2π³)]`, with Epstein's zeta function; and the tones as eigenforms of `⋆d`. A closing section, graded open,
+  reads what Newton, Dirichlet and Hodge were reaching for, with Jacobi's and Atiyah's words. Derivations 3.1 to 3.7;
+  31 checks in `scripts/light.py`; new figure `light-cavity`. Requested by the author: a celebration of the
+  arithmetic that the physics of light later needed, with nothing claimed as new.
 - **Note 11: standard names.** "Four laws for a lattice of impulses" is now "Four relations for a cubic lattice
   of impulses", and the laws of duality, size, shape and silence are Poisson duality, echo strength, shell anisotropy
   and empty shells. Files: `notes/11-four-relations/`, `pdf/four-relations.pdf`, `scripts/shell_anisotropy.py`
