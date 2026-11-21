@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.4 (2026-11-21)
+
+- Note 11, new section "Where the law is measured": in powder diffraction by a primitive cubic crystal the
+  multiplicity of the ring of index N is `m_N = r₃(N) = (24/π) √N L(1, χ_D)`, and the rings
+  `N = 4^a(8b+7)` are absent (the gap after the sixth line of a primitive cubic pattern).
+
 ## 0.6.3 (2026-11-21)
 
 - The law of shape is now checked on all 201 squarefree `N ≤ 400` with `N ≢ 7 (mod 8)`, in each of the seven

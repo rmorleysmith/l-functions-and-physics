@@ -16,7 +16,7 @@ The first says that the echoes and the tones of the lattice are the same list of
 The second says that the strength of an echo is a Dirichlet $L$-value at the edge of the critical strip.
 The third says that the squared shape of the shell that sends the echo is an $L$-value at the centre of the strip.
 Each law is stated in one line, read in physical terms, and graded.
-The second, the headline law $E_N = L(1,\chi_D)/\zeta(2)$, is a theorem in every part. They are then written as one set, followed by a record, in order of time, of whose theorems they are.
+The second, the headline law $E_N = L(1,\chi_D)/\zeta(2)$, is a theorem in every part. The second is then read as a statement about powder diffraction, and the laws are written as one set, followed by a record, in order of time, of whose theorems they are.
 \end{abstract}
 
 \section{The system}
@@ -35,6 +35,20 @@ For a cubic lattice of unit flashes, the $N$-th echo heard at a lattice site has
 where $E_N = r_3(N)/(4\pi\sqrt N)$ is the coefficient of the wave equation's response and $\chi_D$ is the quadratic character of $\Q(\sqrt{-N})$.
 The left side is a measurement on a wave; the right side is a value of a Dirichlet $L$-function.
 It is Gauss's theorem on three squares combined with Dirichlet's class number formula and Kirchhoff's solution of the wave equation.
+
+\section{Where the law is measured}
+
+The law of size is a statement about a laboratory measurement.
+A powder of a crystal with a primitive cubic lattice of side $a$ diffracts X-rays of wavelength $\lambda$ into rings, one for each shell of the reciprocal lattice: the ring of index $N = h^2+k^2+l^2$ lies at the Bragg angle $\sin\theta_N = (\lambda/2a)\sqrt N$, and its intensity carries the multiplicity factor $m_N = r_3(N)$, the number of reflections $(h,k,l)$ that fall on it~\cite{Cullity}.
+For squarefree $N\not\equiv 7\pmod 8$ the law of size therefore reads
+\[
+  \boxed{\;m_N = \frac{24}{\pi}\,\sqrt N\,L(1,\chi_D)\;}
+\]
+and the law of silence says that the rings $N = 7, 15, 23, 28, 31, 39,\dots$ are absent from every primitive cubic pattern.
+
+\physical
+The multiplicity of a ring on a powder photograph is a Dirichlet $L$-value: $m_1 = 6$ is $L(1,\chi_{-4}) = \pi/4$, Leibniz's series.
+The gap after the sixth line of a primitive cubic pattern, which crystallographers use to tell it from a body-centred one, is Legendre's theorem on three squares.
 
 \section{The three laws}
 
@@ -114,6 +128,7 @@ Every line above was found by someone else. In order of time:
 \item[Kirchhoff, 1883.] The solution of the wave equation in three dimensions by spherical means~\cite{Kirchhoff}; it turns the count $r_3(N)$ into the strength $E_N$.
 \item[Klein, 1884.] The invariant forms of the finite rotation groups~\cite{Klein} (note~10, Derivation~10.6).
 \item[Ewald, 1921.] Lattice sums in crystals computed by dividing the work between the lattice and its dual~\cite{Ewald}: the law of duality as a working method of physics.
+\item[Bragg, 1913, and Debye and Scherrer, 1916.] Diffraction by a crystal and by a powder: each shell of the reciprocal lattice is one ring, weighted by its number of points~\cite{Cullity}.
 \item[Hecke, from 1920.] $L$-functions attached to characters of number fields~\cite{Hecke} and, later, the operators and $L$-functions of modular forms.
 \item[Shimura, 1973.] The correspondence between forms of half-integral weight and forms of even integral weight~\cite{Shimura}; it takes the hexadecapole series of note~10 to $F$.
 \item[Montgomery, 1973, with Dyson.] The pair correlation of the zeros of $\zeta$, recognised by Dyson as that of the eigenvalues of random Hermitian matrices~\cite{Montgomery,Dyson} (note~09).
@@ -139,6 +154,8 @@ Derivation~\ref{d:size}; checked for 151 values of $N\le300$ and $N\le3000$ & \g
 Derivation~\ref{d:shape}: proportionality within each class of $N$ in $\Q_2^\times$ modulo squares & \gradeClassical\\
 Derivation~\ref{d:shape}: one constant for all seven classes, the 201 values of $N\le400$, to $10^{-11}$ & \gradeComputed\\
 The formula for $\mu_3(N)^2$ & \gradeComputed\\
+Powder rings: $m_N = r_3(N)$, Bragg's law (physics) & \gradeClassical\\
+$m_N = (24/\pi)\sqrt N\,L(1,\chi_D)$, 151 values of $N\le300$ & \gradeClassical, \gradeComputed\\
 Silence: no echo at $N = 4^a(8b+7)$ (\leanpath{MorleySmithFormal/SilentShells} in \formal) & \gradeLean\\
 Silence: an echo at every other $N$ (Legendre, Gauss) & \gradeClassical\\
 \bottomrule
@@ -151,6 +168,7 @@ All checks are in \script{spheres.py} and \script{shape\_law.py}; further refere
 
 \begin{thebibliography}{99}\small
 \bibitem{BerryKeating} M.~V. Berry and J.~P. Keating, The Riemann zeros and eigenvalue asymptotics, \emph{SIAM Rev.} 41 (1999), 236--266.
+\bibitem{Cullity} B.~D. Cullity, \emph{Elements of X-Ray Diffraction}, Addison-Wesley, 1956.
 \bibitem{Dedekind} R.~Dedekind, Schreiben an Herrn Borchardt \"uber die Theorie der elliptischen Modul-Functionen, \emph{J. reine angew. Math.} 83 (1877), 265--292.
 \bibitem{Deligne} P.~Deligne, La conjecture de Weil. I, \emph{Publ. Math. Inst. Hautes \'Etudes Sci.} 43 (1974), 273--307.
 \bibitem{Dirichlet} P.~G. Lejeune Dirichlet, Recherches sur diverses applications de l'analyse infinit\'esimale \`a la th\'eorie des nombres, \emph{J. reine angew. Math.} 19 (1839), 324--369; 21 (1840), 1--12.

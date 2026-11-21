@@ -200,6 +200,10 @@ sample = [n for n in range(1, 301) if squarefree(n) and n % 8 != 7]
 worst = max(abs(r3[n] / (4 * math.pi * math.sqrt(n)) - L1(-4 * n if n % 4 in (1, 2) else -n) / zeta2) for n in sample)
 check(worst < 1e-9, f"echo strength r_3(N)/(4 pi sqrt N) = L(1, chi_D)/zeta(2) for the {len(sample)} squarefree "
       f"N <= 300 not 7 mod 8 (error {worst:.0e})")
+worst = max(abs(r3[n] - 24 / math.pi * math.sqrt(n) * L1(-4 * n if n % 4 in (1, 2) else -n)) for n in sample)
+check(worst < 1e-8 and int(r3[1]) == 6 and [n for n in range(1, 41) if r3[n] == 0] == [7, 15, 23, 28, 31, 39],
+      "powder rings of a primitive cubic lattice: multiplicity m_N = r_3(N) = (24/pi) sqrt(N) L(1, chi_D); "
+      "rings 7, 15, 23, 28, 31, 39 absent")
 
 SIG = 0.05
 Ns = np.arange(1, NE + 1)
