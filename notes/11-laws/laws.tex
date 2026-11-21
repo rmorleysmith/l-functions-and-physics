@@ -16,7 +16,7 @@ The first says that the echoes and the tones of the lattice are the same list of
 The second says that the strength of an echo is a Dirichlet $L$-value at the edge of the critical strip.
 The third says that the squared shape of the shell that sends the echo is an $L$-value at the centre of the strip.
 Each law is stated in one line, read in physical terms, and graded.
-The last section records whose theorems they are.
+The second, the headline law $E_N = L(1,\chi_D)/\zeta(2)$, is a theorem in every part. The last section records whose theorems they are.
 \end{abstract}
 
 \section{The system}
@@ -24,6 +24,17 @@ The last section records whose theorems they are.
 Place a unit impulse at every point of $\Z^3$ and let it propagate by the wave equation with speed $c = 1$ (note~10).
 An observer at the origin receives the $N$-th shell of neighbours, the $r_3(N)$ lattice points at distance $\sqrt N$, at the time $\sqrt N$.
 Write $D$ for the discriminant of $\Q(\sqrt{-N})$, $\chi_D$ for its quadratic character, and $a(N)$ for the hexadecapole of the shell, the first coefficient of its shape (note~10, Derivation~10.3).
+
+\section{The headline law}
+
+Of the three laws below, one is a theorem in every part and can be stated in a line.
+For a cubic lattice of unit flashes, the $N$-th echo heard at a lattice site has strength
+\[
+  \boxed{\;E_N = \frac{L(1,\chi_D)}{\zeta(2)}\;}\qquad(N\ \text{squarefree},\ N\not\equiv7\pmod 8),
+\]
+where $E_N = r_3(N)/(4\pi\sqrt N)$ is the coefficient of the wave equation's response and $\chi_D$ is the quadratic character of $\Q(\sqrt{-N})$.
+The left side is a measurement on a wave; the right side is a value of a Dirichlet $L$-function.
+It is Gauss's theorem on three squares combined with Dirichlet's class number formula and Kirchhoff's solution of the wave equation.
 
 \section{The three laws}
 
