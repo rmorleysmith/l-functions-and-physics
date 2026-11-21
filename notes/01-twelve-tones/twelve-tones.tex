@@ -12,10 +12,10 @@
 \begin{abstract}
 \noindent
 The modular group $\SL(2,\Z)$ has exactly twelve characters, the powers of the multiplier of $\eta^2 = \Delta^{1/12}$.
-Assigning each element its \emph{pitch} in $\Z/12$ gives a dictionary between the modular group and the twelve-tone chromatic scale, canonical up to the four automorphisms of $\Z/12$: with the $\eta^2$ multiplier as generator, $T$ is a semitone and $S$ a minor third down, and for every choice the stabilisers of the elliptic points $i$ and $\rho$ sound the diminished-seventh chord and the whole-tone scale.
+Assigning each element its \emph{pitch} in $\Z/12$ gives a dictionary between the modular group and the twelve-tone chromatic scale, canonical up to the four automorphisms of $\Z/12$: with the $\eta^2$ multiplier as generator, $T$ is a semitone and $S$ a minor third down, and for every choice the stabilisers of the elliptic points $i$ and $\rho$ map onto the subgroups of order 4 and 6 of $\Z/12$, which in this dictionary are a diminished-seventh chord and a whole-tone scale.
 The automorphisms of $\Z/12$, the circle of fifths among them, form the Galois group of $\Q(\zeta_{12})$, whose three quadratic subfields $\Q(i)$, $\Q(\sqrt{-3})$ and $\Q(\sqrt3)$ carry the three non-trivial Dirichlet characters modulo~12.
 The group-theoretic statements are proved in Lean, and the rest is checked numerically.
-Musical practice arrives at twelve by a second route, the convergent $7/12$ of $\log_2(3/2)$, and we ask how the two twelves are related.
+Musical practice arrives at twelve by a different route, the convergent $7/12$ of $\log_2(3/2)$, which the last section sets beside the first.
 \end{abstract}
 
 \section{The modular group and its two elliptic points}
@@ -208,12 +208,11 @@ Twelve is the smallest number of steps with a good fifth.
   \label{fig:temp}
 \end{figure}
 
-\paragraph{Two twelves.}
+\paragraph{The two routes compared.}
 The pitch map is exact: the modular group's characters, the automorphisms of the chromatic circle and the quadratic subfields of $\Q(\zeta_{12})$ are one structure, $\Z/12$ with its Klein group of automorphisms.
 The modular twelve comes from the orders 4 and 6 of the elliptic stabilisers, and the musical twelve from the continued fraction of $\log_2(3/2)$.
 The second also has a place in the geometry of the modular group.
 A geodesic of the upper half-plane ending at a real number $x$ crosses the Farey tessellation in a pattern that spells the continued fraction of $x$, and the convergents are vertices of the triangles it meets \cite{Series}; for $x = \log_2(3/2)$ the vertex $7/12$ is one of them.
-Our working hypothesis is that the two twelves are linked.
 
 \begin{question}
 Is there a mechanism, physical or perceptual, by which the arithmetic of $\SL(2,\Z)$ or of $\Q(\zeta_{12})$ constrains musical tuning or harmony?
@@ -234,7 +233,7 @@ The quadratic subfields of $\Q(\zeta_{12})$ and the subgroups fixing them & \gra
 Reading $\Z/12$ as pitch classes: the generator $\chi_\eta$ and $C=0$ & \gradeConvention\\
 $L(1,\chi)$ for the characters mod 12; Dedekind zeta factorisation & \gradeClassical{}, values \gradeComputed\\
 Continued fraction of $\log_2(3/2)$ and the temperament errors & \gradeComputed\\
-The two twelves are linked; Question 1 & \gradeOpen\\
+Question 1 & \gradeOpen\\
 \bottomrule
 \end{tabular}
 \end{center}

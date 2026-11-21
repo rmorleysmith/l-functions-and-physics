@@ -2,7 +2,7 @@
 \input{../preamble}
 \renewcommand{\notenumber}{13}
 
-\title{Speed, spread and swirl:\\ motion on a lattice}
+\title{Lorentz boosts, Burgers flow and Beltrami fields\\ on a lattice}
 \author{Richard Morley-Smith}
 \date{Note 13 \quad November 2026}
 
@@ -14,8 +14,8 @@
 We study three kinds of motion with objects from the earlier notes.
 In special relativity in $2+1$ dimensions, the space of shapes of based lattices is the space of four-velocities, and the functional $S$ of note~12 is twice the relativistic kinetic energy of a body of mass $m$, in units of its rest energy $mc^2$.
 The square lattice frame, moved by integral Lorentz transformations, reaches exactly the kinetic energies $\tfrac12 n\,mc^2$ for which $n$ and $n+4$ are both sums of two squares; this is proved in Lean.
-On the axis of $\left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)$, $n$ successive boosts have speed $\sqrt5F_{4n}/L_{4n}$, and Einstein's rule for adding velocities follows from the addition formulas of the Fibonacci and Lucas numbers.
-For Burgers' equation of viscous flow, started by a lattice of point explosions, the Hopf--Cole substitution writes the velocity as $-2\nu\nabla\log\Theta$, with $\Theta$ the heat kernel of the torus, a theta function of the lattice: the fluid first fills the Voronoi cells of the lattice with Hubble flows, and at late times decays like its slowest tone.
+On the axis of $\left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)$, $n$ successive boosts have speed $\sqrt5F_{4n}/L_{4n}$; for these speeds the addition theorem of the hyperbolic tangent, which is Einstein's rule for collinear velocities, reads as the addition formulas of the Fibonacci and Lucas numbers.
+For Burgers' equation of viscous flow, started from a point source at every point of a lattice, the Hopf--Cole substitution writes the velocity as $-2\nu\nabla\log\Theta$, with $\Theta$ the heat kernel of the torus, a theta function of the lattice: the fluid first fills the Voronoi cells of the lattice with the self-similar flows $u = r/t$, and at late times decays like its slowest tone.
 For the Euler and Navier--Stokes equations in a periodic box, the flows built on one circle $|k|^2 = N$ in the plane form a space of dimension $r_2(N)$, and the Beltrami flows of one handedness built on one sphere $|k|^2 = N$ in space a space of dimension $r_3(N)$; for squarefree $N\not\equiv7\pmod8$ this is $(24/\pi)\sqrt N\,L(1,\chi_D)$, and it is zero exactly for $N = 4^a(8b+7)$.
 Every computation is checked by a script.
 \end{abstract}
@@ -24,7 +24,7 @@ Every computation is checked by a script.
 Throughout, $r_d(n)$ is the number of representations of $n$ as a sum of $d$ squares of integers, $\varphi = \tfrac12(1+\sqrt5)$, and for squarefree $N$, $D$ is the discriminant of $\Q(\sqrt{-N})$ and $\chi_D$ its quadratic character.
 In the derivations speeds are in units of the speed of light; in the physical readings the speed of light is written $c$.
 
-\section{Speed}
+\section{Boosts of a lattice frame}
 
 A positive definite symmetric matrix $A = \left(\begin{smallmatrix}\alpha&\beta\\\beta&\kappa\end{smallmatrix}\right)$ of determinant one is the point
 \[
@@ -87,7 +87,7 @@ The number of matrices with $S\le X$ grows like $6X$, the hyperbolic lattice-poi
   \label{fig:speed}
 \end{figure}
 
-\begin{derivation}[golden boosts]\label{d:golden}
+\begin{derivation}[the boost of trace three]\label{d:golden}
 The matrix $g = \left(\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right)$ has eigenvalues $\varphi^{\pm2}$, and its axis is the semicircle with endpoints $\tfrac12(1\pm\sqrt5)$, which passes through $i$.
 On its axis, $g$ moves every frame with Lorentz factor $\tfrac72$, speed $3\sqrt5/7$ and rapidity
 \[
@@ -108,12 +108,12 @@ The value $L(1,\chi_5) = (2/\sqrt5)\log\varphi$ is Dirichlet's class number form
 The last statement is $S\ge5$ for hyperbolic elements, Derivation~12.2, proved in Lean in \formal{} (\leanpath{MorleySmithFormal/LatticeMetricDivergence}).
 
 \physical
-No integral boost is slow: a hyperbolic integral Lorentz transformation takes every frame to one receding from it at a speed of at least $3\sqrt5/7\,c = 0.958\,c$, and the golden boost, like every element of trace $\pm3$, does so exactly on its axis.
+No integral boost is slow: a hyperbolic integral Lorentz transformation takes every frame to one receding from it at a speed of at least $3\sqrt5/7\,c = 0.958\,c$, and $g$, like every element of trace $\pm3$, does so exactly on its axis.
 The rapidity of that slowest boost is the length of the shortest closed geodesic of the modular surface (note~05), and it equals $2\sqrt5\,L(1,\chi_5)$.
-Two golden boosts give $21\sqrt5/47\,c = 0.99909\,c$.
+Two successive boosts by $g$ give $21\sqrt5/47\,c = 0.99909\,c$.
 The parabolic elements are null rotations, and they move frames arbitrarily slowly: $\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$ moves $z = x+iy$ with $S = 1/y^2$, which tends to $0$ as $y\to\infty$ (note~12).
 
-\section{Spread}
+\section{Burgers flow from a lattice of point sources}
 
 \begin{derivation}[heat on a lattice]\label{d:heat}
 For a lattice $\Lambda\subset\R^d$ of covolume $V$ with dual lattice $\Lambda^*$, the solution of $\partial_t\Theta = \nu\Delta\Theta$ with initial value a unit point mass at every lattice point, $\Theta(\cdot,0) = \sum_{n\in\Lambda}\delta_n$, is
@@ -129,7 +129,7 @@ The two sums are equal by Poisson summation (note~07); the first converges rapid
 At short times the heat is the sum of the spreading images of the point masses; at long times it is the sum of the tones (Laplace eigenmodes) of the torus $\R^d/\Lambda$, each decaying at the rate $4\pi^2\nu|k|^2$.
 For $\Lambda = \Z^3$ the tone $|k|^2 = N$ has multiplicity $r_3(N)$, and there is no tone at the empty shells of note~11.
 
-\begin{derivation}[a lattice of explosions]\label{d:burgers}
+\begin{derivation}[a lattice of point sources]\label{d:burgers}
 Burgers' equation for a velocity field $u = \nabla\psi$,
 \[
   \partial_tu+(u\cdot\nabla)u = \nu\Delta u,
@@ -144,19 +144,19 @@ As $\nu t\to0$, $\langle n\rangle$ tends to the lattice point nearest to $x$, aw
 
 \physical
 The equation appears in Bateman's work on fluid motion \cite{Bateman}; Burgers studied it as a model of turbulence \cite{Burgers}.
-Here every lattice point explodes at $t = 0$.
-At first each Voronoi cell (in crystallography, the Wigner--Seitz cell) holds its own Hubble flow $u = r/t$, centred on its own point, and the flows meet at thin viscous shocks on the cell walls: squares for the square lattice and hexagons for the hexagonal one (Figure~\ref{fig:burgers}); in space, cubes for $\Z^3$, rhombic dodecahedra for the face-centred cubic lattice and truncated octahedra for the body-centred one \cite{ConwaySloane}.
+Here the flow starts at $t = 0$ from a point source at every lattice point.
+At first each Voronoi cell (in crystallography, the Wigner--Seitz cell) holds its own self-similar flow $u = r/t$, centred on its own point, and the flows meet at thin viscous shocks on the cell walls: squares for the square lattice and hexagons for the hexagonal one (Figure~\ref{fig:burgers}); in space, cubes for $\Z^3$, rhombic dodecahedra for the face-centred cubic lattice and truncated octahedra for the body-centred one \cite{ConwaySloane}.
 At late times the faster tones have died out and the flow decays like its slowest tone.
 In the limit $\nu\to0$ and with a random initial velocity potential in place of the lattice, the same equation is the adhesion model of the large-scale structure of the Universe, in which matter collects on the walls, edges and vertices of a tessellation of space \cite{GSS}.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.74\textwidth]{motion-burgers}
-  \caption{Burgers flow from a lattice of point explosions (orange); the pattern depends only on $\nu t$. Left: at $\nu t = 0.002$ the flow fills the Voronoi cells, with shocks on their walls. Right: at $\nu t = 0.06$ the slowest tones remain.}
+  \caption{Burgers flow from a lattice of point sources (orange); the pattern depends only on $\nu t$. Left: at $\nu t = 0.002$ the flow fills the Voronoi cells, with shocks on their walls. Right: at $\nu t = 0.06$ the slowest tones remain.}
   \label{fig:burgers}
 \end{figure}
 
-\section{Swirl}
+\section{Steady flows in a periodic box}
 
 \begin{derivation}[cellular flows in a periodic plane box]\label{d:cellular}
 On $\R^2/\Z^2$ let $\psi = \sum_{|k|^2 = N}c_k\,e^{2\pi i\langle k,x\rangle}$ with $c_{-k} = \overline{c_k}$, and $u = (\partial_y\psi,-\partial_x\psi)$.

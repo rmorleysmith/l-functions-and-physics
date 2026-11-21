@@ -10,7 +10,7 @@ What it computes
   (4) The four Dirichlet characters mod 12, their orthogonality, and L(1, chi) from the digamma
       function against the class number formula: pi/4, pi/(3 sqrt 3), log(2 + sqrt 3)/sqrt 3.
   (5) The diatonic scale: seven consecutive fifths, maximally even, the Christoffel word LLLsLLs.
-  (6) Why the ear chooses 12: the continued fraction of log2(3/2) and the error of the best fifth in
+  (6) The acoustic route to 12: the continued fraction of log2(3/2) and the error of the best fifth in
       every equal temperament with n <= 60 steps.
 
 What it shows
@@ -156,7 +156,7 @@ check(christoffel == "LLLsLLs" and steps in rotations,
       "the lower Christoffel word of slope 2/5 is LLLsLLs (Lydian); its rotations are the seven modes")
 
 # ---------------------------------------------------------------------------------------------------
-print("(6) why the ear chooses 12")
+print("(6) the acoustic route to 12")
 L = math.log2(1.5)
 cf, x = [], mp.log(1.5, 2)
 for _ in range(9):
@@ -273,6 +273,6 @@ ax.set_xlim(0, 61)
 ax.set_xlabel("number of equal steps in the octave, n")
 ax.set_ylabel("error of the best fifth (cents)")
 ax.grid(axis="y", which="major")
-ax.set_title("Why the ear chooses 12: 7/12 is a convergent of log₂(3/2)")
+ax.set_title("Error of the best fifth: 7/12 is a convergent of log₂(3/2)")
 save(fig, "tones-temperaments")
 print("done")

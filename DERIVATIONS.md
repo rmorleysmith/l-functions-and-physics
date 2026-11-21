@@ -20,9 +20,9 @@ proposition in the note. Every script asserts the numbers it prints (`make check
 |---|---|---|
 | 8.1 | Modes of light in a periodic box: `2#{n ∈ ℤ³ : \|n\|² ≤ N} ~ Vω³/(3π²c³)`; multiplicity `2r₃(N)` at `ω = (2πc/L)√N`. | `c` converts counting lattice points into counting frequencies (Planck's `c³`). |
 | 8.2 | Gauss: `r₃(n) = 12h(−4n)`, `24h(−n)` or `0` (squarefree `n > 3`); so `r₃(n) = (24√n/π) L(1, χ₋₄ₙ)` for `n ≡ 1, 2 mod 4`. | For squarefree `n`, the number of ways light fits a cubic box at pitch `√n` is a multiple of an L-value. |
-| 8.3 | `(T, X, Y) = (a + c, b, a − c)` makes `b² − 4ac = X² + Y² − T²`; `SL(2, ℤ)` acts by integral Lorentz transformations. | Gauss's forms are integer vectors in 2+1 spacetime: definite = particle, degenerate = light, indefinite = geodesic. |
-| 8.4 | Relative rapidity `cosh η = −B(f, g)/√(D_f D_g)`; for `x² + y²` and `x² + xy + y²`, `tanh η = ½`. In the rest frame of `x² + y²`, the form `x² + bxy + cy²` has Lorentz factor `(1 + c)/√\|D\|`. | The Gaussian and Eisenstein forms move relative to each other at `c/2`; the nine class-number-one forms have speeds `0, ½, ⅓, √2/3, …, √1601/42`. `tanh d(i, ρ) = ½` is proved in Lean (`MorleySmithFormal/ModularSystole`). |
-| 8.5 | `h(D) = (w√\|D\|/2π) L(1, χ_D)` counts the `SL(2, ℤ)`-orbits of primitive integer forms on the future mass shell of discriminant `D`. | The number of essentially different integer particles of a given mass is an L-value. |
+| 8.3 | `(T, X, Y) = (a + c, b, a − c)` makes `b² − 4ac = X² + Y² − T²`; `SL(2, ℤ)` acts by integral Lorentz transformations. | Gauss's forms are integer vectors in 2+1 spacetime: definite = timelike (like the momentum of a massive particle), degenerate = lightlike, indefinite = spacelike. |
+| 8.4 | Relative rapidity `cosh η = −B(f, g)/√(D_f D_g)`; for `x² + y²` and `x² + xy + y²`, `tanh η = ½`. In the rest frame of `x² + y²`, the form `x² + bxy + cy²` has Lorentz factor `(1 + c)/√\|D\|`. | In this dictionary the Gaussian and Eisenstein forms have relative velocity `c/2`; the nine class-number-one forms have speeds `0, ½, ⅓, √2/3, …, √1601/42`. `tanh d(i, ρ) = ½` is proved in Lean (`MorleySmithFormal/ModularSystole`). |
+| 8.5 | `h(D) = (w√\|D\|/2π) L(1, χ_D)` counts the `SL(2, ℤ)`-orbits of primitive integer forms on the future mass shell of discriminant `D`. | The number of classes of integer vectors on a mass shell, up to integral Lorentz transformations, is an L-value. |
 | 8.6 | `X ↦ AXA*` on Hermitian matrices preserves `t² − x² − y² − z²`; on light rays `vv*` it is a Möbius map of the sky. | Lorentz boosts move the stars by Möbius maps; `SL(2, ℤ[i])` is a lattice of boosts. |
 
 ## The zeros as energy levels (note 09, [`scripts/zeros_statistics.py`](scripts/zeros_statistics.py))
@@ -71,14 +71,14 @@ Note 11 restates derivations 10.2 and 10.4, with Gauss's count from note 08, as 
 
 Lean: 12.1 and 12.2 in `MorleySmithFormal/LatticeMetricDivergence`.
 
-## Speed, spread and swirl (note 13, [`scripts/motion_and_flow.py`](scripts/motion_and_flow.py))
+## Lorentz boosts, Burgers flow and Beltrami fields on a lattice (note 13, [`scripts/motion_and_flow.py`](scripts/motion_and_flow.py))
 
 | | Statement | In physical terms |
 |---|---|---|
 | 13.1 | For positive definite symmetric `A`, `B` of determinant one, `(t, x, y) = ((a + c)/2, (a − c)/2, b)` lies on `t² − x² − y² = 1`; `½ tr(AB⁻¹) = γ_AB = cosh δ` and `S(A, B) = 2(γ_AB − 1)`. | `½ S mc²` is the relativistic kinetic energy of a body at rest in one lattice frame seen from the other; `≈ ½ mv²` when slow. |
 | 13.2 | For `ad − bc = 1`: `S(M(i), M(γi)) = (a − d)² + (b + c)²` and `S + 4 = (a + d)² + (b − c)²`; the values are exactly the `n` with `n` and `n + 4` sums of two squares, reached by `r₂(n) r₂(n + 4)` matrices (halved for odd `n`). | The square frame reaches only the kinetic energies `½ n mc²` with `n = 0, 1, 4, 5, 9, 13, …`. |
-| 13.3 | `g = (2 1; 1 1)` boosts the frames on its axis with `γ = 7/2`, speed `3√5/7`, rapidity `4 log φ = 2√5 L(1, χ₅)`; on the axis its powers have speeds `√5 F_4n / L_4n`; every hyperbolic element gives every frame `γ ≥ 7/2`. | Einstein's velocity addition for golden boosts follows from the Fibonacci–Lucas addition formulas; no integral boost is slower than `0.958 c`. |
-| 13.4–13.5 | `Θ = Σ_n (4πνt)^{−d/2} e^{−\|x − n\|²/4νt}` solves the heat equation; `u = −2ν∇ log Θ = (x − ⟨n⟩)/t` solves Burgers' equation (Hopf–Cole). | A lattice of explosions: Hubble flows in the Voronoi cells, then decay like the slowest tone. |
+| 13.3 | `g = (2 1; 1 1)` boosts the frames on its axis with `γ = 7/2`, speed `3√5/7`, rapidity `4 log φ = 2√5 L(1, χ₅)`; on the axis its powers have speeds `√5 F_4n / L_4n`; every hyperbolic element gives every frame `γ ≥ 7/2`. | For these speeds Einstein's rule for collinear velocities (the addition theorem of tanh) reads as the Fibonacci–Lucas addition formulas; no integral boost is slower than `0.958 c`. |
+| 13.4–13.5 | `Θ = Σ_n (4πνt)^{−d/2} e^{−\|x − n\|²/4νt}` solves the heat equation; `u = −2ν∇ log Θ = (x − ⟨n⟩)/t` solves Burgers' equation (Hopf–Cole). | A point source at every lattice point: self-similar flows `u = r/t` in the Voronoi cells, then decay like the slowest tone. |
 | 13.6–13.7 | Stream functions (plane) or curl eigenfields of one helicity (Beltrami fields, space) on one circle or sphere `\|k\|² = N` are steady Euler flows decaying as `e^{−4π²νNt}` under Navier–Stokes; dimensions `r₂(N)` and `r₃(N)` (per helicity). | An ideal fluid in a periodic cubic box has, for each handedness, an `r₃(N)`-dimensional space of steady Beltrami flows at wavenumber `2π√N`; `r₃(N) = (24/π)√N L(1, χ_D)` for squarefree `N ≢ 7 mod 8`, and none at `N = 4^a(8b + 7)`. |
 
 Lean: 13.2 in `MorleySmithFormal/SquareFrameEnergies`; the bound in 13.3 is 12.2 (`MorleySmithFormal/LatticeMetricDivergence`).

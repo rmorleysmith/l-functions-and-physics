@@ -1,4 +1,4 @@
-"""Note 13: speed, spread and swirl. Three equations of motion solved on a lattice.
+"""Note 13: Lorentz boosts, Burgers flow and Beltrami fields on a lattice.
 
 What it computes
   (1) Speed. A positive definite symmetric 2 x 2 matrix A = [[a, b], [b, c]] of determinant 1 is the event
@@ -6,12 +6,12 @@ What it computes
       velocity of a body. For two such matrices the relative Lorentz factor is gamma = tr(A B^-1)/2 = cosh(delta),
       with delta the hyperbolic distance of the shapes; the functional S = tr(G - 1 - log G) of note 12 is 2(gamma - 1),
       twice the kinetic energy in units of the rest energy. SL(2, Z) acts on (a, b, c) by integer Lorentz
-      transformations. For the square lattice, gamma(i, g i) = (a^2 + b^2 + c^2 + d^2)/2. The golden boost
+      transformations. For the square lattice, gamma(i, g i) = (a^2 + b^2 + c^2 + d^2)/2. The boost g
       g = (2 1; 1 1) moves the frames on its axis at 3 sqrt5/7 (gamma = 7/2), with rapidity 4 log phi = 2 sqrt5 L(1, chi_5);
-      n golden boosts give speed sqrt5 F_4n / L_4n, and Einstein's addition rule is the addition formula of the
+      n boosts by g give speed sqrt5 F_4n / L_4n, and Einstein's addition rule is the addition formula of the
       Fibonacci and Lucas numbers. Every hyperbolic g moves every frame at gamma >= 7/2.
   (2) Spread. The heat kernel of the circle is the theta function, as a sum of images and as a sum of modes
-      (Poisson duality). Burgers' equation u_t + (u . grad) u = nu Lap u with a lattice of point explosions at t = 0:
+      (Poisson duality). Burgers' equation u_t + (u . grad) u = nu Lap u with a point source at every lattice point at t = 0:
       by the Cole-Hopf substitution u = -2 nu grad log(phi), phi solves the heat equation and is the theta function of
       the lattice; u = (x - <n>)/t with <n> a Gaussian average of lattice points. For small nu t, u = (x - n*)/t
       with n* the nearest lattice point (Voronoi cells); for large nu t, u decays as exp(-4 pi^2 nu N t) on the
@@ -148,7 +148,7 @@ check(all(total_n == count[n] for n, total_n in ((n, int(c_odd[n] * c_odd[n + 4]
       f"#{{g in SL(2, Z) : S <= X}} = {total} at X = 2e5, that is {total / XC:.4f} X (hyperbolic lattice-point "
       "problem at i: 6X)")
 
-# the golden boost
+# the boost g = (2 1; 1 1)
 G = np.array([[2, 1], [1, 1]])
 z_axis = complex(0.5, math.sqrt(5) / 2)                    # on the axis: the semicircle over the fixed points
 F = [0, 1]
@@ -175,18 +175,18 @@ for z in axis:
         Gn = Gn @ G
         Gi = np.array([[Gn[1, 1], -Gn[0, 1]], [-Gn[1, 0], Gn[0, 0]]])
         ok &= abs(0.5 * np.trace(Az @ Gi.T @ np.linalg.inv(Az) @ Gi) - Lu[4 * n] / 2) < 1e-9 * Lu[4 * n]
-check(ok, "on the axis of (2 1; 1 1) (i and 20 random points; n = 1..5 at the top): n golden boosts give "
+check(ok, "on the axis of (2 1; 1 1) (i and 20 random points; n = 1..5 at the top): n boosts by g give "
       "gamma = L_4n / 2, speed sqrt5 F_4n / L_4n, rapidity 4n log phi; "
       "n = 1: gamma = 7/2, speed 3 sqrt5/7 = 0.9583")
 check(abs(math.sqrt(5) * 21 / 47 - 0.99909) < 5e-6 and (F[8], Lu[8]) == (21, 47),
-      f"two golden boosts: speed 21 sqrt5 / 47 = {math.sqrt(5) * 21 / 47:.5f}")
+      f"two boosts by g: speed 21 sqrt5 / 47 = {math.sqrt(5) * 21 / 47:.5f}")
 check(all(2 * F[m + n] == F[m] * Lu[n] + F[n] * Lu[m] and 2 * Lu[m + n] == Lu[m] * Lu[n] + 5 * F[m] * F[n]
           for m in range(25) for n in range(25)),
-      "Einstein's addition rule for golden boosts follows from 2F_(m+n) = F_m L_n + F_n L_m, 2L_(m+n) = L_m L_n + 5 F_m F_n")
+      "Einstein's addition rule for these speeds follows from 2F_(m+n) = F_m L_n + F_n L_m, 2L_(m+n) = L_m L_n + 5 F_m F_n")
 chi5 = {1: 1, 2: -1, 3: -1, 4: 1}
 L1chi5 = -sum(chi5[a] * math.log(math.sin(math.pi * a / 5)) for a in range(1, 5)) / math.sqrt(5)
 check(abs(4 * math.log(PHI) - 2 * math.sqrt(5) * L1chi5) < 1e-14,
-      f"the golden rapidity 4 log phi = 2 sqrt5 L(1, chi_5), L(1, chi_5) = {L1chi5:.12f}")
+      f"the rapidity 4 log phi of g = 2 sqrt5 L(1, chi_5), L(1, chi_5) = {L1chi5:.12f}")
 low = math.inf
 for a, b, c, d in itertools.product(range(-6, 7), repeat=4):
     if a * d - b * c != 1 or abs(a + d) <= 2:
@@ -320,8 +320,8 @@ for name, basis in (("square", SQUARE), ("hexagonal", HEX)):
     away = gap > 0.05
     err = np.abs(burgers(X, 5e-4, 1.0, pts) - (X - n_star))[away].max()
     check(err < 1e-9, f"{name}: for nu t = 5e-4, u t = x - (nearest lattice point) off the cell walls "
-          f"(error {err:.0e}): each cell is a Hubble flow u = r/t from its own explosion")
-# long times: the slowest tone. With nu = 1, compare t = 0.3 and t = 0.4 (12 rings of explosions around the cell).
+          f"(error {err:.0e}): each cell is a self-similar flow u = r/t from its own source")
+# long times: the slowest tone. With nu = 1, compare t = 0.3 and t = 0.4 (12 rings of sources around the cell).
 for name, basis, kmin2, nk in (("square", SQUARE, 1.0, 4), ("hexagonal", HEX, 4 / 3, 6)):
     pts = lattice_points(basis, 12)
     X = RNG.uniform(0, 1, (3000, 2)) @ basis
@@ -335,7 +335,7 @@ for name, basis, kmin2, nk in (("square", SQUARE, 1.0, 4), ("hexagonal", HEX, 4 
           f"{name}: at long times u decays at the rate 4 pi^2 nu |k|^2 = {rate:.4f} nu of the {nk} shortest dual "
           f"vectors, |k|^2 = {kmin2:.4f}")
 
-# figure 2: Burgers flow from a lattice of explosions
+# figure 2: Burgers flow from a lattice of point sources
 fig, axes = plt.subplots(2, 2, figsize=(6.4, 6.0))
 for row, (name, basis) in enumerate((("square", SQUARE), ("hexagonal", HEX))):
     pts = lattice_points(basis, 5)
@@ -357,7 +357,7 @@ for row, (name, basis) in enumerate((("square", SQUARE), ("hexagonal", HEX))):
         ax.set_yticks([])
         ax.set_title(f"{name}, ν t = {s:g}" + ("  (Voronoi cells)" if col == 0 else "  (slowest tones)"),
                      fontsize=8.5)
-fig.suptitle("Burgers flow from a lattice of explosions (orange): colour is the speed, darker is faster", fontsize=9, y=0.99)
+fig.suptitle("Burgers flow from a lattice of point sources (orange): colour is the speed, darker is faster", fontsize=9, y=0.99)
 save(fig, "motion-burgers")
 
 

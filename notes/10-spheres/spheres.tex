@@ -19,7 +19,7 @@ The first of them, the hexadecapole of the $N$-th shell of $\Z^d$, is the coeffi
 In space the square of the hexadecapole is the central value of an $L$-function, so the size of a shell is an $L$-value at the edge of the critical strip and its shape an $L$-value at the centre.
 In four dimensions shells are as round as chance allows, their anisotropy about one over the square root of the number of points: this is Deligne's theorem. In space the same rate is a Lindel\"of hypothesis, and it holds in the median of the computation.
 On the three-sphere, whose harmonics are the shells of the hydrogen atom, the spin states fixed by the 24 Hurwitz units are Klein's octahedron and cube, and they are counted by the newforms of level~2.
-Finally, the six rotations given by the quaternions $1\pm2i$, $1\pm2j$, $1\pm2k$ mix the sphere at the rate $2\sqrt5$ of the Ramanujan bound; they are gates for a quantum bit.
+Finally, the six rotations given by the quaternions $1\pm2i$, $1\pm2j$, $1\pm2k$ mix the sphere at the rate $2\sqrt5$ of the Ramanujan bound; in quantum computing they are known as the V gates.
 \end{abstract}
 
 \section{The packets of a sphere}
@@ -260,10 +260,9 @@ These six rotations are the V gates \cite{BGS}, and the Ramanujan bound is the r
   \label{fig:rotations}
 \end{figure}
 
-\section{A working hypothesis, and questions}
+\section{Questions}
 
-Our working hypothesis is the programme of note~07 in its spherical form.
-A lattice of unit impulses is analysed by radius and by angle, and modular forms carry both analyses at once: the packet of angular momentum $l$ of the shells of $\Z^d$ is a form of weight $l+d/2$, its Dirichlet series is the continuous analysis of that packet, the sizes and the squared shapes of the shells are special values of $L$-functions, and the Ramanujan bound measures how evenly the impulses are spread.
+The derivations above analyse a lattice of unit impulses by radius and by angle, and modular forms carry both analyses at once: the packet of angular momentum $l$ of the shells of $\Z^d$ is a form of weight $l+d/2$, its Dirichlet series is the continuous analysis of that packet, the sizes and the squared shapes of the shells are special values of $L$-functions, and the Ramanujan bound measures how evenly the impulses are spread.
 
 \begin{question}
 The neighbours of an atom in a simple cubic crystal lie on the shells counted by $r_3(N)$, with none at the distance $\sqrt7\,a$.
@@ -274,12 +273,6 @@ Does a measurement that resolves the neighbours shell by shell, such as X-ray ab
 In the four cases of Derivation~\ref{d:hurwitz} the root number of a newform of level 2 is $(-1)^j$ times the parity of a spin-$j$ state under the twist $(1+i)/\sqrt2$, a quarter turn.
 Note~02 asked for a physical reading of a root number.
 Is this parity one, and does the rule hold at every weight and at other levels?
-\end{question}
-
-\begin{question}
-The units of $\Z$, of $\Z[\omega]$ and of the Hurwitz order are the roots of $A_1$, $A_2$ and $D_4$.
-The first two are the root systems of the weak and colour forces in note~06.
-Does $D_4$, with its triality, enter that programme?
 \end{question}
 
 \section*{Status of the statements}
@@ -301,7 +294,7 @@ Roundness in $d = 2,3,4$; Deligne's bound and the semicircle law for $\eta(2z)^{
 Hurwitz units as $\SL(2,\mathbb F_3)$, quotient $\Z/3$, root system $D_4$ & \gradeComputed\\
 Klein's forms; the count of newforms for $l\le600$; the tetrahedral state of spin 2 & \gradeComputed; theorems \gradeClassical\\
 Eigenvalues of the six rotations for $l\le40$; free group to length 6 & \gradeComputed; theorem \gradeClassical\\
-The working hypothesis; Questions 1--3 & \gradeOpen\\
+Questions 1 and 2 & \gradeOpen\\
 \bottomrule
 \end{tabular}
 \end{center}

@@ -52,6 +52,15 @@ and attribution.
   `scripts/hearing_lattices.py`: equal theta series to squared length 60, the identity that gives equality at every
   length, and root graphs with two components and one. Suggested by the author; reviewed by an independent AI agent
   before publication.
+- **Wording pass over notes 01, 02, 04, 05, 06, 08, 09, 10, 11 and 13**, after an independent cold read for tone.
+  The notes keep their classical content and their checks. Removed: the "programme" and "working hypothesis"
+  sections and sentences (notes 01, 02, 06, 08, 10), the cross-references to them (notes 04, 09, 10), and the section
+  on the fine-structure constant (note 08). Reworded: forms as timelike vectors in place of "particles" (note 08);
+  the boost of trace three in place of "golden boosts", and point sources in place of "explosions" (note 13).
+  New titles: note 06, "Four arithmetic facts about the representations of the Standard Model"; note 08,
+  "Quadratic forms, the light cone and spheres"; note 13, "Lorentz boosts, Burgers flow and Beltrami fields on a
+  lattice". File names are unchanged. Note 11: the multiplicity `m₁ = 6 = (24/π) L(1, χ₋₄)` is written out, and the
+  second part of Dirichlet's memoir is added to the reference.
 - **Note 03 rewritten: Light and number: Newton's rings, Balmer's formula and Planck's law.** The note
   "How many colours in the rainbow?" is replaced. The new note follows three measurements of light to the arithmetic
   inside them, with dates and sources: Newton's rule for the rings and Young's table of 1802 (the spectrum they saw

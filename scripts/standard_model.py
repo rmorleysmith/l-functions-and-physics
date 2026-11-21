@@ -1,4 +1,4 @@
-"""Note 06: towards a number-theoretic standard model. The exact facts the questions rest on.
+"""Note 06: four arithmetic facts about the representations of the Standard Model, and the facts its questions rest on.
 
 What it computes (exact rational arithmetic, except the L-function checks of (3b), which are in floating point)
   (1) Counts. Twelve fermion flavours (six quarks, six leptons); twelve gauge bosons, the dimension of

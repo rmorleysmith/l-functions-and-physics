@@ -1,4 +1,4 @@
-"""Note 08: the speed of light, the light cone and spheres.
+"""Note 08: quadratic forms, the light cone and spheres.
 
 What it computes
   (1) c is a unit. 299 792 458 m/s is exact by the definition of the metre (SI, 1983); in other units the digits

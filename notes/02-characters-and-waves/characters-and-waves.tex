@@ -13,7 +13,7 @@
 \noindent
 The quadratic Dirichlet characters $\chi_D$ of the imaginary quadratic fields appear in three physical settings.
 They count the plane waves of equal frequency on a periodic lattice: for the square and hexagonal lattices and the seven other lattices of class number one, the multiplicity of a frequency is a divisor sum of $\chi_D$.
-The spectral zeta function of such a lattice is $\zeta(s)L(s,\chi_D)$, up to the number of units, and gives lattice energies; the Madelung constant of the square ionic crystal is $4(\sqrt2-1)\,|\zeta(\tfrac12)|\,L(\tfrac12,\chi_{-4}) = 1.61554\ldots$, a product of two values at the centre of the critical line.
+The spectral zeta function of such a lattice is $\zeta(s)L(s,\chi_D)$, up to the number of units, and gives lattice energies; the Madelung constant of the square ionic crystal is $4(\sqrt2-1)\,|\zeta(\tfrac12)|\,L(\tfrac12,\chi_{-4}) = 1.61554\ldots$, a product of two values at the centre of the critical strip, $s=\tfrac12$.
 Their Gauss sums govern the diffraction of light by a grating (the Talbot effect) and the scattering of sound by Schroeder's quadratic-residue diffuser: for odd $q$ the identity $|G(q)|^2 = q$ makes the Talbot images equally bright and the diffuser's orders equally loud, and it gives the root number of a quadratic $L$-function modulus one.
 The theorems are classical; we check each numerically and pose two questions.
 \end{abstract}
@@ -186,10 +186,9 @@ The script checks the functional equation, with $\varepsilon=1$, for $\chi_{-4}$
 So one normalisation does three jobs.
 It makes the Talbot images equally bright and the diffuser's orders equally loud, and it makes the completed $L$-function symmetric about $\mathrm{Re}\,s=\frac12$.
 
-\section{The programme, and questions}
+\section{Questions}
 
-Our working hypothesis is that the arithmetic of quadratic residues models wave propagation.
-The three settings above realise it exactly, through classical theorems that the scripts check.
+In the three settings above the arithmetic of quadratic residues describes the propagation of waves exactly, through classical theorems that the scripts check.
 \begin{itemize}
 \item Mode counting on lattices is the character $\chi_D$.
 \item Lattice energies are values of $L(s,\chi_D)$.
@@ -224,7 +223,7 @@ Proposition~\ref{prop:madelung}; $\alpha = 1.6155426\ldots$ & \gradeClassical{},
 Gauss sums; Talbot weights; Schroeder's flat spectrum & \gradeClassical{}, \gradeComputed\\
 Functional equations with root number 1 for five characters & \gradeClassical{}, \gradeComputed\\
 Level 11: Fricke eigenvalue $-1$ and root number $+1$ & \gradeLean\\
-The working hypothesis; Questions 1 and 2 & \gradeOpen\\
+Questions 1 and 2 & \gradeOpen\\
 \bottomrule
 \end{tabular}
 \end{center}
